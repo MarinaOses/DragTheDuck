@@ -13,12 +13,7 @@
     CGFloat *colors;
     
     GLenum renderStyle;
-    
-    
-    
-    
-    
-    //QUITAME
+    //hola
     
 }
 
