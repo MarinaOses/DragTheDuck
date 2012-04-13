@@ -10,12 +10,12 @@
 
 @implementation MGInputViewController
 
-@synthesize touchEvents;
+@synthesize touchEvents = _touchEvents;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        touchEvents = [[NSMutableSet alloc] init];
+        self.touchEvents = [[NSMutableSet alloc] init];
     }
     return self;
 }
@@ -24,29 +24,29 @@
 
 //Borra todos los toques almacenados en el set
 - (void)clearEvents {
-    [touchEvents removeAllObjects];
+    [self.touchEvents removeAllObjects];
 }
 
 //cuando uno o más dedos tocan la vista o ventana
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	// just store them all in the big set.
-	[touchEvents addObjectsFromArray:[touches allObjects]];
+	[self.touchEvents addObjectsFromArray:[touches allObjects]];
 }
 
 //cuando uno o más dedos se mueven por la vista o ventana
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 	// just store them all in the big set.
-	[touchEvents addObjectsFromArray:[touches allObjects]];
+	[self.touchEvents addObjectsFromArray:[touches allObjects]];
 }
 
 //cuando uno o más dedos se levantan de la vista o ventana
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	// just store them all in the big set.
-	[touchEvents addObjectsFromArray:[touches allObjects]];
+	[self.touchEvents addObjectsFromArray:[touches allObjects]];
 }
 
 - (void)dealloc {
-    [touchEvents dealloc];
+    [_touchEvents dealloc];
     [super dealloc];
 }
 

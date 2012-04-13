@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MGInputViewController : UIViewController {
-    NSMutableSet *touchEvents;
+    NSMutableSet *_touchEvents;
 }
 
 @property (nonatomic, retain) NSMutableSet *touchEvents;

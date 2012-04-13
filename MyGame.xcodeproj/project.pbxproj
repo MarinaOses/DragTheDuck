@@ -20,7 +20,7 @@
 		9CEEFF16152F70FC0004D9AA /* MGInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEEFF15152F70FC0004D9AA /* MGInputViewController.m */; };
 		9CEEFF1A1531C37F0004D9AA /* MGSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEEFF191531C37F0004D9AA /* MGSceneController.m */; };
 		9CEEFF1D153371EB0004D9AA /* SceneObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEEFF1C153371EB0004D9AA /* SceneObject.m */; };
-		9CEEFF211537485A0004D9AA /* MGMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEEFF201537485A0004D9AA /* MGMesh.m */; };
+		9CEEFF291538560A0004D9AA /* MGMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEEFF281538560A0004D9AA /* MGMesh.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,8 +46,9 @@
 		9CEEFF191531C37F0004D9AA /* MGSceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSceneController.m; sourceTree = "<group>"; };
 		9CEEFF1B153371EB0004D9AA /* SceneObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneObject.h; sourceTree = "<group>"; };
 		9CEEFF1C153371EB0004D9AA /* SceneObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneObject.m; sourceTree = "<group>"; };
-		9CEEFF1F1537485A0004D9AA /* MGMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMesh.h; sourceTree = "<group>"; };
-		9CEEFF201537485A0004D9AA /* MGMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMesh.m; sourceTree = "<group>"; };
+		9CEEFF271538560A0004D9AA /* MGMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMesh.h; sourceTree = "<group>"; };
+		9CEEFF281538560A0004D9AA /* MGMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMesh.m; sourceTree = "<group>"; };
+		9CEEFF2A1538960C0004D9AA /* MGPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGPoint.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				9CA68A23152C6F7B008E11AF /* MGConfiguration.h */,
+				9CEEFF2A1538960C0004D9AA /* MGPoint.h */,
 			);
 			name = "Configuration Files";
 			sourceTree = "<group>";
@@ -138,8 +140,8 @@
 		9CEEFF1E153746CF0004D9AA /* Object's properties */ = {
 			isa = PBXGroup;
 			children = (
-				9CEEFF1F1537485A0004D9AA /* MGMesh.h */,
-				9CEEFF201537485A0004D9AA /* MGMesh.m */,
+				9CEEFF271538560A0004D9AA /* MGMesh.h */,
+				9CEEFF281538560A0004D9AA /* MGMesh.m */,
 			);
 			name = "Object's properties";
 			sourceTree = "<group>";
@@ -212,7 +214,7 @@
 				9CEEFF16152F70FC0004D9AA /* MGInputViewController.m in Sources */,
 				9CEEFF1A1531C37F0004D9AA /* MGSceneController.m in Sources */,
 				9CEEFF1D153371EB0004D9AA /* SceneObject.m in Sources */,
-				9CEEFF211537485A0004D9AA /* MGMesh.m in Sources */,
+				9CEEFF291538560A0004D9AA /* MGMesh.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
