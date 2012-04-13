@@ -14,6 +14,7 @@
     
     GLenum renderStyle;
     //hola
+    //QUITAR
     
 }
 
