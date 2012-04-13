@@ -16,7 +16,6 @@
 
 
 
-
 @implementation MGSceneController
 
 @synthesize inputViewController = _inputViewController;
@@ -42,6 +41,11 @@
 - (void)loadScene {
     sceneObjects = [[NSMutableArray alloc] init];
     
+    //Añadir un MGSceneObject
+    MGSceneObject *object = [[MGSceneObject alloc] initWithSceneController:self];
+    [object awake];
+    [sceneObjects addObject:object];
+    [object release];
 }
 
 - (void)startScene {

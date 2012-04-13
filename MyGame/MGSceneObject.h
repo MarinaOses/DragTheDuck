@@ -13,7 +13,7 @@
 
 @class MGSceneController;
 
-@interface SceneObject : NSObject {
+@interface MGSceneObject : NSObject {
     MGPoint translation;
     MGPoint rotation;
     MGPoint scale;
@@ -25,6 +25,7 @@
     MGSceneController *sceneController;
 }
 
+- (void)awake;
 - (id)initWithSceneController:(MGSceneController *)scene_controller;
 
 @end

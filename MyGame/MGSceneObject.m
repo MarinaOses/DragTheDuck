@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SceneObject.h"
+#import "MGSceneObject.h"
 #import "MGSceneController.h"
 
 
@@ -24,7 +24,7 @@ static CGFloat squareColors [16] = {
     1.0, 0, 1.0, 1.0
 };
 
-@implementation SceneObject 
+@implementation MGSceneObject 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller {
     self = [super init];
@@ -42,7 +42,7 @@ static CGFloat squareColors [16] = {
 
 - (void)awake {
     mesh = [[MGMesh alloc] initWithVertexes:squareVertices vertexCount:4 vertexSize:2 renderStyle:GL_TRIANGLE_STRIP];
-    mesh.colors = squareVertices;
+    mesh.colors = squareColors;
     mesh.colorSize = 4;
 }
 
