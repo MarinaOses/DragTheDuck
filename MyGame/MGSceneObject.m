@@ -11,17 +11,17 @@
 
 
 static CGFloat squareVertices[8] = {
-    -0.5f, -0.5f,
-    -0.5f, 0.5f,
-    0.5f, -0.5f,
-    0.5f, 0.5f
+    -0.2f, -0.2f,
+    -0.2f, 0.2f,
+    0.2f, -0.2f,
+    0.2f, 0.2f
 };
 
 static CGFloat squareColors [16] = {
-    1.0, 1.0, 0, 1.0,
-    0, 1.0, 1.0, 1.0,
-    0, 0, 0, 0,
-    1.0, 0, 1.0, 1.0
+    0, 0, 1.0, 1.0,
+    0, 1.0, 0, 1.0,
+    0, 0, 0, 1.0,
+    1.0, 0, 0, 1.0
 };
 
 @implementation MGSceneObject 
