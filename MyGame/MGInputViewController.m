@@ -31,12 +31,15 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	// just store them all in the big set.
 	[self.touchEvents addObjectsFromArray:[touches allObjects]];
+    
+    
 }
 
 //cuando uno o más dedos se mueven por la vista o ventana
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 	// just store them all in the big set.
 	[self.touchEvents addObjectsFromArray:[touches allObjects]];
+    NSLog(@"%@", touches);
 }
 
 //cuando uno o más dedos se levantan de la vista o ventana
