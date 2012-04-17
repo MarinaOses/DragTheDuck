@@ -53,6 +53,7 @@
             return nil;
         }
     }
+    self.multipleTouchEnabled = YES;
     return self;
 }
 

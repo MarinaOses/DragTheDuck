@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MGTouch.h"
 
 @interface MGInputViewController : UIViewController {
     NSMutableSet *_touchEvents;

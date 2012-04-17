@@ -50,10 +50,11 @@ static CGFloat squareColors [16] = {
 - (void)update {
     //Ha habido algún toque?
     //touchEvents contiene todos los toques o deslizamientos que se an hecho en pantalla
-    NSSet *touches = [sceneController.inputViewController touchEvents];
-    for (UITouch *touch in [touches allObjects]) {
+    NSSet *touchesSet = [sceneController.inputViewController touchEvents];
+    for (MGTouch *atouch in touchesSet) {
+        NSLog(@"%@", [atouch description]);
         //Modificamos el estado del cuadrado (parado o moviendose) si el toque es de tipo "ended" 
-        if (touch.phase == UITouchPhaseEnded) {
+        if (atouch.phase == UITouchPhaseEnded) {
             active = !active;
         }
     }

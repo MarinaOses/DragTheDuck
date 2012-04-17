@@ -24,6 +24,10 @@
     return self;
 }
 
+- (void)meshBounds {
+    
+}
+
 //Se llama una vez cada frame
 - (void)render {
     //Cargar los arrays en OpenGLES

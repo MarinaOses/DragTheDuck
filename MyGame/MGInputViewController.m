@@ -8,6 +8,11 @@
 
 #import "MGInputViewController.h"
 
+@interface MGInputViewController()
+- (void)createTouchCopiesFromSet:(NSSet *)uiTouchesSet;
+@end
+
+
 @implementation MGInputViewController
 
 @synthesize touchEvents = _touchEvents;
@@ -29,24 +34,38 @@
 
 //cuando uno o más dedos tocan la vista o ventana
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	// just store them all in the big set.
-	[self.touchEvents addObjectsFromArray:[touches allObjects]];
-    
+    [self createTouchCopiesFromSet:touches];
+    if ([[event touchesForView:[self view]] count] > 1) {
+        NSLog(@"***********%d active touches", [[event touchesForView:[self view]] count]);
+    }
     
 }
 
 //cuando uno o más dedos se mueven por la vista o ventana
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-	// just store them all in the big set.
-	[self.touchEvents addObjectsFromArray:[touches allObjects]];
-    NSLog(@"%@", touches);
+    [self createTouchCopiesFromSet:touches];
+    if ([[event touchesForView:[self view]] count] > 1) {
+        NSLog(@"_______________%d active touches", [[event touchesForView:[self view]] count]);
+    }
 }
 
 //cuando uno o más dedos se levantan de la vista o ventana
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	// just store them all in the big set.
-	[self.touchEvents addObjectsFromArray:[touches allObjects]];
+    [self createTouchCopiesFromSet:touches];
+    if ([[event touchesForView:[self view]] count] > 1) {
+        NSLog(@"<<<<<<<<<<<<<<<%d active touches", [[event touchesForView:[self view]] count]);
+    }
+    
 }
+
+- (void)createTouchCopiesFromSet:(NSSet *)uiTouchesSet {
+    for (UITouch *aTouch in uiTouchesSet) {
+        MGTouch *touchCopy = [[MGTouch alloc] initWithUITouch:aTouch];
+        [self.touchEvents addObject:touchCopy];
+        [touchCopy release];
+    }   
+}
+
 
 - (void)dealloc {
     [_touchEvents dealloc];
