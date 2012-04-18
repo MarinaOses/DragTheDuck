@@ -33,7 +33,7 @@ static CGFloat squareColors [16] = {
         rotation = MGPointMake(0.0, 0.0, 0.0);
         scale = MGPointMake(1.0, 1.0, 1.0);
         
-        active = NO;
+        taken = NO;
         sceneController = scene_controller;
         [sceneController retain];
     }
@@ -53,12 +53,26 @@ static CGFloat squareColors [16] = {
     NSSet *touchesSet = [sceneController.inputViewController touchEvents];
     for (MGTouch *atouch in touchesSet) {
         NSLog(@"%@", [atouch description]);
-        //Modificamos el estado del cuadrado (parado o moviendose) si el toque es de tipo "ended" 
-        if (atouch.phase == UITouchPhaseEnded) {
-            active = !active;
+        //Se comprueba si el toque es sobre el objeto o no
+        NSUInteger numberOfFingersOnView = [[atouch.event touchesForView:[sceneController.inputViewController view]] count];
+        if (taken == NO) {
+            if (atouch.phase == UITouchPhaseBegan && numberOfFingersOnView == 1) {
+                NSLog(@"minx = %f maxx= %f", CGRectGetMinX(self.meshBounds), CGRectGetMaxX(self.meshBounds));
+                if (CGRectContainsPoint(self.meshBounds, atouch.location)) {
+                    taken = YES;
+                }
+            }
+        }
+        else { //taken == SI
+            if (atouch.phase == UITouchPhaseEnded) {
+                taken = NO;
+            }
+            else if (atouch.phase == UITouchPhaseMoved) {
+              
+            }
         }
     }
-    if (active) {
+    if (taken) {
         //rota el eje z del cuadrado 3 grados
         rotation.z += 3;
     }
@@ -86,6 +100,18 @@ static CGFloat squareColors [16] = {
     //Resauramos la matriz actual (quitamos la matriz de la cima de la pila)
     glPopMatrix();
     
+}
+
+- (CGRect)meshBounds {
+    if (CGRectEqualToRect(_meshBounds, CGRectZero)) {
+        _meshBounds = [MGMesh boundsOf:mesh WithScale:scale];
+    }
+    return _meshBounds;
+    
+}    
+
+- (void)setMeshBounds:(CGRect)meshBounds {
+    _meshBounds = meshBounds;
 }
 
 - (void)dealloc {

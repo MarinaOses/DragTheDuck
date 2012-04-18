@@ -19,11 +19,14 @@
     MGPoint scale;
     
     MGMesh *mesh;
+    CGRect _meshBounds;
     
-    BOOL active;
+    BOOL taken;
     
     MGSceneController *sceneController;
 }
+
+@property (nonatomic, assign) CGRect meshBounds;
 
 - (void)awake;
 - (id)initWithSceneController:(MGSceneController *)scene_controller;

@@ -8,16 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface MGTouch : NSObject {
     UITouchPhase _phase;
     CGPoint _location;
+    UIEvent *_event;
 }
 
 @property (nonatomic, assign) UITouchPhase phase;
 @property (nonatomic, assign) CGPoint location;
+@property (nonatomic, retain) UIEvent *event;
 
 
-- (id)initWithUITouch:(UITouch *)uiTouch;
+- (id)initWithUITouch:(UITouch *)uiTouch andUIEvent:(UIEvent *)uiEvent;
 - (NSString *)description;
 
 

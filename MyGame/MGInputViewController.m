@@ -9,7 +9,7 @@
 #import "MGInputViewController.h"
 
 @interface MGInputViewController()
-- (void)createTouchCopiesFromSet:(NSSet *)uiTouchesSet;
+- (void)createTouchCopiesFromSet:(NSSet *)uiTouchesSet andEvent:(UIEvent *)uiEvent;
 @end
 
 
@@ -34,7 +34,7 @@
 
 //cuando uno o más dedos tocan la vista o ventana
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self createTouchCopiesFromSet:touches];
+    [self createTouchCopiesFromSet:touches andEvent:event];
     if ([[event touchesForView:[self view]] count] > 1) {
         NSLog(@"***********%d active touches", [[event touchesForView:[self view]] count]);
     }
@@ -43,7 +43,7 @@
 
 //cuando uno o más dedos se mueven por la vista o ventana
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self createTouchCopiesFromSet:touches];
+    [self createTouchCopiesFromSet:touches andEvent:event];
     if ([[event touchesForView:[self view]] count] > 1) {
         NSLog(@"_______________%d active touches", [[event touchesForView:[self view]] count]);
     }
@@ -51,19 +51,23 @@
 
 //cuando uno o más dedos se levantan de la vista o ventana
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self createTouchCopiesFromSet:touches];
+    [self createTouchCopiesFromSet:touches andEvent:event];
     if ([[event touchesForView:[self view]] count] > 1) {
         NSLog(@"<<<<<<<<<<<<<<<%d active touches", [[event touchesForView:[self view]] count]);
     }
     
 }
 
-- (void)createTouchCopiesFromSet:(NSSet *)uiTouchesSet {
+- (void)createTouchCopiesFromSet:(NSSet *)uiTouchesSet andEvent:(UIEvent *)uiEvent {
     for (UITouch *aTouch in uiTouchesSet) {
-        MGTouch *touchCopy = [[MGTouch alloc] initWithUITouch:aTouch];
+        MGTouch *touchCopy = [[MGTouch alloc] initWithUITouch:aTouch andUIEvent:uiEvent];
         [self.touchEvents addObject:touchCopy];
         [touchCopy release];
     }   
+}
+
+- (CGRect)screenRectFromMeshRect:(CGRect)meshRect atPoint:(CGPoint)meshCenter {
+    
 }
 
 

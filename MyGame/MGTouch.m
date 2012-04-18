@@ -12,13 +12,16 @@
 
 @synthesize phase = _phase;
 @synthesize location = _location;
+@synthesize event = _event;
 
 
-- (id)initWithUITouch:(UITouch *)uiTouch {
+- (id)initWithUITouch:(UITouch *)uiTouch andUIEvent:(UIEvent *)uiEvent {
     self = [super init];
     if (self) {
         self.phase = [uiTouch phase];
         self.location = [uiTouch locationInView:[uiTouch view]];
+        self.event = uiEvent;
+        [self.event retain];
     }
     return self;
 }
@@ -40,6 +43,11 @@
             break;
     }
     return [NSString stringWithFormat:@"phase: %@ | location: (%d,%d)", phaseAsString, (int)self.location.x, (int)self.location.y];
+}
+
+- (void)dealloc {
+    [_event release];
+    [super dealloc];
 }
 
 @end

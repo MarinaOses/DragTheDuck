@@ -8,14 +8,14 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "MyGame/MGSceneController.m"
-         timestampString = "356295017.130672"
+         filePath = "MyGame/MGSceneObject.m"
+         timestampString = "356446623.247932"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "116"
-         endingLineNumber = "116"
-         landmarkName = "@implementation MGSceneController"
-         landmarkType = "3">
+         startingLineNumber = "61"
+         endingLineNumber = "61"
+         landmarkName = "-update"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

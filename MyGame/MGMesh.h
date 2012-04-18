@@ -12,22 +12,30 @@
 #import <OpenGLES/ES1/glext.h>
 #import <QuartzCore/QuartzCore.h>
 
+#import "MGPoint.h"
+
 
 @interface MGMesh : NSObject {
-    GLfloat *vertexes;
+    GLfloat *_vertexes;
     GLfloat *_colors;
     
     GLenum renderStyle;
-    NSInteger vertexCount;
-    NSInteger vertexSize;
+    NSInteger _vertexCount;
+    NSInteger _vertexSize;
     NSInteger _colorSize;
+    
+    MGPoint centroid;
 }
 
-
+@property (nonatomic, assign) GLfloat *vertexes;
 @property (nonatomic, assign) GLfloat *colors;
 @property (nonatomic, assign) NSInteger colorSize;
+@property (nonatomic, assign) NSInteger vertexCount;
+@property (nonatomic, assign) NSInteger vertexSize;
 
 - (id)initWithVertexes:(GLfloat *)vert vertexCount:(NSInteger)vertCount vertexSize:(NSInteger)vertSize renderStyle:(GLenum)style;
 - (void)render;
++ (CGRect)boundsOf:(MGMesh *)aMesh WithScale:(MGPoint)aScale;
+
 
 @end
