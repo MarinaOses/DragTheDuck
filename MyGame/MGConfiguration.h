@@ -24,5 +24,4 @@
 #define BIG_UPDATE_INTERVAL (1.0/MINIMUM_FRAME_RATE) //segundos por frame máximo
 
 
-
 #endif

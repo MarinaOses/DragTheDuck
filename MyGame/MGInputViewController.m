@@ -66,8 +66,15 @@
     }   
 }
 
+//Se debe tener en cuenta que los ejes entre el mesh y el dispositivo están cambiados 
 - (CGRect)screenRectFromMeshRect:(CGRect)meshRect atPoint:(CGPoint)meshCenter {
-    
+    CGPoint screenCenter = CGPointZero;
+    CGPoint screenRectOrigin = CGPointZero;
+    screenCenter.x = meshCenter.y + ( [(EAGLView *)self.view getBackingWidth] / 2);
+    screenCenter.y = meshCenter.x + ([(EAGLView *)self.view getBackingHeight] / 2);
+    screenRectOrigin.x = screenCenter.x - (CGRectGetHeight(meshRect) / 2);
+    screenRectOrigin.y = screenCenter.y - (CGRectGetWidth(meshRect) / 2);
+    return CGRectMake(screenRectOrigin.x, screenRectOrigin.y, CGRectGetHeight(meshRect), CGRectGetWidth(meshRect));
 }
 
 

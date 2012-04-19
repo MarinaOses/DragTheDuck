@@ -57,8 +57,8 @@
     return self;
 }
 
-
-- (void)setupView {
+//Esta función ya no se utiliza
+- (void)setupViewPortrait {
     //establece la porción de ventana en la que puede dibujar openGL
     glViewport(0, 0, backingWidth, backingHeight);
     //con esta función indicamos a cuál de los tres tipos de matrices (GL_PROJECTION, GL_MODELVIEW, GL_TEXTURE) van a afectar las operaciones de transformación. GL_PROJECTION afecta a las vistas. 
@@ -68,8 +68,25 @@
     //El eje Z toma los objetos de la escena son en 2D
     glOrthof(-1.0f, 1.0f, -1.5f, 1.5f, -1.0f, 1.0f);
     //definir el color del fondo
+    glMatrixMode(GL_MODELVIEW);
     glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
 }
+
+
+- (void)setupViewLandScape {
+    glViewport(0, 0, backingWidth, backingHeight);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    //Simula un giro de 90 grados del dispositivo 
+    glRotatef(-90.0f, 0.0f, 0.0f, 1.0f);
+    //Se crea una analogía entre el viewport y los píxeles de la pantalla
+    glOrthof(-backingHeight/2.0f, backingHeight/2.0f, -backingWidth/2.0f, backingWidth/2.0f, -1.0f, 1.0f);
+    glMatrixMode(GL_MODELVIEW);
+    //Se limpia la pantalla con negro
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    
+}
+
 
 - (void)beginDraw {
     //Para estar seguros de que estamos dibujando en el contexto actual
@@ -83,12 +100,14 @@
     glLoadIdentity();
 }
 
+
 - (void)finishDraw {
     //Se une el renderBuffer con su variable correspondiente
     glBindRenderbuffer(GL_RENDERBUFFER_OES, viewRenderBuffer);
     //muestra el contenido de renderbuffer por pantalla
     [context presentRenderbuffer:GL_RENDERBUFFER_OES];
 }
+
 
 - (void)layoutSubviews {
     //para estar seguros de que se esta trabajando sobre el contexto actual
@@ -98,9 +117,10 @@
     //crea nuevos buffers: framebuffer, renderbuffer y depthbuffer
     if ([self didCreateFrameBuffer]) {
         //Si todo va bien establece la ventana de dibujo
-        [self setupView];
+        [self setupViewLandScape];
     }
 }
+
 
 - (BOOL)didCreateFrameBuffer {
     //viewFramebuffer y viewRenderBuffer almacenan el dentificador del buffer correspondiente
@@ -172,7 +192,13 @@
     glFrustumf(-halfWidth, halfWidth, -halfHeight, halfHeight, zNear, zFar);
 }
 
+- (GLint)getBackingWidth {
+    return backingWidth;
+}
 
+- (GLint)getBackingHeight {
+    return backingHeight;
+}
 
 - (void)dealloc {
     

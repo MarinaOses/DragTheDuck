@@ -43,7 +43,6 @@
     
     //Añadir un MGSceneObject
     MGSceneObject *object = [[MGSceneObject alloc] initWithSceneController:self];
-    [object awake];
     [sceneObjects addObject:object];
     [object release];
 }

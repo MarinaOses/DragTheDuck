@@ -11,10 +11,10 @@
 
 
 static CGFloat squareVertices[8] = {
-    -0.2f, -0.2f,
-    -0.2f, 0.2f,
-    0.2f, -0.2f,
-    0.2f, 0.2f
+    -0.5f, -0.5f,
+    -0.5f, 0.5f,
+    0.5f, -0.5f,
+    0.5f, 0.5f
 };
 
 static CGFloat squareColors [16] = {
@@ -31,20 +31,24 @@ static CGFloat squareColors [16] = {
     if (self) {
         translation = MGPointMake(0.0, 0.0, 0.0);
         rotation = MGPointMake(0.0, 0.0, 0.0);
-        scale = MGPointMake(1.0, 1.0, 1.0);
+        scale = MGPointMake(50.0, 50.0, 1.0);
         
         taken = NO;
+        
         sceneController = scene_controller;
         [sceneController retain];
+        
+        mesh = [[MGMesh alloc] initWithVertexes:squareVertices vertexCount:4 vertexSize:2 renderStyle:GL_TRIANGLE_STRIP];
+        mesh.colors = squareColors;
+        mesh.colorSize = 4;
+        
+        self.meshBounds = CGRectZero;
+        self.screenRect = CGRectZero;
+       
     }
     return self;
 }
 
-- (void)awake {
-    mesh = [[MGMesh alloc] initWithVertexes:squareVertices vertexCount:4 vertexSize:2 renderStyle:GL_TRIANGLE_STRIP];
-    mesh.colors = squareColors;
-    mesh.colorSize = 4;
-}
 
 
 - (void)update {
@@ -57,15 +61,14 @@ static CGFloat squareColors [16] = {
         NSUInteger numberOfFingersOnView = [[atouch.event touchesForView:[sceneController.inputViewController view]] count];
         if (taken == NO) {
             if (atouch.phase == UITouchPhaseBegan && numberOfFingersOnView == 1) {
-                NSLog(@"minx = %f maxx= %f", CGRectGetMinX(self.meshBounds), CGRectGetMaxX(self.meshBounds));
-                if (CGRectContainsPoint(self.meshBounds, atouch.location)) {
-                    taken = YES;
+                if (CGRectContainsPoint(self.screenRect, atouch.location)) {
+                    taken = !taken;
                 }
             }
         }
-        else { //taken == SI
+        else { //taken == YES
             if (atouch.phase == UITouchPhaseEnded) {
-                taken = NO;
+                taken = !taken;
             }
             else if (atouch.phase == UITouchPhaseMoved) {
               
@@ -113,6 +116,19 @@ static CGFloat squareColors [16] = {
 - (void)setMeshBounds:(CGRect)meshBounds {
     _meshBounds = meshBounds;
 }
+
+- (CGRect)screenRect {
+    if (CGRectEqualToRect(_screenRect, CGRectZero)) {
+         _screenRect = [sceneController.inputViewController screenRectFromMeshRect:self.meshBounds atPoint:CGPointMake(translation.x, translation.y)];
+    }
+    return _screenRect;
+}
+
+
+-(void)setScreenRect:(CGRect)screenRect {
+    _screenRect = screenRect;
+}
+
 
 - (void)dealloc {
     [mesh release];

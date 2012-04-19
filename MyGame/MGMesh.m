@@ -50,10 +50,13 @@
     xMin = xMax = aMesh.vertexes[0] * aScale.x;
     yMin = yMax = aMesh.vertexes[1] * aScale.y;
     
+    
     //Se comienza desde el bloque 1 ya el primer bloque ha sido asignado en la inicialización anterior
     NSInteger index;
-    for (index = 1; index < aMesh.vertexCount; index++) {
+    for (index = 0; index < aMesh.vertexCount; index++) {
         NSInteger position = index * aMesh.vertexSize;
+        NSLog(@"x=%f y=%f",aMesh.vertexes[position] * aScale.x, aMesh.vertexes[position + 1] * aScale.y);
+       
         CGFloat newValueForX = aMesh.vertexes[position] * aScale.x;
         CGFloat newValueForY = aMesh.vertexes[position + 1] * aScale.y;
         //Se actualizan los valores mínimos y máximos
@@ -68,6 +71,7 @@
     //La anchura o la altura del rectángulo creado no debe ser inferior a 1.0
     if (CGRectGetWidth(boundsRect) < 1.0) boundsRect.size.width = 1.0;
     if (CGRectGetHeight(boundsRect) < 1.0) boundsRect.size.height = 1.0;
+    
     
     return boundsRect;
 }

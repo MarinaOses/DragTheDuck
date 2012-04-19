@@ -21,14 +21,18 @@
     MGMesh *mesh;
     CGRect _meshBounds;
     
+    //Rectángulo al que pertenecen todos los vértices del objeto 
+    CGRect _screenRect;
+    
     BOOL taken;
     
     MGSceneController *sceneController;
 }
 
 @property (nonatomic, assign) CGRect meshBounds;
+@property (nonatomic, assign) CGRect screenRect; 
 
-- (void)awake;
+
 - (id)initWithSceneController:(MGSceneController *)scene_controller;
 
 @end

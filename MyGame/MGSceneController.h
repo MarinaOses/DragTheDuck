@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "MGInputViewController.h"
-#import "EAGLView.h"
 #import "MGSceneObject.h"
 
 @interface MGSceneController : NSObject {
