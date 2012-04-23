@@ -1,8 +1,8 @@
 //
-//  SceneObject.h
+//  MGSceneObject.h
 //  MyGame
 //
-//  Created by Marina Osés Merino on 09/04/12.
+//  Created by Marina Osés Merino on 23/04/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -34,5 +34,4 @@
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;
-
 @end

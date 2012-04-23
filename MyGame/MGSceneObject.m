@@ -1,8 +1,8 @@
 //
-//  SceneObject.m
+//  MGSceneObject.m
 //  MyGame
 //
-//  Created by Marina Osés Merino on 09/04/12.
+//  Created by Marina Osés Merino on 23/04/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -44,7 +44,7 @@ static CGFloat squareColors [16] = {
         
         self.meshBounds = CGRectZero;
         self.screenRect = CGRectZero;
-       
+        
     }
     return self;
 }
@@ -57,31 +57,15 @@ static CGFloat squareColors [16] = {
     NSSet *touchesSet = [sceneController.inputViewController touchEvents];
     for (MGTouch *atouch in touchesSet) {
         NSLog(@"%@", [atouch description]);
-        //Se comprueba si el toque es sobre el objeto o no
-        NSUInteger numberOfFingersOnView = [[atouch.event touchesForView:[sceneController.inputViewController view]] count];
-        if (taken == NO) {
-            if (atouch.phase == UITouchPhaseBegan && numberOfFingersOnView == 1) {
-                if (CGRectContainsPoint(self.screenRect, atouch.location)) {
-                    taken = !taken;
-                }
-            }
-        }
-        else { //taken == YES
-            if (atouch.phase == UITouchPhaseEnded) {
-                taken = !taken;
-            }
-            else if (atouch.phase == UITouchPhaseMoved) {
-              
-            }
-        }
+        NSLog(@"screenRectX: %d to %d", (int)self.screenRect.origin.x,  (int)self.screenRect.origin.x+(int)CGRectGetWidth(self.screenRect));
+        NSLog(@"screenRectY: %d to %d", (int)self.screenRect.origin.y,  (int)self.screenRect.origin.y+(int)CGRectGetHeight(self.screenRect));
     }
-    if (taken) {
-        //rota el eje z del cuadrado 3 grados
-        rotation.z += 3;
-    }
+
 }
 
+
 - (void)render {
+    
     //Se hace una copia de la matriz actual y se deja al inicio de la pila
     glPushMatrix();
     glLoadIdentity();
@@ -93,7 +77,6 @@ static CGFloat squareColors [16] = {
     glRotatef(rotation.x, 1.0f, 0.0f, 0.0f);
     glRotatef(rotation.y, 0.0f, 1.0f, 0.0f);
     glRotatef(rotation.z, 0.0f, 0.0f, 1.0f);
-    
     
     //Escalar
     glScalef(scale.x, scale.y, scale.z);
@@ -117,9 +100,10 @@ static CGFloat squareColors [16] = {
     _meshBounds = meshBounds;
 }
 
+
 - (CGRect)screenRect {
     if (CGRectEqualToRect(_screenRect, CGRectZero)) {
-         _screenRect = [sceneController.inputViewController screenRectFromMeshRect:self.meshBounds atPoint:CGPointMake(translation.x, translation.y)];
+        _screenRect = [sceneController.inputViewController screenRectFromMeshRect:self.meshBounds atPoint:CGPointMake(translation.x, translation.y)];
     }
     return _screenRect;
 }
