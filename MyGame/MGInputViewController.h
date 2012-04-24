@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "EAGLView.h"
 #import "MGTouch.h"
+#import "MGPoint.h"
 #import "MGConfiguration.h"
+
 
 
 @interface MGInputViewController : UIViewController {
@@ -20,6 +22,5 @@
 
 - (void)clearEvents;
 - (CGRect)screenRectFromMeshRect:(CGRect)meshRect atPoint:(CGPoint)meshCenter;
-
-
+- (MGPoint)meshCenterFromMGTouchLocation:(CGPoint)mgTouchLocation;
 @end

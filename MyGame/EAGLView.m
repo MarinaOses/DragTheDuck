@@ -74,7 +74,11 @@
 
 
 - (void)setupViewLandScape {
+    //define la porción de ventana donde openGL puede dibujar, es decir, en toda la pantalla
+    //Los dos primeros parámetros definen el punto horizontal y vertical de la esquina superior izquierda.
+    //Los dos últimos definen el ancho y alto de la ventana
     glViewport(0, 0, backingWidth, backingHeight);
+    
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     //Simula un giro de 90 grados del dispositivo 
@@ -82,8 +86,8 @@
     //Se crea una analogía entre el viewport y los píxeles de la pantalla
     glOrthof(-backingHeight/2.0f, backingHeight/2.0f, -backingWidth/2.0f, backingWidth/2.0f, -1.0f, 1.0f);
     glMatrixMode(GL_MODELVIEW);
-    //Se limpia la pantalla con negro
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    //Se limpia la pantalla con gris
+    glClearColor(0.5f, 0.5f, 0.5f, 0.0f);
     
 }
 

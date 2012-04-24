@@ -55,17 +55,32 @@ static CGFloat squareColors [16] = {
     //Ha habido algún toque?
     //touchEvents contiene todos los toques o deslizamientos que se an hecho en pantalla
     NSSet *touchesSet = [sceneController.inputViewController touchEvents];
+    UIView *view = sceneController.inputViewController.view;
     for (MGTouch *atouch in touchesSet) {
         NSLog(@"%@", [atouch description]);
         NSLog(@"screenRectX: %d to %d", (int)self.screenRect.origin.x,  (int)self.screenRect.origin.x+(int)CGRectGetWidth(self.screenRect));
         NSLog(@"screenRectY: %d to %d", (int)self.screenRect.origin.y,  (int)self.screenRect.origin.y+(int)CGRectGetHeight(self.screenRect));
+        int numberOfFingersOnTheScreen = [[atouch.event touchesForView:view] count];
+        if (atouch.phase == UITouchPhaseBegan && numberOfFingersOnTheScreen == 1) {
+            if (CGRectContainsPoint(self.screenRect, atouch.location)) {
+                taken = YES;
+            }
+        }
+        else if (atouch.phase == UITouchPhaseMoved && taken == YES) {
+            translation = [sceneController.inputViewController meshCenterFromMGTouchLocation:atouch.location];
+        }
+        else if (atouch.phase == UITouchPhaseEnded){
+            taken = NO;
+        }
     }
-
 }
 
 
 - (void)render {
     
+    //No hace falta que hagamosesta orden, ya que a la única pila que podemos acceder es a MODELVIEW
+    //glMatrixMode(GL_MODELVIEW);
+
     //Se hace una copia de la matriz actual y se deja al inicio de la pila
     glPushMatrix();
     glLoadIdentity();
@@ -102,9 +117,7 @@ static CGFloat squareColors [16] = {
 
 
 - (CGRect)screenRect {
-    if (CGRectEqualToRect(_screenRect, CGRectZero)) {
-        _screenRect = [sceneController.inputViewController screenRectFromMeshRect:self.meshBounds atPoint:CGPointMake(translation.x, translation.y)];
-    }
+    _screenRect = [sceneController.inputViewController screenRectFromMeshRect:self.meshBounds atPoint:CGPointMake(translation.x, translation.y)];
     return _screenRect;
 }
 

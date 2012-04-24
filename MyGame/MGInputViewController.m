@@ -66,7 +66,9 @@
     }   
 }
 
-//Se debe tener en cuenta que los ejes entre el mesh y el dispositivo están cambiados 
+#pragma mark - Funciones de traduccion entre pantalla y proyección
+
+//Se debe tener en cuenta que los ejes sobre los que se dibuja el mesh y los ejes del propio dispositivo son distintos 
 - (CGRect)screenRectFromMeshRect:(CGRect)meshRect atPoint:(CGPoint)meshCenter {
     CGPoint screenCenter = CGPointZero;
     CGPoint screenRectOrigin = CGPointZero;
@@ -75,6 +77,15 @@
     screenRectOrigin.x = screenCenter.x - (CGRectGetHeight(meshRect) / 2);
     screenRectOrigin.y = screenCenter.y - (CGRectGetWidth(meshRect) / 2);
     return CGRectMake(screenRectOrigin.x, screenRectOrigin.y, CGRectGetHeight(meshRect), CGRectGetWidth(meshRect));
+}
+
+//Traduce una localización de un touch de pantalla a coordenadas de proyección
+- (MGPoint)meshCenterFromMGTouchLocation:(CGPoint)mgTouchLocation {
+    MGPoint meshCenter = MGPointMake(0, 0, 0); 
+    meshCenter.x = mgTouchLocation.y - ( [(EAGLView *)self.view getBackingHeight] / 2 );
+    meshCenter.y = mgTouchLocation.x - ( [(EAGLView *)self.view getBackingWidth] / 2 );
+    meshCenter = MGPointMake(meshCenter.x, meshCenter.y, 0.0);
+    return meshCenter;
 }
 
 

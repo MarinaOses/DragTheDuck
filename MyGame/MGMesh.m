@@ -90,6 +90,7 @@
     glDrawArrays(renderStyle, 0, self.vertexCount);
 }
 
+
 - (MGPoint)calculateCentroid {
     
 }

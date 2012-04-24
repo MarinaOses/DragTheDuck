@@ -23,6 +23,7 @@
     
     //Rectángulo al que pertenecen todos los vértices del objeto 
     CGRect _screenRect;
+    CGPoint screenRectCenter;
     
     BOOL taken;
     
