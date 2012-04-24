@@ -179,22 +179,6 @@
 }
 
 
-//FovY: field of view en el eje Y
-//PARÁMETROS
-//fovY: ángulo de visión (en grados) en la dirección del eje Y
-//aspect: ratio de x sobre y
-//zNear: distancia desde el usuario hasta el plano más cercano (positivo)
-//zFar: distancia desde el ususario hasta el plano más lejano (positivo)
-
-- (void)perspectiveFovY:(GLfloat)fovY aspect:(GLfloat)aspect zNear:(GLfloat)zNear zFar:(GLfloat)zFar  {
-    GLfloat halfHeight, halfWidth;
-    //Con la siguiente función se consigue la mitad de la altura del plano más cercano (según el parámetro zNear)
-    halfHeight = tan( (fovY / 2) / 180 * PI ) * zNear;
-    //Con la siguiente función se obtiene la mitad de la anchura del plano más cercano porque se conoce el ratio de x sobre y, es decir, se sabe cuántas x hay por cada y
-    halfWidth = halfHeight * aspect;
-    //Finalmente, se llama a glFrustrum para construir el volumen en el que se va a dibujar. En los campos de la función se especifica a qué distancia se encuantra cada uno de los cuatro planos respecto del centro (0,0). Además, es necesario saber a qué distancia se encuentra el usuario del plano más cercano, así como el más lejano.
-    glFrustumf(-halfWidth, halfWidth, -halfHeight, halfHeight, zNear, zFar);
-}
 
 - (GLint)getBackingWidth {
     return backingWidth;
