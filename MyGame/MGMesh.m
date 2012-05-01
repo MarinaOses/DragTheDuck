@@ -23,6 +23,7 @@
 @synthesize colorSize = _colorSize;
 @synthesize vertexCount = _vertexCount;
 @synthesize vertexSize = _vertexSize;
+@synthesize renderStyle = _renderStyle;
 
 - (id)initWithVertexes:(GLfloat *)vert vertexCount:(NSInteger)vertCount vertexSize:(NSInteger)vertSize renderStyle:(GLenum)style {
     self = [super init];
@@ -30,7 +31,7 @@
         self.vertexes = vert;
         self.vertexCount = vertCount;
         self.vertexSize = vertSize;
-        renderStyle = style;
+        self.renderStyle = style;
         centroid = [self calculateCentroid];
     }
     return self;
@@ -86,8 +87,9 @@
     glColorPointer(self.colorSize, GL_FLOAT, 0, self.colors);
     glEnableClientState(GL_COLOR_ARRAY);
     
+    
     //dibujar
-    glDrawArrays(renderStyle, 0, self.vertexCount);
+    glDrawArrays(self.renderStyle, 0, self.vertexCount);
 }
 
 

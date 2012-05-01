@@ -12,7 +12,7 @@
 
 @synthesize phase = _phase;
 @synthesize location = _location;
-@synthesize event = _event;
+@synthesize numberOfFingersOnTheScreen = _numberOfFingersOnTheScreen;
 
 
 - (id)initWithUITouch:(UITouch *)uiTouch andUIEvent:(UIEvent *)uiEvent {
@@ -20,8 +20,7 @@
     if (self) {
         self.phase = [uiTouch phase];
         self.location = [uiTouch locationInView:[uiTouch view]];
-        self.event = uiEvent;
-        [self.event retain];
+        self.numberOfFingersOnTheScreen = [[uiEvent touchesForView:[uiTouch view]] count];
     }
     return self;
 }
@@ -46,7 +45,6 @@
 }
 
 - (void)dealloc {
-    [_event release];
     [super dealloc];
 }
 

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MGInputViewController.h"
-#import "MGSceneObject.h"
+#import "MGButton.h"
 
 @interface MGSceneController : NSObject {
     

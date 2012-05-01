@@ -15,7 +15,7 @@
 
 
 @interface MGInputViewController : UIViewController {
-    NSMutableSet *_touchEvents;
+    NSMutableSet *_touchEvents; //Guarda objetos de tipo MGTouch
 }
 
 @property (nonatomic, retain) NSMutableSet *touchEvents;

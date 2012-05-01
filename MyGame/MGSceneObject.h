@@ -10,7 +10,6 @@
 #import "MGPoint.h"
 #import "MGMesh.h"
 
-
 @class MGSceneController;
 
 @interface MGSceneObject : NSObject {
@@ -18,7 +17,7 @@
     MGPoint rotation;
     MGPoint scale;
     
-    MGMesh *mesh;
+    MGMesh *_mesh;
     CGRect _meshBounds;
     
     //Rectángulo al que pertenecen todos los vértices del objeto 
@@ -27,12 +26,16 @@
     
     BOOL taken;
     
-    MGSceneController *sceneController;
+    MGSceneController *_sceneController;
 }
 
-@property (nonatomic, assign) CGRect meshBounds;
-@property (nonatomic, assign) CGRect screenRect; 
+@property (nonatomic, assign) CGRect meshBounds; //NO @synthesize
+@property (nonatomic, assign) CGRect screenRect; //NO @synthesize
+@property (nonatomic, retain) MGMesh *mesh;
+@property (nonatomic, retain) MGSceneController *sceneController;
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;
+- (void)update;
+
 @end

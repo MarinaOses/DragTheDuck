@@ -35,27 +35,16 @@
 //cuando uno o más dedos tocan la vista o ventana
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self createTouchCopiesFromSet:touches andEvent:event];
-    if ([[event touchesForView:[self view]] count] > 1) {
-        NSLog(@"***********%d active touches", [[event touchesForView:[self view]] count]);
-    }
-    
 }
 
 //cuando uno o más dedos se mueven por la vista o ventana
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     [self createTouchCopiesFromSet:touches andEvent:event];
-    if ([[event touchesForView:[self view]] count] > 1) {
-        NSLog(@"_______________%d active touches", [[event touchesForView:[self view]] count]);
-    }
 }
 
 //cuando uno o más dedos se levantan de la vista o ventana
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     [self createTouchCopiesFromSet:touches andEvent:event];
-    if ([[event touchesForView:[self view]] count] > 1) {
-        NSLog(@"<<<<<<<<<<<<<<<%d active touches", [[event touchesForView:[self view]] count]);
-    }
-    
 }
 
 - (void)createTouchCopiesFromSet:(NSSet *)uiTouchesSet andEvent:(UIEvent *)uiEvent {

@@ -19,7 +19,7 @@
     GLfloat *_vertexes;
     GLfloat *_colors;
     
-    GLenum renderStyle;
+    GLenum _renderStyle;
     NSInteger _vertexCount;
     NSInteger _vertexSize;
     NSInteger _colorSize;
@@ -32,6 +32,7 @@
 @property (nonatomic, assign) NSInteger colorSize;
 @property (nonatomic, assign) NSInteger vertexCount;
 @property (nonatomic, assign) NSInteger vertexSize;
+@property (nonatomic, assign) GLenum renderStyle;
 
 - (id)initWithVertexes:(GLfloat *)vert vertexCount:(NSInteger)vertCount vertexSize:(NSInteger)vertSize renderStyle:(GLenum)style;
 - (void)render;

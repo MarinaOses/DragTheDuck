@@ -10,7 +10,7 @@
 
 @interface MGSceneController ()
 
--(void)startAnimation;
+- (void)startAnimation;
 
 @end
 
@@ -34,17 +34,30 @@
     return self;
 }
 
+- (void)buttonGoodActionLog {
+    NSLog(@"GOOD");
+}
+
+- (void)buttonBadActionLog {
+    NSLog(@"BAD");
+}
+
+
 
 #pragma mark - Scene Preload
+
 
 //Se cargan todos los objetos de la escena
 - (void)loadScene {
     sceneObjects = [[NSMutableArray alloc] init];
     
     //Añadir un MGSceneObject
-    MGSceneObject *object = [[MGSceneObject alloc] initWithSceneController:self];
-    [sceneObjects addObject:object];
-    [object release];
+    MGButton *button = [[MGButton alloc] initWithSceneController:self];
+    button.target = self;
+    button.buttonGoodAction = @selector(buttonGoodActionLog);
+    button.buttonBadAction = @selector(buttonBadActionLog);
+    [sceneObjects addObject:button];
+    [button release];
 }
 
 - (void)startScene {
