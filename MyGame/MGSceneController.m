@@ -131,6 +131,8 @@
 - (void)dealloc {
     [self stopAnimation];
     [sceneObjects release];
+    [_inputViewController release];
+    [_openGLView release];
     [super dealloc];
 }
 
