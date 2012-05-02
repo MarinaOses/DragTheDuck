@@ -42,6 +42,7 @@ static CGFloat MGSquareFillVertexes[8] = {-0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5,
     self = [super initWithSceneController:scene_controller];
     if (self) {
         pressed = NO;
+        startedInButton = NO;
         MGMesh *meshToAssign = [[MGMesh alloc] initWithVertexes:MGSquareOutlineVertexes vertexCount:MGSquareOutlineVertexCount vertexSize:MGSquareVertexSize renderStyle:MGSquareOutlineRenderStyle];
         self.mesh = meshToAssign;
         [meshToAssign release];

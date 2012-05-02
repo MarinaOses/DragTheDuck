@@ -10,7 +10,6 @@
 #import "EAGLView.h"
 #import "MGTouch.h"
 #import "MGPoint.h"
-#import "MGConfiguration.h"
 
 
 

@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MGMainState : NSObject
+#import "MGButton.h"
+#import "MGState.h"
+
+@class MGStateManager;
+
+@interface MGMainState : MGState {
+    NSMutableArray *interfaceObjects;    
+}
+
+- (id)initWithSceneController:(MGSceneController *)scene_controller andWithStateManager:(MGStateManager *)state_manager;
 
 @end

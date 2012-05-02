@@ -13,9 +13,9 @@
 @class MGSceneController;
 
 @interface MGSceneObject : NSObject {
-    MGPoint translation;
-    MGPoint rotation;
-    MGPoint scale;
+    MGPoint _translation;
+    MGPoint _rotation;
+    MGPoint _scale;
     
     MGMesh *_mesh;
     CGRect _meshBounds;
@@ -24,11 +24,15 @@
     CGRect _screenRect;
     CGPoint screenRectCenter;
     
-    BOOL taken;
+    //BOOL taken;
     
     MGSceneController *_sceneController;
 }
 
+
+@property (nonatomic, assign) MGPoint translation;
+@property (nonatomic, assign) MGPoint rotation;
+@property (nonatomic, assign) MGPoint scale;
 @property (nonatomic, assign) CGRect meshBounds; //NO @synthesize
 @property (nonatomic, assign) CGRect screenRect; //NO @synthesize
 @property (nonatomic, retain) MGMesh *mesh;

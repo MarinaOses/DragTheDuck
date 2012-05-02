@@ -14,16 +14,17 @@
 
 @synthesize mesh = _mesh;
 @synthesize sceneController = _sceneController;
+@synthesize translation = _translation;
+@synthesize rotation = _rotation;
+@synthesize scale = _scale;
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller {
     self = [super init];
     if (self) {
-        translation = MGPointMake(0.0, 0.0, 0.0);
-        rotation = MGPointMake(0.0, 0.0, 0.0);
-        scale = MGPointMake(50.0, 50.0, 1.0);
-        
-        taken = NO;
+        self.translation = MGPointMake(0.0, 0.0, 0.0);
+        self.rotation = MGPointMake(0.0, 0.0, 0.0);
+        self.scale = MGPointMake(1.0, 1.0, 1.0);
         
         self.sceneController = scene_controller;
         
@@ -69,15 +70,15 @@
     glLoadIdentity();
     
     //Mover a la posicion correspondiente
-    glTranslatef(translation.x, translation.y, translation.z);
+    glTranslatef(self.translation.x, self.translation.y, self.translation.z);
     
     //Rotar
-    glRotatef(rotation.x, 1.0f, 0.0f, 0.0f);
-    glRotatef(rotation.y, 0.0f, 1.0f, 0.0f);
-    glRotatef(rotation.z, 0.0f, 0.0f, 1.0f);
+    glRotatef(self.rotation.x, 1.0f, 0.0f, 0.0f);
+    glRotatef(self.rotation.y, 0.0f, 1.0f, 0.0f);
+    glRotatef(self.rotation.z, 0.0f, 0.0f, 1.0f);
     
     //Escalar
-    glScalef(scale.x, scale.y, scale.z);
+    glScalef(self.scale.x, self.scale.y, self.scale.z);
     
     [self.mesh render];
     
@@ -88,7 +89,7 @@
 
 - (CGRect)meshBounds {
     if (CGRectEqualToRect(_meshBounds, CGRectZero)) {
-        _meshBounds = [MGMesh boundsOf:self.mesh WithScale:scale];
+        _meshBounds = [MGMesh boundsOf:self.mesh WithScale:self.scale];
     }
     return _meshBounds;
     
@@ -100,7 +101,7 @@
 
 
 - (CGRect)screenRect {
-    _screenRect = [self.sceneController.inputViewController screenRectFromMeshRect:self.meshBounds atPoint:CGPointMake(translation.x, translation.y)];
+    _screenRect = [self.sceneController.inputViewController screenRectFromMeshRect:self.meshBounds atPoint:CGPointMake(self.translation.x, self.translation.y)];
     return _screenRect;
 }
 

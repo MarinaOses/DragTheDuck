@@ -83,6 +83,8 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    //[[UIApplication sharedApplication] terminate];
+    //exit(0)
     /*
      Called when the application is about to terminate.
      Save data if appropriate.

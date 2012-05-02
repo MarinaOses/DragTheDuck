@@ -10,6 +10,8 @@
 		9C15DD2515458A210095FBED /* MGSceneObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD2415458A1F0095FBED /* MGSceneObject.m */; };
 		9C15DD73154E9AD20095FBED /* MGButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD72154E9AD20095FBED /* MGButton.m */; };
 		9C15DD77154E9B2F0095FBED /* MGMainState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD76154E9B2F0095FBED /* MGMainState.m */; };
+		9C15DD8315513ABD0095FBED /* MGState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD8215513ABD0095FBED /* MGState.m */; };
+		9C15DD8B155152DC0095FBED /* MGStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD8A155152DC0095FBED /* MGStateManager.m */; };
 		9CAC5B16153D8B23003ECB4F /* MGTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC5B15153D8B23003ECB4F /* MGTouch.m */; };
 		9CE04F4D151380CF00185442 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F4C151380CF00185442 /* UIKit.framework */; };
 		9CE04F4F151380CF00185442 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F4E151380CF00185442 /* Foundation.framework */; };
@@ -33,6 +35,10 @@
 		9C15DD72154E9AD20095FBED /* MGButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGButton.m; sourceTree = "<group>"; };
 		9C15DD75154E9B2F0095FBED /* MGMainState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMainState.h; sourceTree = "<group>"; };
 		9C15DD76154E9B2F0095FBED /* MGMainState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMainState.m; sourceTree = "<group>"; };
+		9C15DD8115513ABD0095FBED /* MGState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGState.h; sourceTree = "<group>"; };
+		9C15DD8215513ABD0095FBED /* MGState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGState.m; sourceTree = "<group>"; };
+		9C15DD89155152DB0095FBED /* MGStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGStateManager.h; sourceTree = "<group>"; };
+		9C15DD8A155152DC0095FBED /* MGStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGStateManager.m; sourceTree = "<group>"; };
 		9CA68A23152C6F7B008E11AF /* MGConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConfiguration.h; sourceTree = "<group>"; };
 		9CAC5B14153D8B23003ECB4F /* MGTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTouch.h; sourceTree = "<group>"; };
 		9CAC5B15153D8B23003ECB4F /* MGTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTouch.m; sourceTree = "<group>"; };
@@ -90,6 +96,10 @@
 			children = (
 				9C15DD75154E9B2F0095FBED /* MGMainState.h */,
 				9C15DD76154E9B2F0095FBED /* MGMainState.m */,
+				9C15DD8115513ABD0095FBED /* MGState.h */,
+				9C15DD8215513ABD0095FBED /* MGState.m */,
+				9C15DD89155152DB0095FBED /* MGStateManager.h */,
+				9C15DD8A155152DC0095FBED /* MGStateManager.m */,
 			);
 			name = States;
 			sourceTree = "<group>";
@@ -257,6 +267,8 @@
 				9C15DD2515458A210095FBED /* MGSceneObject.m in Sources */,
 				9C15DD73154E9AD20095FBED /* MGButton.m in Sources */,
 				9C15DD77154E9B2F0095FBED /* MGMainState.m in Sources */,
+				9C15DD8315513ABD0095FBED /* MGState.m in Sources */,
+				9C15DD8B155152DC0095FBED /* MGStateManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
