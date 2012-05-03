@@ -20,6 +20,7 @@
 
 @synthesize inputViewController = _inputViewController;
 @synthesize openGLView = _openGLView;
+@synthesize stateManager = _stateManager;
 
 
 
@@ -49,15 +50,13 @@
 
 //Se cargan todos los objetos de la escena
 - (void)loadScene {
-    sceneObjects = [[NSMutableArray alloc] init];
+    if (sceneObjects == nil) {
+        sceneObjects = [[NSMutableArray alloc] init];
+    } 
+    [sceneObjects removeAllObjects];
+    MGMainState *mainState = (MGMainState *)self.stateManager.activeState;
+    [mainState loadInterface];
     
-    //Añadir un MGSceneObject
-    MGButton *button = [[MGButton alloc] initWithSceneController:self];
-    button.target = self;
-    button.buttonGoodAction = @selector(buttonGoodActionLog);
-    button.buttonBadAction = @selector(buttonBadActionLog);
-    [sceneObjects addObject:button];
-    [button release];
 }
 
 - (void)startScene {
@@ -70,7 +69,9 @@
 
 - (void)updateScene {
     //llamar a 'update' de todos los objetos de la escena
-    [sceneObjects makeObjectsPerformSelector:@selector(update)];
+    //[sceneObjects makeObjectsPerformSelector:@selector(update)];
+    MGMainState *mainState = (MGMainState *)self.stateManager.activeState;
+    [mainState updateInterface];
     //limpiar los eventos que ya se han updateado
     [self.inputViewController clearEvents];
 }
@@ -79,7 +80,9 @@
     //poner activo el frame para dibujar
     [self.openGLView beginDraw];
     //llamar al 'render' de todos los objetos para que se dibujen en pantalla
-    [sceneObjects makeObjectsPerformSelector:@selector(render)];
+    //[sceneObjects makeObjectsPerformSelector:@selector(render)];
+    MGMainState *mainState = (MGMainState *)self.stateManager.activeState;
+    [mainState renderInterface];
     //finalizar el frame
     [self.openGLView finishDraw];
 }
@@ -133,6 +136,7 @@
     [sceneObjects release];
     [_inputViewController release];
     [_openGLView release];
+    [_stateManager release];
     [super dealloc];
 }
 

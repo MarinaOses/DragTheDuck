@@ -11,12 +11,14 @@
 #import "MGButton.h"
 #import "MGState.h"
 
-@class MGStateManager;
+@class MGSceneController;
 
 @interface MGMainState : MGState {
     NSMutableArray *interfaceObjects;    
 }
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller andWithStateManager:(MGStateManager *)state_manager;
-
+- (id)initWithSceneController:(MGSceneController *)scene_controller;
+- (void)loadInterface;
+- (void)updateInterface;
+- (void)renderInterface;
 @end

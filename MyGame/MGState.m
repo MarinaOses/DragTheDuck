@@ -9,27 +9,23 @@
 #import "MGState.h"
 
 #import "MGSceneController.h"
-#import "MGStateManager.h"
 
 @implementation MGState
 
 @synthesize sceneControllerForState = _sceneControllerForState;
-@synthesize stateManager = _stateManager;
 
 
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller andWithStateManager:(MGStateManager *)state_manager {
+- (id)initWithSceneController:(MGSceneController *)scene_controller {
     self = [super init];
     if (self) {
         self.sceneControllerForState = scene_controller;
-        self.stateManager = state_manager;
     }
     return self;
 }
 
 - (void)dealloc {
     [_sceneControllerForState release];
-    [_stateManager release];
     [super dealloc];
 }
 @end

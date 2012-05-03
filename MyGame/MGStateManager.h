@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MGState.h"
+
+#import "MGMainState.h"
 
 @interface MGStateManager : NSObject {
     MGState *_activeState;
@@ -15,7 +16,7 @@
 
 @property (nonatomic, retain) MGState *activeState;
 
-
+- (id)initWithSceneController:(MGSceneController *)scene_controller;
 - (void)goToMainState;
 - (void)goToHelpState;
 - (void)goToGameState;

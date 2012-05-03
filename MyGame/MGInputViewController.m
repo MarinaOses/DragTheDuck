@@ -47,6 +47,10 @@
     [self createTouchCopiesFromSet:touches andEvent:event];
 }
 
+
+#pragma mark - Crear copias de los toques en touchEvents para guardar sus valores reales
+
+
 - (void)createTouchCopiesFromSet:(NSSet *)uiTouchesSet andEvent:(UIEvent *)uiEvent {
     for (UITouch *aTouch in uiTouchesSet) {
         MGTouch *touchCopy = [[MGTouch alloc] initWithUITouch:aTouch andUIEvent:uiEvent];

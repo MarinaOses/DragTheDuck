@@ -26,7 +26,7 @@
 //}
 
 -(void) applicationDidFinishLaunching:(UIApplication *)application {
-    //Creamos un objeto sceneController 
+    //Se crea un objeto sceneController 
     MGSceneController *sceneController = [[MGSceneController alloc] init];
     
     //Y su respectivo inputController
@@ -34,11 +34,16 @@
     sceneController.inputViewController = anInputViewController;
     [anInputViewController release];
     
-    //Creamos el EAGLView principal con las mismas dimensiones que window
+    //Se crea el EAGLView principal con las mismas dimensiones que window
     EAGLView *glView = [[EAGLView alloc] initWithFrame:self.window.bounds];
     sceneController.inputViewController.view = glView;
     sceneController.openGLView = glView;
     [glView release];
+    
+    //Se crea el manager de estados del juego
+    MGStateManager *managerToAssign = [[MGStateManager alloc] initWithSceneController:sceneController];
+    sceneController.stateManager = managerToAssign;
+    [managerToAssign release];
     
     //Asignamos la vista creda como vista principal de window
     [self.window addSubview:sceneController.inputViewController.view];

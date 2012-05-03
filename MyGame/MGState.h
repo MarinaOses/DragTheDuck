@@ -9,16 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @class MGSceneController;
-@class MGStateManager;
 
 @interface MGState : NSObject {
     MGSceneController *_sceneControllerForState;
-    MGStateManager *_stateManager;
 }
 
 @property (nonatomic, retain) MGSceneController *sceneControllerForState;
-@property (nonatomic, retain) MGStateManager *stateManager;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller andWithStateManager:(MGStateManager *)state_manager;
+- (id)initWithSceneController:(MGSceneController *)scene_controller;
 
 @end

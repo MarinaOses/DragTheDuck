@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MGInputViewController.h"
-#import "MGButton.h"
+#import "MGStateManager.h"
 
 @interface MGSceneController : NSObject {
     
@@ -16,6 +16,7 @@
     
     MGInputViewController *_inputViewController;
     EAGLView *_openGLView;
+    MGStateManager *_stateManager;
     
     NSTimer *animationTimer;
     NSTimeInterval animationInterval;
@@ -27,6 +28,7 @@
 
 @property (nonatomic, retain) MGInputViewController *inputViewController;
 @property (nonatomic, retain) EAGLView *openGLView;
+@property (nonatomic, retain) MGStateManager *stateManager;
 
 
 - (id)init;

@@ -8,12 +8,13 @@
 
 #import "MGMainState.h"
 
-#import "MGStateManager.h"
+#import "MGSceneController.h"
+
 
 @implementation MGMainState
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller andWithStateManager:(MGStateManager *)state_manager{
-    self = [super initWithSceneController:scene_controller andWithStateManager:state_manager];
+- (id)initWithSceneController:(MGSceneController *)scene_controller {
+    self = [super initWithSceneController:scene_controller];
     if (self) {
         interfaceObjects = [[NSMutableArray alloc] init];
     }
@@ -85,7 +86,7 @@
 
 
 - (void)goodTouchOfPlayButtonIsDone {
-    [self.stateManager goToGameState];
+    [self.sceneControllerForState.stateManager goToGameState];
 }
 
 - (void)badTouchOfPlayButtonIsDone {
@@ -93,7 +94,7 @@
 }
 
 - (void)goodTouchOfQuitButtonIsDone {
-    [self.stateManager goToQuitState];
+    [self.sceneControllerForState.stateManager goToQuitState];
 }
 
 - (void)badTouchOfQuitButtonIsDone{
@@ -101,12 +102,20 @@
 }
 
 - (void)goodTouchOfSoundButtonIsDone {
-    [self.stateManager changeSoundState];
+    [self.sceneControllerForState.stateManager changeSoundState];
     
 }
 
 - (void)badTouchOfSoundButtonIsDone {
     //Podría ampliarse la funcionalidad
+}
+
+- (void)goodTouchOfHelpButtonIsDone {
+    [self.sceneControllerForState.stateManager goToHelpState];
+}
+
+-(void)badTouchOfHelpButtonIsDone {
+    
 }
 
 
