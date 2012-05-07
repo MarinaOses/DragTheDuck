@@ -36,8 +36,8 @@
 
 }
 
-- (void)goToGameState {
-    NSLog(@"In manager: goToGameState()");
+- (void)goToPlayState {
+    NSLog(@"In manager: goToPlayState()");
 }
 
 - (void)goToPauseState {
@@ -46,11 +46,6 @@
 
 - (void)goToGameOverState {
     
-}
-
-- (void)goToQuitState {
-    NSLog(@"In manager: goToQuitState()");
-
 }
 
 - (void)changeSoundState {

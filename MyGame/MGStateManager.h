@@ -19,10 +19,9 @@
 - (id)initWithSceneController:(MGSceneController *)scene_controller;
 - (void)goToMainState;
 - (void)goToHelpState;
-- (void)goToGameState;
+- (void)goToPlayState;
 - (void)goToPauseState;
 - (void)goToGameOverState;
-- (void)goToQuitState;
 - (void)changeSoundState;
 
 @end

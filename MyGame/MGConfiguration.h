@@ -24,4 +24,18 @@
 #define BIG_UPDATE_INTERVAL (1.0/MINIMUM_FRAME_RATE) //segundos por frame máximo
 
 
+//--RANDOM FUNCTIONS
+//No necesita SEED. Calcula un número aleatorio entre _MIN_ y _MAX_
+#define RANDOM_INT(_MIN_, _MAX_) ((arc4random() % (_MAX_ - _MIN_)) + _MIN_)
+
+
+//--BIRD SIZES
+#define MIN_BIRD_SCALE 35
+#define MAX_BIRD_SCALE 55
+
+//--BIRD SPEED
+#define MIN_SPEED_IN_PIXELS_PER_UPDATE 0.005 //Tener en cuenta: se hacen dos updates por cada render
+#define MAX_SPEED_IN_PIXELS_PER_UPDATE 0.5
+
+
 #endif

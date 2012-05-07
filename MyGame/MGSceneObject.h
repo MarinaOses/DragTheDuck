@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MGPoint.h"
+#import "MGConfiguration.h"
 #import "MGMesh.h"
 
 @class MGSceneController;

@@ -34,22 +34,12 @@
     //PLAYBUTTON
     MGButton *playButton = [[MGButton alloc] initWithSceneController:self.sceneControllerForState];
     playButton.scale = MGPointMake(80.0, 80.0, 1.0);
-    playButton.translation = MGPointMake(-120.0, 0.0, 0.0);
+    playButton.translation = MGPointMake(0.0, 0.0, 0.0);
     playButton.target = self;
     playButton.buttonGoodAction = @selector(goodTouchOfPlayButtonIsDone);
     playButton.buttonBadAction = @selector(badTouchOfPlayButtonIsDone);
     [interfaceObjects addObject:playButton];
     [playButton release];
-    
-    //QUITBUTTON
-    MGButton *quitButton = [[MGButton alloc] initWithSceneController:self.sceneControllerForState];
-    quitButton.scale = MGPointMake(80.0, 80.0, 1.0);
-    quitButton.translation = MGPointMake(120.0, 0.0, 0.0);
-    quitButton.target = self;
-    quitButton.buttonGoodAction = @selector(goodTouchOfQuitButtonIsDone);
-    quitButton.buttonBadAction = @selector(badTouchOfQuitButtonIsDone);
-    [interfaceObjects addObject:quitButton];
-    [quitButton release];
     
     //SOUNDBUTTON
     MGButton *soundButton = [[MGButton alloc] initWithSceneController:self.sceneControllerForState];
@@ -86,20 +76,13 @@
 
 
 - (void)goodTouchOfPlayButtonIsDone {
-    [self.sceneControllerForState.stateManager goToGameState];
+    [self.sceneControllerForState.stateManager goToPlayState];
 }
 
 - (void)badTouchOfPlayButtonIsDone {
     //Podría ampliarse la funcionalidad
 }
 
-- (void)goodTouchOfQuitButtonIsDone {
-    [self.sceneControllerForState.stateManager goToQuitState];
-}
-
-- (void)badTouchOfQuitButtonIsDone{
-    //Podría ampliarse la funcionalidad
-}
 
 - (void)goodTouchOfSoundButtonIsDone {
     [self.sceneControllerForState.stateManager changeSoundState];

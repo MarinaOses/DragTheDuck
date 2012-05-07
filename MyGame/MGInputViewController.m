@@ -25,7 +25,7 @@
     return self;
 }
 
-#pragma mark Touch Events Handlers
+#pragma mark - Touch Events Handlers
 
 //Borra todos los toques almacenados en el set
 - (void)clearEvents {
