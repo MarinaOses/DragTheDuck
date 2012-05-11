@@ -23,7 +23,7 @@
 
 
 
-- (void)loadInterface {
+- (void)loadMainState {
     //Se borran todos los objetos que pudiera haber previamente
     [interfaceObjects removeAllObjects];
     
@@ -63,13 +63,13 @@
 }
 
 
-- (void)updateInterface {
+- (void)updateMainState {
     [interfaceObjects makeObjectsPerformSelector:@selector(update)];
 }
 
 
 //Los botones hacen el render() de MGSceneObjects
-- (void)renderInterface {
+- (void)renderMainState {
     [interfaceObjects makeObjectsPerformSelector:@selector(render)];
 }
 
@@ -103,7 +103,7 @@
 
 
 - (void)dealloc {
-    [interfaceObjects release];;
+    [interfaceObjects release];
     [super dealloc];
 }
 

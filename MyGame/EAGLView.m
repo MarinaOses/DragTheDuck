@@ -179,15 +179,6 @@
 }
 
 
-
-- (GLint)getBackingWidth {
-    return backingWidth;
-}
-
-- (GLint)getBackingHeight {
-    return backingHeight;
-}
-
 - (void)dealloc {
     
     if ([EAGLContext currentContext] == context) {

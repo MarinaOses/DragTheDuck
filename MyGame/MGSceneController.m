@@ -50,12 +50,8 @@
 
 //Se cargan todos los objetos de la escena
 - (void)loadScene {
-    if (sceneObjects == nil) {
-        sceneObjects = [[NSMutableArray alloc] init];
-    } 
-    [sceneObjects removeAllObjects];
-    MGMainState *mainState = (MGMainState *)self.stateManager.activeState;
-    [mainState loadInterface];
+    MGPlayState *playState = (MGPlayState *)self.stateManager.activeState;
+    [playState loadPlayState];
     
 }
 
@@ -65,13 +61,13 @@
     [self startAnimation];
 }
 
+
 #pragma mark - Game Loop
 
 - (void)updateScene {
     //llamar a 'update' de todos los objetos de la escena
-    //[sceneObjects makeObjectsPerformSelector:@selector(update)];
-    MGMainState *mainState = (MGMainState *)self.stateManager.activeState;
-    [mainState updateInterface];
+    MGPlayState *playState = (MGPlayState *)self.stateManager.activeState;
+    [playState updatePlayState];
     //limpiar los eventos que ya se han updateado
     [self.inputViewController clearEvents];
 }
@@ -80,9 +76,8 @@
     //poner activo el frame para dibujar
     [self.openGLView beginDraw];
     //llamar al 'render' de todos los objetos para que se dibujen en pantalla
-    //[sceneObjects makeObjectsPerformSelector:@selector(render)];
-    MGMainState *mainState = (MGMainState *)self.stateManager.activeState;
-    [mainState renderInterface];
+    MGPlayState *playState = (MGPlayState *)self.stateManager.activeState;
+    [playState renderPlayState];
     //finalizar el frame
     [self.openGLView finishDraw];
 }
@@ -133,7 +128,6 @@
 
 - (void)dealloc {
     [self stopAnimation];
-    [sceneObjects release];
     [_inputViewController release];
     [_openGLView release];
     [_stateManager release];

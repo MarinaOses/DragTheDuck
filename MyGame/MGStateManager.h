@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "MGMainState.h"
+#import "MGPlayState.h"
 
 @interface MGStateManager : NSObject {
     MGState *_activeState;

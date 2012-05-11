@@ -11,9 +11,7 @@
 #import "MGStateManager.h"
 
 @interface MGSceneController : NSObject {
-    
-    NSMutableArray *sceneObjects;
-    
+        
     MGInputViewController *_inputViewController;
     EAGLView *_openGLView;
     MGStateManager *_stateManager;

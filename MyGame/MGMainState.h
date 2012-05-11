@@ -18,7 +18,7 @@
 }
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;
-- (void)loadInterface;
-- (void)updateInterface;
-- (void)renderInterface;
+- (void)loadMainState;
+- (void)updateMainState;
+- (void)renderMainState;
 @end

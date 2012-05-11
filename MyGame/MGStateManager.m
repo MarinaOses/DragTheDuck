@@ -17,7 +17,7 @@
 - (id)initWithSceneController:(MGSceneController *)scene_controller {
     self = [super init];
     if (self) {
-        self.activeState = [[MGMainState alloc] initWithSceneController:scene_controller];
+        _activeState = [[MGPlayState alloc] initWithSceneController:scene_controller];
     }
     return self;
 }

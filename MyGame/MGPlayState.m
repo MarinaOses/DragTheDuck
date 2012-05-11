@@ -9,5 +9,46 @@
 #import "MGPlayState.h"
 
 @implementation MGPlayState
+@synthesize birdDestroyer = _birdDestroyer;
+
+- (id)initWithSceneController:(MGSceneController *)scene_controller {
+    self = [super initWithSceneController:scene_controller];
+    if (self) {
+        timedMultipleBirdGenerator = [[MGTimedMultipleBirdGenerator alloc] initWithSceneController:scene_controller];
+        _birdDestroyer = [[MGBirdDestroyer alloc] init];
+        sceneObjects = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
+- (void)loadPlayState {
+    [timedMultipleBirdGenerator getNewBirdsWaveToAdd];
+}
+
+
+- (void)updatePlayState {
+    if ([[timedMultipleBirdGenerator birdsToAdd] count] > 0) {
+        [sceneObjects addObjectsFromArray:[timedMultipleBirdGenerator birdsToAdd]];
+        [timedMultipleBirdGenerator clearBirdsToAdd];
+    }
+    [sceneObjects makeObjectsPerformSelector:@selector(update)];    
+}
+
+
+- (void)renderPlayState {
+    [sceneObjects makeObjectsPerformSelector:@selector(render)];    
+    if ([[self.birdDestroyer birdsToRemove] count] > 0) {
+        [sceneObjects removeObjectsInArray:[self.birdDestroyer birdsToRemove]];
+        [self.birdDestroyer clearBirdsToRemove];
+    }
+}
+
+- (void)dealloc {
+    [timedMultipleBirdGenerator release];
+    [_birdDestroyer release];
+    [sceneObjects release];
+    [super dealloc];
+}
+
 
 @end

@@ -18,6 +18,10 @@
 		9C15DD971553EFB70095FBED /* MGPauseState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD961553EFB70095FBED /* MGPauseState.m */; };
 		9C15DD9F1553F84C0095FBED /* MGBird.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD9E1553F84C0095FBED /* MGBird.m */; };
 		9CAC5B16153D8B23003ECB4F /* MGTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC5B15153D8B23003ECB4F /* MGTouch.m */; };
+		9CAE9C6B1557F28600C88B50 /* MGMobileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C6A1557F28600C88B50 /* MGMobileObject.m */; };
+		9CAE9C6F155A7D0000C88B50 /* MGMultipleBirdGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C6E155A7D0000C88B50 /* MGMultipleBirdGenerator.m */; };
+		9CAE9C72155A9D9C00C88B50 /* MGTimedMultipleBirdGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C71155A9D9C00C88B50 /* MGTimedMultipleBirdGenerator.m */; };
+		9CAE9C76155BE9CE00C88B50 /* MGBirdDestroyer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C75155BE9CE00C88B50 /* MGBirdDestroyer.m */; };
 		9CE04F4D151380CF00185442 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F4C151380CF00185442 /* UIKit.framework */; };
 		9CE04F4F151380CF00185442 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F4E151380CF00185442 /* Foundation.framework */; };
 		9CE04F51151380CF00185442 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F50151380CF00185442 /* CoreGraphics.framework */; };
@@ -57,6 +61,14 @@
 		9CA68A23152C6F7B008E11AF /* MGConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConfiguration.h; sourceTree = "<group>"; };
 		9CAC5B14153D8B23003ECB4F /* MGTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTouch.h; sourceTree = "<group>"; };
 		9CAC5B15153D8B23003ECB4F /* MGTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTouch.m; sourceTree = "<group>"; };
+		9CAE9C691557F28600C88B50 /* MGMobileObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMobileObject.h; sourceTree = "<group>"; };
+		9CAE9C6A1557F28600C88B50 /* MGMobileObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMobileObject.m; sourceTree = "<group>"; };
+		9CAE9C6D155A7D0000C88B50 /* MGMultipleBirdGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMultipleBirdGenerator.h; sourceTree = "<group>"; };
+		9CAE9C6E155A7D0000C88B50 /* MGMultipleBirdGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMultipleBirdGenerator.m; sourceTree = "<group>"; };
+		9CAE9C70155A9D9C00C88B50 /* MGTimedMultipleBirdGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTimedMultipleBirdGenerator.h; sourceTree = "<group>"; };
+		9CAE9C71155A9D9C00C88B50 /* MGTimedMultipleBirdGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTimedMultipleBirdGenerator.m; sourceTree = "<group>"; };
+		9CAE9C74155BE9CE00C88B50 /* MGBirdDestroyer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGBirdDestroyer.h; sourceTree = "<group>"; };
+		9CAE9C75155BE9CE00C88B50 /* MGBirdDestroyer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGBirdDestroyer.m; sourceTree = "<group>"; };
 		9CE04F48151380CF00185442 /* MyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CE04F4C151380CF00185442 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CE04F4E151380CF00185442 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -147,6 +159,26 @@
 			name = Touches;
 			sourceTree = "<group>";
 		};
+		9CAE9C6C155A7CBA00C88B50 /* Generators */ = {
+			isa = PBXGroup;
+			children = (
+				9CAE9C6D155A7D0000C88B50 /* MGMultipleBirdGenerator.h */,
+				9CAE9C6E155A7D0000C88B50 /* MGMultipleBirdGenerator.m */,
+				9CAE9C70155A9D9C00C88B50 /* MGTimedMultipleBirdGenerator.h */,
+				9CAE9C71155A9D9C00C88B50 /* MGTimedMultipleBirdGenerator.m */,
+			);
+			name = Generators;
+			sourceTree = "<group>";
+		};
+		9CAE9C73155BE99200C88B50 /* Destroyers */ = {
+			isa = PBXGroup;
+			children = (
+				9CAE9C74155BE9CE00C88B50 /* MGBirdDestroyer.h */,
+				9CAE9C75155BE9CE00C88B50 /* MGBirdDestroyer.m */,
+			);
+			name = Destroyers;
+			sourceTree = "<group>";
+		};
 		9CE04F3D151380CF00185442 = {
 			isa = PBXGroup;
 			children = (
@@ -189,7 +221,11 @@
 				9CE04F641513CCBA00185442 /* EAGLView.m */,
 				9C15DD2315458A1E0095FBED /* MGSceneObject.h */,
 				9C15DD2415458A1F0095FBED /* MGSceneObject.m */,
+				9CAE9C691557F28600C88B50 /* MGMobileObject.h */,
+				9CAE9C6A1557F28600C88B50 /* MGMobileObject.m */,
 				9C15DD6F154E9A860095FBED /* Scene Objects */,
+				9CAE9C6C155A7CBA00C88B50 /* Generators */,
+				9CAE9C73155BE99200C88B50 /* Destroyers */,
 				9C15DD74154E9AE70095FBED /* States */,
 				9CAC5B13153D8AEC003ECB4F /* Touches */,
 				9CEEFF1E153746CF0004D9AA /* Object's properties */,
@@ -299,6 +335,10 @@
 				9C15DD941553EF650095FBED /* MGGameOverState.m in Sources */,
 				9C15DD971553EFB70095FBED /* MGPauseState.m in Sources */,
 				9C15DD9F1553F84C0095FBED /* MGBird.m in Sources */,
+				9CAE9C6B1557F28600C88B50 /* MGMobileObject.m in Sources */,
+				9CAE9C6F155A7D0000C88B50 /* MGMultipleBirdGenerator.m in Sources */,
+				9CAE9C72155A9D9C00C88B50 /* MGTimedMultipleBirdGenerator.m in Sources */,
+				9CAE9C76155BE9CE00C88B50 /* MGBirdDestroyer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

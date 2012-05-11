@@ -6,18 +6,16 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MGSceneObject.h"
+#import "MGMobileObject.h"
 
 @class MGSceneController;
 
-@interface MGBird : MGSceneObject {
-    MGPoint _speed;
+@interface MGBird : MGMobileObject {
+    
 }
 
-@property (nonatomic, assign) MGPoint speed;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller;
-
-
+- (id)initRandomWithSceneController:(MGSceneController *)scene_controller;
+- (void)removeIfItIsOutOfArena;
 
 @end

@@ -26,7 +26,7 @@
 
 //--RANDOM FUNCTIONS
 //No necesita SEED. Calcula un número aleatorio entre _MIN_ y _MAX_
-#define RANDOM_INT(_MIN_, _MAX_) ((arc4random() % (_MAX_ - _MIN_)) + _MIN_)
+#define RANDOM_INT(_MIN_, _MAX_) ((arc4random() % (_MAX_ - _MIN_ + 1)) + _MIN_)
 
 
 //--BIRD SIZES
@@ -34,8 +34,17 @@
 #define MAX_BIRD_SCALE 55
 
 //--BIRD SPEED
-#define MIN_SPEED_IN_PIXELS_PER_UPDATE 0.005 //Tener en cuenta: se hacen dos updates por cada render
-#define MAX_SPEED_IN_PIXELS_PER_UPDATE 0.5
+//Es la proporción entre los objetos más rápidos y más lentos. Una vez se haya calculado aleatoriamente la velocidad entre estos dos números tendremos que adecuar el resultado a píxeles de pantalla.
+#define MIN_BIRD_SPEED 1    
+#define MAX_BIRD_SPEED 100
+
+//--NUMBER OF BIRDS TO APPEAR
+#define MIN_BIRDS_TO_APPEAR 1
+#define MAX_BIRDS_TO_APPEAR 4
+
+//--NUMBER OF SECONDS BETWEEN APPEARANCES
+#define MINSEC_TO_APPEARANCE 2
+#define MAXSEC_TO_APPEARANCE 5
 
 
 #endif

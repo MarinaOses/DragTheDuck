@@ -40,15 +40,16 @@
     sceneController.openGLView = glView;
     [glView release];
     
+    //Asignamos la vista creda como vista principal de window
+    [self.window addSubview:sceneController.inputViewController.view];
+    //Por conveniencia. Para hacer visible el window y crearle un key
+    [self.window makeKeyAndVisible];
+    
     //Se crea el manager de estados del juego
     MGStateManager *managerToAssign = [[MGStateManager alloc] initWithSceneController:sceneController];
     sceneController.stateManager = managerToAssign;
     [managerToAssign release];
     
-    //Asignamos la vista creda como vista principal de window
-    [self.window addSubview:sceneController.inputViewController.view];
-    //Por conveniencia. Para hacer visible el window y crearle un key
-    [self.window makeKeyAndVisible];
     
     //Empezar el juego
     [sceneController loadScene];

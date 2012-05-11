@@ -20,7 +20,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.touchEvents = [[NSMutableSet alloc] init];
+        _touchEvents = [[NSMutableSet alloc] init];
     }
     return self;
 }
@@ -65,8 +65,11 @@
 - (CGRect)screenRectFromMeshRect:(CGRect)meshRect atPoint:(CGPoint)meshCenter {
     CGPoint screenCenter = CGPointZero;
     CGPoint screenRectOrigin = CGPointZero;
-    screenCenter.x = meshCenter.y + ( [(EAGLView *)self.view getBackingWidth] / 2);
-    screenCenter.y = meshCenter.x + ([(EAGLView *)self.view getBackingHeight] / 2);
+    NSLog(@"MidX=%f",CGRectGetMidX(self.view.frame));
+    NSLog(@"MidY=%f",CGRectGetMidY(self.view.frame));
+
+    screenCenter.x = meshCenter.y + (CGRectGetMidX(self.view.frame));
+    screenCenter.y = meshCenter.x + (CGRectGetMidY(self.view.frame));
     screenRectOrigin.x = screenCenter.x - (CGRectGetHeight(meshRect) / 2);
     screenRectOrigin.y = screenCenter.y - (CGRectGetWidth(meshRect) / 2);
     return CGRectMake(screenRectOrigin.x, screenRectOrigin.y, CGRectGetHeight(meshRect), CGRectGetWidth(meshRect));
@@ -75,8 +78,8 @@
 //Traduce una localización de un touch de pantalla a coordenadas de proyección
 - (MGPoint)meshCenterFromMGTouchLocation:(CGPoint)mgTouchLocation {
     MGPoint meshCenter = MGPointMake(0, 0, 0); 
-    meshCenter.x = mgTouchLocation.y - ( [(EAGLView *)self.view getBackingHeight] / 2 );
-    meshCenter.y = mgTouchLocation.x - ( [(EAGLView *)self.view getBackingWidth] / 2 );
+    meshCenter.x = mgTouchLocation.y - (CGRectGetMidY(self.view.frame));
+    meshCenter.y = mgTouchLocation.x - (CGRectGetMidX(self.view.frame));
     meshCenter = MGPointMake(meshCenter.x, meshCenter.y, 0.0);
     return meshCenter;
 }

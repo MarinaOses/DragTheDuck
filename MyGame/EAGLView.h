@@ -35,7 +35,6 @@
 
 - (void)beginDraw;
 - (void)finishDraw;
-- (GLint)getBackingWidth;
-- (GLint)getBackingHeight;
+
 
 @end
