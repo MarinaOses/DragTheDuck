@@ -35,7 +35,7 @@
 
 //--BIRD SPEED
 //Es la proporción entre los objetos más rápidos y más lentos. Una vez se haya calculado aleatoriamente la velocidad entre estos dos números tendremos que adecuar el resultado a píxeles de pantalla.
-#define MIN_BIRD_SPEED 1    
+#define MIN_BIRD_SPEED 40    
 #define MAX_BIRD_SPEED 100
 
 //--NUMBER OF BIRDS TO APPEAR
@@ -43,8 +43,8 @@
 #define MAX_BIRDS_TO_APPEAR 4
 
 //--NUMBER OF SECONDS BETWEEN APPEARANCES
-#define MINSEC_TO_APPEARANCE 2
-#define MAXSEC_TO_APPEARANCE 5
+#define MINSEC_TO_APPEARANCE 3
+#define MAXSEC_TO_APPEARANCE 8
 
 
 #endif

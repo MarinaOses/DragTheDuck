@@ -53,28 +53,20 @@ static CGFloat MGBirdColorValues[16] ={
     
     CGFloat randomScale = RANDOM_INT(scale_range.location, scale_range.length);
     self.scale = MGPointMake(randomScale, randomScale, 1.0);
-    NSLog(@"scale(%f, %f, %f)",self.scale.x, self.scale.y, self.scale.z);
+    //NSLog(@"scale(%f, %f, %f)",self.scale.x, self.scale.y, self.scale.z);
     
-    
-    //??????????????
-   
     
     //Se obtiene la anchura de la ventana teniendo en cuenta que en el juego es igual a la altura
     CGFloat maxHeightToAppearance = CGRectGetWidth(self.sceneController.openGLView.window.frame);
     
-    NSLog(@"maxHeightToAppearance=%f",maxHeightToAppearance);
-
     CGFloat randomAppearanceHeight = RANDOM_INT(0, (int)maxHeightToAppearance) - maxHeightToAppearance/2;
     self.translation = MGPointMake(CGRectGetMidY(self.sceneController.openGLView.window.frame), randomAppearanceHeight, 0.0);
-    NSLog(@"translation(%f, %f, %f)",self.translation.x, self.translation.y, self.translation.z);
-    
-    
-    
+    //NSLog(@"translation(%f, %f, %f)",self.translation.x, self.translation.y, self.translation.z);
     
     
     GLfloat speedToassign = RANDOM_INT(speed_range.location, speed_range.length)/100.0;
     self.speed = MGPointMake(-speedToassign, 0.0, 0.0);
-    NSLog(@"speed(%f, %f, %f)",self.speed.x, self.speed.y, self.speed.z);
+    //NSLog(@"speed(%f, %f, %f)",self.speed.x, self.speed.y, self.speed.z);
     return self;
 }
 
@@ -88,18 +80,25 @@ static CGFloat MGBirdColorValues[16] ={
 
 -(void)removeIfItIsOutOfArena {
     BOOL outOfArena = NO;
-    if (self.translation.x > (240 + CGRectGetWidth(self.meshBounds)/2.0)) {
+    CGFloat midYOfWindowRect = CGRectGetMidY(self.sceneController.openGLView.window.frame);
+    CGFloat midYOfMeshRect = CGRectGetMidY(self.meshBounds);
+    CGFloat midXOfWindowRect = CGRectGetMidX(self.sceneController.openGLView.window.frame);
+    CGFloat midXOfMeshRect = CGRectGetMidX(self.meshBounds);
+    CGFloat centerX = self.translation.x;
+    CGFloat centerY = self.translation.y;
+    
+    if (centerX > (midYOfWindowRect + midXOfMeshRect)) {
         outOfArena = YES;    
     }   
-    if (self.translation.x < (-240 - CGRectGetWidth(self.meshBounds)/2.0)) {
+    if (centerX < (-midYOfWindowRect - midXOfMeshRect)) {
         outOfArena = YES;
     }
     
-    if (self.translation.y > (160 + CGRectGetHeight(self.meshBounds)/2.0)) {
+    if (centerY > (midXOfWindowRect + midYOfMeshRect)) {
         outOfArena = YES;
     }
     
-    if (self.translation.y < (-160 - CGRectGetHeight(self.meshBounds)/2.0)) {
+    if (centerY < (-midXOfWindowRect - midYOfMeshRect)) {
         outOfArena = YES;
     }
     

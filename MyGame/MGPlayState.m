@@ -22,9 +22,12 @@
 }
 
 - (void)loadPlayState {
-    [timedMultipleBirdGenerator getNewBirdsWaveToAdd];
+    [timedMultipleBirdGenerator loadNewBirdsWaveToAdd];
 }
 
+- (void)startPlayState {
+    [timedMultipleBirdGenerator startNextTimer];
+}
 
 - (void)updatePlayState {
     if ([[timedMultipleBirdGenerator birdsToAdd] count] > 0) {
@@ -41,6 +44,11 @@
         [sceneObjects removeObjectsInArray:[self.birdDestroyer birdsToRemove]];
         [self.birdDestroyer clearBirdsToRemove];
     }
+    NSLog(@"sceneObjects count = %d",[sceneObjects count]);
+}
+
+- (void)stopPlayState {
+    [timedMultipleBirdGenerator stopGeneratorTimer];
 }
 
 - (void)dealloc {

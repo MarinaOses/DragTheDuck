@@ -56,7 +56,7 @@
     NSInteger index;
     for (index = 0; index < aMesh.vertexCount; index++) {
         NSInteger position = index * aMesh.vertexSize;
-        NSLog(@"x=%f y=%f",aMesh.vertexes[position] * aScale.x, aMesh.vertexes[position + 1] * aScale.y);
+        //NSLog(@"x=%f y=%f",aMesh.vertexes[position] * aScale.x, aMesh.vertexes[position + 1] * aScale.y);
        
         CGFloat newValueForX = aMesh.vertexes[position] * aScale.x;
         CGFloat newValueForY = aMesh.vertexes[position + 1] * aScale.y;

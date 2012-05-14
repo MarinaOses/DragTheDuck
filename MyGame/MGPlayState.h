@@ -21,7 +21,9 @@
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;
 - (void)loadPlayState;
+- (void)startPlayState;
 - (void)updatePlayState;
 - (void)renderPlayState;
+- (void)stopPlayState;
 
 @end

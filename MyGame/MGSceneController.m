@@ -59,6 +59,8 @@
     //Partiendo de los fps establecidos para la animación se obtiene el número de por fotograma, es decir, se calcula la inversa de los fps.
     animationInterval = 1.0/ANIMATION_FRAME_RATE;
     [self startAnimation];
+    MGPlayState *playState = (MGPlayState *)self.stateManager.activeState;
+    [playState startPlayState];
 }
 
 
@@ -83,12 +85,13 @@
 }
 
 - (void)gameLoop {
-    
+    int i = 0;
     NSTimeInterval currentTime;
     NSTimeInterval updateIterations;
     
     //Devuelve el intervalo de segundos entre el primer instante del 1 de enero de 2001 GMT y el momento actual  
     currentTime = [NSDate timeIntervalSinceReferenceDate];
+    //NSLog(@"current time ______________= %f", currentTime);
     
     updateIterations = (currentTime - lastFrameTime) + cyclesLeftOver;
     
@@ -102,6 +105,8 @@
     while (updateIterations >= SMALL_UPDATE_INTERVAL) {
         updateIterations -= SMALL_UPDATE_INTERVAL;
         [self updateScene];
+        i++;
+        //NSLog(@"i ****************= %d",i);
     }
     //El tiempo de animación que no ha podido introducirse en el render anterior y es sumado al siguiente tiempo de renderizado. 
     cyclesLeftOver = updateIterations;
@@ -119,6 +124,8 @@
 }
 
 - (void)stopAnimation {
+    MGPlayState *playState = (MGPlayState *)self.stateManager.activeState;
+    [playState stopPlayState];
     animationTimer = nil;
 }
 

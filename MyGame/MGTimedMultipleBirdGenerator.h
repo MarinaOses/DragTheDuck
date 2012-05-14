@@ -21,8 +21,10 @@
 @property (nonatomic, retain) MGMultipleBirdGenerator *multipleBirdGenerator;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;
-- (void)getNewBirdsWaveToAdd;
+- (void)loadNewBirdsWaveToAdd;
+- (void)startNextTimer;
 - (void)clearBirdsToAdd;
+- (void)stopGeneratorTimer;
 
 
 @end

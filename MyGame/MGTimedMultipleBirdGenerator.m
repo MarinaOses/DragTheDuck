@@ -30,15 +30,19 @@
     [self.birdsToAdd removeAllObjects];
 }
 
-- (void)calculateNextTimer {
+- (void)loadNewBirdsWaveToAdd {
+    [self.birdsToAdd addObjectsFromArray:[self.multipleBirdGenerator createBirdsWave]];
+}
+
+
+- (void)startNextTimer {
     NSTimeInterval randomSecondsToNextTimer = RANDOM_INT(MINSEC_TO_APPEARANCE, MAXSEC_TO_APPEARANCE);
-    NSLog(@"seconds = %f", randomSecondsToNextTimer);
-    generatorTimer = [NSTimer timerWithTimeInterval:5.0 target:self selector:@selector(getNewBirdsWaveToAdd) userInfo:nil repeats:NO];
+    generatorTimer = [NSTimer scheduledTimerWithTimeInterval:randomSecondsToNextTimer target:self selector:@selector(getNewBirdsWaveToAdd) userInfo:nil repeats:NO];
 }
 
 - (void)getNewBirdsWaveToAdd {
     [self.birdsToAdd addObjectsFromArray:[self.multipleBirdGenerator createBirdsWave]];
-    //[self calculateNextTimer];
+    [self startNextTimer];
 }
 
 - (void)stopGeneratorTimer {
