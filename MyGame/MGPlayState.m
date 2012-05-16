@@ -14,8 +14,8 @@
 - (id)initWithSceneController:(MGSceneController *)scene_controller {
     self = [super initWithSceneController:scene_controller];
     if (self) {
-        timedMultipleBirdGenerator = [[MGTimedMultipleBirdGenerator alloc] initWithSceneController:scene_controller];
-        _birdDestroyer = [[MGBirdDestroyer alloc] init];
+        _birdDestroyer = [[MGSceneObjectDestroyer alloc] init];
+        timedMultipleBirdGenerator = [[MGTimedMultipleBirdGenerator alloc] initWithSceneController:scene_controller SceneObjectDestroyer:self.birdDestroyer];
         sceneObjects = [[NSMutableArray alloc] init];
     }
     return self;
@@ -40,10 +40,7 @@
 
 - (void)renderPlayState {
     [sceneObjects makeObjectsPerformSelector:@selector(render)];    
-    if ([[self.birdDestroyer birdsToRemove] count] > 0) {
-        [sceneObjects removeObjectsInArray:[self.birdDestroyer birdsToRemove]];
-        [self.birdDestroyer clearBirdsToRemove];
-    }
+    [self.birdDestroyer destroyFrom:sceneObjects];
     NSLog(@"sceneObjects count = %d",[sceneObjects count]);
 }
 

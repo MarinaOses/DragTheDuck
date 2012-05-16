@@ -28,6 +28,7 @@
     //BOOL taken;
     
     MGSceneController *_sceneController;
+    
 }
 
 

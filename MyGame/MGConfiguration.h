@@ -28,6 +28,7 @@
 //No necesita SEED. Calcula un número aleatorio entre _MIN_ y _MAX_
 #define RANDOM_INT(_MIN_, _MAX_) ((arc4random() % (_MAX_ - _MIN_ + 1)) + _MIN_)
 
+//**********************************************************************************************
 
 //--BIRD SIZES
 #define MIN_BIRD_SCALE 35
@@ -42,9 +43,27 @@
 #define MIN_BIRDS_TO_APPEAR 1
 #define MAX_BIRDS_TO_APPEAR 4
 
-//--NUMBER OF SECONDS BETWEEN APPEARANCES
-#define MINSEC_TO_APPEARANCE 3
-#define MAXSEC_TO_APPEARANCE 8
+//--NUMBER OF SECONDS BETWEEN BIRDS APPEARANCES
+#define MINSEC_TO_BIRD_APPEARANCE 3
+#define MAXSEC_TO_BIRD_APPEARANCE 8
+
+//**********************************************************************************************
+//Por el momento las escalas y velocidades de los patos serán siempre las mismas
+//--DUCK SIZES
+#define MIN_DUCK_SCALE 40
+#define MAX_DUCK_SCALE 40
+
+//--BIRD SPEED
+#define MIN_DUCK_SPEED 50    
+#define MAX_DUCK_SPEED 50
+
+//--NUMBER OF DUCKS TO APPEAR
+#define MIN_DUCKS_TO_APPEAR 1
+#define MAX_DUCKS_TO_APPEAR 2
+
+//--NUMBER OF SECONDS BETWEEN DUCKS APPEARANCES
+#define MINSEC_TO_DUCK_APPEARANCE 7
+#define MAXSEC_TO_DUCK_APPEARANCE 8
 
 
 #endif

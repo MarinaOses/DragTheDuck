@@ -16,12 +16,12 @@
 @synthesize multipleBirdGenerator = _multipleBirdGenerator;
 
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller {
+- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {
     self = [super init];
     
     if (self) {
         _birdsToAdd = [[NSMutableArray alloc] init];
-        _multipleBirdGenerator = [[MGMultipleBirdGenerator alloc] initWithSceneController:scene_controller];
+        _multipleBirdGenerator = [[MGMultipleDuckGenerator alloc] initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer];
     }
     return self;
 }
@@ -31,17 +31,17 @@
 }
 
 - (void)loadNewBirdsWaveToAdd {
-    [self.birdsToAdd addObjectsFromArray:[self.multipleBirdGenerator createBirdsWave]];
+    [self.birdsToAdd addObjectsFromArray:[self.multipleBirdGenerator createWave]];
 }
 
 
 - (void)startNextTimer {
-    NSTimeInterval randomSecondsToNextTimer = RANDOM_INT(MINSEC_TO_APPEARANCE, MAXSEC_TO_APPEARANCE);
+    NSTimeInterval randomSecondsToNextTimer = RANDOM_INT(MINSEC_TO_BIRD_APPEARANCE, MAXSEC_TO_BIRD_APPEARANCE);
     generatorTimer = [NSTimer scheduledTimerWithTimeInterval:randomSecondsToNextTimer target:self selector:@selector(getNewBirdsWaveToAdd) userInfo:nil repeats:NO];
 }
 
 - (void)getNewBirdsWaveToAdd {
-    [self.birdsToAdd addObjectsFromArray:[self.multipleBirdGenerator createBirdsWave]];
+    [self.birdsToAdd addObjectsFromArray:[self.multipleBirdGenerator createWave]];
     [self startNextTimer];
 }
 

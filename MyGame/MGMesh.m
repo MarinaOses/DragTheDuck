@@ -8,14 +8,6 @@
 
 #import "MGMesh.h"
 
-@interface MGMesh()
-
-- (MGPoint)calculateCentroid;
-
-@end
-
-
-
 @implementation MGMesh
 
 @synthesize vertexes = _vertexes;
@@ -32,7 +24,6 @@
         self.vertexCount = vertCount;
         self.vertexSize = vertSize;
         self.renderStyle = style;
-        centroid = [self calculateCentroid];
     }
     return self;
 }
@@ -90,11 +81,6 @@
     
     //dibujar
     glDrawArrays(self.renderStyle, 0, self.vertexCount);
-}
-
-
-- (MGPoint)calculateCentroid {
-    
 }
 
 

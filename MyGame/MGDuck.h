@@ -1,8 +1,8 @@
 //
-//  MGBird.h
+//  MGDuck.h
 //  MyGame
 //
-//  Created by Marina Osés Merino on 04/05/12.
+//  Created by Marina Osés Merino on 15/05/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -10,10 +10,10 @@
 
 @class MGSceneController;
 
-@interface MGBird : MGMobileObject {
+@interface MGDuck : MGMobileObject {
     
 }
 
-
 - (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer;
+
 @end

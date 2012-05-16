@@ -7,20 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MGMultipleBirdGenerator.h"
+#import "MGMultipleDuckGenerator.h"
 
 @class MGSceneController;
 
 @interface MGTimedMultipleBirdGenerator : NSObject {
     NSMutableArray *_birdsToAdd;
-    MGMultipleBirdGenerator *_multipleBirdGenerator;
+    MGMultipleDuckGenerator *_multipleBirdGenerator;
     NSTimer *generatorTimer;
 }
 
 @property (nonatomic, retain) NSMutableArray *birdsToAdd;
-@property (nonatomic, retain) MGMultipleBirdGenerator *multipleBirdGenerator;
+@property (nonatomic, retain) MGMultipleDuckGenerator *multipleBirdGenerator;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller;
+
+- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer;
 - (void)loadNewBirdsWaveToAdd;
 - (void)startNextTimer;
 - (void)clearBirdsToAdd;

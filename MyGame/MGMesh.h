@@ -23,8 +23,6 @@
     NSInteger _vertexCount;
     NSInteger _vertexSize;
     NSInteger _colorSize;
-    
-    MGPoint centroid;
 }
 
 @property (nonatomic, assign) GLfloat *vertexes;
