@@ -9,48 +9,58 @@
 #import "MGPlayState.h"
 
 @implementation MGPlayState
-@synthesize birdDestroyer = _birdDestroyer;
+@synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller {
     self = [super initWithSceneController:scene_controller];
     if (self) {
-        _birdDestroyer = [[MGSceneObjectDestroyer alloc] init];
-        timedMultipleBirdGenerator = [[MGTimedMultipleBirdGenerator alloc] initWithSceneController:scene_controller SceneObjectDestroyer:self.birdDestroyer];
+        _sceneObjectDestroyer = [[MGSceneObjectDestroyer alloc] init];
         sceneObjects = [[NSMutableArray alloc] init];
+        timedMultipleObjectGeneratorForDucks = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:0 WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer]];
+        timedMultipleObjectGeneratorForBirds = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:1 WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer]];
     }
     return self;
 }
 
 - (void)loadPlayState {
-    [timedMultipleBirdGenerator loadNewBirdsWaveToAdd];
+    [timedMultipleObjectGeneratorForDucks loadNewObjectsWaveToAdd];
+    [timedMultipleObjectGeneratorForBirds loadNewObjectsWaveToAdd];
 }
 
 - (void)startPlayState {
-    [timedMultipleBirdGenerator startNextTimer];
+    [timedMultipleObjectGeneratorForDucks startNextTimer];
+    [timedMultipleObjectGeneratorForBirds startNextTimer];
 }
 
 - (void)updatePlayState {
-    if ([[timedMultipleBirdGenerator birdsToAdd] count] > 0) {
-        [sceneObjects addObjectsFromArray:[timedMultipleBirdGenerator birdsToAdd]];
-        [timedMultipleBirdGenerator clearBirdsToAdd];
+    if ([[timedMultipleObjectGeneratorForDucks objectsToAdd] count] > 0) {
+        [sceneObjects addObjectsFromArray:[timedMultipleObjectGeneratorForDucks objectsToAdd]];
+        [timedMultipleObjectGeneratorForDucks clearObjectsToAdd];
     }
+    if ([[timedMultipleObjectGeneratorForBirds objectsToAdd] count] > 0) {
+        [sceneObjects addObjectsFromArray:[timedMultipleObjectGeneratorForBirds objectsToAdd]];
+        [timedMultipleObjectGeneratorForBirds clearObjectsToAdd];
+    }
+
     [sceneObjects makeObjectsPerformSelector:@selector(update)];    
 }
 
 
 - (void)renderPlayState {
     [sceneObjects makeObjectsPerformSelector:@selector(render)];    
-    [self.birdDestroyer destroyFrom:sceneObjects];
+    [self.sceneObjectDestroyer destroyFrom:sceneObjects];
     NSLog(@"sceneObjects count = %d",[sceneObjects count]);
 }
 
 - (void)stopPlayState {
-    [timedMultipleBirdGenerator stopGeneratorTimer];
+    [timedMultipleObjectGeneratorForDucks stopGeneratorTimer];
+    [timedMultipleObjectGeneratorForBirds stopGeneratorTimer];
 }
 
 - (void)dealloc {
-    [timedMultipleBirdGenerator release];
-    [_birdDestroyer release];
+    [timedMultipleObjectGeneratorForDucks release];
+    [timedMultipleObjectGeneratorForBirds release];
+    [_sceneObjectDestroyer release];
     [sceneObjects release];
     [super dealloc];
 }

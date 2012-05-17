@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "MGConfiguration.h"
 #import "MGDuck.h"
+#import "MGGenerator.h"
+
 
 @class MGSceneController;
 
-@interface MGMultipleDuckGenerator : NSObject {
+@interface MGMultipleDuckGenerator : NSObject <MGGenerator> {
     MGSceneController *_sceneController;
     MGSceneObjectDestroyer *_sceneObjectDestroyer;
 }

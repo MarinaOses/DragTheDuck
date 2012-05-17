@@ -14,6 +14,7 @@
 }
 
 
+- (id)init;
 - (void)clearSceneObjectsToRemove;
 - (void)markToRemoveSceneObject:(MGSceneObject *)sceneObject;
 - (void)destroyFrom:(NSMutableArray *)sceneObjects;

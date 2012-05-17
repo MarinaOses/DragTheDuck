@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "MyGame/MGPlayState.m"
-         timestampString = "358681413.540807"
+         timestampString = "358943606.411609"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "34"
-         endingLineNumber = "34"
+         startingLineNumber = "42"
+         endingLineNumber = "42"
          landmarkName = "-updatePlayState"
          landmarkType = "5">
       </FileBreakpoint>
@@ -28,7 +28,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "45"
          endingLineNumber = "45"
-         landmarkName = "-getNewBirdsWaveToAdd"
+         landmarkName = "-clearBirdsToAdd"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint

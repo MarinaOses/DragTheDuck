@@ -20,7 +20,7 @@
 		9CAC5B16153D8B23003ECB4F /* MGTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC5B15153D8B23003ECB4F /* MGTouch.m */; };
 		9CAE9C6B1557F28600C88B50 /* MGMobileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C6A1557F28600C88B50 /* MGMobileObject.m */; };
 		9CAE9C6F155A7D0000C88B50 /* MGMultipleBirdGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C6E155A7D0000C88B50 /* MGMultipleBirdGenerator.m */; };
-		9CAE9C72155A9D9C00C88B50 /* MGTimedMultipleBirdGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C71155A9D9C00C88B50 /* MGTimedMultipleBirdGenerator.m */; };
+		9CAE9C72155A9D9C00C88B50 /* MGTimedMultipleObjectGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C71155A9D9C00C88B50 /* MGTimedMultipleObjectGenerator.m */; };
 		9CAE9C76155BE9CE00C88B50 /* MGSceneObjectDestroyer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C75155BE9CE00C88B50 /* MGSceneObjectDestroyer.m */; };
 		9CAE9C79156253FD00C88B50 /* MGDuck.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C78156253FC00C88B50 /* MGDuck.m */; };
 		9CAE9C7C156264FA00C88B50 /* MGMultipleDuckGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C7B156264FA00C88B50 /* MGMultipleDuckGenerator.m */; };
@@ -67,14 +67,15 @@
 		9CAE9C6A1557F28600C88B50 /* MGMobileObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMobileObject.m; sourceTree = "<group>"; };
 		9CAE9C6D155A7D0000C88B50 /* MGMultipleBirdGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMultipleBirdGenerator.h; sourceTree = "<group>"; };
 		9CAE9C6E155A7D0000C88B50 /* MGMultipleBirdGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMultipleBirdGenerator.m; sourceTree = "<group>"; };
-		9CAE9C70155A9D9C00C88B50 /* MGTimedMultipleBirdGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTimedMultipleBirdGenerator.h; sourceTree = "<group>"; };
-		9CAE9C71155A9D9C00C88B50 /* MGTimedMultipleBirdGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTimedMultipleBirdGenerator.m; sourceTree = "<group>"; };
-		9CAE9C74155BE9CE00C88B50 /* MGSceneObjectDestroyer.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MGSceneObjectDestroyer.h; sourceTree = "<group>"; };
+		9CAE9C70155A9D9C00C88B50 /* MGTimedMultipleObjectGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MGTimedMultipleObjectGenerator.h; sourceTree = "<group>"; };
+		9CAE9C71155A9D9C00C88B50 /* MGTimedMultipleObjectGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTimedMultipleObjectGenerator.m; sourceTree = "<group>"; };
+		9CAE9C74155BE9CE00C88B50 /* MGSceneObjectDestroyer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSceneObjectDestroyer.h; sourceTree = "<group>"; };
 		9CAE9C75155BE9CE00C88B50 /* MGSceneObjectDestroyer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSceneObjectDestroyer.m; sourceTree = "<group>"; };
 		9CAE9C77156253FB00C88B50 /* MGDuck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGDuck.h; sourceTree = "<group>"; };
 		9CAE9C78156253FC00C88B50 /* MGDuck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGDuck.m; sourceTree = "<group>"; };
 		9CAE9C7A156264FA00C88B50 /* MGMultipleDuckGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMultipleDuckGenerator.h; sourceTree = "<group>"; };
 		9CAE9C7B156264FA00C88B50 /* MGMultipleDuckGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMultipleDuckGenerator.m; sourceTree = "<group>"; };
+		9CAE9C7D1564F23D00C88B50 /* MGGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGGenerator.h; sourceTree = "<group>"; };
 		9CE04F48151380CF00185442 /* MyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CE04F4C151380CF00185442 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CE04F4E151380CF00185442 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -172,10 +173,11 @@
 			children = (
 				9CAE9C6D155A7D0000C88B50 /* MGMultipleBirdGenerator.h */,
 				9CAE9C6E155A7D0000C88B50 /* MGMultipleBirdGenerator.m */,
-				9CAE9C70155A9D9C00C88B50 /* MGTimedMultipleBirdGenerator.h */,
-				9CAE9C71155A9D9C00C88B50 /* MGTimedMultipleBirdGenerator.m */,
+				9CAE9C70155A9D9C00C88B50 /* MGTimedMultipleObjectGenerator.h */,
+				9CAE9C71155A9D9C00C88B50 /* MGTimedMultipleObjectGenerator.m */,
 				9CAE9C7A156264FA00C88B50 /* MGMultipleDuckGenerator.h */,
 				9CAE9C7B156264FA00C88B50 /* MGMultipleDuckGenerator.m */,
+				9CAE9C7D1564F23D00C88B50 /* MGGenerator.h */,
 			);
 			name = Generators;
 			sourceTree = "<group>";
@@ -347,7 +349,7 @@
 				9C15DD9F1553F84C0095FBED /* MGBird.m in Sources */,
 				9CAE9C6B1557F28600C88B50 /* MGMobileObject.m in Sources */,
 				9CAE9C6F155A7D0000C88B50 /* MGMultipleBirdGenerator.m in Sources */,
-				9CAE9C72155A9D9C00C88B50 /* MGTimedMultipleBirdGenerator.m in Sources */,
+				9CAE9C72155A9D9C00C88B50 /* MGTimedMultipleObjectGenerator.m in Sources */,
 				9CAE9C76155BE9CE00C88B50 /* MGSceneObjectDestroyer.m in Sources */,
 				9CAE9C79156253FD00C88B50 /* MGDuck.m in Sources */,
 				9CAE9C7C156264FA00C88B50 /* MGMultipleDuckGenerator.m in Sources */,

@@ -7,16 +7,17 @@
 //
 
 #import "MGState.h"
-#import "MGTimedMultipleBirdGenerator.h"
+#import "MGTimedMultipleObjectGenerator.h"
 #import "MGSceneObjectDestroyer.h"
 
 @interface MGPlayState : MGState {
-    MGTimedMultipleBirdGenerator *timedMultipleBirdGenerator;
-    MGSceneObjectDestroyer *_birdDestroyer;
+    MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForDucks;
+    MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForBirds;
+    MGSceneObjectDestroyer *_sceneObjectDestroyer;
     NSMutableArray *sceneObjects;
 }
 
-@property (nonatomic, retain) MGSceneObjectDestroyer *birdDestroyer;
+@property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;

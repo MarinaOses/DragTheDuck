@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "MGConfiguration.h"
 #import "MGBird.h"
+#import "MGGenerator.h"
 
 @class MGSceneController;
 
-@interface MGMultipleBirdGenerator : NSObject {
+@interface MGMultipleBirdGenerator : NSObject <MGGenerator>{
     MGSceneController *_sceneController;
     MGSceneObjectDestroyer *_sceneObjectDestroyer;
 
