@@ -25,7 +25,7 @@
     CGRect _screenRect;
     CGPoint screenRectCenter;
     
-    //BOOL taken;
+    BOOL taken;
     
     MGSceneController *_sceneController;
     

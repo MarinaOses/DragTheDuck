@@ -29,7 +29,7 @@ static CGFloat MGBirdColorValues[16] ={
     return self;
 }
 
-- (void)update {
+- (void)update {    
     [super update];
 }
 
