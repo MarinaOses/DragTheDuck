@@ -1,16 +1,16 @@
 //
-//  MGMultipleDuckGenerator.m
+//  MGMultipleLeafGenerator.m
 //  MyGame
 //
-//  Created by Marina Osés Merino on 15/05/12.
+//  Created by Marina Osés Merino on 18/05/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MGMultipleDuckGenerator.h"
+#import "MGMultipleLeafGenerator.h"
 
 #import "MGSceneController.h"
 
-@implementation MGMultipleDuckGenerator
+@implementation MGMultipleLeafGenerator
 
 @synthesize sceneController = _sceneController;
 @synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
@@ -27,23 +27,22 @@
 }
 
 
-//Crea una oleada de patos, cuyo número de objetos se calcula aleatoriamente entre un mínimo y un máximo definidos en el archivo de configuración. El intervalo para el random será más pequeño que en el caso de los pájaros.
+//Crea una oleada de pájaros rojos, cuyo número de objetos se calcula aleatoriamente entre un mínimo y un máximo definidos en el archivo de configuración
 - (NSArray *)createWave {
-    NSMutableArray *arrayWithDucksWave = [[NSMutableArray alloc] init];
-    NSInteger ducksToAppear = RANDOM_INT(MIN_DUCKS_TO_APPEAR, MAX_DUCKS_TO_APPEAR);
-    NSInteger ducksCount;
-    for (ducksCount = 0; ducksCount < ducksToAppear; ducksCount++) {
-        MGDuck *duckToAdd = [[MGDuck alloc] initWithSceneController:self.sceneController SceneObjectDestroyer:self.sceneObjectDestroyer];
-        [arrayWithDucksWave addObject:duckToAdd];
-        [duckToAdd release];
+    NSMutableArray *arrayWithLeavesWave = [[NSMutableArray alloc] init];
+    NSInteger leavesToAppear = RANDOM_INT(MIN_BIRDS_TO_APPEAR, MAX_BIRDS_TO_APPEAR);
+    NSInteger leavesCount;
+    for (leavesCount = 0; leavesCount < leavesToAppear; leavesCount++) {
+        MGLeaf *leafToAdd = [[MGLeaf alloc] initWithSceneController:self.sceneController SceneObjectDestroyer:self.sceneObjectDestroyer TimeController:self.timeController];  
+        [arrayWithLeavesWave addObject:leafToAdd];
+        [leafToAdd release];
     }
-    return [arrayWithDucksWave autorelease];
+    return [arrayWithLeavesWave autorelease];
 }
 
 - (NSInteger)getWaitTimeToNextWave {
     
 }
-
 
 - (void)dealloc {
     [_sceneController release];
@@ -53,4 +52,6 @@
 }
 
 
+
 @end
+

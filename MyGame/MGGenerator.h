@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MGTimeController.h"
 
 @protocol MGGenerator <NSObject>
 @required
 - (NSArray *)createWave;
+- (NSInteger)getWaitTimeToNextWave;
 
 @end

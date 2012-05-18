@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MGInputViewController.h"
 #import "MGStateManager.h"
+#import "MGTimeController.h"
 
 @interface MGSceneController : NSObject {
         
@@ -22,11 +23,14 @@
     NSTimeInterval lastFrameTime;
     NSTimeInterval cyclesLeftOver;
     
+    MGTimeController *_timeController;
+    
 }
 
 @property (nonatomic, retain) MGInputViewController *inputViewController;
 @property (nonatomic, retain) EAGLView *openGLView;
 @property (nonatomic, retain) MGStateManager *stateManager;
+@property (nonatomic, retain) MGTimeController *timeController;
 
 
 - (id)init;

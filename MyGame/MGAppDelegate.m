@@ -45,8 +45,12 @@
     //Por conveniencia. Para hacer visible el window y crearle un key
     [self.window makeKeyAndVisible];
     
+    MGTimeController *timeControllerToAssign = [[MGTimeController alloc] init];
+    sceneController.timeController = timeControllerToAssign;
+    [timeControllerToAssign release];
+    
     //Se crea el manager de estados del juego
-    MGStateManager *managerToAssign = [[MGStateManager alloc] initWithSceneController:sceneController];
+    MGStateManager *managerToAssign = [[MGStateManager alloc] initWithSceneController:sceneController TimeController:sceneController.timeController];
     sceneController.stateManager = managerToAssign;
     [managerToAssign release];
     

@@ -14,10 +14,10 @@
 
 
 //Creo el manager inicializando su estado activo al estado principal o MainState
-- (id)initWithSceneController:(MGSceneController *)scene_controller {
+- (id)initWithSceneController:(MGSceneController *)scene_controller TimeController:(MGTimeController *)time_controller {
     self = [super init];
     if (self) {
-        _activeState = [[MGPlayState alloc] initWithSceneController:scene_controller];
+        _activeState = [[MGPlayState alloc] initWithSceneController:scene_controller TimeController:time_controller];
     }
     return self;
 }

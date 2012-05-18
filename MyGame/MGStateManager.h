@@ -17,7 +17,7 @@
 
 @property (nonatomic, retain) MGState *activeState;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller;
+- (id)initWithSceneController:(MGSceneController *)scene_controller TimeController:(MGTimeController *)time_controller;
 - (void)goToMainState;
 - (void)goToHelpState;
 - (void)goToPlayState;

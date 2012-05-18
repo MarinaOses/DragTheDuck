@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "MGMultipleDuckGenerator.h"
 #import "MGMultipleBirdGenerator.h"
+#import "MGMultipleLeafGenerator.h"
 
 @class MGSceneController;
 
 @interface MGTimedMultipleObjectGenerator : NSObject {
     NSMutableArray *_objectsToAdd;
     id<MGGenerator> _generator;
-    NSTimer *generatorTimer;
 }
 
 @property (nonatomic, retain) NSMutableArray *objectsToAdd;
@@ -23,11 +23,11 @@
 
 
 - (id)initWithMGGenerator:(id<MGGenerator>)mg_generator;
-+ (id<MGGenerator>)createSpecificMGGenerator:(int)type WithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer;
++ (id<MGGenerator>)createSpecificMGGenerator:(int)type WithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer TimeController:(MGTimeController *)time_controller;
 - (void)loadNewObjectsWaveToAdd;
-- (void)startNextTimer;
+- (void)setNextTime;
 - (void)clearObjectsToAdd;
-- (void)stopGeneratorTimer;
+- (void)stopTimeController;
 
 
 @end

@@ -21,7 +21,7 @@
 @synthesize inputViewController = _inputViewController;
 @synthesize openGLView = _openGLView;
 @synthesize stateManager = _stateManager;
-
+@synthesize timeController = _timeController;
 
 
 
@@ -85,7 +85,6 @@
 }
 
 - (void)gameLoop {
-    int i = 0;
     NSTimeInterval currentTime;
     NSTimeInterval updateIterations;
     
@@ -105,8 +104,7 @@
     while (updateIterations >= SMALL_UPDATE_INTERVAL) {
         updateIterations -= SMALL_UPDATE_INTERVAL;
         [self updateScene];
-        i++;
-        //NSLog(@"i ****************= %d",i);
+         self.timeController.updateCounter++;
     }
     //El tiempo de animación que no ha podido introducirse en el render anterior y es sumado al siguiente tiempo de renderizado. 
     cyclesLeftOver = updateIterations;
@@ -114,6 +112,7 @@
     lastFrameTime = currentTime;
     
     [self renderScene];
+   
 }
 
 
@@ -138,6 +137,7 @@
     [_inputViewController release];
     [_openGLView release];
     [_stateManager release];
+    [_timeController release];
     [super dealloc];
 }
 

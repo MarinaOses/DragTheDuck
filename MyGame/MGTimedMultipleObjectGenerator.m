@@ -25,13 +25,16 @@
     return self;
 }
 
-+ (id<MGGenerator>)createSpecificMGGenerator:(int)type WithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {
++ (id<MGGenerator>)createSpecificMGGenerator:(int)type WithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer TimeController:(MGTimeController *)time_controller {
     
     if (type == 0) {
-        return [[[MGMultipleDuckGenerator alloc] initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer] autorelease];
+        return [[[MGMultipleDuckGenerator alloc] initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer TimeController:time_controller] autorelease];
+    }
+    else if (type == 1) {
+        return [[[MGMultipleBirdGenerator alloc] initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer TimeController:time_controller] autorelease];
     }
     else {
-        return [[[MGMultipleBirdGenerator alloc] initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer] autorelease];
+        return [[[MGMultipleLeafGenerator alloc] initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer TimeController:time_controller] autorelease];
     }
 }
 
@@ -44,19 +47,17 @@
 }
 
 
-- (void)startNextTimer {
-    NSTimeInterval randomSecondsToNextTimer = RANDOM_INT(MINSEC_TO_BIRD_APPEARANCE, MAXSEC_TO_BIRD_APPEARANCE);
-    generatorTimer = [NSTimer scheduledTimerWithTimeInterval:randomSecondsToNextTimer target:self selector:@selector(getNewObjectsWaveToAdd) userInfo:nil repeats:NO];
+- (void)setNextTime {
+    [self.generator getWaitTimeToNextWave];
 }
 
 - (void)getNewObjectsWaveToAdd {
     [self.objectsToAdd addObjectsFromArray:[self.generator createWave]];
-    [self startNextTimer];
+    [self setNextTime];
 }
 
-- (void)stopGeneratorTimer {
-    [generatorTimer invalidate];
-    generatorTimer = nil;
+- (void)stopTimeController {
+    [self.generator stopTimeController];
 }
 
 - (void)dealloc {

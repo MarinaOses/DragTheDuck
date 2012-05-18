@@ -13,14 +13,17 @@
 @interface MGPlayState : MGState {
     MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForDucks;
     MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForBirds;
+    MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForLeaves;
     MGSceneObjectDestroyer *_sceneObjectDestroyer;
+    MGTimeController *_timeController;
     NSMutableArray *sceneObjects;
 }
 
 @property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
+@property (nonatomic, retain) MGTimeController *timeController;
 
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller;
+- (id)initWithSceneController:(MGSceneController *)scene_controller TimeController:(MGTimeController *)time_controller;
 - (void)loadPlayState;
 - (void)startPlayState;
 - (void)updatePlayState;
