@@ -104,7 +104,7 @@
     while (updateIterations >= SMALL_UPDATE_INTERVAL) {
         updateIterations -= SMALL_UPDATE_INTERVAL;
         [self updateScene];
-         self.timeController.updateCounter++;
+        [self.timeController anUpdateHappens];
     }
     //El tiempo de animación que no ha podido introducirse en el render anterior y es sumado al siguiente tiempo de renderizado. 
     cyclesLeftOver = updateIterations;

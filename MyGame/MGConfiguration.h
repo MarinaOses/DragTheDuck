@@ -44,8 +44,8 @@
 #define MAX_BIRDS_TO_APPEAR 4
 
 //--NUMBER OF SECONDS BETWEEN BIRDS APPEARANCES
-#define MINUPDATES_TO_BIRD_APPEARANCE  3 //3 segundos
-#define MAXUPDATES_TO_BIRD_APPEARANCE 8 //8 segundos
+#define MINSEC_TO_BIRD_APPEARANCE  3 
+#define MAXSEC_TO_BIRD_APPEARANCE 8 
 
 //**********************************************************************************************
 //Por el momento las escalas y velocidades de los patos serán siempre las mismas
@@ -62,7 +62,7 @@
 #define MAX_DUCKS_TO_APPEAR 2
 
 //--NUMBER OF SECONDS BETWEEN DUCKS APPEARANCES
-#define MINRENDERS_TO_DUCK_APPEARANCE 7
+#define MINSEC_TO_DUCK_APPEARANCE 7
 #define MAXSEC_TO_DUCK_APPEARANCE 8
 
 
@@ -74,8 +74,19 @@
 #define MIN_LEAF_SCALE 20
 #define MAX_LEAF_SCALE 40
 
+
+//--NUMBER OF LEAVES TO APPEAR
+#define MIN_LEAVES_TO_APPEAR 1
+#define MAX_LEAVES_TO_APPEAR 2
+
+
 //-- MAX_LEAF_TIME
-#define MAXRENDERS_TO_LEAF_DISAPPEARANCE 600 //a 60 fps son 10 segundos
+#define MAXSEC_TO_LEAF_DISAPPEARANCE 15
+
+
+//--NUMBER OF SECONDS BETWEEN LEAVES APPEARANCES
+#define MINSEC_TO_LEAF_APPEARANCE 10
+#define MAXSEC_TO_LEAF_APPEARANCE 30
 
 
 

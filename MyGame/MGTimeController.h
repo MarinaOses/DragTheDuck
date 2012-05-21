@@ -7,13 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MGNotification.h"
+#import "MGConfiguration.h"
 
 @interface MGTimeController : NSObject {
-    NSInteger updateCounter;
+    NSInteger currentUpdate;
+    NSMutableArray *_notificationArray;
+    NSMutableArray *_notificationsToAdd;
+    NSMutableArray *_notificationsToRemove;
+    BOOL activated;
 }
 
-@property (nonatomic, assign) NSInteger updateCounter;
+@property (nonatomic, assign) NSInteger currentUpdate;
+@property (nonatomic, retain) NSMutableArray *notificationArray;
+@property (nonatomic, retain) NSMutableArray *notificationsToAdd;
+@property (nonatomic, retain) NSMutableArray *notificationsToRemove;
+@property (nonatomic, assign) BOOL activated;
 
 - (id)init;
+- (void)start;
+- (void)anUpdateHappens;
+- (void)createAndAddNotificationIn:(NSInteger)seconds WithObject:(id)object Selector:(SEL)selector;
+- (void)stop;
 
 @end

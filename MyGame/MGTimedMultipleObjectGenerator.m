@@ -14,27 +14,29 @@
 
 @synthesize objectsToAdd = _objectsToAdd;
 @synthesize generator = _generator;
+@synthesize timeController = _timeController;
 
-- (id)initWithMGGenerator:(id<MGGenerator>)mg_generator {
+- (id)initWithMGGenerator:(id<MGGenerator>)mg_generator TimeController:(MGTimeController *)time_controller {
     self = [super init];
     if (self) {
         _objectsToAdd = [[NSMutableArray alloc] init];
         self.generator = mg_generator; 
+        self.timeController = time_controller;
         
     }
     return self;
 }
 
-+ (id<MGGenerator>)createSpecificMGGenerator:(int)type WithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer TimeController:(MGTimeController *)time_controller {
++ (id<MGGenerator>)createSpecificMGGenerator:(int)type WithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {
     
     if (type == 0) {
-        return [[[MGMultipleDuckGenerator alloc] initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer TimeController:time_controller] autorelease];
+        return [[[MGMultipleDuckGenerator alloc] initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer] autorelease];
     }
     else if (type == 1) {
-        return [[[MGMultipleBirdGenerator alloc] initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer TimeController:time_controller] autorelease];
+        return [[[MGMultipleBirdGenerator alloc] initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer] autorelease];
     }
     else {
-        return [[[MGMultipleLeafGenerator alloc] initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer TimeController:time_controller] autorelease];
+        return [[[MGMultipleLeafGenerator alloc] initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer] autorelease];
     }
 }
 
@@ -48,7 +50,8 @@
 
 
 - (void)setNextTime {
-    [self.generator getWaitTimeToNextWave];
+    NSInteger secondsToWait = [self.generator getWaitTimeToNextWave];
+    [self.timeController createAndAddNotificationIn:secondsToWait WithObject:self Selector:@selector(getNewObjectsWaveToAdd)];
 }
 
 - (void)getNewObjectsWaveToAdd {
@@ -56,13 +59,10 @@
     [self setNextTime];
 }
 
-- (void)stopTimeController {
-    [self.generator stopTimeController];
-}
-
 - (void)dealloc {
     [_objectsToAdd release];
     [_generator release];
+    [_timeController release];
     [super dealloc];
 }
 

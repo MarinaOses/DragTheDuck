@@ -14,14 +14,12 @@
 
 @synthesize sceneController = _sceneController;
 @synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
-@synthesize timeController = _timeController;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer TimeController:(MGTimeController *)time_controller{
+- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {
     self = [super init];
     if (self) {
         self.sceneController = scene_controller;
         self.sceneObjectDestroyer = scene_object_destroyer;
-        self.timeController = time_controller;
     }
     return self;
 }
@@ -41,13 +39,13 @@
 }
 
 - (NSInteger)getWaitTimeToNextWave {
-    
+    return RANDOM_INT(MINSEC_TO_BIRD_APPEARANCE, MAXSEC_TO_BIRD_APPEARANCE);
 }
+
 
 - (void)dealloc {
     [_sceneController release];
     [_sceneObjectDestroyer release];
-    [_timeController release];
     [super dealloc];
 }
 

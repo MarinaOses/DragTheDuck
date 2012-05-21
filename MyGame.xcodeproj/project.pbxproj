@@ -27,6 +27,7 @@
 		9CAE9C851565285600C88B50 /* MGLeaf.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C841565285600C88B50 /* MGLeaf.m */; };
 		9CAE9C891566656700C88B50 /* MGTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C881566656700C88B50 /* MGTimeController.m */; };
 		9CAE9C8C1566720800C88B50 /* MGMultipleLeafGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C8B1566720800C88B50 /* MGMultipleLeafGenerator.m */; };
+		9CC1236B156A3BB4005EABD0 /* MGNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1236A156A3BB4005EABD0 /* MGNotification.m */; };
 		9CE04F4D151380CF00185442 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F4C151380CF00185442 /* UIKit.framework */; };
 		9CE04F4F151380CF00185442 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F4E151380CF00185442 /* Foundation.framework */; };
 		9CE04F51151380CF00185442 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F50151380CF00185442 /* CoreGraphics.framework */; };
@@ -85,6 +86,8 @@
 		9CAE9C881566656700C88B50 /* MGTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTimeController.m; sourceTree = "<group>"; };
 		9CAE9C8A1566720800C88B50 /* MGMultipleLeafGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMultipleLeafGenerator.h; sourceTree = "<group>"; };
 		9CAE9C8B1566720800C88B50 /* MGMultipleLeafGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMultipleLeafGenerator.m; sourceTree = "<group>"; };
+		9CC12369156A3BB4005EABD0 /* MGNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGNotification.h; sourceTree = "<group>"; };
+		9CC1236A156A3BB4005EABD0 /* MGNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGNotification.m; sourceTree = "<group>"; };
 		9CE04F48151380CF00185442 /* MyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CE04F4C151380CF00185442 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CE04F4E151380CF00185442 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -209,6 +212,8 @@
 				9CAE9C71155A9D9C00C88B50 /* MGTimedMultipleObjectGenerator.m */,
 				9CAE9C871566656700C88B50 /* MGTimeController.h */,
 				9CAE9C881566656700C88B50 /* MGTimeController.m */,
+				9CC12369156A3BB4005EABD0 /* MGNotification.h */,
+				9CC1236A156A3BB4005EABD0 /* MGNotification.m */,
 			);
 			name = "Time Controller";
 			sourceTree = "<group>";
@@ -379,6 +384,7 @@
 				9CAE9C851565285600C88B50 /* MGLeaf.m in Sources */,
 				9CAE9C891566656700C88B50 /* MGTimeController.m in Sources */,
 				9CAE9C8C1566720800C88B50 /* MGMultipleLeafGenerator.m in Sources */,
+				9CC1236B156A3BB4005EABD0 /* MGNotification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "MyGame/MGPlayState.m"
-         timestampString = "358943606.411609"
+         timestampString = "359295807.564269"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "42"
-         endingLineNumber = "42"
+         startingLineNumber = "44"
+         endingLineNumber = "44"
          landmarkName = "-updatePlayState"
          landmarkType = "5">
       </FileBreakpoint>
@@ -57,6 +57,34 @@
          startingLineNumber = "116"
          endingLineNumber = "116"
          landmarkName = "-gameLoop"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "MyGame/MGTimedMultipleObjectGenerator.m"
+         timestampString = "359298194.621252"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "59"
+         endingLineNumber = "59"
+         landmarkName = "-getNewObjectsWaveToAdd"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "MyGame/MGTimedMultipleObjectGenerator.m"
+         timestampString = "359298209.027996"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "54"
+         endingLineNumber = "54"
+         landmarkName = "-setNextTime"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

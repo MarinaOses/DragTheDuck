@@ -17,9 +17,10 @@
     if (self) {
         _sceneObjectDestroyer = [[MGSceneObjectDestroyer alloc] init];
         sceneObjects = [[NSMutableArray alloc] init];
-        timedMultipleObjectGeneratorForDucks = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:0 WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer TimeController:time_controller]];
-        timedMultipleObjectGeneratorForBirds = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:1 WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer TimeController:time_controller]];
-        timedMultipleObjectGeneratorForLeaves = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:2 WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer TimeController:time_controller]];
+        self.timeController = time_controller;
+        timedMultipleObjectGeneratorForDucks = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:0 WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer] TimeController:time_controller];
+        timedMultipleObjectGeneratorForBirds = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:1 WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer ] TimeController:time_controller];
+        timedMultipleObjectGeneratorForLeaves = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:2 WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer ] TimeController:time_controller];
     }
     return self;
 }
@@ -27,10 +28,11 @@
 - (void)loadPlayState {
     [timedMultipleObjectGeneratorForDucks loadNewObjectsWaveToAdd];
     [timedMultipleObjectGeneratorForBirds loadNewObjectsWaveToAdd];
-    [timedMultipleObjectGeneratorForLeaves loadNewObjectsWaveToAdd];
+    //[timedMultipleObjectGeneratorForLeaves loadNewObjectsWaveToAdd];
 }
 
 - (void)startPlayState {
+    [self.timeController start];
     [timedMultipleObjectGeneratorForDucks setNextTime];
     [timedMultipleObjectGeneratorForBirds setNextTime];
     [timedMultipleObjectGeneratorForLeaves setNextTime];
@@ -62,15 +64,14 @@
 }
 
 - (void)stopPlayState {
-    [timedMultipleObjectGeneratorForDucks stopTimeController];
-    [timedMultipleObjectGeneratorForBirds stopTimeController];
-    [timedMultipleObjectGeneratorForLeaves stopTimeController];
+    [self.timeController stop];
 }
 
 - (void)dealloc {
     [timedMultipleObjectGeneratorForDucks release];
     [timedMultipleObjectGeneratorForBirds release];
     [timedMultipleObjectGeneratorForLeaves release];
+    [_timeController release];
     [_sceneObjectDestroyer release];
     [sceneObjects release];
     [super dealloc];

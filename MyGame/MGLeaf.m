@@ -80,9 +80,9 @@ static CGFloat MGDuckColorValues[16] ={
 }
 
 - (void)removeIfItIsOutOfTime {
-    if (self.timeController.updateCounter == MAX_LEAF_TIME_IN_RENDERS) {
-        [self.sceneObjectDestroyer markToRemoveSceneObject:self];
-    }
+//    if (self.timeController.updateCounter == MAXSEC_TO_LEAF_DISAPPEARANCE){
+//        [self.sceneObjectDestroyer markToRemoveSceneObject:self];
+//    }
 }
 
 - (void)update {
