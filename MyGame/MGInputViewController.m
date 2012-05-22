@@ -65,8 +65,8 @@
 - (CGRect)screenRectFromMeshRect:(CGRect)meshRect atPoint:(CGPoint)meshCenter {
     CGPoint screenCenter = CGPointZero;
     CGPoint screenRectOrigin = CGPointZero;
-    NSLog(@"MidX=%f",CGRectGetMidX(self.view.frame));
-    NSLog(@"MidY=%f",CGRectGetMidY(self.view.frame));
+    //NSLog(@"MidX=%f",CGRectGetMidX(self.view.frame));
+    //NSLog(@"MidY=%f",CGRectGetMidY(self.view.frame));
 
     screenCenter.x = meshCenter.y + (CGRectGetMidX(self.view.frame));
     screenCenter.y = meshCenter.x + (CGRectGetMidY(self.view.frame));

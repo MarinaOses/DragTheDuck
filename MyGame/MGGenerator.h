@@ -12,6 +12,6 @@
 @protocol MGGenerator <NSObject>
 @required
 - (NSArray *)createWave;
-- (NSInteger)getWaitTimeToNextWave;
+- (CGFloat)getWaitTimeToNextWave;
 
 @end

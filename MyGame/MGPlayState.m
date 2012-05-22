@@ -33,9 +33,9 @@
 
 - (void)startPlayState {
     [self.timeController start];
-    [timedMultipleObjectGeneratorForDucks setNextTime];
-    [timedMultipleObjectGeneratorForBirds setNextTime];
-    [timedMultipleObjectGeneratorForLeaves setNextTime];
+    [timedMultipleObjectGeneratorForDucks setNextTimeToAppear];
+    [timedMultipleObjectGeneratorForBirds setNextTimeToAppear];
+    [timedMultipleObjectGeneratorForLeaves setNextTimeToAppear];
 }
 
 - (void)updatePlayState {
@@ -60,7 +60,7 @@
 - (void)renderPlayState {
     [sceneObjects makeObjectsPerformSelector:@selector(render)];    
     [self.sceneObjectDestroyer destroyFrom:sceneObjects];
-    NSLog(@"sceneObjects count = %d",[sceneObjects count]);
+    //NSLog(@"sceneObjects count = %d",[sceneObjects count]);
 }
 
 - (void)stopPlayState {

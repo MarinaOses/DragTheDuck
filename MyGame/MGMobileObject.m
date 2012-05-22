@@ -46,19 +46,19 @@ static CGFloat MGMobileVertexes[8] = {
 }
 
 - (MGPoint)randomScaleInRange:(NSRange)scale_range {
-    CGFloat randomScale = RANDOM_INT(scale_range.location, scale_range.length);
+    CGFloat randomScale = RANDOM_FLOAT(scale_range.location, scale_range.length);
     return MGPointMake(randomScale, randomScale, 1.0);
 }
 
 - (MGPoint)randomTranslationOnSide:(int)side {
     //Se obtiene la anchura de la ventana teniendo en cuenta que en el juego es igual a la altura
     CGFloat maxHeightToAppearance = CGRectGetWidth(self.sceneController.openGLView.window.frame);    
-    CGFloat randomAppearanceHeight = RANDOM_INT(0, (int)maxHeightToAppearance) - maxHeightToAppearance/2;
+    CGFloat randomAppearanceHeight = RANDOM_FLOAT(0.0, maxHeightToAppearance) - maxHeightToAppearance/2;
     return MGPointMake(side * CGRectGetMidY(self.sceneController.openGLView.window.frame), randomAppearanceHeight, 0.0);
 }
 
 - (MGPoint)randomSpeedInRange:(NSRange)speed_range WithDirection:(int)direction {
-    GLfloat speedToassign = RANDOM_INT(speed_range.location, speed_range.length)/100.0;
+    GLfloat speedToassign = RANDOM_FLOAT(speed_range.location, speed_range.length)/100.0;
     return MGPointMake(direction * speedToassign, 0.0, 0.0);
 }
 

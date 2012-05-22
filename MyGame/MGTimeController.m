@@ -46,7 +46,7 @@
 - (void)anUpdateHappens {
     if (self.activated) {
         self.currentUpdate++;
-        NSLog(@"current = %d", self.currentUpdate);
+        //NSLog(@"current = %d", self.currentUpdate);
         for (MGNotification *n in self.notificationArray) {
             if (n.updateToNotificate == currentUpdate) {
                 [n.target performSelector:n.methodToCall];

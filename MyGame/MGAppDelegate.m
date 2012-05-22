@@ -26,6 +26,7 @@
 //}
 
 -(void) applicationDidFinishLaunching:(UIApplication *)application {
+    [application setStatusBarHidden:YES];
     //Se crea un objeto sceneController 
     MGSceneController *sceneController = [[MGSceneController alloc] init];
     

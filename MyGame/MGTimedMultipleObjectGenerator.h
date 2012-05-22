@@ -28,7 +28,7 @@
 - (id)initWithMGGenerator:(id<MGGenerator>)mg_generator TimeController:(MGTimeController *)time_controller;
 + (id<MGGenerator>)createSpecificMGGenerator:(int)type WithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer;
 - (void)loadNewObjectsWaveToAdd;
-- (void)setNextTime;
+- (void)setNextTimeToAppear;
 - (void)clearObjectsToAdd;
 
 @end

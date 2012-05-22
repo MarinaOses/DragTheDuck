@@ -49,14 +49,17 @@
 }
 
 
-- (void)setNextTime {
-    NSInteger secondsToWait = [self.generator getWaitTimeToNextWave];
+- (void)setNextTimeToAppear {
+    CGFloat secondsToWait = [self.generator getWaitTimeToNextWave];
     [self.timeController createAndAddNotificationIn:secondsToWait WithObject:self Selector:@selector(getNewObjectsWaveToAdd)];
 }
 
+
 - (void)getNewObjectsWaveToAdd {
-    [self.objectsToAdd addObjectsFromArray:[self.generator createWave]];
-    [self setNextTime];
+    NSArray *newWave = [self.generator createWave];
+    [self.objectsToAdd addObjectsFromArray:newWave];
+    [self setNextTimeToAppear];
+    
 }
 
 - (void)dealloc {

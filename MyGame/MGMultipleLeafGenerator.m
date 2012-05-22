@@ -38,8 +38,8 @@
     return [arrayWithLeavesWave autorelease];
 }
 
-- (NSInteger)getWaitTimeToNextWave {
-    return RANDOM_INT(MINSEC_TO_LEAF_APPEARANCE, MAXSEC_TO_LEAF_APPEARANCE);
+- (CGFloat)getWaitTimeToNextWave {
+    return RANDOM_FLOAT(MINSEC_TO_LEAF_APPEARANCE, MAXSEC_TO_LEAF_APPEARANCE);
 }
 
 - (void)dealloc {

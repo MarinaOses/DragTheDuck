@@ -27,6 +27,7 @@
 //--RANDOM FUNCTIONS
 //No necesita SEED. Calcula un número aleatorio entre _MIN_ y _MAX_
 #define RANDOM_INT(_MIN_, _MAX_) ((arc4random() % (_MAX_ - _MIN_ + 1)) + _MIN_)
+#define RANDOM_FLOAT(smallNumber, bigNumber) ((((float) (arc4random() % ((unsigned)RAND_MAX + 1)) / RAND_MAX) * (bigNumber - smallNumber)) + smallNumber)
 
 //**********************************************************************************************
 
@@ -81,12 +82,13 @@
 
 
 //-- MAX_LEAF_TIME
+#define MINSEC_TO_LEAF_DISAPPEARANCE 10
 #define MAXSEC_TO_LEAF_DISAPPEARANCE 15
 
 
 //--NUMBER OF SECONDS BETWEEN LEAVES APPEARANCES
-#define MINSEC_TO_LEAF_APPEARANCE 10
-#define MAXSEC_TO_LEAF_APPEARANCE 30
+#define MINSEC_TO_LEAF_APPEARANCE 20
+#define MAXSEC_TO_LEAF_APPEARANCE 25
 
 
 

@@ -38,8 +38,8 @@
     return [arrayWithDucksWave autorelease];
 }
 
-- (NSInteger)getWaitTimeToNextWave {
-    return RANDOM_INT(MINSEC_TO_DUCK_APPEARANCE, MAXSEC_TO_DUCK_APPEARANCE);
+- (CGFloat)getWaitTimeToNextWave {
+    return RANDOM_FLOAT(MINSEC_TO_DUCK_APPEARANCE, MAXSEC_TO_DUCK_APPEARANCE);
 }
 
 

@@ -14,12 +14,14 @@
 - (MGPoint)randomTranslation:(CGRect)leaf_mesh_bounds;
 - (MGPoint)randomRotation;
 - (MGPoint)randomScale;
+- (CGFloat)randomLifeTime;
 @end
 
 @implementation MGLeaf
 
 @synthesize timeController = _timeController;
 @synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
+@synthesize lifeTimeInUpdates;
 
 static NSInteger MGLeafVertexSize = 2;
 static NSInteger MGLeafColorSize = 4;
@@ -54,6 +56,7 @@ static CGFloat MGDuckColorValues[16] ={
         self.timeController = time_controller;
         self.sceneObjectDestroyer = scene_object_destroyer;
         
+        self.lifeTimeInUpdates = (int)([self randomLifeTime] * MAXIMUM_FRAME_RATE);
     }
     return self;
 }
@@ -64,29 +67,34 @@ static CGFloat MGDuckColorValues[16] ={
     CGFloat meshBoundsMidX = leaf_mesh_bounds.size.width/2.0;
     CGFloat meshBoundsMidY = leaf_mesh_bounds.size.height/2.0;
     //Para que no se salga de la pantalla se suma o resta la mitad del tamaño de la hoja
-    CGFloat randomX = RANDOM_INT(0+(int)meshBoundsMidX, (int)screenY-(int)meshBoundsMidX) - screenY/2.0;
-    CGFloat randomY = RANDOM_INT(0+(int)meshBoundsMidY, (int)screenX-(int)meshBoundsMidY) - screenX/2.0;
+    CGFloat randomX = RANDOM_FLOAT(meshBoundsMidX, screenY-meshBoundsMidX) - screenY/2.0;
+    CGFloat randomY = RANDOM_FLOAT(meshBoundsMidY, screenX-meshBoundsMidY) - screenX/2.0;
     return MGPointMake(randomX, randomY, 0.0);
 }
 
 - (MGPoint)randomRotation {
-    int randomDegrees = RANDOM_INT(0, MAX_LEAF_ROTATION);
+    int randomDegrees = RANDOM_FLOAT(0.0, MAX_LEAF_ROTATION);
     return MGPointMake(0.0, 0.0, randomDegrees);
 }
 
 - (MGPoint)randomScale {
-    int randomScale = RANDOM_INT(MIN_LEAF_SCALE, MAX_LEAF_SCALE);
+    int randomScale = RANDOM_FLOAT(MIN_LEAF_SCALE, MAX_LEAF_SCALE);
     return MGPointMake(randomScale, randomScale, 1.0);
 }
 
-- (void)removeIfItIsOutOfTime {
-//    if (self.timeController.updateCounter == MAXSEC_TO_LEAF_DISAPPEARANCE){
-//        [self.sceneObjectDestroyer markToRemoveSceneObject:self];
-//    }
+- (CGFloat)randomLifeTime {
+    return RANDOM_FLOAT(MINSEC_TO_LEAF_DISAPPEARANCE, MAXSEC_TO_LEAF_DISAPPEARANCE);
+}
+
+- (void)removeMySelf {
+    [self.sceneObjectDestroyer markToRemoveSceneObject:self];
 }
 
 - (void)update {
-    [self removeIfItIsOutOfTime];
+    self.lifeTimeInUpdates--;
+    if (self.lifeTimeInUpdates <= 0) {
+        [self removeMySelf];
+    }
     [super update];
 }
 

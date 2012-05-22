@@ -38,8 +38,8 @@
     return [arrayWithBirdsWave autorelease];
 }
 
-- (NSInteger)getWaitTimeToNextWave {
-    return RANDOM_INT(MINSEC_TO_BIRD_APPEARANCE, MAXSEC_TO_BIRD_APPEARANCE);
+- (CGFloat)getWaitTimeToNextWave {
+    return RANDOM_FLOAT(MINSEC_TO_BIRD_APPEARANCE, MAXSEC_TO_BIRD_APPEARANCE);    
 }
 
 

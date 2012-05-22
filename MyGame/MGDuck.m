@@ -35,9 +35,9 @@ static CGFloat MGDuckColorValues[16] ={
     //touchEvents contiene todos los toques o deslizamientos que se an hecho en pantalla
     NSSet *touchesSet = [self.sceneController.inputViewController touchEvents];
     for (MGTouch *atouch in touchesSet) {
-        NSLog(@"%@", [atouch description]);
-        NSLog(@"screenRectX: %d to %d", (int)self.screenRect.origin.x,  (int)self.screenRect.origin.x+(int)CGRectGetWidth(self.screenRect));
-        NSLog(@"screenRectY: %d to %d", (int)self.screenRect.origin.y,  (int)self.screenRect.origin.y+(int)CGRectGetHeight(self.screenRect));
+        //NSLog(@"%@", [atouch description]);
+        //NSLog(@"screenRectX: %d to %d", (int)self.screenRect.origin.x,  (int)self.screenRect.origin.x+(int)CGRectGetWidth(self.screenRect));
+        //NSLog(@"screenRectY: %d to %d", (int)self.screenRect.origin.y,  (int)self.screenRect.origin.y+(int)CGRectGetHeight(self.screenRect));
         if (atouch.phase == UITouchPhaseBegan && atouch.numberOfFingersOnTheScreen == 1) {
             if (CGRectContainsPoint(self.screenRect, atouch.location)) {
                 taken = YES;
