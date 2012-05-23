@@ -1,17 +1,16 @@
 //
-//  MGMultipleLeafGenerator.m
+//  MGMultipleBeeGenerator.m
 //  MyGame
 //
-//  Created by Marina Osés Merino on 18/05/12.
+//  Created by Marina Osés Merino on 23/05/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MGMultipleLeafGenerator.h"
+#import "MGMultipleBeeGenerator.h"
 
 #import "MGSceneController.h"
 
-@implementation MGMultipleLeafGenerator
-
+@implementation MGMultipleBeeGenerator
 @synthesize sceneController = _sceneController;
 @synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
 
@@ -27,19 +26,19 @@
 
 //Crea una oleada de pájaros rojos, cuyo número de objetos se calcula aleatoriamente entre un mínimo y un máximo definidos en el archivo de configuración
 - (NSArray *)createWave {
-    NSMutableArray *arrayWithLeavesWave = [[NSMutableArray alloc] init];
-    NSInteger leavesToAppear = RANDOM_INT(MIN_LEAVES_TO_APPEAR, MAX_LEAVES_TO_APPEAR);
-    NSInteger leavesCount;
-    for (leavesCount = 0; leavesCount < leavesToAppear; leavesCount++) {
-         MGLeaf *leafToAdd = [[MGLeaf alloc] initWithSceneController:self.sceneController SceneObjectDestroyer:self.sceneObjectDestroyer];  
-        [arrayWithLeavesWave addObject:leafToAdd];
-        [leafToAdd release];
+    NSMutableArray *arrayWithBeesWave = [[NSMutableArray alloc] init];
+    NSInteger beesToAppear = RANDOM_INT(MIN_BEES_TO_APPEAR, MAX_BEES_TO_APPEAR);
+    NSInteger beesCount;
+    for (beesCount = 0; beesCount < beesToAppear; beesCount++) {
+        MGBee *beeToAdd = [[MGBee alloc] initWithSceneController:self.sceneController SceneObjectDestroyer:self.sceneObjectDestroyer];  
+        [arrayWithBeesWave addObject:beeToAdd];
+        [beeToAdd release];
     }
-    return [arrayWithLeavesWave autorelease];
+    return [arrayWithBeesWave autorelease];
 }
 
 - (CGFloat)getWaitTimeToNextWave {
-    return RANDOM_FLOAT(MINSEC_TO_LEAF_APPEARANCE, MAXSEC_TO_LEAF_APPEARANCE);
+    return RANDOM_FLOAT(MINSEC_TO_BEE_APPEARANCE, MAXSEC_TO_BEE_APPEARANCE);
 }
 
 - (void)dealloc {
@@ -49,6 +48,4 @@
 }
 
 
-
 @end
-

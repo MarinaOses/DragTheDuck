@@ -28,6 +28,9 @@
 		9CAE9C891566656700C88B50 /* MGTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C881566656700C88B50 /* MGTimeController.m */; };
 		9CAE9C8C1566720800C88B50 /* MGMultipleLeafGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C8B1566720800C88B50 /* MGMultipleLeafGenerator.m */; };
 		9CC1236B156A3BB4005EABD0 /* MGNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1236A156A3BB4005EABD0 /* MGNotification.m */; };
+		9CC1236F156BBA9F005EABD0 /* MGBee.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1236E156BBA9F005EABD0 /* MGBee.m */; };
+		9CC12372156BC29F005EABD0 /* MGStoppedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC12371156BC29E005EABD0 /* MGStoppedObject.m */; };
+		9CC12379156CE615005EABD0 /* MGMultipleBeeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC12378156CE615005EABD0 /* MGMultipleBeeGenerator.m */; };
 		9CE04F4D151380CF00185442 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F4C151380CF00185442 /* UIKit.framework */; };
 		9CE04F4F151380CF00185442 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F4E151380CF00185442 /* Foundation.framework */; };
 		9CE04F51151380CF00185442 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F50151380CF00185442 /* CoreGraphics.framework */; };
@@ -88,6 +91,12 @@
 		9CAE9C8B1566720800C88B50 /* MGMultipleLeafGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMultipleLeafGenerator.m; sourceTree = "<group>"; };
 		9CC12369156A3BB4005EABD0 /* MGNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGNotification.h; sourceTree = "<group>"; };
 		9CC1236A156A3BB4005EABD0 /* MGNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGNotification.m; sourceTree = "<group>"; };
+		9CC1236D156BBA9E005EABD0 /* MGBee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGBee.h; sourceTree = "<group>"; };
+		9CC1236E156BBA9F005EABD0 /* MGBee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGBee.m; sourceTree = "<group>"; };
+		9CC12370156BC29D005EABD0 /* MGStoppedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGStoppedObject.h; sourceTree = "<group>"; };
+		9CC12371156BC29E005EABD0 /* MGStoppedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGStoppedObject.m; sourceTree = "<group>"; };
+		9CC12377156CE615005EABD0 /* MGMultipleBeeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMultipleBeeGenerator.h; sourceTree = "<group>"; };
+		9CC12378156CE615005EABD0 /* MGMultipleBeeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMultipleBeeGenerator.m; sourceTree = "<group>"; };
 		9CE04F48151380CF00185442 /* MyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CE04F4C151380CF00185442 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CE04F4E151380CF00185442 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -139,6 +148,8 @@
 				9CAE9C78156253FC00C88B50 /* MGDuck.m */,
 				9CAE9C831565285600C88B50 /* MGLeaf.h */,
 				9CAE9C841565285600C88B50 /* MGLeaf.m */,
+				9CC1236D156BBA9E005EABD0 /* MGBee.h */,
+				9CC1236E156BBA9F005EABD0 /* MGBee.m */,
 			);
 			name = "Scene Objects";
 			sourceTree = "<group>";
@@ -192,6 +203,8 @@
 				9CAE9C7B156264FA00C88B50 /* MGMultipleDuckGenerator.m */,
 				9CAE9C8A1566720800C88B50 /* MGMultipleLeafGenerator.h */,
 				9CAE9C8B1566720800C88B50 /* MGMultipleLeafGenerator.m */,
+				9CC12377156CE615005EABD0 /* MGMultipleBeeGenerator.h */,
+				9CC12378156CE615005EABD0 /* MGMultipleBeeGenerator.m */,
 			);
 			name = Generators;
 			sourceTree = "<group>";
@@ -260,6 +273,8 @@
 				9CE04F641513CCBA00185442 /* EAGLView.m */,
 				9C15DD2315458A1E0095FBED /* MGSceneObject.h */,
 				9C15DD2415458A1F0095FBED /* MGSceneObject.m */,
+				9CC12370156BC29D005EABD0 /* MGStoppedObject.h */,
+				9CC12371156BC29E005EABD0 /* MGStoppedObject.m */,
 				9CAE9C691557F28600C88B50 /* MGMobileObject.h */,
 				9CAE9C6A1557F28600C88B50 /* MGMobileObject.m */,
 				9C15DD6F154E9A860095FBED /* Scene Objects */,
@@ -385,6 +400,9 @@
 				9CAE9C891566656700C88B50 /* MGTimeController.m in Sources */,
 				9CAE9C8C1566720800C88B50 /* MGMultipleLeafGenerator.m in Sources */,
 				9CC1236B156A3BB4005EABD0 /* MGNotification.m in Sources */,
+				9CC1236F156BBA9F005EABD0 /* MGBee.m in Sources */,
+				9CC12372156BC29F005EABD0 /* MGStoppedObject.m in Sources */,
+				9CC12379156CE615005EABD0 /* MGMultipleBeeGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,9 +18,10 @@
         _sceneObjectDestroyer = [[MGSceneObjectDestroyer alloc] init];
         sceneObjects = [[NSMutableArray alloc] init];
         self.timeController = time_controller;
-        timedMultipleObjectGeneratorForDucks = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:0 WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer] TimeController:time_controller];
-        timedMultipleObjectGeneratorForBirds = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:1 WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer ] TimeController:time_controller];
-        timedMultipleObjectGeneratorForLeaves = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:2 WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer ] TimeController:time_controller];
+        timedMultipleObjectGeneratorForDucks = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:DUCKS WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer] TimeController:time_controller];
+        timedMultipleObjectGeneratorForBirds = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:BIRDS WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer ] TimeController:time_controller];
+        timedMultipleObjectGeneratorForLeaves = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:LEAVES WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer ] TimeController:time_controller];
+        timedMultipleObjectGeneratorForBees = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:BEES WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer ] TimeController:time_controller];
     }
     return self;
 }
@@ -36,6 +37,7 @@
     [timedMultipleObjectGeneratorForDucks setNextTimeToAppear];
     [timedMultipleObjectGeneratorForBirds setNextTimeToAppear];
     [timedMultipleObjectGeneratorForLeaves setNextTimeToAppear];
+    [timedMultipleObjectGeneratorForBees setNextTimeToAppear];
 }
 
 - (void)updatePlayState {
@@ -51,6 +53,11 @@
     if ([[timedMultipleObjectGeneratorForLeaves objectsToAdd] count] > 0) {
         [sceneObjects addObjectsFromArray:[timedMultipleObjectGeneratorForLeaves objectsToAdd]];
         [timedMultipleObjectGeneratorForLeaves clearObjectsToAdd];
+    }
+    
+    if ([[timedMultipleObjectGeneratorForBees objectsToAdd] count] > 0) {
+        [sceneObjects addObjectsFromArray:[timedMultipleObjectGeneratorForBees objectsToAdd]];
+        [timedMultipleObjectGeneratorForBees clearObjectsToAdd];
     }
 
     [sceneObjects makeObjectsPerformSelector:@selector(update)];    
@@ -71,6 +78,7 @@
     [timedMultipleObjectGeneratorForDucks release];
     [timedMultipleObjectGeneratorForBirds release];
     [timedMultipleObjectGeneratorForLeaves release];
+    [timedMultipleObjectGeneratorForBees release];
     [_timeController release];
     [_sceneObjectDestroyer release];
     [sceneObjects release];

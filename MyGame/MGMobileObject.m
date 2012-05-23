@@ -26,6 +26,12 @@ static CGFloat MGMobileVertexes[8] = {
     0.5, 0.5
 };
 
+static CGFloat MGMobileColorValues[16] ={
+    0.0, 0.0, 0.0, 1.0, 
+    0.0, 0.0, 0.0, 1.0, 
+    0.0, 0.0, 0.0, 1.0, 
+    0.0, 0.0, 0.0, 1.0
+};
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer RangeForScale:(NSRange)scale_range RangeForSpeed:(NSRange)speed_range Direction:(int)direction {
@@ -35,7 +41,7 @@ static CGFloat MGMobileVertexes[8] = {
         self.mesh = meshToAssign;
         [meshToAssign release];
         self.mesh.colorSize = MGMobileColorSize;
-        
+        self.mesh.colors = MGMobileColorValues;
         self.scale = [self randomScaleInRange:scale_range];
         self.translation = [self randomTranslationOnSide:-direction];
         self.speed = [self randomSpeedInRange:speed_range WithDirection:direction];

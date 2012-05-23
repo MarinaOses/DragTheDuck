@@ -19,6 +19,9 @@ static inline MGPoint MGPointMake(CGFloat x, CGFloat y, CGFloat z) {
     return (MGPoint) {x, y, z};
 }
 
+static inline MGPoint MGPointZero(){
+    return (MGPoint) {0.0, 0.0, 0.0};
+}
 
 
 #endif

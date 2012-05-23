@@ -10,6 +10,8 @@
 
 #import "MGSceneController.h"
 
+
+
 @implementation MGTimedMultipleObjectGenerator
 
 @synthesize objectsToAdd = _objectsToAdd;
@@ -29,14 +31,17 @@
 
 + (id<MGGenerator>)createSpecificMGGenerator:(int)type WithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {
     
-    if (type == 0) {
+    if (type == DUCKS) {
         return [[[MGMultipleDuckGenerator alloc] initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer] autorelease];
     }
-    else if (type == 1) {
+    else if (type == BIRDS) {
         return [[[MGMultipleBirdGenerator alloc] initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer] autorelease];
     }
-    else {
+    else if (type == LEAVES){
         return [[[MGMultipleLeafGenerator alloc] initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer] autorelease];
+    }
+    else {
+        return [[[MGMultipleBeeGenerator alloc] initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer] autorelease];
     }
 }
 

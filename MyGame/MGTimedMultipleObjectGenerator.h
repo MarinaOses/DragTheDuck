@@ -10,7 +10,15 @@
 #import "MGMultipleDuckGenerator.h"
 #import "MGMultipleBirdGenerator.h"
 #import "MGMultipleLeafGenerator.h"
+#import "MGMultipleBeeGenerator.h"
 #import "MGTimeController.h"
+
+
+#define DUCKS 0
+#define BIRDS 1
+#define LEAVES 2
+#define BEES 3
+
 
 @class MGSceneController;
 

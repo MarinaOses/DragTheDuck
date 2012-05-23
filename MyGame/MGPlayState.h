@@ -14,6 +14,7 @@
     MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForDucks;
     MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForBirds;
     MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForLeaves;
+    MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForBees;
     MGSceneObjectDestroyer *_sceneObjectDestroyer;
     MGTimeController *_timeController;
     NSMutableArray *sceneObjects;
