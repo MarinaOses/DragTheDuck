@@ -30,6 +30,10 @@ static CGFloat MGDuckColorValues[16] ={
 }
 
 
+- (void)collideWith:(MGSceneObject *)scene_object {
+    
+}
+
 - (void)update {
     //Ha habido algún toque?
     //touchEvents contiene todos los toques o deslizamientos que se an hecho en pantalla

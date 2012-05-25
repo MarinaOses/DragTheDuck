@@ -11,6 +11,7 @@
 #import "MGConfiguration.h"
 #import "MGMesh.h"
 
+@class MGCollider;
 @class MGSceneController;
 
 @interface MGSceneObject : NSObject {
@@ -27,7 +28,11 @@
     
     BOOL taken;
     
+    CGFloat *_matrix;
+    
     MGSceneController *_sceneController;
+    
+    MGCollider *_collider;
     
 }
 
@@ -38,7 +43,9 @@
 @property (nonatomic, assign) CGRect meshBounds; //NO @synthesize
 @property (nonatomic, assign) CGRect screenRect; //NO @synthesize
 @property (nonatomic, retain) MGMesh *mesh;
+@property (nonatomic, assign) CGFloat *matrix;
 @property (nonatomic, retain) MGSceneController *sceneController;
+@property (nonatomic, retain) MGCollider *collider;
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;

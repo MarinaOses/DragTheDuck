@@ -7,10 +7,11 @@
 //
 
 #import "MGMobileObject.h"
+#import "MGCollisionable.h"
 
 @class MGSceneController;
 
-@interface MGDuck : MGMobileObject {
+@interface MGDuck : MGMobileObject <MGCollisionable>{
     
 }
 

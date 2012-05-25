@@ -16,13 +16,16 @@
 
 
 @interface MGMesh : NSObject {
-    GLfloat *_vertexes;
-    GLfloat *_colors;
+    GLfloat *vertexes;
+    GLfloat *colors;
     
-    GLenum _renderStyle;
-    NSInteger _vertexCount;
-    NSInteger _vertexSize;
-    NSInteger _colorSize;
+    GLenum renderStyle;
+    NSInteger vertexCount;
+    NSInteger vertexSize;
+    NSInteger colorSize;
+    
+    MGPoint centroid;
+    CGFloat radius;
 }
 
 @property (nonatomic, assign) GLfloat *vertexes;
@@ -31,6 +34,9 @@
 @property (nonatomic, assign) NSInteger vertexCount;
 @property (nonatomic, assign) NSInteger vertexSize;
 @property (nonatomic, assign) GLenum renderStyle;
+@property (nonatomic, assign) MGPoint centroid;
+@property (nonatomic, assign) CGFloat radius;
+
 
 - (id)initWithVertexes:(GLfloat *)vert vertexCount:(NSInteger)vertCount vertexSize:(NSInteger)vertSize renderStyle:(GLenum)style;
 - (void)render;

@@ -8,7 +8,7 @@
 
 #import "MGSceneObject.h"
 #import "MGSceneController.h"
-
+#import "MGCollider.h"
 
 @implementation MGSceneObject 
 
@@ -17,6 +17,8 @@
 @synthesize translation = _translation;
 @synthesize rotation = _rotation;
 @synthesize scale = _scale;
+@synthesize matrix = _matrix;
+@synthesize collider = _collider;
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller {
@@ -25,9 +27,9 @@
         self.translation = MGPointMake(0.0, 0.0, 0.0);
         self.rotation = MGPointMake(0.0, 0.0, 0.0);
         self.scale = MGPointMake(1.0, 1.0, 1.0);
-        
+        self.matrix = (CGFloat *)malloc(16 * sizeof(CGFloat));
+
         self.sceneController = scene_controller;
-        
         self.meshBounds = CGRectZero;
         self.screenRect = CGRectZero;
         
@@ -38,15 +40,10 @@
 
 
 - (void)update {
-
-}
-
-
-- (void)render {
     
     //No hace falta que hagamosesta orden, ya que a la única pila que podemos acceder es a MODELVIEW
     //glMatrixMode(GL_MODELVIEW);
-
+    
     //Se hace una copia de la matriz actual y se deja al inicio de la pila
     glPushMatrix();
     glLoadIdentity();
@@ -62,6 +59,25 @@
     //Escalar
     glScalef(self.scale.x, self.scale.y, self.scale.z);
     
+    //La matriz que se ha contruido se guarda en la variable matrix
+    glGetFloatv(GL_MODELVIEW_MATRIX, self.matrix);
+    
+    //Resauramos la matriz actual (quitamos la matriz de la cima de la pila)
+    glPopMatrix();
+}
+
+
+- (void)render {
+    
+    //No hace falta que hagamosesta orden, ya que a la única pila que podemos acceder es a MODELVIEW
+    //glMatrixMode(GL_MODELVIEW);
+    if (!self.mesh) {
+        return;
+    }
+    //Se hace una copia de la matriz actual y se deja al inicio de la pila
+    glPushMatrix();
+    glLoadIdentity();
+    glMultMatrixf(self.matrix);
     [self.mesh render];
     
     //Resauramos la matriz actual (quitamos la matriz de la cima de la pila)
@@ -95,7 +111,9 @@
 
 - (void)dealloc {
     [_mesh release];
+    free(_matrix);
     [_sceneController release];
+    [_collider release];
     [super dealloc];
 }
 

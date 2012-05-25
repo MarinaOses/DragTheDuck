@@ -8,14 +8,22 @@
 
 #import "MGMesh.h"
 
+@interface MGMesh()
+- (MGPoint)calculateCentroid;
+- (CGFloat)calculateRadiusWith:(MGPoint)mesh_centroid;
+@end
+
+
 @implementation MGMesh
 
-@synthesize vertexes = _vertexes;
-@synthesize colors = _colors;
-@synthesize colorSize = _colorSize;
-@synthesize vertexCount = _vertexCount;
-@synthesize vertexSize = _vertexSize;
-@synthesize renderStyle = _renderStyle;
+@synthesize vertexes;
+@synthesize colors; 
+@synthesize colorSize; 
+@synthesize vertexCount;
+@synthesize vertexSize; 
+@synthesize renderStyle;
+@synthesize centroid;
+@synthesize radius;
 
 - (id)initWithVertexes:(GLfloat *)vert vertexCount:(NSInteger)vertCount vertexSize:(NSInteger)vertSize renderStyle:(GLenum)style {
     self = [super init];
@@ -24,8 +32,51 @@
         self.vertexCount = vertCount;
         self.vertexSize = vertSize;
         self.renderStyle = style;
+        //centroid representa el centro de la esfera que recubre al objeto (collider)
+        self.centroid = [self calculateCentroid];
+        //radius representa la máxima distancia que puede obtenerse entre uno de los vértices del objeto y el centroide
+        self.radius = [self calculateRadiusWith:self.centroid];
     }
     return self;
+}
+
+//Se calcula la media de todos los vértices
+- (MGPoint)calculateCentroid {
+    CGFloat xTotal = 0;
+    CGFloat yTotal = 0;
+    CGFloat zTotal = 0;
+    //index marca la posición en la que empieza el vértice en el array.
+    NSInteger index;
+    for (index = 0; index < self.vertexCount; index++) {
+        NSInteger position = index * self.vertexSize;
+        xTotal += self.vertexes[position];
+        yTotal += self.vertexes[position + 1];
+        if (vertexSize > 2) {
+            zTotal += self.vertexes[position + 2];
+        }
+    }
+    return MGPointMake(xTotal/(CGFloat)self.vertexCount, yTotal/(CGFloat)self.vertexCount, zTotal/(CGFloat)self.vertexCount);
+}
+
+
+- (CGFloat)calculateRadiusWith:(MGPoint)mesh_centroid {
+    CGFloat rad = 0.0;
+    NSInteger index;
+    for (index = 0; index < self.vertexCount; index++) {
+        NSInteger position = index * self.vertexSize;
+        MGPoint vert;
+        if (self.vertexSize > 2) {
+            vert = MGPointMake(self.vertexes[position], self.vertexes[position+1], self.vertexes[position+2]);
+        }
+        else {
+            vert = MGPointMake(self.vertexes[position], self.vertexes[position+1], 0.0);
+        }
+        CGFloat thisRadius = MGPointDistance(mesh_centroid, vert);
+        if (rad < thisRadius) {
+            rad = thisRadius;
+        }
+    }
+    return rad;
 }
 
 

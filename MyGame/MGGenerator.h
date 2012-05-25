@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MGTimeController.h"
 
 @protocol MGGenerator <NSObject>
 @required

@@ -31,6 +31,7 @@
 		9CC1236F156BBA9F005EABD0 /* MGBee.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1236E156BBA9F005EABD0 /* MGBee.m */; };
 		9CC12372156BC29F005EABD0 /* MGStoppedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC12371156BC29E005EABD0 /* MGStoppedObject.m */; };
 		9CC12379156CE615005EABD0 /* MGMultipleBeeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC12378156CE615005EABD0 /* MGMultipleBeeGenerator.m */; };
+		9CC1237F156E5376005EABD0 /* MGCollider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1237E156E5376005EABD0 /* MGCollider.m */; };
 		9CE04F4D151380CF00185442 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F4C151380CF00185442 /* UIKit.framework */; };
 		9CE04F4F151380CF00185442 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F4E151380CF00185442 /* Foundation.framework */; };
 		9CE04F51151380CF00185442 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F50151380CF00185442 /* CoreGraphics.framework */; };
@@ -44,6 +45,7 @@
 		9CEEFF1A1531C37F0004D9AA /* MGSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEEFF191531C37F0004D9AA /* MGSceneController.m */; };
 		9CEEFF291538560A0004D9AA /* MGMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEEFF281538560A0004D9AA /* MGMesh.m */; };
 		9CEEFF2D1539941F0004D9AA /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CEEFF2C1539941F0004D9AA /* MainWindow.xib */; };
+		9CF26FCF156FA7A000D58C62 /* MGCollisionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FCE156FA7A000D58C62 /* MGCollisionController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +99,8 @@
 		9CC12371156BC29E005EABD0 /* MGStoppedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGStoppedObject.m; sourceTree = "<group>"; };
 		9CC12377156CE615005EABD0 /* MGMultipleBeeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMultipleBeeGenerator.h; sourceTree = "<group>"; };
 		9CC12378156CE615005EABD0 /* MGMultipleBeeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMultipleBeeGenerator.m; sourceTree = "<group>"; };
+		9CC1237D156E5376005EABD0 /* MGCollider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCollider.h; sourceTree = "<group>"; };
+		9CC1237E156E5376005EABD0 /* MGCollider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCollider.m; sourceTree = "<group>"; };
 		9CE04F48151380CF00185442 /* MyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CE04F4C151380CF00185442 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CE04F4E151380CF00185442 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -119,6 +123,9 @@
 		9CEEFF281538560A0004D9AA /* MGMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMesh.m; sourceTree = "<group>"; };
 		9CEEFF2A1538960C0004D9AA /* MGPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGPoint.h; sourceTree = "<group>"; };
 		9CEEFF2C1539941F0004D9AA /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		9CF26FCD156FA7A000D58C62 /* MGCollisionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCollisionController.h; sourceTree = "<group>"; };
+		9CF26FCE156FA7A000D58C62 /* MGCollisionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCollisionController.m; sourceTree = "<group>"; };
+		9CF26FD1156FB1CD00D58C62 /* MGCollisionable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCollisionable.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +188,7 @@
 				9CAE9C7D1564F23D00C88B50 /* MGGenerator.h */,
 				9CA68A23152C6F7B008E11AF /* MGConfiguration.h */,
 				9CEEFF2A1538960C0004D9AA /* MGPoint.h */,
+				9CF26FD1156FB1CD00D58C62 /* MGCollisionable.h */,
 			);
 			name = "Configuration Files";
 			sourceTree = "<group>";
@@ -231,6 +239,17 @@
 			name = "Time Controller";
 			sourceTree = "<group>";
 		};
+		9CC1237C156E5342005EABD0 /* Collisions */ = {
+			isa = PBXGroup;
+			children = (
+				9CF26FCD156FA7A000D58C62 /* MGCollisionController.h */,
+				9CF26FCE156FA7A000D58C62 /* MGCollisionController.m */,
+				9CC1237D156E5376005EABD0 /* MGCollider.h */,
+				9CC1237E156E5376005EABD0 /* MGCollider.m */,
+			);
+			name = Collisions;
+			sourceTree = "<group>";
+		};
 		9CE04F3D151380CF00185442 = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +297,7 @@
 				9CAE9C691557F28600C88B50 /* MGMobileObject.h */,
 				9CAE9C6A1557F28600C88B50 /* MGMobileObject.m */,
 				9C15DD6F154E9A860095FBED /* Scene Objects */,
+				9CC1237C156E5342005EABD0 /* Collisions */,
 				9CAE9C861566650400C88B50 /* Time Controller */,
 				9CAE9C6C155A7CBA00C88B50 /* Generators */,
 				9CAE9C73155BE99200C88B50 /* Destroyers */,
@@ -403,6 +423,8 @@
 				9CC1236F156BBA9F005EABD0 /* MGBee.m in Sources */,
 				9CC12372156BC29F005EABD0 /* MGStoppedObject.m in Sources */,
 				9CC12379156CE615005EABD0 /* MGMultipleBeeGenerator.m in Sources */,
+				9CC1237F156E5376005EABD0 /* MGCollider.m in Sources */,
+				9CF26FCF156FA7A000D58C62 /* MGCollisionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
