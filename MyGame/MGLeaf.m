@@ -17,8 +17,6 @@
 - (CGFloat)randomLifeTime;
 @end
 
-@implementation MGLeaf
-
 
 static CGFloat MGLeafColorValues[16] ={
     0.0, 1.0, 0.0, 1.0, 
@@ -26,6 +24,12 @@ static CGFloat MGLeafColorValues[16] ={
     0.0, 1.0, 0.0, 1.0, 
     0.0, 1.0, 0.0, 1.0
 };
+
+
+@implementation MGLeaf
+
+
+
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {

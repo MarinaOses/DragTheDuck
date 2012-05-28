@@ -17,11 +17,12 @@
     MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForBees;
     MGSceneObjectDestroyer *_sceneObjectDestroyer;
     MGTimeController *_timeController;
-    NSMutableArray *sceneObjects;
+    NSMutableArray *_sceneObjects;
 }
 
 @property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
 @property (nonatomic, retain) MGTimeController *timeController;
+@property (nonatomic, retain) NSMutableArray *sceneObjects;
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller TimeController:(MGTimeController *)time_controller;

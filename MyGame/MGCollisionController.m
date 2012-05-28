@@ -10,36 +10,40 @@
 
 @implementation MGCollisionController
 
-- (id)init {
+@synthesize sceneObjects = _sceneObjects;
+@synthesize allColliders = _allColliders;
+@synthesize collidersToCheck = _collidersToCheck;
+
+- (id)initWithSceneObjects:(NSMutableArray *)scene_objects {
     self = [super init];
     if (self) {
-        sceneObjects = [[NSArray alloc] init];
-        allColliders = [[NSMutableArray alloc] init];
-        collidersToCheck = [[NSMutableArray alloc] init];
+        self.sceneObjects = scene_objects;
+        _allColliders = [[NSMutableArray alloc] init];
+        _collidersToCheck = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
 //Se crean las tablas allColliders y collidersToCheck a partir de sceneObjects
 - (void)handleCollisions {
-    [allColliders removeAllObjects];
-    [collidersToCheck removeAllObjects];
-    for (MGSceneObject *obj in sceneObjects) {
+    [self.allColliders removeAllObjects];
+    [self.collidersToCheck removeAllObjects];
+    for (MGSceneObject *obj in self.sceneObjects) {
         if (obj.collider != nil) {
-            [allColliders addObject:obj];
+            [self.allColliders addObject:obj];
             if (obj.collider.checkForCollision) {
-                [collidersToCheck addObject:obj];
+                [self.collidersToCheck addObject:obj];
             }
         }
     }
     //Se comprueba si alguno de los objetos de la escena está colisionando con otro
-    for (MGSceneObject *colliderObject in collidersToCheck) {
-        for (MGSceneObject *collideeObject in allColliders) {
+    for (MGSceneObject *colliderObject in self.collidersToCheck) {
+        for (MGSceneObject *collideeObject in self.allColliders) {
             //Si los objetos coinciden se pasa a la siguiente vuelta
             if (colliderObject == collideeObject) {
                 continue;
             }
-            if ([colliderObject.collider doesCollideWithCollider:collideeObject.collider]) {
+            if ([colliderObject.collider doesCollideWithSceneObject:collideeObject]) {
                 if ([colliderObject conformsToProtocol:@protocol(MGCollisionable)]) {
                     id<MGCollisionable>adaptedColliderObject = (id<MGCollisionable>)colliderObject;
                     [adaptedColliderObject collideWith:collideeObject];
@@ -50,9 +54,9 @@
 }
 
 - (void)dealloc {
-    [sceneObjects release];
-    [allColliders release];
-    [collidersToCheck release];
+    [_sceneObjects release];
+    [_allColliders release];
+    [_collidersToCheck release];
     [super dealloc];
 }
 

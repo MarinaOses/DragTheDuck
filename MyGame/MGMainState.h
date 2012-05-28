@@ -14,7 +14,7 @@
 @class MGSceneController;
 
 @interface MGMainState : MGState {
-    NSMutableArray *interfaceObjects;    
+    NSMutableArray *sceneObjects;    
 }
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;

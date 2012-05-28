@@ -20,12 +20,6 @@
 
 @end
 
-@implementation MGButton
-
-@synthesize target = _target;
-@synthesize buttonBadAction = _buttonBadAction;
-@synthesize buttonGoodAction = _buttonGoodAction;
-
 static NSInteger MGSquareVertexSize = 2;
 static NSInteger MGSquareColorSize = 4;
 static GLenum MGSquareOutlineRenderStyle = GL_LINE_LOOP;
@@ -36,6 +30,14 @@ static CGFloat MGSquareOutlineColorValues[16] ={1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.
 static GLenum MGSquareFillRenderStyle = GL_TRIANGLE_STRIP;
 static NSInteger MGSquareFillVertexesCount = 4;
 static CGFloat MGSquareFillVertexes[8] = {-0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5};
+
+
+
+@implementation MGButton
+
+@synthesize target = _target;
+@synthesize buttonBadAction = _buttonBadAction;
+@synthesize buttonGoodAction = _buttonGoodAction;
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller {

@@ -11,12 +11,13 @@
 @implementation MGPlayState
 @synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
 @synthesize timeController = _timeController;
+@synthesize sceneObjects = _sceneObjects;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller TimeController:(MGTimeController *)time_controller {
     self = [super initWithSceneController:scene_controller];
     if (self) {
         _sceneObjectDestroyer = [[MGSceneObjectDestroyer alloc] init];
-        sceneObjects = [[NSMutableArray alloc] init];
+        _sceneObjects = [[NSMutableArray alloc] init];
         self.timeController = time_controller;
         timedMultipleObjectGeneratorForDucks = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:DUCKS WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer] TimeController:time_controller];
         timedMultipleObjectGeneratorForBirds = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:BIRDS WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer ] TimeController:time_controller];
@@ -42,31 +43,31 @@
 
 - (void)updatePlayState {
     if ([[timedMultipleObjectGeneratorForDucks objectsToAdd] count] > 0) {
-        [sceneObjects addObjectsFromArray:[timedMultipleObjectGeneratorForDucks objectsToAdd]];
+        [self.sceneObjects addObjectsFromArray:[timedMultipleObjectGeneratorForDucks objectsToAdd]];
         [timedMultipleObjectGeneratorForDucks clearObjectsToAdd];
     }
     if ([[timedMultipleObjectGeneratorForBirds objectsToAdd] count] > 0) {
-        [sceneObjects addObjectsFromArray:[timedMultipleObjectGeneratorForBirds objectsToAdd]];
+        [self.sceneObjects addObjectsFromArray:[timedMultipleObjectGeneratorForBirds objectsToAdd]];
         [timedMultipleObjectGeneratorForBirds clearObjectsToAdd];
     }
     
     if ([[timedMultipleObjectGeneratorForLeaves objectsToAdd] count] > 0) {
-        [sceneObjects addObjectsFromArray:[timedMultipleObjectGeneratorForLeaves objectsToAdd]];
+        [self.sceneObjects addObjectsFromArray:[timedMultipleObjectGeneratorForLeaves objectsToAdd]];
         [timedMultipleObjectGeneratorForLeaves clearObjectsToAdd];
     }
     
     if ([[timedMultipleObjectGeneratorForBees objectsToAdd] count] > 0) {
-        [sceneObjects addObjectsFromArray:[timedMultipleObjectGeneratorForBees objectsToAdd]];
+        [self.sceneObjects addObjectsFromArray:[timedMultipleObjectGeneratorForBees objectsToAdd]];
         [timedMultipleObjectGeneratorForBees clearObjectsToAdd];
     }
 
-    [sceneObjects makeObjectsPerformSelector:@selector(update)];    
+    [self.sceneObjects makeObjectsPerformSelector:@selector(update)];    
 }
 
 
 - (void)renderPlayState {
-    [sceneObjects makeObjectsPerformSelector:@selector(render)];    
-    [self.sceneObjectDestroyer destroyFrom:sceneObjects];
+    [self.sceneObjects makeObjectsPerformSelector:@selector(render)];    
+    [self.sceneObjectDestroyer destroyFrom:self.sceneObjects];
     //NSLog(@"sceneObjects count = %d",[sceneObjects count]);
 }
 
@@ -81,7 +82,7 @@
     [timedMultipleObjectGeneratorForBees release];
     [_timeController release];
     [_sceneObjectDestroyer release];
-    [sceneObjects release];
+    [_sceneObjects release];
     [super dealloc];
 }
 

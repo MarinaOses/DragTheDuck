@@ -14,10 +14,15 @@
     CGFloat maxRadius;
 }
 
+@property (nonatomic, assign) MGPoint transformedCentroid;
 @property (nonatomic, assign) BOOL checkForCollision;
 @property (nonatomic, assign) CGFloat maxRadius;
 
 
-- (BOOL)doesCollideWithCollider:(MGCollider *)aCollider;
+
+//- (BOOL)doesCollideWithCollider:(MGCollider *)aCollider;
+- (BOOL)doesCollideWithSceneObject:(MGSceneObject *)scene_object;
+
+- (void)updateWith:(MGSceneObject *)scene_object;
 
 @end

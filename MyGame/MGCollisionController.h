@@ -11,11 +11,17 @@
 #import "MGCollisionable.h"
 
 @interface MGCollisionController : NSObject {
-    NSArray *sceneObjects;
-    NSMutableArray *allColliders; //Colliders + collidees
-    NSMutableArray *collidersToCheck; //Only colliders
+    NSArray *_sceneObjects;
+    NSMutableArray *_allColliders; //Colliders + collidees
+    NSMutableArray *_collidersToCheck; //Only colliders
 }
 
+@property (nonatomic, retain) NSArray *sceneObjects;
+@property (nonatomic, retain) NSMutableArray *allColliders;
+@property (nonatomic, retain) NSMutableArray *collidersToCheck;
 
+
+- (id)initWithSceneObjects:(NSMutableArray *)scene_objects;
+- (void)handleCollisions;
 
 @end

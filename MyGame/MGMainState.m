@@ -16,7 +16,7 @@
 - (id)initWithSceneController:(MGSceneController *)scene_controller {
     self = [super initWithSceneController:scene_controller];
     if (self) {
-        interfaceObjects = [[NSMutableArray alloc] init];
+        sceneObjects = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -25,7 +25,7 @@
 
 - (void)loadMainState {
     //Se borran todos los objetos que pudiera haber previamente
-    [interfaceObjects removeAllObjects];
+    [sceneObjects removeAllObjects];
     
     //************************************
     //Creación de botones
@@ -38,7 +38,7 @@
     playButton.target = self;
     playButton.buttonGoodAction = @selector(goodTouchOfPlayButtonIsDone);
     playButton.buttonBadAction = @selector(badTouchOfPlayButtonIsDone);
-    [interfaceObjects addObject:playButton];
+    [sceneObjects addObject:playButton];
     [playButton release];
     
     //SOUNDBUTTON
@@ -48,7 +48,7 @@
     soundButton.target = self;
     soundButton.buttonGoodAction = @selector(goodTouchOfSoundButtonIsDone);
     soundButton.buttonBadAction = @selector(badTouchOfSoundButtonIsDone);
-    [interfaceObjects addObject:soundButton];
+    [sceneObjects addObject:soundButton];
     [soundButton release];
     
     //HELPBUTTON
@@ -58,19 +58,19 @@
     helpButton.target = self;
     helpButton.buttonGoodAction = @selector(goodTouchOfHelpButtonIsDone);
     helpButton.buttonBadAction = @selector(badTouchOfHelpButtonIsDone);
-    [interfaceObjects addObject:helpButton];
+    [sceneObjects addObject:helpButton];
     [helpButton release];
 }
 
 
 - (void)updateMainState {
-    [interfaceObjects makeObjectsPerformSelector:@selector(update)];
+    [sceneObjects makeObjectsPerformSelector:@selector(update)];
 }
 
 
 //Los botones hacen el render() de MGSceneObjects
 - (void)renderMainState {
-    [interfaceObjects makeObjectsPerformSelector:@selector(render)];
+    [sceneObjects makeObjectsPerformSelector:@selector(render)];
 }
 
 
@@ -103,7 +103,7 @@
 
 
 - (void)dealloc {
-    [interfaceObjects release];
+    [sceneObjects release];
     [super dealloc];
 }
 

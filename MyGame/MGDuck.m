@@ -10,9 +10,6 @@
 
 #import "MGSceneController.h"
 
-@implementation MGDuck
-
-
 static CGFloat MGDuckColorValues[16] ={
     1.0, 1.0, 0.0, 1.0, 
     1.0, 1.0, 0.0, 1.0, 
@@ -20,18 +17,41 @@ static CGFloat MGDuckColorValues[16] ={
     1.0, 1.0, 0.0, 1.0
 };
 
+@implementation MGDuck
+
+
+
+
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {
     self = [super initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer RangeForScale:NSMakeRange(MIN_DUCK_SCALE, MAX_DUCK_SCALE) RangeForSpeed:NSMakeRange(MIN_DUCK_SPEED, MAX_DUCK_SPEED) Direction:1];
     if (self) {        
         self.mesh.colors = MGDuckColorValues;
+        self.collider.checkForCollision = YES;
     }
     return self;
 }
 
 
 - (void)collideWith:(MGSceneObject *)scene_object {
-    
+    if (![scene_object isKindOfClass:[MGBird class]] && ![scene_object isKindOfClass:[MGBee class]] && ![scene_object isKindOfClass:[MGLeaf class]]) {
+        return;
+    }
+    if ([scene_object isKindOfClass:[MGBird class]]) {
+        self.collider.checkForCollision = NO;
+        //Animacion: igual no hace falta el remove
+        [self.sceneObjectDestroyer markToRemoveSceneObject:self];
+        //sumar a marcador "número de patos muertos"
+        
+    }
+    else if ([scene_object isKindOfClass:[MGBee class]]) {
+        [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
+        //comerzar poder de pato-abeja
+    }
+    else { //hoja
+        [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
+        //sumar marcador número de hojas
+    }
 }
 
 - (void)update {

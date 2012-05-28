@@ -10,8 +10,6 @@
 
 #import "MGSceneController.h"
 
-@implementation MGBird
-
 
 static CGFloat MGBirdColorValues[16] ={
     1.0, 0.0, 0.0, 1.0, 
@@ -19,6 +17,10 @@ static CGFloat MGBirdColorValues[16] ={
     1.0, 0.0, 0.0, 1.0, 
     1.0, 0.0, 0.0, 1.0
 };
+
+@implementation MGBird
+
+
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {

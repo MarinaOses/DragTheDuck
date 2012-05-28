@@ -115,6 +115,8 @@
 #define MAXSEC_TO_BEE_APPEARANCE 90
 
 
+//**********************************************************************************************
+#define DEBUG_DRAW_COLLIDERS 1
 
 
 #endif

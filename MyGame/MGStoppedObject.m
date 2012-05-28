@@ -10,15 +10,6 @@
 
 #import "MGSceneController.h"
 
-
-
-
-
-@implementation MGStoppedObject
-
-@synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
-@synthesize lifeTimeInUpdates;
-
 static NSInteger MGStoppedVertexSize = 2;
 static NSInteger MGStoppedColorSize = 4;
 static GLenum MGStoppedRenderStyle = GL_TRIANGLE_STRIP;
@@ -37,6 +28,13 @@ static CGFloat MGStoppedColorValues[16] ={
     0.0, 0.0, 0.0, 1.0
 };
 
+
+@implementation MGStoppedObject
+
+@synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
+@synthesize lifeTimeInUpdates;
+
+
 - (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {
     self = [super initWithSceneController:scene_controller];
     if (self) {
@@ -45,6 +43,9 @@ static CGFloat MGStoppedColorValues[16] ={
         [meshToAssign release];
         self.mesh.colorSize = MGStoppedColorSize;
         self.mesh.colors = MGStoppedColorValues;
+        
+        self.collider = [[MGCollider alloc] initWithSceneController:scene_controller];
+
         self.translation = MGPointZero();
         self.rotation = MGPointZero();
         self.scale = MGPointZero();

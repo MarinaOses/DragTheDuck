@@ -22,6 +22,7 @@
 @synthesize openGLView = _openGLView;
 @synthesize stateManager = _stateManager;
 @synthesize timeController = _timeController;
+@synthesize collisionController = _collisionController;
 
 
 
@@ -52,7 +53,9 @@
 - (void)loadScene {
     MGPlayState *playState = (MGPlayState *)self.stateManager.activeState;
     [playState loadPlayState];
-    
+    MGCollisionController *collisionControllerToAssign = [[MGCollisionController alloc] initWithSceneObjects:playState.sceneObjects];
+    self.collisionController = collisionControllerToAssign;
+    [collisionControllerToAssign release];
 }
 
 - (void)startScene {
@@ -104,7 +107,9 @@
     while (updateIterations >= SMALL_UPDATE_INTERVAL) {
         updateIterations -= SMALL_UPDATE_INTERVAL;
         [self updateScene];
+        [self.collisionController handleCollisions];
         [self.timeController anUpdateHappens];
+        
     }
     //El tiempo de animación que no ha podido introducirse en el render anterior y es sumado al siguiente tiempo de renderizado. 
     cyclesLeftOver = updateIterations;
@@ -138,6 +143,7 @@
     [_openGLView release];
     [_stateManager release];
     [_timeController release];
+    [_collisionController release];
     [super dealloc];
 }
 

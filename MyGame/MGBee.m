@@ -16,15 +16,16 @@
 - (CGFloat)randomLifeTime;
 @end
 
-
-@implementation MGBee
-
 static CGFloat MGBeeColorValues[16] ={
     1.0, 1.0, 0.0, 1.0, 
     0.0, 0.0, 0.0, 1.0, 
     1.0, 1.0, 0.0, 1.0, 
     0.0, 0.0, 0.0, 1.0
 };
+
+@implementation MGBee
+
+
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {
     self = [super initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer];

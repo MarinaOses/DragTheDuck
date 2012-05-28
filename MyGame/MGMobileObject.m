@@ -10,11 +10,6 @@
 
 #import "MGSceneController.h"
 
-@implementation MGMobileObject
-
-@synthesize speed = _speed;
-@synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
-
 static NSInteger MGMobileVertexSize = 2;
 static NSInteger MGMobileColorSize = 4;
 static GLenum MGMobileRenderStyle = GL_TRIANGLE_STRIP;
@@ -33,6 +28,11 @@ static CGFloat MGMobileColorValues[16] ={
     0.0, 0.0, 0.0, 1.0
 };
 
+@implementation MGMobileObject
+
+@synthesize speed = _speed;
+@synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
+
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer RangeForScale:(NSRange)scale_range RangeForSpeed:(NSRange)speed_range Direction:(int)direction {
     self = [super initWithSceneController:scene_controller];
@@ -42,6 +42,9 @@ static CGFloat MGMobileColorValues[16] ={
         [meshToAssign release];
         self.mesh.colorSize = MGMobileColorSize;
         self.mesh.colors = MGMobileColorValues;
+        
+        self.collider = [[MGCollider alloc] initWithSceneController:scene_controller];
+
         self.scale = [self randomScaleInRange:scale_range];
         self.translation = [self randomTranslationOnSide:-direction];
         self.speed = [self randomSpeedInRange:speed_range WithDirection:direction];

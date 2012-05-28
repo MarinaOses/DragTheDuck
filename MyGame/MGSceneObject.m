@@ -32,6 +32,7 @@
         self.sceneController = scene_controller;
         self.meshBounds = CGRectZero;
         self.screenRect = CGRectZero;
+        self.collider = nil;
         
     }
     return self;
@@ -64,6 +65,11 @@
     
     //Resauramos la matriz actual (quitamos la matriz de la cima de la pila)
     glPopMatrix();
+    
+    //Se hace el update de su correspondiente collider
+    if (self.collider != nil) {
+        [self.collider updateWith:self];
+    }
 }
 
 
@@ -82,6 +88,9 @@
     
     //Resauramos la matriz actual (quitamos la matriz de la cima de la pila)
     glPopMatrix();
+    if (self.collider != nil) {
+        [self.collider render];
+    }
     
 }
 
