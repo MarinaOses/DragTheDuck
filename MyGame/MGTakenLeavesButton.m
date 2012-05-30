@@ -19,7 +19,7 @@
     if (self) {
         
         self.scoreBoard = score_board;
-        previusTakenLeaves = 0;
+        previousTakenLeaves = 0;
         self.translation = MGPointMake(button_translation.x, button_translation.y, button_translation.z);
         self.rotation = MGPointMake(button_rotation.x, button_rotation.y, button_rotation.z);
         self.scale = MGPointMake(button_scale.x, button_scale.y, button_scale.z);
@@ -51,13 +51,14 @@
 
 - (void)checkIfShowerLayerHasToGoUp:(NSInteger)taken_leaves_now {
     if (taken_leaves_now < MAX_TAKEN_LEAVES) {
-        if (previusTakenLeaves < taken_leaves_now) {
+        if (previousTakenLeaves < taken_leaves_now) {
             [self.takenLeavesButtonShowerLayer decreaseHeight];
-            previusTakenLeaves = taken_leaves_now;
+            previousTakenLeaves = taken_leaves_now;
         }
     }
     else if (taken_leaves_now == MAX_TAKEN_LEAVES){
         isActive = YES;
+        self.scoreBoard.takenLeaves = 0;
         
     }
 }

@@ -70,14 +70,13 @@
         [self.sceneObjects addObjectsFromArray:[timedMultipleObjectGeneratorForBees objectsToAdd]];
         [timedMultipleObjectGeneratorForBees clearObjectsToAdd];
     }
-
+    [self.sceneObjectDestroyer destroyFrom:self.sceneObjects];
     [self.sceneObjects makeObjectsPerformSelector:@selector(update)];    
 }
 
 
 - (void)renderPlayState {
     [self.sceneObjects makeObjectsPerformSelector:@selector(render)];    
-    [self.sceneObjectDestroyer destroyFrom:self.sceneObjects];
     //NSLog(@"sceneObjects count = %d",[sceneObjects count]);
 }
 

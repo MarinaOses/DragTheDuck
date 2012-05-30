@@ -49,8 +49,8 @@ static CGFloat MGDuckColorValues[16] ={
     }
     else { //hoja
         if (!self.takenLeavesButton.isActive) {
-            [self.takenLeavesButton.scoreBoard addNewTakenLeaf];
             [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
+            [self.takenLeavesButton.scoreBoard addNewTakenLeaf];
         }
     }
 }

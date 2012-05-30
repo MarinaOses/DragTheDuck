@@ -14,7 +14,7 @@
     MGScoreBoard *_scoreBoard;
     MGTakenLeavesButtonShowerLayer *_takenLeavesButtonShowerLayer;
     BOOL isActive;
-    NSInteger previusTakenLeaves;
+    NSInteger previousTakenLeaves;
 }
 
 @property (nonatomic, retain) MGScoreBoard *scoreBoard;

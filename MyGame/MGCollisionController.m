@@ -40,13 +40,12 @@
     for (MGSceneObject *colliderObject in self.collidersToCheck) {
         for (MGSceneObject *collideeObject in self.allColliders) {
             //Si los objetos coinciden se pasa a la siguiente vuelta
-            if (colliderObject == collideeObject) {
-                continue;
-            }
-            if ([colliderObject.collider doesCollideWithSceneObject:collideeObject]) {
-                if ([colliderObject conformsToProtocol:@protocol(MGCollisionable)]) {
-                    id<MGCollisionable>adaptedColliderObject = (id<MGCollisionable>)colliderObject;
-                    [adaptedColliderObject collideWith:collideeObject];
+            if (colliderObject != collideeObject) {
+                if ([colliderObject.collider doesCollideWithSceneObject:collideeObject]) {
+                    if ([colliderObject conformsToProtocol:@protocol(MGCollisionable)]) {
+                        id<MGCollisionable>adaptedColliderObject = (id<MGCollisionable>)colliderObject;
+                        [adaptedColliderObject collideWith:collideeObject];
+                    }
                 }
             }
         }
