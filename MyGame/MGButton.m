@@ -13,11 +13,6 @@
 //nonatomic -- no serializable. 
 
 - (void)handleTouches;
-- (void)goodTouch;
-- (void)badTouch;
-- (void)setPressedVertexes;
-- (void)setNotPressedVertexes;
-
 @end
 
 static NSInteger MGSquareVertexSize = 2;

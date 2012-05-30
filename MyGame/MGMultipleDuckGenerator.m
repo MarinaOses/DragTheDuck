@@ -14,12 +14,14 @@
 
 @synthesize sceneController = _sceneController;
 @synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
+@synthesize takenLeavesButton = _takenLeavesButton;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {
+- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer takenLeavesButton:(MGTakenLeavesButton *)taken_leaves_button {
     self = [super init];
     if (self) {
         self.sceneController = scene_controller;
         self.sceneObjectDestroyer = scene_object_destroyer;
+        self.takenLeavesButton = taken_leaves_button;
     }
     return self;
 }
@@ -31,7 +33,7 @@
     NSInteger ducksToAppear = RANDOM_INT(MIN_DUCKS_TO_APPEAR, MAX_DUCKS_TO_APPEAR);
     NSInteger ducksCount;
     for (ducksCount = 0; ducksCount < ducksToAppear; ducksCount++) {
-        MGDuck *duckToAdd = [[MGDuck alloc] initWithSceneController:self.sceneController SceneObjectDestroyer:self.sceneObjectDestroyer];
+        MGDuck *duckToAdd = [[MGDuck alloc] initWithSceneController:self.sceneController SceneObjectDestroyer:self.sceneObjectDestroyer takenLeavesButton:self.takenLeavesButton];
         [arrayWithDucksWave addObject:duckToAdd];
         [duckToAdd release];
     }
@@ -46,6 +48,7 @@
 - (void)dealloc {
     [_sceneController release];
     [_sceneObjectDestroyer release];
+    [_takenLeavesButton release];
     [super dealloc];
 }
 

@@ -19,15 +19,14 @@ static CGFloat MGDuckColorValues[16] ={
 
 @implementation MGDuck
 
+@synthesize takenLeavesButton = _takenLeavesButton;
 
-
-
-
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {
+- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer takenLeavesButton:(MGTakenLeavesButton *)taken_leaves_button {
     self = [super initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer RangeForScale:NSMakeRange(MIN_DUCK_SCALE, MAX_DUCK_SCALE) RangeForSpeed:NSMakeRange(MIN_DUCK_SPEED, MAX_DUCK_SPEED) Direction:1];
     if (self) {        
         self.mesh.colors = MGDuckColorValues;
         self.collider.checkForCollision = YES;
+        self.takenLeavesButton = taken_leaves_button;
     }
     return self;
 }
@@ -49,8 +48,10 @@ static CGFloat MGDuckColorValues[16] ={
         //comerzar poder de pato-abeja
     }
     else { //hoja
-        [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
-        //sumar marcador número de hojas
+        if (!self.takenLeavesButton.isActive) {
+            [self.takenLeavesButton.scoreBoard addNewTakenLeaf];
+            [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
+        }
     }
 }
 
@@ -78,6 +79,7 @@ static CGFloat MGDuckColorValues[16] ={
 }
 
 - (void)dealloc {
+    [_takenLeavesButton release];
     [super dealloc];
 }
 

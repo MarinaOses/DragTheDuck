@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "MyGame/MGPlayState.m"
-         timestampString = "359839919.627095"
+         timestampString = "360068643.391377"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "47"
-         endingLineNumber = "47"
+         startingLineNumber = "57"
+         endingLineNumber = "57"
          landmarkName = "-updatePlayState"
          landmarkType = "5">
       </FileBreakpoint>

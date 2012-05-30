@@ -87,8 +87,8 @@
 
 
 //--NUMBER OF SECONDS BETWEEN LEAVES APPEARANCES
-#define MINSEC_TO_LEAF_APPEARANCE 20
-#define MAXSEC_TO_LEAF_APPEARANCE 25
+#define MINSEC_TO_LEAF_APPEARANCE 10
+#define MAXSEC_TO_LEAF_APPEARANCE 15
 
 
 //**********************************************************************************************
@@ -117,6 +117,11 @@
 
 //**********************************************************************************************
 #define DEBUG_DRAW_COLLIDERS 1
+
+//**********************************************************************************************
+#define MAX_TAKEN_LEAVES 10
+
+
 
 
 #endif

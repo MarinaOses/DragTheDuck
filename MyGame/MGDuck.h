@@ -8,13 +8,18 @@
 
 #import "MGMobileObject.h"
 #import "MGCollisionable.h"
+#import "MGTakenLeavesButton.h"
 
 @class MGSceneController;
 
-@interface MGDuck : MGMobileObject <MGCollisionable>{
-    
+
+@interface MGDuck : MGMobileObject <MGCollisionable> {
+    MGTakenLeavesButton *_takenLeavesButton;
 }
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer;
+
+@property (nonatomic, retain) MGTakenLeavesButton *takenLeavesButton;
+
+- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer takenLeavesButton:(MGTakenLeavesButton *)taken_leaves_button;
 
 @end

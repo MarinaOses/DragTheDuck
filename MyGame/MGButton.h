@@ -25,5 +25,9 @@
 @property (nonatomic, assign) SEL buttonGoodAction;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;
+- (void)setPressedVertexes;
+- (void)setNotPressedVertexes;
+- (void)goodTouch;
+- (void)badTouch;
 
 @end

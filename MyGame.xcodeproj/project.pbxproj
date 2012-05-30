@@ -46,6 +46,9 @@
 		9CEEFF291538560A0004D9AA /* MGMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEEFF281538560A0004D9AA /* MGMesh.m */; };
 		9CEEFF2D1539941F0004D9AA /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CEEFF2C1539941F0004D9AA /* MainWindow.xib */; };
 		9CF26FCF156FA7A000D58C62 /* MGCollisionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FCE156FA7A000D58C62 /* MGCollisionController.m */; };
+		9CF26FD51574CD0300D58C62 /* MGScoreBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FD41574CD0300D58C62 /* MGScoreBoard.m */; };
+		9CF26FD81574D0F800D58C62 /* MGTakenLeavesButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FD71574D0F800D58C62 /* MGTakenLeavesButton.m */; };
+		9CF26FDB1574D40400D58C62 /* MGTakenLeavesButtonShowerLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FDA1574D40400D58C62 /* MGTakenLeavesButtonShowerLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +129,12 @@
 		9CF26FCD156FA7A000D58C62 /* MGCollisionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCollisionController.h; sourceTree = "<group>"; };
 		9CF26FCE156FA7A000D58C62 /* MGCollisionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCollisionController.m; sourceTree = "<group>"; };
 		9CF26FD1156FB1CD00D58C62 /* MGCollisionable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCollisionable.h; sourceTree = "<group>"; };
+		9CF26FD31574CD0300D58C62 /* MGScoreBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MGScoreBoard.h; sourceTree = "<group>"; };
+		9CF26FD41574CD0300D58C62 /* MGScoreBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGScoreBoard.m; sourceTree = "<group>"; };
+		9CF26FD61574D0F800D58C62 /* MGTakenLeavesButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTakenLeavesButton.h; sourceTree = "<group>"; };
+		9CF26FD71574D0F800D58C62 /* MGTakenLeavesButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTakenLeavesButton.m; sourceTree = "<group>"; };
+		9CF26FD91574D40400D58C62 /* MGTakenLeavesButtonShowerLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTakenLeavesButtonShowerLayer.h; sourceTree = "<group>"; };
+		9CF26FDA1574D40400D58C62 /* MGTakenLeavesButtonShowerLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTakenLeavesButtonShowerLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +306,7 @@
 				9CAE9C691557F28600C88B50 /* MGMobileObject.h */,
 				9CAE9C6A1557F28600C88B50 /* MGMobileObject.m */,
 				9C15DD6F154E9A860095FBED /* Scene Objects */,
+				9CF26FD21574CC9B00D58C62 /* Punctuation */,
 				9CC1237C156E5342005EABD0 /* Collisions */,
 				9CAE9C861566650400C88B50 /* Time Controller */,
 				9CAE9C6C155A7CBA00C88B50 /* Generators */,
@@ -329,6 +339,19 @@
 				9CEEFF281538560A0004D9AA /* MGMesh.m */,
 			);
 			name = "Object's properties";
+			sourceTree = "<group>";
+		};
+		9CF26FD21574CC9B00D58C62 /* Punctuation */ = {
+			isa = PBXGroup;
+			children = (
+				9CF26FD31574CD0300D58C62 /* MGScoreBoard.h */,
+				9CF26FD41574CD0300D58C62 /* MGScoreBoard.m */,
+				9CF26FD61574D0F800D58C62 /* MGTakenLeavesButton.h */,
+				9CF26FD71574D0F800D58C62 /* MGTakenLeavesButton.m */,
+				9CF26FD91574D40400D58C62 /* MGTakenLeavesButtonShowerLayer.h */,
+				9CF26FDA1574D40400D58C62 /* MGTakenLeavesButtonShowerLayer.m */,
+			);
+			name = Punctuation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,6 +448,9 @@
 				9CC12379156CE615005EABD0 /* MGMultipleBeeGenerator.m in Sources */,
 				9CC1237F156E5376005EABD0 /* MGCollider.m in Sources */,
 				9CF26FCF156FA7A000D58C62 /* MGCollisionController.m in Sources */,
+				9CF26FD51574CD0300D58C62 /* MGScoreBoard.m in Sources */,
+				9CF26FD81574D0F800D58C62 /* MGTakenLeavesButton.m in Sources */,
+				9CF26FDB1574D40400D58C62 /* MGTakenLeavesButtonShowerLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
