@@ -14,25 +14,23 @@
 @synthesize takenLeavesButtonShowerLayer = _takenLeavesButtonShowerLayer;
 @synthesize isActive;
 
+
 - (id)initWithSceneController:(MGSceneController *)scene_controller Translation:(MGPoint)button_translation Rotation:(MGPoint)button_rotation Scale:(MGPoint)button_scale scoreBoard:(MGScoreBoard *)score_board {
     self = [super initWithSceneController:scene_controller];
     if (self) {
         
         self.scoreBoard = score_board;
         previousTakenLeaves = 0;
-        self.translation = MGPointMake(button_translation.x, button_translation.y, button_translation.z);
-        self.rotation = MGPointMake(button_rotation.x, button_rotation.y, button_rotation.z);
-        self.scale = MGPointMake(button_scale.x, button_scale.y, button_scale.z);
+        self.translation = button_translation;
+        self.rotation = button_rotation;
+        self.scale = button_scale;
             
-        MGTakenLeavesButtonShowerLayer *takenLeavesButtonShowerLayerToAssign = [[MGTakenLeavesButtonShowerLayer alloc] initWithSceneController:scene_controller];
+        MGTakenLeavesButtonShowerLayer *takenLeavesButtonShowerLayerToAssign = [[MGTakenLeavesButtonShowerLayer alloc] initWithSceneController:scene_controller Translation:button_translation Rotation:button_rotation Scale:button_scale];
         self.takenLeavesButtonShowerLayer = takenLeavesButtonShowerLayerToAssign;
         [takenLeavesButtonShowerLayerToAssign release];
         
-        self.takenLeavesButtonShowerLayer.translation = MGPointMake(button_translation.x, button_translation.y, button_translation.z);
-        self.takenLeavesButtonShowerLayer.rotation = MGPointMake(button_rotation.x, button_rotation.y, button_rotation.z);
-        self.takenLeavesButtonShowerLayer.scale = MGPointMake(button_scale.x, button_scale.y, button_scale.z);
-        
         isActive = NO;
+        
     }
     return self;
 }
@@ -40,6 +38,8 @@
 - (void)goodTouch {
     if (isActive) {
         [super goodTouch];
+        self.takenLeavesButtonShowerLayer.scale = self.scale;
+        self.takenLeavesButtonShowerLayer.translation = self.translation;
     }
 }
 
@@ -52,11 +52,12 @@
 - (void)checkIfShowerLayerHasToGoUp:(NSInteger)taken_leaves_now {
     if (taken_leaves_now < MAX_TAKEN_LEAVES) {
         if (previousTakenLeaves < taken_leaves_now) {
-            [self.takenLeavesButtonShowerLayer decreaseHeight];
+            [self.takenLeavesButtonShowerLayer decreaseHeight:(MAX_TAKEN_LEAVES - taken_leaves_now)];
             previousTakenLeaves = taken_leaves_now;
         }
     }
     else if (taken_leaves_now == MAX_TAKEN_LEAVES){
+        [self.takenLeavesButtonShowerLayer decreaseHeight:(MAX_TAKEN_LEAVES - taken_leaves_now)];
         isActive = YES;
         self.scoreBoard.takenLeaves = 0;
         

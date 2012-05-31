@@ -7,10 +7,13 @@
 //
 
 #import "MGSceneObject.h"
+#import "MGSceneObjectDestroyer.h"
 
-@interface MGTakenLeavesButtonShowerLayer : MGSceneObject 
+@interface MGTakenLeavesButtonShowerLayer : MGSceneObject {
+    CGFloat heightToDecrease;
+    
+}
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller;
-- (void)decreaseHeight;
-
+- (id)initWithSceneController:(MGSceneController *)scene_controller Translation:(MGPoint)shower_translation Rotation:(MGPoint)shower_rotation Scale:(MGPoint)shower_scale;
+- (void)decreaseHeight:(NSInteger)leaves_left;
 @end

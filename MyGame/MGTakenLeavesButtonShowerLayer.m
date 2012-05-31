@@ -21,32 +21,40 @@ static CGFloat MGShowerLayerVertexes[8] = {
 };
 
 static CGFloat MGShowerLayerdColorValues[16] ={
-    0.0, 0.0, 0.0, 0.5, 
-    0.0, 0.0, 0.0, 0.5, 
-    0.0, 0.0, 0.0, 0.5, 
-    0.0, 0.0, 0.0, 0.5
+    0.2, 0.2, 0.2, 0.2, 
+    0.2, 0.2, 0.2, 0.2, 
+    0.2, 0.2, 0.2, 0.2, 
+    0.2, 0.2, 0.2, 0.2
 };
 
 
 @implementation MGTakenLeavesButtonShowerLayer
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller {
+
+- (id)initWithSceneController:(MGSceneController *)scene_controller Translation:(MGPoint)shower_translation Rotation:(MGPoint)shower_rotation Scale:(MGPoint)shower_scale {
     self = [super initWithSceneController:scene_controller];
     if (self) {
+        
+        self.translation = shower_translation;
+        self.rotation = shower_rotation;
+        self.scale = shower_scale;
+
         //Translation, rotation y scale se asignarán en el botón, ya que tiene que estar en el mismo sitio
         MGMesh *meshToAssign = [[MGMesh alloc] initWithVertexes:MGShowerLayerVertexes vertexCount:MGShowerLayerVertexCount vertexSize:MGShowerLayerVertexSize renderStyle:MGShowerLayerRenderStyle];
         self.mesh = meshToAssign;
         [meshToAssign release];
         self.mesh.colors = MGShowerLayerdColorValues;
         self.mesh.colorSize = MGShowerLayerColorSize;
+        
+        heightToDecrease = (CGRectGetHeight(self.meshBounds)/MAX_TAKEN_LEAVES);
     }
     return self;
 }
 
-- (void)decreaseHeight {
-    self.scale = MGPointMake(self.scale.x, self.scale.y - self.scale.y/MAX_TAKEN_LEAVES, self.scale.z);
-    CGFloat heightToDecrease = (CGRectGetHeight(self.meshBounds)/MAX_TAKEN_LEAVES)/2;
-    self.translation = MGPointMake(self.translation.x, self.translation.y + heightToDecrease, self.translation.z);
+- (void)decreaseHeight:(NSInteger)leaves_left {
+    self.scale = MGPointMake(self.scale.x, self.scale.y - self.scale.y/(leaves_left+1), self.scale.z);
+    self.translation = MGPointMake(self.translation.x, self.translation.y + heightToDecrease/2, self.translation.z);
+
 }
 
 - (void)dealloc {
