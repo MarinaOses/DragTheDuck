@@ -18,5 +18,6 @@
 
 @property (nonatomic, assign) NSInteger takenLeaves;
 - (id)init;
+- (void)resetTakenLeaves;
 - (void)addNewTakenLeaf;
 @end

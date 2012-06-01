@@ -9,6 +9,8 @@
 #import "MGState.h"
 #import "MGTimedMultipleObjectGenerator.h"
 #import "MGSceneObjectDestroyer.h"
+#import "MGMultipleArmorGenerator.h"
+
 
 @class MGSceneController;
 

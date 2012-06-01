@@ -24,9 +24,12 @@
     return self;
 }
 
+- (void)resetTakenLeaves {
+    takenLeaves = 0;
+}
+
 - (void)addNewTakenLeaf {
     takenLeaves++;
-    NSLog(@"takenLeaves __________= %d", takenLeaves);
 }
 
 - (void)dealloc {

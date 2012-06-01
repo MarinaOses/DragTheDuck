@@ -49,6 +49,8 @@
 		9CF26FD51574CD0300D58C62 /* MGScoreBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FD41574CD0300D58C62 /* MGScoreBoard.m */; };
 		9CF26FD81574D0F800D58C62 /* MGTakenLeavesButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FD71574D0F800D58C62 /* MGTakenLeavesButton.m */; };
 		9CF26FDB1574D40400D58C62 /* MGTakenLeavesButtonShowerLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FDA1574D40400D58C62 /* MGTakenLeavesButtonShowerLayer.m */; };
+		9CF26FDE15779F8F00D58C62 /* MGArmor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FDD15779F8D00D58C62 /* MGArmor.m */; };
+		9CF26FE51578EF4100D58C62 /* MGMultipleArmorGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FE41578EF4100D58C62 /* MGMultipleArmorGenerator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,12 +131,16 @@
 		9CF26FCD156FA7A000D58C62 /* MGCollisionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCollisionController.h; sourceTree = "<group>"; };
 		9CF26FCE156FA7A000D58C62 /* MGCollisionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCollisionController.m; sourceTree = "<group>"; };
 		9CF26FD1156FB1CD00D58C62 /* MGCollisionable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCollisionable.h; sourceTree = "<group>"; };
-		9CF26FD31574CD0300D58C62 /* MGScoreBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MGScoreBoard.h; sourceTree = "<group>"; };
+		9CF26FD31574CD0300D58C62 /* MGScoreBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGScoreBoard.h; sourceTree = "<group>"; };
 		9CF26FD41574CD0300D58C62 /* MGScoreBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGScoreBoard.m; sourceTree = "<group>"; };
 		9CF26FD61574D0F800D58C62 /* MGTakenLeavesButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTakenLeavesButton.h; sourceTree = "<group>"; };
 		9CF26FD71574D0F800D58C62 /* MGTakenLeavesButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTakenLeavesButton.m; sourceTree = "<group>"; };
 		9CF26FD91574D40400D58C62 /* MGTakenLeavesButtonShowerLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTakenLeavesButtonShowerLayer.h; sourceTree = "<group>"; };
 		9CF26FDA1574D40400D58C62 /* MGTakenLeavesButtonShowerLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTakenLeavesButtonShowerLayer.m; sourceTree = "<group>"; };
+		9CF26FDC15779F8D00D58C62 /* MGArmor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGArmor.h; sourceTree = "<group>"; };
+		9CF26FDD15779F8D00D58C62 /* MGArmor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGArmor.m; sourceTree = "<group>"; };
+		9CF26FE31578EF4100D58C62 /* MGMultipleArmorGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMultipleArmorGenerator.h; sourceTree = "<group>"; };
+		9CF26FE41578EF4100D58C62 /* MGMultipleArmorGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMultipleArmorGenerator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +172,8 @@
 				9CAE9C841565285600C88B50 /* MGLeaf.m */,
 				9CC1236D156BBA9E005EABD0 /* MGBee.h */,
 				9CC1236E156BBA9F005EABD0 /* MGBee.m */,
+				9CF26FDC15779F8D00D58C62 /* MGArmor.h */,
+				9CF26FDD15779F8D00D58C62 /* MGArmor.m */,
 			);
 			name = "Scene Objects";
 			sourceTree = "<group>";
@@ -222,6 +230,8 @@
 				9CAE9C8B1566720800C88B50 /* MGMultipleLeafGenerator.m */,
 				9CC12377156CE615005EABD0 /* MGMultipleBeeGenerator.h */,
 				9CC12378156CE615005EABD0 /* MGMultipleBeeGenerator.m */,
+				9CF26FE31578EF4100D58C62 /* MGMultipleArmorGenerator.h */,
+				9CF26FE41578EF4100D58C62 /* MGMultipleArmorGenerator.m */,
 			);
 			name = Generators;
 			sourceTree = "<group>";
@@ -451,6 +461,8 @@
 				9CF26FD51574CD0300D58C62 /* MGScoreBoard.m in Sources */,
 				9CF26FD81574D0F800D58C62 /* MGTakenLeavesButton.m in Sources */,
 				9CF26FDB1574D40400D58C62 /* MGTakenLeavesButtonShowerLayer.m in Sources */,
+				9CF26FDE15779F8F00D58C62 /* MGArmor.m in Sources */,
+				9CF26FE51578EF4100D58C62 /* MGMultipleArmorGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

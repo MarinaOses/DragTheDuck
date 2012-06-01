@@ -119,7 +119,7 @@
 #define DEBUG_DRAW_COLLIDERS 1
 
 //**********************************************************************************************
-#define MAX_TAKEN_LEAVES 10
+#define MAX_TAKEN_LEAVES 3
 
 
 

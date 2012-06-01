@@ -22,7 +22,6 @@ static CGFloat MGBirdColorValues[16] ={
 
 
 
-
 - (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {
     self = [super initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer RangeForScale:NSMakeRange(MIN_BIRD_SCALE, MAX_BIRD_SCALE) RangeForSpeed:NSMakeRange(MIN_BIRD_SPEED, MAX_BIRD_SPEED) Direction:-1];
     if (self) {

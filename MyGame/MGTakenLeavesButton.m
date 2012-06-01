@@ -36,10 +36,17 @@
 }
 
 - (void)goodTouch {
-    if (isActive) {
+    if (isActive) { //Si funciona como botón
         [super goodTouch];
+        //Cuando hayamos terminado la acción del toque volvemos a poner el layer
         self.takenLeavesButtonShowerLayer.scale = self.scale;
         self.takenLeavesButtonShowerLayer.translation = self.translation;
+        //Reseteamos los contadores
+        [self.scoreBoard resetTakenLeaves];
+        previousTakenLeaves = self.scoreBoard.takenLeaves;
+        //Y de ahora en adelante el botón debe estar inactivo y evidentemente, como no seleccionado
+        [self setNotPressedVertexes];
+        isActive = NO;
     }
 }
 
@@ -59,8 +66,6 @@
     else if (taken_leaves_now == MAX_TAKEN_LEAVES){
         [self.takenLeavesButtonShowerLayer decreaseHeight:(MAX_TAKEN_LEAVES - taken_leaves_now)];
         isActive = YES;
-        self.scoreBoard.takenLeaves = 0;
-        
     }
 }
 

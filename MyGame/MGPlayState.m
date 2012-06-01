@@ -26,6 +26,9 @@
                             Rotation:MGPointZero() 
                             Scale:MGPointMake(50.0, 50.0, 1.0) 
                             scoreBoard:self.scoreBoard];
+        self.takenLeavesButton.target = self;
+        self.takenLeavesButton.buttonGoodAction = @selector(goodTouchOfTakenLeavesButton);
+        self.takenLeavesButton.buttonBadAction = @selector(badTouchOfTakenLeavesButton);
         self.timeController = time_controller;
         timedMultipleObjectGeneratorForDucks = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:DUCKS WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer takenLeavesButton:self.takenLeavesButton] TimeController:time_controller];
         timedMultipleObjectGeneratorForBirds = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:BIRDS WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer takenLeavesButton:self.takenLeavesButton] TimeController:time_controller];
@@ -83,6 +86,18 @@
 - (void)stopPlayState {
     [self.timeController stop];
 }
+
+- (void)goodTouchOfTakenLeavesButton {
+    MGMultipleArmorGenerator *multipleArmorGenerator = [[MGMultipleArmorGenerator alloc] initWithSceneController:self.sceneControllerForState SceneObjectDestroyer:self.sceneObjectDestroyer SceneObjects:self.sceneObjects];
+    [self.sceneObjects addObjectsFromArray:[multipleArmorGenerator createWave]];
+    [multipleArmorGenerator release];
+}
+
+- (void)badTouchOfTakenLeavesButton {
+    
+}
+
+
 
 - (void)dealloc {
     [timedMultipleObjectGeneratorForDucks release];
