@@ -121,6 +121,13 @@
 //**********************************************************************************************
 #define MAX_TAKEN_LEAVES 3
 
+//**********************************************************************************************
+//Número de píxeles que se agregan a cada lado del pato para formar el área en que el pato puede cogerse
+#define ADD_TO_SCREENRECT_OF_DUCKS 20
+#define ADD_TO_SCREENRECT_OF_BUTTONS 4
+
+
+
 
 
 

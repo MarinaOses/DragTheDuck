@@ -21,11 +21,17 @@
         _sceneObjectDestroyer = [[MGSceneObjectDestroyer alloc] init];
         _sceneObjects = [[NSMutableArray alloc] init];
         _scoreBoard = [[MGScoreBoard alloc] init];
+//        _takenLeavesButton = [[MGTakenLeavesButton alloc] initWithSceneController:scene_controller 
+//                            Translation:MGPointMake(-210.0, -130.0, 0.0) 
+//                            Rotation:MGPointZero() 
+//                            Scale:MGPointMake(40.0, 40.0, 1.0) 
+//                            scoreBoard:self.scoreBoard];
         _takenLeavesButton = [[MGTakenLeavesButton alloc] initWithSceneController:scene_controller 
-                            Translation:MGPointMake(-210.0, -130.0, 0.0) 
+                            Translation:MGPointMake(0.0, -130.0, 0.0) 
                             Rotation:MGPointZero() 
-                            Scale:MGPointMake(50.0, 50.0, 1.0) 
+                            Scale:MGPointMake(40.0, 40.0, 1.0) 
                             scoreBoard:self.scoreBoard];
+
         self.takenLeavesButton.target = self;
         self.takenLeavesButton.buttonGoodAction = @selector(goodTouchOfTakenLeavesButton);
         self.takenLeavesButton.buttonBadAction = @selector(badTouchOfTakenLeavesButton);

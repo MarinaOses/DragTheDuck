@@ -61,8 +61,10 @@ static CGFloat MGSquareFillVertexes[8] = {-0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5,
         return;
     }
     BOOL pointInBounds = NO;
+    CGRect screenRectToAccess = self.screenRect;
+    CGRect touchableArea = CGRectMake(CGRectGetMinX(screenRectToAccess) - ADD_TO_SCREENRECT_OF_BUTTONS, CGRectGetMinY(self.screenRect) - ADD_TO_SCREENRECT_OF_BUTTONS, CGRectGetWidth(screenRectToAccess) + ADD_TO_SCREENRECT_OF_BUTTONS*2, CGRectGetHeight(screenRectToAccess) + ADD_TO_SCREENRECT_OF_BUTTONS*2);
     for (MGTouch *handleTouch in touchesHandler) {
-        if (CGRectContainsPoint(self.screenRect, [handleTouch location]) &&  handleTouch.numberOfFingersOnTheScreen == 1) {
+        if (CGRectContainsPoint(touchableArea, [handleTouch location]) &&  handleTouch.numberOfFingersOnTheScreen == 1) {
             pointInBounds = YES;
             switch (handleTouch.phase) {
                 case UITouchPhaseBegan:
