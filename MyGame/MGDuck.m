@@ -58,15 +58,24 @@ static CGFloat MGDuckColorValues[16] ={
     }
 }
 
+
+- (BOOL)hasCrossedTheFinishingLine {
+    BOOL hasCrossed = NO;
+    CGFloat midYOfWindowRect = CGRectGetMidY(self.sceneController.openGLView.window.frame);
+    CGFloat midXOfMeshRect = CGRectGetMidX(self.meshBounds);
+    CGFloat myCenterX = self.translation.x;
+    if (myCenterX > (midYOfWindowRect + midXOfMeshRect)) {
+        hasCrossed = YES;
+    }
+    return hasCrossed;    
+}
+
 - (void)update {
     if (self.draggeable) {
         //Ha habido algún toque?
         //touchEvents contiene todos los toques o deslizamientos que se an hecho en pantalla
         NSSet *touchesSet = [self.sceneController.inputViewController touchEvents];
         for (MGTouch *atouch in touchesSet) {
-            //NSLog(@"%@", [atouch description]);
-            //NSLog(@"screenRectX: %d to %d", (int)self.screenRect.origin.x,  (int)self.screenRect.origin.x+(int)CGRectGetWidth(self.screenRect));
-            //NSLog(@"screenRectY: %d to %d", (int)self.screenRect.origin.y,  (int)self.screenRect.origin.y+(int)CGRectGetHeight(self.screenRect));
             if (atouch.phase == UITouchPhaseBegan && atouch.numberOfFingersOnTheScreen == 1) {
                 CGRect screenRectToAccess = self.screenRect;
                 CGRect touchableArea = CGRectMake(CGRectGetMinX(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DUCKS, CGRectGetMinY(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DUCKS, CGRectGetWidth(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DUCKS*2, CGRectGetHeight(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DUCKS*2);
@@ -82,8 +91,13 @@ static CGFloat MGDuckColorValues[16] ={
             }
         }
     }
+    if ([self hasCrossedTheFinishingLine]) {
+       // [self.scoreTransmitter transmiteToScoreBoardToAddANewSavedDuck];
+    }
     [super update];
 }
+
+
 
 - (void)dealloc {
     [_takenLeavesButton release];

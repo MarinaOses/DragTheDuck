@@ -45,10 +45,6 @@ static CGFloat MGStoppedColorValues[16] ={
         self.mesh.colors = MGStoppedColorValues;
         
         self.collider = [[MGCollider alloc] initWithSceneController:scene_controller];
-
-        self.translation = MGPointZero();
-        self.rotation = MGPointZero();
-        self.scale = MGPointZero();
         
         
         self.lifeTimeInUpdates = 0;

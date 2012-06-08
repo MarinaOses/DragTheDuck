@@ -27,6 +27,7 @@
     CGPoint screenRectCenter;
     
     BOOL taken;
+    BOOL isANumber;
     
     CGFloat *_matrix;
     
@@ -46,7 +47,7 @@
 @property (nonatomic, assign) CGFloat *matrix;
 @property (nonatomic, retain) MGSceneController *sceneController;
 @property (nonatomic, retain) MGCollider *collider;
-
+@property (nonatomic, assign) BOOL isANumber;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;
 - (void)update;

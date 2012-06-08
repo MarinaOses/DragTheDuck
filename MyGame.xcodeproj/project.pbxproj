@@ -51,6 +51,14 @@
 		9CF26FDB1574D40400D58C62 /* MGTakenLeavesButtonShowerLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FDA1574D40400D58C62 /* MGTakenLeavesButtonShowerLayer.m */; };
 		9CF26FDE15779F8F00D58C62 /* MGArmor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FDD15779F8D00D58C62 /* MGArmor.m */; };
 		9CF26FE51578EF4100D58C62 /* MGMultipleArmorGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FE41578EF4100D58C62 /* MGMultipleArmorGenerator.m */; };
+		9CF26FEA157F748B00D58C62 /* MGFigureDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FE9157F748B00D58C62 /* MGFigureDecorator.m */; };
+		9CF26FED157F751100D58C62 /* MGValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FEC157F751100D58C62 /* MGValidator.m */; };
+		9CF26FF0157F827F00D58C62 /* MGColorGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FEF157F827E00D58C62 /* MGColorGenerator.m */; };
+		9CF26FF31580B3C500D58C62 /* MGMultipleFigureDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FF21580B3C400D58C62 /* MGMultipleFigureDecorator.m */; };
+		9CF26FF61580BC2500D58C62 /* MGNumberPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FF51580BC2500D58C62 /* MGNumberPresenter.m */; };
+		9CF26FFA1580CA4600D58C62 /* MGScoreTransmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FF91580CA4500D58C62 /* MGScoreTransmitter.m */; };
+		9CF26FFD1580D63E00D58C62 /* MGTokenExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FFC1580D63D00D58C62 /* MGTokenExtractor.m */; };
+		9CF27000158219AF00D58C62 /* MGNumbersDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FFF158219AC00D58C62 /* MGNumbersDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,6 +149,22 @@
 		9CF26FDD15779F8D00D58C62 /* MGArmor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGArmor.m; sourceTree = "<group>"; };
 		9CF26FE31578EF4100D58C62 /* MGMultipleArmorGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMultipleArmorGenerator.h; sourceTree = "<group>"; };
 		9CF26FE41578EF4100D58C62 /* MGMultipleArmorGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMultipleArmorGenerator.m; sourceTree = "<group>"; };
+		9CF26FE8157F748B00D58C62 /* MGFigureDecorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFigureDecorator.h; sourceTree = "<group>"; };
+		9CF26FE9157F748B00D58C62 /* MGFigureDecorator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFigureDecorator.m; sourceTree = "<group>"; };
+		9CF26FEB157F751100D58C62 /* MGValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGValidator.h; sourceTree = "<group>"; };
+		9CF26FEC157F751100D58C62 /* MGValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGValidator.m; sourceTree = "<group>"; };
+		9CF26FEE157F827D00D58C62 /* MGColorGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGColorGenerator.h; sourceTree = "<group>"; };
+		9CF26FEF157F827E00D58C62 /* MGColorGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGColorGenerator.m; sourceTree = "<group>"; };
+		9CF26FF11580B3C400D58C62 /* MGMultipleFigureDecorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMultipleFigureDecorator.h; sourceTree = "<group>"; };
+		9CF26FF21580B3C400D58C62 /* MGMultipleFigureDecorator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMultipleFigureDecorator.m; sourceTree = "<group>"; };
+		9CF26FF41580BC2400D58C62 /* MGNumberPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGNumberPresenter.h; sourceTree = "<group>"; };
+		9CF26FF51580BC2500D58C62 /* MGNumberPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGNumberPresenter.m; sourceTree = "<group>"; };
+		9CF26FF81580CA4500D58C62 /* MGScoreTransmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGScoreTransmitter.h; sourceTree = "<group>"; };
+		9CF26FF91580CA4500D58C62 /* MGScoreTransmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGScoreTransmitter.m; sourceTree = "<group>"; };
+		9CF26FFB1580D63D00D58C62 /* MGTokenExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTokenExtractor.h; sourceTree = "<group>"; };
+		9CF26FFC1580D63D00D58C62 /* MGTokenExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTokenExtractor.m; sourceTree = "<group>"; };
+		9CF26FFE158219AC00D58C62 /* MGNumbersDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGNumbersDelegate.h; sourceTree = "<group>"; };
+		9CF26FFF158219AC00D58C62 /* MGNumbersDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGNumbersDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +296,7 @@
 		9CE04F3D151380CF00185442 = {
 			isa = PBXGroup;
 			children = (
+				9CF26FE7157F740300D58C62 /* Numbers */,
 				9CE04F52151380CF00185442 /* MyGame */,
 				9CE04F4B151380CF00185442 /* Frameworks */,
 				9CE04F49151380CF00185442 /* Products */,
@@ -356,12 +381,35 @@
 			children = (
 				9CF26FD31574CD0300D58C62 /* MGScoreBoard.h */,
 				9CF26FD41574CD0300D58C62 /* MGScoreBoard.m */,
+				9CF26FF81580CA4500D58C62 /* MGScoreTransmitter.h */,
+				9CF26FF91580CA4500D58C62 /* MGScoreTransmitter.m */,
 				9CF26FD61574D0F800D58C62 /* MGTakenLeavesButton.h */,
 				9CF26FD71574D0F800D58C62 /* MGTakenLeavesButton.m */,
 				9CF26FD91574D40400D58C62 /* MGTakenLeavesButtonShowerLayer.h */,
 				9CF26FDA1574D40400D58C62 /* MGTakenLeavesButtonShowerLayer.m */,
 			);
 			name = Punctuation;
+			sourceTree = "<group>";
+		};
+		9CF26FE7157F740300D58C62 /* Numbers */ = {
+			isa = PBXGroup;
+			children = (
+				9CF26FEB157F751100D58C62 /* MGValidator.h */,
+				9CF26FEC157F751100D58C62 /* MGValidator.m */,
+				9CF26FE8157F748B00D58C62 /* MGFigureDecorator.h */,
+				9CF26FE9157F748B00D58C62 /* MGFigureDecorator.m */,
+				9CF26FEE157F827D00D58C62 /* MGColorGenerator.h */,
+				9CF26FEF157F827E00D58C62 /* MGColorGenerator.m */,
+				9CF26FF11580B3C400D58C62 /* MGMultipleFigureDecorator.h */,
+				9CF26FF21580B3C400D58C62 /* MGMultipleFigureDecorator.m */,
+				9CF26FF41580BC2400D58C62 /* MGNumberPresenter.h */,
+				9CF26FF51580BC2500D58C62 /* MGNumberPresenter.m */,
+				9CF26FFB1580D63D00D58C62 /* MGTokenExtractor.h */,
+				9CF26FFC1580D63D00D58C62 /* MGTokenExtractor.m */,
+				9CF26FFE158219AC00D58C62 /* MGNumbersDelegate.h */,
+				9CF26FFF158219AC00D58C62 /* MGNumbersDelegate.m */,
+			);
+			name = Numbers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -463,6 +511,14 @@
 				9CF26FDB1574D40400D58C62 /* MGTakenLeavesButtonShowerLayer.m in Sources */,
 				9CF26FDE15779F8F00D58C62 /* MGArmor.m in Sources */,
 				9CF26FE51578EF4100D58C62 /* MGMultipleArmorGenerator.m in Sources */,
+				9CF26FEA157F748B00D58C62 /* MGFigureDecorator.m in Sources */,
+				9CF26FED157F751100D58C62 /* MGValidator.m in Sources */,
+				9CF26FF0157F827F00D58C62 /* MGColorGenerator.m in Sources */,
+				9CF26FF31580B3C500D58C62 /* MGMultipleFigureDecorator.m in Sources */,
+				9CF26FF61580BC2500D58C62 /* MGNumberPresenter.m in Sources */,
+				9CF26FFA1580CA4600D58C62 /* MGScoreTransmitter.m in Sources */,
+				9CF26FFD1580D63E00D58C62 /* MGTokenExtractor.m in Sources */,
+				9CF27000158219AF00D58C62 /* MGNumbersDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

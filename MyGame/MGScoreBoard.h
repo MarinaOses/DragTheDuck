@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MGScoreTransmitter.h"
 
 @interface MGScoreBoard : NSObject {
     NSInteger killedBirds;
@@ -14,10 +15,16 @@
     NSInteger savedDucks;
     NSInteger lostDucks;
     BOOL doesLeavesCounterActive;
+    
+    MGScoreTransmitter *_scoreTransmitter;
 }
 
+
+
 @property (nonatomic, assign) NSInteger takenLeaves;
-- (id)init;
+@property (nonatomic, retain) MGScoreTransmitter *scoreTransmitter;
+
+- (id)initWithScoreTransmitter:(MGScoreTransmitter *)score_transmitter;
 - (void)resetTakenLeaves;
 - (void)addNewTakenLeaf;
 @end
