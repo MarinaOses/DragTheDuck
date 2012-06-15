@@ -22,5 +22,6 @@
 @property (nonatomic, retain) MGTokenExtractor *tokenExtractor;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller StartAtPoint:(MGPoint)start_point ScaleOfPresentation:(MGPoint)scale_of_presentation;
-- (NSMutableArray *)createNumberWithValuesInArray:(NSInteger)value;
+- (NSMutableArray *)createNumberObjectWithValue:(NSInteger)value;
+
 @end

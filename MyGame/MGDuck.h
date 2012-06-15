@@ -8,20 +8,22 @@
 
 #import "MGMobileObject.h"
 #import "MGCollisionable.h"
-#import "MGTakenLeavesButton.h"
+#import "MGScoreTransmitter.h"
 
 @class MGSceneController;
 
 
 @interface MGDuck : MGMobileObject <MGCollisionable> {
-    MGTakenLeavesButton *_takenLeavesButton;
+    MGScoreTransmitter *_scoreTransmitter;
     BOOL draggeable;
 }
 
 
-@property (nonatomic, retain) MGTakenLeavesButton *takenLeavesButton;
+@property (nonatomic, retain) MGScoreTransmitter *scoreTransmitter;
 @property (nonatomic, assign) BOOL draggeable;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer takenLeavesButton:(MGTakenLeavesButton *)taken_leaves_button;
+- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter;
+
+
 
 @end

@@ -11,9 +11,9 @@
 @implementation MGScoreBoard
 
 @synthesize takenLeaves;
-@synthesize scoreTransmitter = _scoreTransmitter;
+@synthesize savedDucks;
 
-- (id)initWithScoreTransmitter:(MGScoreTransmitter *)score_transmitter {
+- (id)init {
     self = [super init];
     if (self) {
         killedBirds = 0;
@@ -22,7 +22,6 @@
         lostDucks = 0;
         doesLeavesCounterActive = YES;
         
-        self.scoreTransmitter = score_transmitter;
     }
     return self;
 }
@@ -37,11 +36,9 @@
 
 - (void)addNewSavedDuck {
     savedDucks++;
-    [self.scoreTransmitter transmiteToNumbersDelegateScore:savedDucks];
 }
 
 - (void)dealloc {
-    [_scoreTransmitter release];
     [super dealloc];
 }
 @end

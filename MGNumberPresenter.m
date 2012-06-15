@@ -18,30 +18,41 @@
     if (self) {
         _multipleFigureDecorator = [[MGMultipleFigureDecorator alloc] initWithSceneController:scene_controller];
         _tokenExtractor = [[MGTokenExtractor alloc] init];
+        //El valor inicial de startPoint indica el punto en el que se situará el lado izquierdo del cuadrado que representa el número. 
         startPoint = start_point;
         scaleOfPresentation = scale_of_presentation;
     }
     return self;
 }
 
-//Devuelvo un array con los elementos prefectamente preparados para agreagar a pantalla
-- (NSMutableArray *)createNumberWithValuesInArray:(NSInteger)value {
+
+
+//Devuelvo un array con los elementos pefectamente preparados para agreagar a pantalla
+- (NSMutableArray *)createNumberObjectWithValue:(NSInteger)value {
     NSMutableArray *arrayWithTokens = [self.tokenExtractor extractTokens:value];
     NSMutableArray *arrayWithAllNumber = [[NSMutableArray alloc] initWithCapacity:[arrayWithTokens count]];
     NSMutableArray *arrayWithFigures = [self.multipleFigureDecorator createFiguresWithValuesInArray:arrayWithTokens];
     MGPoint nextPointToStart = startPoint;
     CGFloat previousMidWidth = 0.0;
     for (MGSceneObject *fig in arrayWithFigures) {
-        fig.translation = MGPointMake(nextPointToStart.x + previousMidWidth + CGRectGetMidX(fig.meshBounds), nextPointToStart.y, 0.0);
         fig.scale = scaleOfPresentation;
+
+        CGFloat actualMidWidth = CGRectGetWidth(fig.meshBounds)/2;
+        fig.translation = MGPointMake(nextPointToStart.x + previousMidWidth + actualMidWidth, nextPointToStart.y, 0.0);
+        
         
         [arrayWithAllNumber addObject:fig];
         
-        previousMidWidth = CGRectGetMidX(fig.meshBounds);
+        previousMidWidth = actualMidWidth;
         nextPointToStart = fig.translation;
     }
     return [arrayWithAllNumber autorelease];
 }
+
+
+
+
+
 
 
 - (void)dealloc {

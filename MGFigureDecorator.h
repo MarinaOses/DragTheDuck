@@ -22,5 +22,4 @@
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;
 - (MGSceneObject *)createFigureWithValue:(NSString *)string_value;
-
 @end

@@ -10,9 +10,10 @@
 #import "MGSceneObject.h"
 
 @interface MGSceneObjectDestroyer : NSObject {
-    NSMutableArray *sceneObjectsToRemove;
+    NSMutableArray *_sceneObjectsToRemove;
 }
 
+@property (nonatomic, retain) NSMutableArray *sceneObjectsToRemove;
 
 - (id)init;
 - (void)clearSceneObjectsToRemove;

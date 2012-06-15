@@ -29,10 +29,16 @@ static CGFloat MGStoppedColorValues[16] ={
 };
 
 
+@interface MGStoppedObject()
+- (CGFloat)randomLifeTime;
+@end
+
+
 @implementation MGStoppedObject
 
 @synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
 @synthesize lifeTimeInUpdates;
+@synthesize beginningLifeTime;
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {
@@ -47,11 +53,17 @@ static CGFloat MGStoppedColorValues[16] ={
         self.collider = [[MGCollider alloc] initWithSceneController:scene_controller];
         
         
-        self.lifeTimeInUpdates = 0;
+        self.lifeTimeInUpdates = (int)([self randomLifeTime] * MAXIMUM_FRAME_RATE);
+        self.beginningLifeTime = self.lifeTimeInUpdates;
         self.sceneObjectDestroyer = scene_object_destroyer;
         
     }
     return self;
+}
+
+- (CGFloat)randomLifeTime {
+    NSLog(@"randomLifeTime(): las subclases de stoppedObject deberian sobreescribir este método");
+    return 0;
 }
 
 - (void)removeMySelf {
@@ -59,10 +71,6 @@ static CGFloat MGStoppedColorValues[16] ={
 }
 
 - (void)update {
-    self.lifeTimeInUpdates--;
-    if (self.lifeTimeInUpdates <= 0) {
-        [self removeMySelf];
-    }
     [super update];
 }
 

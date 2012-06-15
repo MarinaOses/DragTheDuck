@@ -128,12 +128,16 @@
 
 
 //**********************************************************************************************
-#define NUMBERS_SCALE 40
-
+#define NUMBERS_SCALE 20
+#define ICONS_SCALE 20
+#define SPACE_BETWEEN_ICON_NUMBERS 10
 
 //**********************************************************************************************
 #define SAVED_DUCKS_SCORE_START_X 150
 #define SAVED_DUCKS_SCORE_START_Y -110
+
+
+
 
 
 

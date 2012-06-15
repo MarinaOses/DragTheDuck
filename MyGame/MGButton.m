@@ -43,8 +43,8 @@ static CGFloat MGSquareFillVertexes[8] = {-0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5,
         MGMesh *meshToAssign = [[MGMesh alloc] initWithVertexes:MGSquareOutlineVertexes vertexCount:MGSquareOutlineVertexCount vertexSize:MGSquareVertexSize renderStyle:MGSquareOutlineRenderStyle];
         self.mesh = meshToAssign;
         [meshToAssign release];
-        self.mesh.colors = MGSquareOutlineColorValues;
         self.mesh.colorSize = MGSquareColorSize;
+        self.mesh.colors = MGSquareOutlineColorValues;
     }
     return self;
 }

@@ -10,34 +10,36 @@
 
 @implementation MGSceneObjectDestroyer
 
+@synthesize sceneObjectsToRemove = _sceneObjectsToRemove;
+
 
 - (id)init {
     self = [super init];
     if (self) {
-        sceneObjectsToRemove = [[NSMutableArray alloc] init];
+        _sceneObjectsToRemove = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
 
 - (void)clearSceneObjectsToRemove {
-    [sceneObjectsToRemove removeAllObjects];
+    [self.sceneObjectsToRemove removeAllObjects];
 }
 
 - (void)markToRemoveSceneObject:(MGSceneObject *)sceneObject {
-    [sceneObjectsToRemove addObject:sceneObject];
+    [self.sceneObjectsToRemove addObject:sceneObject];
 }
 
 
 - (void)destroyFrom:(NSMutableArray *)sceneObjects {
-    if ([sceneObjectsToRemove count] > 0) {
-        [sceneObjects removeObjectsInArray:sceneObjectsToRemove];
+    if ([self.sceneObjectsToRemove count] > 0) {
+        [sceneObjects removeObjectsInArray:self.sceneObjectsToRemove];
         [self clearSceneObjectsToRemove];
     }
 }
 
 - (void)dealloc {
-    [sceneObjectsToRemove release];
+    [_sceneObjectsToRemove release];
     [super dealloc];
 }
 

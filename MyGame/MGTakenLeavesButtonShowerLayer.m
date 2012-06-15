@@ -43,8 +43,8 @@ static CGFloat MGShowerLayerdColorValues[16] ={
         MGMesh *meshToAssign = [[MGMesh alloc] initWithVertexes:MGShowerLayerVertexes vertexCount:MGShowerLayerVertexCount vertexSize:MGShowerLayerVertexSize renderStyle:MGShowerLayerRenderStyle];
         self.mesh = meshToAssign;
         [meshToAssign release];
-        self.mesh.colors = MGShowerLayerdColorValues;
         self.mesh.colorSize = MGShowerLayerColorSize;
+        self.mesh.colors = MGShowerLayerdColorValues;
         
         heightToDecrease = (CGRectGetHeight(self.meshBounds)/MAX_TAKEN_LEAVES);
     }

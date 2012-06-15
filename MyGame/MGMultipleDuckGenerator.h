@@ -17,13 +17,13 @@
 @interface MGMultipleDuckGenerator : NSObject <MGGenerator> {
     MGSceneController *_sceneController;
     MGSceneObjectDestroyer *_sceneObjectDestroyer;
-    MGTakenLeavesButton *_takenLeavesButton;
+    MGScoreTransmitter *_scoreTransmitter;
 }
 
 @property (nonatomic, retain) MGSceneController *sceneController;
 @property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
-@property (nonatomic, retain) MGTakenLeavesButton *takenLeavesButton;
+@property (nonatomic, retain) MGScoreTransmitter *scoreTransmitter;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer takenLeavesButton:(MGTakenLeavesButton *)taken_leaves_button;
+- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter;
 
 @end

@@ -18,18 +18,17 @@ static CGFloat MGDuckColorValues[16] ={
 };
 
 @implementation MGDuck
-
-@synthesize takenLeavesButton = _takenLeavesButton;
+@synthesize scoreTransmitter = _scoreTransmitter;
 @synthesize  draggeable;
 
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer takenLeavesButton:(MGTakenLeavesButton *)taken_leaves_button {
+- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter {
     self = [super initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer RangeForScale:NSMakeRange(MIN_DUCK_SCALE, MAX_DUCK_SCALE) RangeForSpeed:NSMakeRange(MIN_DUCK_SPEED, MAX_DUCK_SPEED) Direction:1];
     if (self) {        
         self.mesh.colors = MGDuckColorValues;
         self.collider.checkForCollision = YES;
         self.draggeable = YES;
-        self.takenLeavesButton = taken_leaves_button;
+        self.scoreTransmitter = score_transmitter;
     }
     return self;
 }
@@ -51,9 +50,9 @@ static CGFloat MGDuckColorValues[16] ={
         //comerzar poder de pato-abeja
     }
     else { //hoja
-        if (!self.takenLeavesButton.isActive) {
+        if ([self.scoreTransmitter isPossibleToCollideWithLeaves]) {
             [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
-            [self.takenLeavesButton.scoreBoard addNewTakenLeaf];
+            [self.scoreTransmitter aNewLeafIsTaken];
         }
     }
 }
@@ -92,7 +91,7 @@ static CGFloat MGDuckColorValues[16] ={
         }
     }
     if ([self hasCrossedTheFinishingLine]) {
-       // [self.scoreTransmitter transmiteToScoreBoardToAddANewSavedDuck];
+        [self.scoreTransmitter aNewDuckIsSaved];
     }
     [super update];
 }
@@ -100,7 +99,7 @@ static CGFloat MGDuckColorValues[16] ={
 
 
 - (void)dealloc {
-    [_takenLeavesButton release];
+    [_scoreTransmitter release];
     [super dealloc];
 }
 

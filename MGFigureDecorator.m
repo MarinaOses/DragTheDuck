@@ -47,9 +47,12 @@ static CGFloat RGBAOfFigure[40] = {
     return self;
 }
 
+
+
 - (MGSceneObject *)createFigureWithValue:(NSString *)string_value { 
     if (string_value != nil) {
         NSInteger value = [string_value integerValue];
+        CGFloat *colorsToAssign;
         if ([MGValidator isCorrect:value]) {
             MGSceneObject *newFigure = [[MGSceneObject alloc] initWithSceneController:self.sceneController];
             MGMesh *meshToAssign = [[MGMesh alloc] initWithVertexes:MGFigureVertexes vertexCount:MGFigureVertexCount vertexSize:MGFigureVertexSize renderStyle:MGFigureRenderStyle];
@@ -57,7 +60,9 @@ static CGFloat RGBAOfFigure[40] = {
             [meshToAssign release];
             newFigure.mesh.colorSize = MGFigureColorSize;
             NSInteger position = value * MGFigureColorSize;
-            newFigure.mesh.colors = [MGColorGenerator createColorWithSize:MGFigureColorSize ForNumberOfVertexes:MGFigureVertexCount WithRed:self.RGBAColors[position] green:self.RGBAColors[position+1] blue:self.RGBAColors[position+2] alpha:RGBAColors[position+3]];
+            colorsToAssign = [MGColorGenerator createColorWithSize:MGFigureColorSize ForNumberOfVertexes:MGFigureVertexCount WithRed:self.RGBAColors[position] green:self.RGBAColors[position+1] blue:self.RGBAColors[position+2] alpha:RGBAColors[position+3]];
+            newFigure.mesh.colors = colorsToAssign;
+            free(colorsToAssign);
             newFigure.isANumber = YES;
             return [newFigure autorelease];
         }
@@ -66,8 +71,10 @@ static CGFloat RGBAOfFigure[40] = {
             return nil;
         }
     }
-    NSLog(@"Aviso: el parámetro string_value apunta a una dirección vacía");
-    return nil;
+    else {
+        NSLog(@"Aviso: el parámetro string_value apunta a una dirección vacía");
+        return nil;        
+    }
 }
 
 - (void)dealloc {

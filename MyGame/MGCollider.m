@@ -56,8 +56,8 @@ static CGFloat MGCircleColorValues[80] =
     if (self) {
         if (DEBUG_DRAW_COLLIDERS) {
             self.mesh = [[MGMesh alloc] initWithVertexes:MGCircleOutlineVertexes vertexCount:MGCircleOutlineVertexesCount vertexSize:MGCircleVertexSize renderStyle:MGCircleRenderStyle];
-            self.mesh.colors = MGCircleColorValues;
             self.mesh.colorSize = MGCircleColorSize;
+            self.mesh.colors = MGCircleColorValues;
         }
         self.checkForCollision = NO;
         self.maxRadius = 0.0;

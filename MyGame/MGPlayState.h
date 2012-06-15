@@ -10,6 +10,7 @@
 #import "MGTimedMultipleObjectGenerator.h"
 #import "MGSceneObjectDestroyer.h"
 #import "MGMultipleArmorGenerator.h"
+#import "MGTakenLeavesButton.h"
 
 
 @class MGSceneController;
@@ -24,6 +25,8 @@
     NSMutableArray *_sceneObjects;
     MGScoreBoard *_scoreBoard;
     MGTakenLeavesButton *_takenLeavesButton;
+    MGScoreTransmitter *_scoreTransmitter;
+    MGNumbersDelegate *_numbersDelegate;
 }
 
 @property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
@@ -31,6 +34,8 @@
 @property (nonatomic, retain) NSMutableArray *sceneObjects;
 @property (nonatomic, retain) MGScoreBoard *scoreBoard;
 @property (nonatomic, retain) MGTakenLeavesButton *takenLeavesButton;
+@property (nonatomic, retain) MGScoreTransmitter *scoreTransmitter;
+@property (nonatomic, retain) MGNumbersDelegate *numbersDelegate;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller TimeController:(MGTimeController *)time_controller;
 - (void)loadPlayState;

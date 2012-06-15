@@ -18,11 +18,18 @@
 @end
 
 
-static CGFloat MGLeafColorValues[16] ={
+static CGFloat MGLeafFirstColorValues[16] ={
     0.0, 1.0, 0.0, 1.0, 
     0.0, 1.0, 0.0, 1.0, 
     0.0, 1.0, 0.0, 1.0, 
     0.0, 1.0, 0.0, 1.0
+};
+
+static CGFloat MGLeafSecondColorValues[16] ={
+    0.0, 0.0, 1.0, 1.0, 
+    0.0, 0.0, 1.0, 1.0, 
+    0.0, 0.0, 1.0, 1.0, 
+    0.0, 0.0, 1.0, 1.0
 };
 
 
@@ -35,12 +42,11 @@ static CGFloat MGLeafColorValues[16] ={
 - (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {
     self = [super initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer];
     if (self) {
-        self.mesh.colors = MGLeafColorValues;
+        self.mesh.colors = MGLeafFirstColorValues;
         self.translation = [self randomTranslation:self.meshBounds];
         self.rotation = [self randomRotation];
         self.scale = [self randomScale];
-        
-        self.lifeTimeInUpdates = (int)([self randomLifeTime] * MAXIMUM_FRAME_RATE);
+
     }
     return self;
 }
@@ -70,7 +76,20 @@ static CGFloat MGLeafColorValues[16] ={
     return RANDOM_FLOAT(MINSEC_TO_LEAF_DISAPPEARANCE, MAXSEC_TO_LEAF_DISAPPEARANCE);
 }
 
+- (void)changeColor {
+    self.mesh.colors = MGLeafSecondColorValues;
+}
+
 - (void)update {
+    self.lifeTimeInUpdates--;
+    if (self.lifeTimeInUpdates > 0){
+        if (self.lifeTimeInUpdates <= self.beginningLifeTime/4.0) {
+            [self changeColor];
+        }
+    }
+    else { //(self.lifeTimeInUpdates <= 0) {
+        [self removeMySelf];
+    }
     [super update];
 }
 

@@ -28,9 +28,10 @@
         }
         return [arrayWithFigures autorelease];
     }
-    NSLog(@"Aviso: El array de valores para crear el número es incorrecto");
-    return nil;
-    
+    else {
+        NSLog(@"Aviso: El array de valores para crear el número es incorrecto");
+        return nil;
+    }
 }
 
 

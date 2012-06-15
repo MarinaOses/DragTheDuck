@@ -8,6 +8,9 @@
 
 #import "MGMesh.h"
 
+#define COLLIDER_VERTEX_COUNT 20
+#define VERTEX_COUNT 4
+
 @interface MGMesh()
 - (MGPoint)calculateCentroid;
 - (CGFloat)calculateRadiusWith:(MGPoint)mesh_centroid;
@@ -36,6 +39,7 @@
         self.centroid = [self calculateCentroid];
         //radius representa la máxima distancia que puede obtenerse entre uno de los vértices del objeto y el centroide
         self.radius = [self calculateRadiusWith:self.centroid];
+        
     }
     return self;
 }
@@ -119,6 +123,18 @@
     return boundsRect;
 }
 
+- (void)setColors:(GLfloat *)new_colors {
+    if (colors != new_colors) {
+        NSInteger colorsCount = self.vertexCount * self.colorSize;
+        if (colors == nil) {
+            colors = (CGFloat *)malloc(colorsCount * sizeof(CGFloat));    
+        }
+        NSInteger i;
+        for (i = 0; i < colorsCount; i++) {
+            colors[i] = new_colors[i]; 
+        }
+    }
+}
 
 //Se llama una vez cada frame
 - (void)render {

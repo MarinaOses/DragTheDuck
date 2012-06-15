@@ -11,21 +11,39 @@
 @implementation MGScoreTransmitter
 
 @synthesize numbersDelegate =_numbersDelegate;
+@synthesize scoreBoard = _scoreBoard;
 
-- (id)initWithNumbersDelegate:(MGNumbersDelegate *)numbers_delegate {
+- (id)initWithScoreBoard:(MGScoreBoard *)score_board NumbersDelegate:(MGNumbersDelegate *)numbers_delegate {
     self = [super init];
     if (self) {
         self.numbersDelegate = numbers_delegate;
+        self.scoreBoard = score_board;
     }
     return self;
 }
 
-- (void)transmiteToNumbersDelegateScore:(NSInteger)score {
-    [self.numbersDelegate updateTheMarkerWith:score];
+- (void)aNewDuckIsSaved {
+    [self.scoreBoard addNewSavedDuck];
+    [self.numbersDelegate updateTheMarkerWith:self.scoreBoard.savedDucks];
 }
+
+- (void)aNewLeafIsTaken {
+    [self.scoreBoard addNewTakenLeaf];    
+}
+
+- (BOOL)isPossibleToCollideWithLeaves {
+    BOOL isPossible = YES;
+    if (self.scoreBoard.takenLeaves >= MAX_TAKEN_LEAVES) {
+        isPossible = NO;
+    }
+    return isPossible;
+}
+
+
 
 - (void)dealloc {
     [_numbersDelegate release];
+    [_scoreBoard release];
     [super dealloc];
 }
 

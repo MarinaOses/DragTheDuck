@@ -37,7 +37,7 @@ static CGFloat MGBeeColorValues[16] ={
         self.rotation = [self randomRotation];
         self.scale = [self randomScale];
         
-        self.lifeTimeInUpdates = (int)([self randomLifeTime] * MAXIMUM_FRAME_RATE);
+
     }
     return self;
 }
@@ -76,6 +76,10 @@ static CGFloat MGBeeColorValues[16] ={
 }
 
 - (void)update {
+    self.lifeTimeInUpdates--;
+    if (self.lifeTimeInUpdates <= 0) {
+        [self removeMySelf];
+    }
     [super update];
 }
 

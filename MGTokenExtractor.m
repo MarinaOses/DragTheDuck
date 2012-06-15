@@ -17,7 +17,7 @@
     return self;
 }
 
-//Separa un string en sus componentes (NSString)
+//Separa un NSInteger en sus componentes (NSString)
 - (NSMutableArray *)extractTokens:(NSInteger)value {
     NSString *valueToString = [NSString stringWithFormat:@"%d", value];
     NSMutableArray *arrayWithTokens = [[NSMutableArray alloc] initWithCapacity:[valueToString length]];
