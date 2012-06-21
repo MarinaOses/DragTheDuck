@@ -24,12 +24,25 @@
 
 - (void)aNewDuckIsSaved {
     [self.scoreBoard addNewSavedDuck];
-    [self.numbersDelegate updateTheMarkerWith:self.scoreBoard.savedDucks];
+    [self.numbersDelegate updateTheMarker:1 With:self.scoreBoard.savedDucks];
 }
 
 - (void)aNewLeafIsTaken {
     [self.scoreBoard addNewTakenLeaf];    
 }
+
+- (void)aNewBeeIsTaken {
+    [self.numbersDelegate initializeKilledBirdsMarker];
+}
+
+- (void)aNewBirdIsKilled {
+    [self.scoreBoard addNewKilledBird];
+    [self.numbersDelegate updateTheMarker:2 With:self.scoreBoard.killedBirds];
+    if (self.scoreBoard.killedBirds % BIRDS_TO_RECOVER_A_LIFE == 0) {
+        //recover a life
+    }
+}
+
 
 - (BOOL)isPossibleToCollideWithLeaves {
     BOOL isPossible = YES;

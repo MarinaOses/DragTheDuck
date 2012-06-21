@@ -63,7 +63,6 @@ static CGFloat RGBAOfFigure[40] = {
             colorsToAssign = [MGColorGenerator createColorWithSize:MGFigureColorSize ForNumberOfVertexes:MGFigureVertexCount WithRed:self.RGBAColors[position] green:self.RGBAColors[position+1] blue:self.RGBAColors[position+2] alpha:RGBAColors[position+3]];
             newFigure.mesh.colors = colorsToAssign;
             free(colorsToAssign);
-            newFigure.isANumber = YES;
             return [newFigure autorelease];
         }
         else {

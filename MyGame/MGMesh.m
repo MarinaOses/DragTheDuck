@@ -152,6 +152,7 @@
 
 
 - (void)dealloc {
+    free(colors);
     [super dealloc];
 }
 @end

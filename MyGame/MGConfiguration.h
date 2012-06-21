@@ -67,6 +67,18 @@
 #define MAXSEC_TO_DUCK_APPEARANCE 8
 
 
+
+
+//**********************************************************************************************
+//---TRANSFORMER SIZES
+#define MIN_TRANSFORMER_SCALE 50
+#define MAX_TRANSFORMER_SCALE 50
+
+//--TRANFORMER SPEED
+#define MIN_TRANSFORMER_SPEED 100    
+#define MAX_TRANSFORMER_SPEED 100
+
+
 //**********************************************************************************************
 //-- MAX ROTATION FOR LEAVES
 #define MAX_LEAF_ROTATION 359
@@ -131,12 +143,15 @@
 #define NUMBERS_SCALE 20
 #define ICONS_SCALE 20
 #define SPACE_BETWEEN_ICON_NUMBERS 10
+#define SPACE_BETWEEN_NUMBERS_NUMBERS 30
 
 //**********************************************************************************************
 #define SAVED_DUCKS_SCORE_START_X 150
 #define SAVED_DUCKS_SCORE_START_Y -110
 
 
+//**********************************************************************************************
+#define BIRDS_TO_RECOVER_A_LIFE 5
 
 
 

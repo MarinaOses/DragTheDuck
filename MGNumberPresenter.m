@@ -33,10 +33,17 @@
     NSMutableArray *arrayWithAllNumber = [[NSMutableArray alloc] initWithCapacity:[arrayWithTokens count]];
     NSMutableArray *arrayWithFigures = [self.multipleFigureDecorator createFiguresWithValuesInArray:arrayWithTokens];
     MGPoint nextPointToStart = startPoint;
+    NSInteger positionOfNumberToAssign;
+    if (startPoint.y == SAVED_DUCKS_SCORE_START_Y) {
+        positionOfNumberToAssign = 1;
+    }
+    else {
+        positionOfNumberToAssign = 2;
+    }
     CGFloat previousMidWidth = 0.0;
     for (MGSceneObject *fig in arrayWithFigures) {
         fig.scale = scaleOfPresentation;
-
+        fig.positionOfNumber = positionOfNumberToAssign;
         CGFloat actualMidWidth = CGRectGetWidth(fig.meshBounds)/2;
         fig.translation = MGPointMake(nextPointToStart.x + previousMidWidth + actualMidWidth, nextPointToStart.y, 0.0);
         

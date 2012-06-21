@@ -18,6 +18,8 @@
 		9C15DD971553EFB70095FBED /* MGPauseState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD961553EFB70095FBED /* MGPauseState.m */; };
 		9C15DD9F1553F84C0095FBED /* MGBird.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD9E1553F84C0095FBED /* MGBird.m */; };
 		9C2661CB158B5FA500F06E98 /* MGIconPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2661CA158B5FA400F06E98 /* MGIconPresenter.m */; };
+		9C2661D01590914000F06E98 /* MGTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2661CF1590913F00F06E98 /* MGTransformer.m */; };
+		9C2661D41593288B00F06E98 /* MGTransformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2661D31593288B00F06E98 /* MGTransformationController.m */; };
 		9CAC5B16153D8B23003ECB4F /* MGTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC5B15153D8B23003ECB4F /* MGTouch.m */; };
 		9CAE9C6B1557F28600C88B50 /* MGMobileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C6A1557F28600C88B50 /* MGMobileObject.m */; };
 		9CAE9C6F155A7D0000C88B50 /* MGMultipleBirdGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C6E155A7D0000C88B50 /* MGMultipleBirdGenerator.m */; };
@@ -85,6 +87,10 @@
 		9C15DD9E1553F84C0095FBED /* MGBird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGBird.m; sourceTree = "<group>"; };
 		9C2661C9158B5FA400F06E98 /* MGIconPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGIconPresenter.h; sourceTree = "<group>"; };
 		9C2661CA158B5FA400F06E98 /* MGIconPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGIconPresenter.m; sourceTree = "<group>"; };
+		9C2661CE1590913F00F06E98 /* MGTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGTransformer.h; path = MyGame/MGTransformer.h; sourceTree = "<group>"; };
+		9C2661CF1590913F00F06E98 /* MGTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGTransformer.m; path = MyGame/MGTransformer.m; sourceTree = "<group>"; };
+		9C2661D21593288B00F06E98 /* MGTransformationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTransformationController.h; sourceTree = "<group>"; };
+		9C2661D31593288B00F06E98 /* MGTransformationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTransformationController.m; sourceTree = "<group>"; };
 		9CA68A23152C6F7B008E11AF /* MGConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConfiguration.h; sourceTree = "<group>"; };
 		9CAC5B14153D8B23003ECB4F /* MGTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTouch.h; sourceTree = "<group>"; };
 		9CAC5B15153D8B23003ECB4F /* MGTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTouch.m; sourceTree = "<group>"; };
@@ -235,6 +241,18 @@
 			name = Icons;
 			sourceTree = "<group>";
 		};
+		9C2661D11593277A00F06E98 /* Duck - Bee Tranformation */ = {
+			isa = PBXGroup;
+			children = (
+				9C2661CE1590913F00F06E98 /* MGTransformer.h */,
+				9C2661CF1590913F00F06E98 /* MGTransformer.m */,
+				9C2661D21593288B00F06E98 /* MGTransformationController.h */,
+				9C2661D31593288B00F06E98 /* MGTransformationController.m */,
+			);
+			name = "Duck - Bee Tranformation";
+			path = ..;
+			sourceTree = "<group>";
+		};
 		9CA68A25152C6FE4008E11AF /* Configuration Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +370,7 @@
 				9CC12371156BC29E005EABD0 /* MGStoppedObject.m */,
 				9CAE9C691557F28600C88B50 /* MGMobileObject.h */,
 				9CAE9C6A1557F28600C88B50 /* MGMobileObject.m */,
+				9C2661D11593277A00F06E98 /* Duck - Bee Tranformation */,
 				9C15DD6F154E9A860095FBED /* Scene Objects */,
 				9CF26FD21574CC9B00D58C62 /* Punctuation */,
 				9CC1237C156E5342005EABD0 /* Collisions */,
@@ -533,6 +552,8 @@
 				9CF26FFD1580D63E00D58C62 /* MGTokenExtractor.m in Sources */,
 				9CF27000158219AF00D58C62 /* MGNumbersDelegate.m in Sources */,
 				9C2661CB158B5FA500F06E98 /* MGIconPresenter.m in Sources */,
+				9C2661D01590914000F06E98 /* MGTransformer.m in Sources */,
+				9C2661D41593288B00F06E98 /* MGTransformationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

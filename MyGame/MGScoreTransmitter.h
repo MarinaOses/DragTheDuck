@@ -22,5 +22,7 @@
 - (id)initWithScoreBoard:(MGScoreBoard *)score_board NumbersDelegate:(MGNumbersDelegate *)numbers_delegate;
 - (void)aNewDuckIsSaved;
 - (void)aNewLeafIsTaken;
+- (void)aNewBeeIsTaken;
+- (void)aNewBirdIsKilled;
 - (BOOL)isPossibleToCollideWithLeaves;
 @end

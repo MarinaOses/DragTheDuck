@@ -9,6 +9,7 @@
 #import "MGDuck.h"
 
 #import "MGSceneController.h"
+#import "MGTransformationController.h"
 
 static CGFloat MGDuckColorValues[16] ={
     1.0, 1.0, 0.0, 1.0, 
@@ -20,15 +21,17 @@ static CGFloat MGDuckColorValues[16] ={
 @implementation MGDuck
 @synthesize scoreTransmitter = _scoreTransmitter;
 @synthesize  draggeable;
+@synthesize transformationController = _transformationController;
 
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter {
+- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter TransformationController:(MGTransformationController *)transformation_controller {
     self = [super initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer RangeForScale:NSMakeRange(MIN_DUCK_SCALE, MAX_DUCK_SCALE) RangeForSpeed:NSMakeRange(MIN_DUCK_SPEED, MAX_DUCK_SPEED) Direction:1];
     if (self) {        
         self.mesh.colors = MGDuckColorValues;
         self.collider.checkForCollision = YES;
         self.draggeable = YES;
         self.scoreTransmitter = score_transmitter;
+        self.transformationController = transformation_controller;
     }
     return self;
 }
@@ -46,8 +49,13 @@ static CGFloat MGDuckColorValues[16] ={
         
     }
     else if ([scene_object isKindOfClass:[MGBee class]]) {
-        [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
-        //comerzar poder de pato-abeja
+        if ([self.scoreTransmitter isPossibleToCollideWithLeaves]) {
+            //Animacion para borrar la abeja
+            [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
+            [self.scoreTransmitter aNewBeeIsTaken];
+            [self.transformationController spawnBeeFrom:self];
+            [self.sceneObjectDestroyer markToRemoveSceneObject:self];
+        }
     }
     else { //hoja
         if ([self.scoreTransmitter isPossibleToCollideWithLeaves]) {
@@ -100,6 +108,7 @@ static CGFloat MGDuckColorValues[16] ={
 
 - (void)dealloc {
     [_scoreTransmitter release];
+    [_transformationController release];
     [super dealloc];
 }
 

@@ -19,7 +19,7 @@
 @synthesize scale = _scale;
 @synthesize matrix = _matrix;
 @synthesize collider = _collider;
-@synthesize isANumber;
+@synthesize positionOfNumber;
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller {
@@ -34,7 +34,7 @@
         self.meshBounds = CGRectZero;
         self.screenRect = CGRectZero;
         self.collider = nil;
-        self.isANumber = NO;
+        self.positionOfNumber = 0;
         
     }
     return self;

@@ -20,11 +20,18 @@ static CGFloat MGIconVertexes[8] = {
     0.5, 0.5
 };
 
-static CGFloat MGIconColorValues[16] ={
+static CGFloat MGSavedDucksIconColorValues[16] = {
     1.0, 0.0, 0.0, 1.0, 
     0.0, 1.0, 0.0, 1.0, 
     0.0, 0.0, 1.0, 1.0, 
     1.0, 1.0, 1.0, 1.0
+};
+
+static CGFloat MGKilledBirdsIconColorValues[16] = {
+    1.0, 1.0, 1.0, 1.0, 
+    0.0, 1.0, 0.0, 1.0, 
+    0.0, 0.0, 1.0, 1.0, 
+    0.0, 0.0, 0.0, 1.0
 };
 
 @implementation MGIconPresenter
@@ -47,8 +54,12 @@ static CGFloat MGIconColorValues[16] ={
     icon.mesh = meshToAssign;
     [meshToAssign release];
     icon.mesh.colorSize = MGIconColorSize;
-    icon.mesh.colors = MGIconColorValues;
-        
+    if (startPointOfTheNumberThatComesAfter.y == SAVED_DUCKS_SCORE_START_Y) {
+        icon.mesh.colors = MGSavedDucksIconColorValues;
+    }
+    else {
+        icon.mesh.colors = MGKilledBirdsIconColorValues;
+    }
     icon.scale = scaleOfPresentation;
     icon.translation = MGPointMake(startPointOfTheNumberThatComesAfter.x - CGRectGetWidth(icon.meshBounds)/2 - SPACE_BETWEEN_ICON_NUMBERS, startPointOfTheNumberThatComesAfter.y, startPointOfTheNumberThatComesAfter.z);
     return [icon autorelease];

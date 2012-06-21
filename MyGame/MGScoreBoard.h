@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface MGScoreBoard : NSObject {
     NSInteger killedBirds;
     NSInteger takenLeaves;
@@ -21,9 +22,11 @@
 
 @property (nonatomic, assign) NSInteger takenLeaves;
 @property (nonatomic, assign) NSInteger savedDucks;
+@property (nonatomic, assign) NSInteger killedBirds;
 
 - (id)init;
 - (void)resetTakenLeaves;
 - (void)addNewTakenLeaf;
 - (void)addNewSavedDuck;
+- (void)addNewKilledBird;
 @end

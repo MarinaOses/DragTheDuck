@@ -12,6 +12,7 @@
 
 @synthesize takenLeaves;
 @synthesize savedDucks;
+@synthesize killedBirds;
 
 - (id)init {
     self = [super init];
@@ -36,6 +37,10 @@
 
 - (void)addNewSavedDuck {
     savedDucks++;
+}
+
+- (void)addNewKilledBird {
+    killedBirds++;
 }
 
 - (void)dealloc {
