@@ -31,6 +31,10 @@
     takenLeaves = 0;
 }
 
+- (void)resetKilledBirds {
+    killedBirds = 0;
+}
+
 - (void)addNewTakenLeaf {
     takenLeaves++;
 }

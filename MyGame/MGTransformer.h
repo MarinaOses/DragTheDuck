@@ -16,10 +16,12 @@
 @interface MGTransformer : MGMobileObject <MGCollisionable> {
     MGScoreTransmitter *_scoreTransmitter;
     MGTransformationController *_tranformationController;
+    NSInteger lifeTimeInUpdates;
 }
 
 @property (nonatomic, retain) MGScoreTransmitter *scoreTransmitter;
 @property (nonatomic, retain) MGTransformationController *transformationController;
+
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTransmitter:(MGScoreTransmitter *)score_transmitter TransformationController:(MGTransformationController *)transformation_controller StartAtPoint:(MGPoint)start_point;

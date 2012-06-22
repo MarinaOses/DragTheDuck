@@ -41,8 +41,8 @@
 #define MAX_BIRD_SPEED 100
 
 //--NUMBER OF BIRDS TO APPEAR
-#define MIN_BIRDS_TO_APPEAR 0
-#define MAX_BIRDS_TO_APPEAR 0
+#define MIN_BIRDS_TO_APPEAR 1
+#define MAX_BIRDS_TO_APPEAR 2
 
 //--NUMBER OF SECONDS BETWEEN BIRDS APPEARANCES
 #define MINSEC_TO_BIRD_APPEARANCE  3 
@@ -123,15 +123,19 @@
 
 
 //--NUMBER OF SECONDS BETWEEN BEES APPEARANCES
-#define MINSEC_TO_BEE_APPEARANCE 60
-#define MAXSEC_TO_BEE_APPEARANCE 90
+#define MINSEC_TO_BEE_APPEARANCE 20
+#define MAXSEC_TO_BEE_APPEARANCE 30
 
+
+//**********************************************************************************************
+#define MINSEC_TO_TRANSFORMER_DISAPPEARANCE 10
+#define MAXSEC_TO_TRANSFORMER_DISAPPEARANCE 30
 
 //**********************************************************************************************
 #define DEBUG_DRAW_COLLIDERS 1
 
 //**********************************************************************************************
-#define MAX_TAKEN_LEAVES 3
+#define MAX_TAKEN_LEAVES 10
 
 //**********************************************************************************************
 //Número de píxeles que se agregan a cada lado del pato para formar el área en que el pato puede cogerse

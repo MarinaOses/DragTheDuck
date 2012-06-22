@@ -15,13 +15,15 @@
 @synthesize sceneController = _sceneController;
 @synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
 @synthesize scoreTransmitter = _scoreTransmitter;
+@synthesize transformationController = _transformationController;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter {
+- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter SceneObjects:(NSMutableArray *)scene_objects {
     self = [super init];
     if (self) {
         self.sceneController = scene_controller;
         self.sceneObjectDestroyer = scene_object_destroyer;
         self.scoreTransmitter = score_transmitter;
+        _transformationController = [[MGTransformationController alloc] initWithSceneObjects:scene_objects];
     }
     return self;
 }
@@ -33,7 +35,7 @@
     NSInteger ducksToAppear = RANDOM_INT(MIN_DUCKS_TO_APPEAR, MAX_DUCKS_TO_APPEAR);
     NSInteger ducksCount;
     for (ducksCount = 0; ducksCount < ducksToAppear; ducksCount++) {
-        MGDuck *duckToAdd = [[MGDuck alloc] initWithSceneController:self.sceneController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTrasnmitter:self.scoreTransmitter];
+        MGDuck *duckToAdd = [[MGDuck alloc] initWithSceneController:self.sceneController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTrasnmitter:self.scoreTransmitter TransformationController:self.transformationController];
         [arrayWithDucksWave addObject:duckToAdd];
         [duckToAdd release];
     }
@@ -49,6 +51,7 @@
     [_sceneController release];
     [_sceneObjectDestroyer release];
     [_scoreTransmitter release];
+    [_transformationController release];
     [super dealloc];
 }
 

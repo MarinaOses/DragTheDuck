@@ -57,11 +57,6 @@
 }
 
 
-
-
-
-
-
 - (void)dealloc {
     [_multipleFigureDecorator release];
     [_tokenExtractor release];

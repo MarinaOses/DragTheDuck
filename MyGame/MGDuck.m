@@ -45,6 +45,7 @@ static CGFloat MGDuckColorValues[16] ={
         self.collider.checkForCollision = NO;
         //Animacion: igual no hace falta el remove
         [self.sceneObjectDestroyer markToRemoveSceneObject:self];
+        [self.scoreTransmitter aNewDuckIsKilled];
         //sumar a marcador "número de patos muertos"
         
     }

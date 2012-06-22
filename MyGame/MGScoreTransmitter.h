@@ -24,5 +24,7 @@
 - (void)aNewLeafIsTaken;
 - (void)aNewBeeIsTaken;
 - (void)aNewBirdIsKilled;
+- (void)aNewDuckIsKilled;
+- (void)theTransformerHasDisappeared;
 - (BOOL)isPossibleToCollideWithLeaves;
 @end

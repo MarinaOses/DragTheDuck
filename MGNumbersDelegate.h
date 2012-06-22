@@ -34,4 +34,5 @@
 - (void)initializeAllMembersOfStaff;
 - (void)initializeKilledBirdsMarker;
 - (void)updateTheMarker:(NSInteger)position_of_number With:(NSInteger)score;
+- (void)removeKilledBirdsMarker;
 @end

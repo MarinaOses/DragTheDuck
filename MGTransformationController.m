@@ -28,9 +28,9 @@
     [transformerToAdd release];
 }
 
-- (void)spawnDuckFrom:(MGBee *)bee {
+- (void)spawnDuckFrom:(MGTransformer *)transformer {
     MGDuck *duckToAdd = self.duckWhoStartsTheTransformation;
-    duckToAdd.translation = bee.translation;
+    duckToAdd.translation = transformer.translation;
     [self.sceneObjects addObject:duckToAdd];
     [_duckWhoStartsTheTransformation release];
     _duckWhoStartsTheTransformation = nil;

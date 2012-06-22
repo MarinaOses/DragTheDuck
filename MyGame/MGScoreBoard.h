@@ -26,6 +26,7 @@
 
 - (id)init;
 - (void)resetTakenLeaves;
+- (void)resetKilledBirds;
 - (void)addNewTakenLeaf;
 - (void)addNewSavedDuck;
 - (void)addNewKilledBird;

@@ -69,7 +69,7 @@
 }
 
 - (void)removeTheIconOfKilledBirdsMarker {
-    [self.sceneObjects removeObject:self.killedBirdsIcon];
+    [self.sceneObjectDestroyer markToRemoveSceneObject:self.killedBirdsIcon];
     [_killedBirdsIcon release];
     _killedBirdsIcon = nil;
 }

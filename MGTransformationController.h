@@ -22,6 +22,5 @@
 - (id)initWithSceneObjects:(NSMutableArray *)scene_objects;
 
 - (void)spawnBeeFrom:(MGDuck *)duck;
-- (void)spawnDuckFrom:(MGBee *)bee;
-
+- (void)spawnDuckFrom:(MGTransformer *)transformer;
 @end

@@ -43,6 +43,15 @@
     }
 }
 
+- (void)aNewDuckIsKilled {
+    [self.scoreBoard resetKilledBirds];
+}
+
+- (void)theTransformerHasDisappeared {
+    [self.scoreBoard resetKilledBirds];
+    [self.numbersDelegate removeKilledBirdsMarker];
+}
+
 
 - (BOOL)isPossibleToCollideWithLeaves {
     BOOL isPossible = YES;
