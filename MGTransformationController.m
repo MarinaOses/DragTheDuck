@@ -37,6 +37,10 @@
     
 }
 
+- (void)addAnEgg:(MGEgg *)egg {
+    [self.sceneObjects addObject:egg];
+}
+
 
 - (void)dealloc {
     [_sceneObjects release];

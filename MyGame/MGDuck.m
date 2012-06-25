@@ -10,7 +10,7 @@
 
 #import "MGSceneController.h"
 #import "MGTransformationController.h"
-
+#import "MGEgg.h"
 static CGFloat MGDuckColorValues[16] ={
     1.0, 1.0, 0.0, 1.0, 
     1.0, 1.0, 0.0, 1.0, 
@@ -48,6 +48,8 @@ static CGFloat MGDuckColorValues[16] ={
         //Animacion: igual no hace falta el remove
         [self.sceneObjectDestroyer markToRemoveSceneObject:self];
         [self.scoreTransmitter aNewDuckIsKilled];
+        MGEgg *egg = [[MGEgg alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController DropsFromKilledDuck:self];
+        [self.transformationController addAnEgg:egg];
         //sumar a marcador "número de patos muertos"
         
     }

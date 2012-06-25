@@ -23,4 +23,5 @@
 
 - (void)spawnBeeFrom:(MGDuck *)duck;
 - (void)spawnDuckFrom:(MGTransformer *)transformer;
+- (void)addAnEgg:(MGEgg *)egg;
 @end

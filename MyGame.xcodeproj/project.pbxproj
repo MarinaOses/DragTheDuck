@@ -21,6 +21,7 @@
 		9C2661CB158B5FA500F06E98 /* MGIconPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2661CA158B5FA400F06E98 /* MGIconPresenter.m */; };
 		9C2661D01590914000F06E98 /* MGTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2661CF1590913F00F06E98 /* MGTransformer.m */; };
 		9C2661D41593288B00F06E98 /* MGTransformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2661D31593288B00F06E98 /* MGTransformationController.m */; };
+		9C366EEB1598E41C00222538 /* MGEgg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C366EEA1598E41C00222538 /* MGEgg.m */; };
 		9CAC5B16153D8B23003ECB4F /* MGTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC5B15153D8B23003ECB4F /* MGTouch.m */; };
 		9CAE9C6B1557F28600C88B50 /* MGMobileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C6A1557F28600C88B50 /* MGMobileObject.m */; };
 		9CAE9C6F155A7D0000C88B50 /* MGMultipleBirdGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C6E155A7D0000C88B50 /* MGMultipleBirdGenerator.m */; };
@@ -94,6 +95,8 @@
 		9C2661CF1590913F00F06E98 /* MGTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGTransformer.m; path = MyGame/MGTransformer.m; sourceTree = "<group>"; };
 		9C2661D21593288B00F06E98 /* MGTransformationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTransformationController.h; sourceTree = "<group>"; };
 		9C2661D31593288B00F06E98 /* MGTransformationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTransformationController.m; sourceTree = "<group>"; };
+		9C366EE91598E41C00222538 /* MGEgg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGEgg.h; sourceTree = "<group>"; };
+		9C366EEA1598E41C00222538 /* MGEgg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGEgg.m; sourceTree = "<group>"; };
 		9CA68A23152C6F7B008E11AF /* MGConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConfiguration.h; sourceTree = "<group>"; };
 		9CAC5B14153D8B23003ECB4F /* MGTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTouch.h; sourceTree = "<group>"; };
 		9CAC5B15153D8B23003ECB4F /* MGTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTouch.m; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 				9CC1236E156BBA9F005EABD0 /* MGBee.m */,
 				9CF26FDC15779F8D00D58C62 /* MGArmor.h */,
 				9CF26FDD15779F8D00D58C62 /* MGArmor.m */,
+				9C366EE91598E41C00222538 /* MGEgg.h */,
+				9C366EEA1598E41C00222538 /* MGEgg.m */,
 			);
 			name = "Scene Objects";
 			sourceTree = "<group>";
@@ -569,6 +574,7 @@
 				9C2661D01590914000F06E98 /* MGTransformer.m in Sources */,
 				9C2661D41593288B00F06E98 /* MGTransformationController.m in Sources */,
 				9C1137061598B2340057FB80 /* MGBoundaryController.m in Sources */,
+				9C366EEB1598E41C00222538 /* MGEgg.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

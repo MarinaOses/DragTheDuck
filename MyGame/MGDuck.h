@@ -9,7 +9,7 @@
 #import "MGMobileObject.h"
 #import "MGCollisionable.h"
 #import "MGScoreTransmitter.h"
-
+@class MGEgg;
 @class MGSceneController;
 @class MGTransformationController;
 
