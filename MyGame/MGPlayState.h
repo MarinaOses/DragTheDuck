@@ -27,6 +27,7 @@
     MGTakenLeavesButton *_takenLeavesButton;
     MGScoreTransmitter *_scoreTransmitter;
     MGNumbersDelegate *_numbersDelegate;
+    MGBoundaryController *_boundaryController;
 }
 
 @property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
@@ -36,6 +37,7 @@
 @property (nonatomic, retain) MGTakenLeavesButton *takenLeavesButton;
 @property (nonatomic, retain) MGScoreTransmitter *scoreTransmitter;
 @property (nonatomic, retain) MGNumbersDelegate *numbersDelegate;
+@property (nonatomic, retain) MGBoundaryController *boundaryController;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller TimeController:(MGTimeController *)time_controller;
 - (void)loadPlayState;

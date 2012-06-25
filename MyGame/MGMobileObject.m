@@ -31,10 +31,9 @@ static CGFloat MGMobileColorValues[16] ={
 @implementation MGMobileObject
 
 @synthesize speed = _speed;
-@synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
+@synthesize boundaryController = _boundaryController;
 
-
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer RangeForScale:(NSRange)scale_range RangeForSpeed:(NSRange)speed_range Direction:(int)direction {
+- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller RangeForScale:(NSRange)scale_range RangeForSpeed:(NSRange)speed_range Direction:(int)direction {
     self = [super initWithSceneController:scene_controller];
     if (self) {
         MGMesh *meshToAssign = [[MGMesh alloc] initWithVertexes:MGMobileVertexes vertexCount:MGMobileVertexCount vertexSize:MGMobileVertexSize renderStyle:MGMobileRenderStyle];
@@ -49,7 +48,7 @@ static CGFloat MGMobileColorValues[16] ={
         self.translation = [self randomTranslationOnSide:-direction];
         self.speed = [self randomSpeedInRange:speed_range WithDirection:direction];
         
-        self.sceneObjectDestroyer = scene_object_destroyer;
+        self.boundaryController = boundary_controller;
     }
     return self;
 }
@@ -71,39 +70,11 @@ static CGFloat MGMobileColorValues[16] ={
     return MGPointMake(direction * speedToassign, 0.0, 0.0);
 }
 
--(void)removeIfItIsOutOfArena {
-    BOOL outOfArena = NO;
-    CGFloat midYOfWindowRect = CGRectGetMidY(self.sceneController.openGLView.window.frame);
-    CGFloat midYOfMeshRect = CGRectGetMidY(self.meshBounds);
-    CGFloat midXOfWindowRect = CGRectGetMidX(self.sceneController.openGLView.window.frame);
-    CGFloat midXOfMeshRect = CGRectGetMidX(self.meshBounds);
-    CGFloat centerX = self.translation.x;
-    CGFloat centerY = self.translation.y;
-    
-    if (centerX > (midYOfWindowRect + midXOfMeshRect)) {
-        outOfArena = YES;    
-    }   
-    if (centerX < (-midYOfWindowRect - midXOfMeshRect)) {
-        outOfArena = YES;
-    }
-    
-    if (centerY > (midXOfWindowRect + midYOfMeshRect)) {
-        outOfArena = YES;
-    }
-    
-    if (centerY < (-midXOfWindowRect - midYOfMeshRect)) {
-        outOfArena = YES;
-    }
-    
-    if (outOfArena) {
-        [self.sceneObjectDestroyer markToRemoveSceneObject:self];
-    }
-}
 
 
 
 - (void)update {
-    [self removeIfItIsOutOfArena];
+    [self.boundaryController checkIfItIsOutOfBondaries:self];
     MGPoint p = self.translation;
     p.x += self.speed.x;
     p.y += self.speed.y;
@@ -114,7 +85,7 @@ static CGFloat MGMobileColorValues[16] ={
 
 
 - (void)dealloc {
-    [_sceneObjectDestroyer release];
+    [_boundaryController release];
     [super dealloc];
 }
 

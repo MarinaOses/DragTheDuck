@@ -13,13 +13,12 @@
 @implementation MGMultipleBirdGenerator
 
 @synthesize sceneController = _sceneController;
-@synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
-
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {
+@synthesize boundaryController =_boundaryController;
+- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller {
     self = [super init];
     if (self) {
         self.sceneController = scene_controller;
-        self.sceneObjectDestroyer = scene_object_destroyer;
+        self.boundaryController = boundary_controller;
     }
     return self;
 }
@@ -31,7 +30,7 @@
     NSInteger birdsToAppear = RANDOM_INT(MIN_BIRDS_TO_APPEAR, MAX_BIRDS_TO_APPEAR);
     NSInteger birdsCount;
     for (birdsCount = 0; birdsCount < birdsToAppear; birdsCount++) {
-        MGBird *birdToAdd = [[MGBird alloc] initWithSceneController:self.sceneController SceneObjectDestroyer:self.sceneObjectDestroyer];
+        MGBird *birdToAdd = [[MGBird alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController];
         [arrayWithBirdsWave addObject:birdToAdd];
         [birdToAdd release];
     }
@@ -45,7 +44,7 @@
 
 - (void)dealloc {
     [_sceneController release];
-    [_sceneObjectDestroyer release];
+    [_boundaryController release];
     [super dealloc];
 }
 

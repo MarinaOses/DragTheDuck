@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C1137061598B2340057FB80 /* MGBoundaryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1137051598B2340057FB80 /* MGBoundaryController.m */; };
 		9C15DD2515458A210095FBED /* MGSceneObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD2415458A1F0095FBED /* MGSceneObject.m */; };
 		9C15DD73154E9AD20095FBED /* MGButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD72154E9AD20095FBED /* MGButton.m */; };
 		9C15DD77154E9B2F0095FBED /* MGMainState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD76154E9B2F0095FBED /* MGMainState.m */; };
@@ -65,6 +66,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C1137041598B2340057FB80 /* MGBoundaryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGBoundaryController.h; sourceTree = "<group>"; };
+		9C1137051598B2340057FB80 /* MGBoundaryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGBoundaryController.m; sourceTree = "<group>"; };
 		9C15DD2315458A1E0095FBED /* MGSceneObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSceneObject.h; sourceTree = "<group>"; };
 		9C15DD2415458A1F0095FBED /* MGSceneObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSceneObject.m; sourceTree = "<group>"; };
 		9C15DD71154E9AD20095FBED /* MGButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGButton.h; sourceTree = "<group>"; };
@@ -192,6 +195,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C1137021598B2070057FB80 /* Boundaries */ = {
+			isa = PBXGroup;
+			children = (
+				9C1137041598B2340057FB80 /* MGBoundaryController.h */,
+				9C1137051598B2340057FB80 /* MGBoundaryController.m */,
+			);
+			name = Boundaries;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		9C15DD6F154E9A860095FBED /* Scene Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +384,7 @@
 				9CAE9C691557F28600C88B50 /* MGMobileObject.h */,
 				9CAE9C6A1557F28600C88B50 /* MGMobileObject.m */,
 				9C2661D11593277A00F06E98 /* Duck - Bee Tranformation */,
+				9C1137021598B2070057FB80 /* Boundaries */,
 				9C15DD6F154E9A860095FBED /* Scene Objects */,
 				9CF26FD21574CC9B00D58C62 /* Punctuation */,
 				9CC1237C156E5342005EABD0 /* Collisions */,
@@ -554,6 +568,7 @@
 				9C2661CB158B5FA500F06E98 /* MGIconPresenter.m in Sources */,
 				9C2661D01590914000F06E98 /* MGTransformer.m in Sources */,
 				9C2661D41593288B00F06E98 /* MGTransformationController.m in Sources */,
+				9C1137061598B2340057FB80 /* MGBoundaryController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

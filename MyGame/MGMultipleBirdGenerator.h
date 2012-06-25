@@ -15,14 +15,13 @@
 
 @interface MGMultipleBirdGenerator : NSObject <MGGenerator>{
     MGSceneController *_sceneController;
-    MGSceneObjectDestroyer *_sceneObjectDestroyer;
-
+    MGBoundaryController *_boundaryController;
 }
 
 @property (nonatomic, retain) MGSceneController *sceneController;
-@property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
+@property (nonatomic, retain) MGBoundaryController *boundaryController;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer;
+- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller;
 
 
 @end

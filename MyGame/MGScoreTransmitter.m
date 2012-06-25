@@ -47,7 +47,7 @@
     [self.scoreBoard resetKilledBirds];
 }
 
-- (void)theTransformerHasDisappeared {
+- (void)theTransformerHasCrossedTheLine {
     [self.scoreBoard resetKilledBirds];
     [self.numbersDelegate removeKilledBirdsMarker];
 }

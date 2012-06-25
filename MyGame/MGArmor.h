@@ -13,6 +13,6 @@
 
 @interface MGArmor : MGMobileObject
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ToPutItOnDuck:(MGDuck *)duck;
+- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller ToPutItOnDuck:(MGDuck *)duck;
 
 @end

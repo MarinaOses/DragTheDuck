@@ -6,20 +6,20 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-//#import "MGSceneObject.h"
-#import "MGSceneObjectDestroyer.h"
+#import "MGSceneObject.h"
+#import "MGBoundaryController.h"
 
 @class MGSceneController;
 
 @interface MGMobileObject : MGSceneObject {
     MGPoint _speed;
-    MGSceneObjectDestroyer *_sceneObjectDestroyer;
+    MGBoundaryController *_boundaryController;
 }
 
 @property (nonatomic, assign) MGPoint speed;
-@property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
+@property (nonatomic, retain) MGBoundaryController *boundaryController;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer RangeForScale:(NSRange)scale_range RangeForSpeed:(NSRange)speed_range Direction:(int)direction;
+- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller RangeForScale:(NSRange)scale_range RangeForSpeed:(NSRange)speed_range Direction:(int)direction;
 - (MGPoint)randomScaleInRange:(NSRange)scale_range;
 - (MGPoint)randomTranslationOnSide:(int)side;
 - (MGPoint)randomSpeedInRange:(NSRange)speed_range WithDirection:(int)direction;

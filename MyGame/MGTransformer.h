@@ -17,12 +17,14 @@
     MGScoreTransmitter *_scoreTransmitter;
     MGTransformationController *_tranformationController;
     NSInteger lifeTimeInUpdates;
+    MGSceneObjectDestroyer *_sceneObjectDestroyer;
 }
 
 @property (nonatomic, retain) MGScoreTransmitter *scoreTransmitter;
 @property (nonatomic, retain) MGTransformationController *transformationController;
+@property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
 
 
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTransmitter:(MGScoreTransmitter *)score_transmitter TransformationController:(MGTransformationController *)transformation_controller StartAtPoint:(MGPoint)start_point;
+- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTransmitter:(MGScoreTransmitter *)score_transmitter TransformationController:(MGTransformationController *)transformation_controller StartAtPoint:(MGPoint)start_point;
 @end

@@ -27,11 +27,12 @@ static CGFloat MGTransformerColorValues[16] = {
 @implementation MGTransformer
 @synthesize scoreTransmitter = _scoreTransmitter;
 @synthesize transformationController = _transformationController;
+@synthesize sceneObjectDestroyer =_sceneObjectDestroyer;
 
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTransmitter:(MGScoreTransmitter *)score_transmitter TransformationController:(MGTransformationController *)transformation_controller StartAtPoint:(MGPoint)start_point {
+- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTransmitter:(MGScoreTransmitter *)score_transmitter TransformationController:(MGTransformationController *)transformation_controller StartAtPoint:(MGPoint)start_point {
     
-    self = [super initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer RangeForScale:NSMakeRange(MIN_TRANSFORMER_SCALE, MAX_TRANSFORMER_SCALE) RangeForSpeed:NSMakeRange(MIN_TRANSFORMER_SPEED, MAX_TRANSFORMER_SPEED) Direction:1];
+    self = [super initWithSceneController:scene_controller BoundaryController:boundary_controller RangeForScale:NSMakeRange(MIN_TRANSFORMER_SCALE, MAX_TRANSFORMER_SCALE) RangeForSpeed:NSMakeRange(MIN_TRANSFORMER_SPEED, MAX_TRANSFORMER_SPEED) Direction:1];
     if (self) {
         self.mesh.colors = MGTransformerColorValues;
         self.translation = start_point;
@@ -39,23 +40,13 @@ static CGFloat MGTransformerColorValues[16] = {
         self.scoreTransmitter = score_transmitter;
         self.transformationController = transformation_controller;
         lifeTimeInUpdates = (int) ([self randomLifeTime] * MAXIMUM_FRAME_RATE);
+        self.sceneObjectDestroyer = scene_object_destroyer;
     }
     return self;
 }
 
 - (CGFloat)randomLifeTime {
     return RANDOM_FLOAT(MINSEC_TO_TRANSFORMER_DISAPPEARANCE, MAXSEC_TO_TRANSFORMER_DISAPPEARANCE);
-}
-
-- (BOOL)hasCrossedTheFinishingLine {
-    BOOL hasCrossed = NO;
-    CGFloat midYOfWindowRect = CGRectGetMidY(self.sceneController.openGLView.window.frame);
-    CGFloat midXOfMeshRect = CGRectGetMidX(self.meshBounds);
-    CGFloat myCenterX = self.translation.x;
-    if (myCenterX > (midYOfWindowRect + midXOfMeshRect)) {
-        hasCrossed = YES;
-    }
-    return hasCrossed;    
 }
 
 - (void)collideWith:(MGSceneObject *)scene_object {
@@ -77,7 +68,7 @@ static CGFloat MGTransformerColorValues[16] = {
     if (lifeTimeInUpdates <= 0) {
         [self.transformationController spawnDuckFrom:self];
         [self.sceneObjectDestroyer markToRemoveSceneObject:self];
-        [self.scoreTransmitter theTransformerHasDisappeared];
+        [self.scoreTransmitter theTransformerHasCrossedTheLine];
     }
     else {
         NSSet *touchesSet = [self.sceneController.inputViewController touchEvents];
@@ -96,9 +87,6 @@ static CGFloat MGTransformerColorValues[16] = {
                 taken = NO;
             }
         }
-        if ([self hasCrossedTheFinishingLine]) {
-            [self.scoreTransmitter theTransformerHasDisappeared];
-        }
     }
     
     [super update];
@@ -108,6 +96,7 @@ static CGFloat MGTransformerColorValues[16] = {
 - (void)dealloc {
     [_scoreTransmitter release];
     [_tranformationController release];
+    [_sceneObjectDestroyer release];
     [super dealloc];
 }
 

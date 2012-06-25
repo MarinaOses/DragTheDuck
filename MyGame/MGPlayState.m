@@ -16,6 +16,7 @@
 @synthesize takenLeavesButton = _takenLeavesButton;
 @synthesize scoreTransmitter = _scoreTransmitter;
 @synthesize numbersDelegate = _numbersDelegate;
+@synthesize boundaryController = _boundaryController;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller TimeController:(MGTimeController *)time_controller {
     self = [super initWithSceneController:scene_controller];
@@ -37,15 +38,17 @@
         _numbersDelegate = [[MGNumbersDelegate alloc] initWithSceneController:scene_controller SceneObjects:self.sceneObjects SceneObjectDestroyer:self.sceneObjectDestroyer];
         
         _scoreTransmitter = [[MGScoreTransmitter alloc] initWithScoreBoard:self.scoreBoard NumbersDelegate:self.numbersDelegate];
+        
+        _boundaryController = [[MGBoundaryController alloc] initWithSceneController:self.sceneControllerForState ScoreTransmitter:self.scoreTransmitter SceneObjectDestroyer:self.sceneObjectDestroyer];
 
         self.takenLeavesButton.target = self;
         self.takenLeavesButton.buttonGoodAction = @selector(goodTouchOfTakenLeavesButton);
         self.takenLeavesButton.buttonBadAction = @selector(badTouchOfTakenLeavesButton);
         self.timeController = time_controller;
-        timedMultipleObjectGeneratorForDucks = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:DUCKS WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTransmitter:self.scoreTransmitter SceneObjects:self.sceneObjects] TimeController:time_controller];
-        timedMultipleObjectGeneratorForBirds = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:BIRDS WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTransmitter:self.scoreTransmitter SceneObjects:self.sceneObjects] TimeController:time_controller];
-        timedMultipleObjectGeneratorForLeaves = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:LEAVES WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTransmitter:self.scoreTransmitter SceneObjects:self.sceneObjects] TimeController:time_controller];
-        timedMultipleObjectGeneratorForBees = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:BEES WithSceneController:scene_controller SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTransmitter:self.scoreTransmitter SceneObjects:self.sceneObjects] TimeController:time_controller];
+        timedMultipleObjectGeneratorForDucks = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:DUCKS WithSceneController:scene_controller BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTransmitter:self.scoreTransmitter SceneObjects:self.sceneObjects] TimeController:time_controller];
+        timedMultipleObjectGeneratorForBirds = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:BIRDS WithSceneController:scene_controller BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTransmitter:self.scoreTransmitter SceneObjects:self.sceneObjects] TimeController:time_controller];
+        timedMultipleObjectGeneratorForLeaves = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:LEAVES WithSceneController:scene_controller BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTransmitter:self.scoreTransmitter SceneObjects:self.sceneObjects] TimeController:time_controller];
+        timedMultipleObjectGeneratorForBees = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:BEES WithSceneController:scene_controller BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTransmitter:self.scoreTransmitter SceneObjects:self.sceneObjects] TimeController:time_controller];
     }
     return self;
 }
@@ -101,7 +104,7 @@
 }
 
 - (void)goodTouchOfTakenLeavesButton {
-    MGMultipleArmorGenerator *multipleArmorGenerator = [[MGMultipleArmorGenerator alloc] initWithSceneController:self.sceneControllerForState SceneObjectDestroyer:self.sceneObjectDestroyer SceneObjects:self.sceneObjects];
+    MGMultipleArmorGenerator *multipleArmorGenerator = [[MGMultipleArmorGenerator alloc] initWithSceneController:self.sceneControllerForState BoundaryController:self.boundaryController SceneObjects:self.sceneObjects];
     [self.sceneObjects addObjectsFromArray:[multipleArmorGenerator createWave]];
     [multipleArmorGenerator release];
 }
@@ -124,6 +127,7 @@
     [_takenLeavesButton release];
     [_scoreTransmitter release];
     [_numbersDelegate release];
+    [_boundaryController release];
     [super dealloc];
 }
 

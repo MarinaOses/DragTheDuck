@@ -23,7 +23,7 @@
 
 - (void)spawnBeeFrom:(MGDuck *)duck {
     self.duckWhoStartsTheTransformation = duck;
-    MGTransformer *transformerToAdd = [[MGTransformer alloc] initWithSceneController:duck.sceneController SceneObjectDestroyer:duck.sceneObjectDestroyer ScoreTransmitter:duck.scoreTransmitter TransformationController:duck.transformationController StartAtPoint:duck.translation];
+    MGTransformer *transformerToAdd = [[MGTransformer alloc] initWithSceneController:duck.sceneController BoundaryController:duck.boundaryController SceneObjectDestroyer:duck.sceneObjectDestroyer ScoreTransmitter:duck.scoreTransmitter TransformationController:duck.transformationController StartAtPoint:duck.translation];
     [self.sceneObjects addObject:transformerToAdd];
     [transformerToAdd release];
 }

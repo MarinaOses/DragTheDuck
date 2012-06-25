@@ -13,14 +13,14 @@
 @implementation MGMultipleArmorGenerator
 
 @synthesize sceneController = _sceneController;
-@synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
+@synthesize boundaryController = _boundaryController;
 @synthesize sceneObjects = _sceneObjects;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer SceneObjects:(NSMutableArray *)scene_objects {
+- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjects:(NSMutableArray *)scene_objects {
     self = [super init];
     if (self) {
         self.sceneController = scene_controller;
-        self.sceneObjectDestroyer = scene_object_destroyer;
+        self.boundaryController = boundary_controller;
         self.sceneObjects = scene_objects;
     }
     return self;
@@ -32,7 +32,7 @@
     for (MGSceneObject *obj in self.sceneObjects) {
         if ([obj isKindOfClass:[MGDuck class]]) {
             MGDuck *aDuck = (MGDuck *)obj;
-            MGArmor *armorToAdd = [[MGArmor alloc] initWithSceneController:self.sceneController SceneObjectDestroyer:self.sceneObjectDestroyer ToPutItOnDuck:aDuck];
+            MGArmor *armorToAdd = [[MGArmor alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController ToPutItOnDuck:aDuck];
             [arrayWithArmorsWave addObject:armorToAdd];
             [armorToAdd release];
             //Los patos con armadura no pueden arrastrarse ni colisionar
@@ -51,7 +51,7 @@
 
 - (void)dealloc {
     [_sceneController release];
-    [_sceneObjectDestroyer release];
+    [_boundaryController release];
     [_sceneObjects release];
     [super dealloc];
 }

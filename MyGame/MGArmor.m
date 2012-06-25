@@ -21,8 +21,8 @@ static CGFloat MGArmorColorValues[16] ={
 
 @implementation MGArmor
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ToPutItOnDuck:(MGDuck *)duck {
-    self = [super initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer RangeForScale:NSMakeRange(duck.scale.x, duck.scale.x) RangeForSpeed:NSMakeRange(duck.speed.x*100.0, duck.speed.x*100.0) Direction:1];
+- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller ToPutItOnDuck:(MGDuck *)duck {
+    self = [super initWithSceneController:scene_controller BoundaryController:boundary_controller RangeForScale:NSMakeRange(duck.scale.x, duck.scale.x) RangeForSpeed:NSMakeRange(duck.speed.x*100.0, duck.speed.x*100.0) Direction:1];
     if (self) {
         self.translation = duck.translation;
         self.mesh.colors = MGArmorColorValues;

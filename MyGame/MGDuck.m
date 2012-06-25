@@ -22,16 +22,18 @@ static CGFloat MGDuckColorValues[16] ={
 @synthesize scoreTransmitter = _scoreTransmitter;
 @synthesize  draggeable;
 @synthesize transformationController = _transformationController;
+@synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
 
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter TransformationController:(MGTransformationController *)transformation_controller {
-    self = [super initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer RangeForScale:NSMakeRange(MIN_DUCK_SCALE, MAX_DUCK_SCALE) RangeForSpeed:NSMakeRange(MIN_DUCK_SPEED, MAX_DUCK_SPEED) Direction:1];
-    if (self) {        
+- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter TransformationController:(MGTransformationController *)transformation_controller {
+    self = [super initWithSceneController:scene_controller BoundaryController:boundary_controller RangeForScale:NSMakeRange(MIN_DUCK_SCALE, MAX_DUCK_SCALE) RangeForSpeed:NSMakeRange(MIN_DUCK_SPEED, MAX_DUCK_SPEED) Direction:1];
+    if (self) {       
         self.mesh.colors = MGDuckColorValues;
         self.collider.checkForCollision = YES;
         self.draggeable = YES;
         self.scoreTransmitter = score_transmitter;
         self.transformationController = transformation_controller;
+        self.sceneObjectDestroyer = scene_object_destroyer;
     }
     return self;
 }
@@ -66,18 +68,6 @@ static CGFloat MGDuckColorValues[16] ={
     }
 }
 
-
-- (BOOL)hasCrossedTheFinishingLine {
-    BOOL hasCrossed = NO;
-    CGFloat midYOfWindowRect = CGRectGetMidY(self.sceneController.openGLView.window.frame);
-    CGFloat midXOfMeshRect = CGRectGetMidX(self.meshBounds);
-    CGFloat myCenterX = self.translation.x;
-    if (myCenterX > (midYOfWindowRect + midXOfMeshRect)) {
-        hasCrossed = YES;
-    }
-    return hasCrossed;    
-}
-
 - (void)update {
     if (self.draggeable) {
         //Ha habido algún toque?
@@ -99,9 +89,6 @@ static CGFloat MGDuckColorValues[16] ={
             }
         }
     }
-    if ([self hasCrossedTheFinishingLine]) {
-        [self.scoreTransmitter aNewDuckIsSaved];
-    }
     [super update];
 }
 
@@ -110,6 +97,7 @@ static CGFloat MGDuckColorValues[16] ={
 - (void)dealloc {
     [_scoreTransmitter release];
     [_transformationController release];
+    [_sceneObjectDestroyer release];
     [super dealloc];
 }
 

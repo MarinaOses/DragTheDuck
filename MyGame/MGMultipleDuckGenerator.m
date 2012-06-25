@@ -16,14 +16,16 @@
 @synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
 @synthesize scoreTransmitter = _scoreTransmitter;
 @synthesize transformationController = _transformationController;
+@synthesize boundaryController = _boundaryController;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter SceneObjects:(NSMutableArray *)scene_objects {
+- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter SceneObjects:(NSMutableArray *)scene_objects {
     self = [super init];
     if (self) {
         self.sceneController = scene_controller;
         self.sceneObjectDestroyer = scene_object_destroyer;
         self.scoreTransmitter = score_transmitter;
         _transformationController = [[MGTransformationController alloc] initWithSceneObjects:scene_objects];
+        self.boundaryController = boundary_controller;
     }
     return self;
 }
@@ -35,7 +37,7 @@
     NSInteger ducksToAppear = RANDOM_INT(MIN_DUCKS_TO_APPEAR, MAX_DUCKS_TO_APPEAR);
     NSInteger ducksCount;
     for (ducksCount = 0; ducksCount < ducksToAppear; ducksCount++) {
-        MGDuck *duckToAdd = [[MGDuck alloc] initWithSceneController:self.sceneController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTrasnmitter:self.scoreTransmitter TransformationController:self.transformationController];
+        MGDuck *duckToAdd = [[MGDuck alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTrasnmitter:self.scoreTransmitter TransformationController:self.transformationController];
         [arrayWithDucksWave addObject:duckToAdd];
         [duckToAdd release];
     }
@@ -52,6 +54,7 @@
     [_sceneObjectDestroyer release];
     [_scoreTransmitter release];
     [_transformationController release];
+    [_boundaryController release];
     [super dealloc];
 }
 

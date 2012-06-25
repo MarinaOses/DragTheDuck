@@ -16,13 +16,13 @@
 @interface MGMultipleArmorGenerator : NSObject <MGGenerator> {
     NSMutableArray *_sceneObjects;
     MGSceneController *_sceneController;
-    MGSceneObjectDestroyer *_sceneObjectDestroyer;    
+    MGBoundaryController *_boundaryController;    
 }
 
 @property (nonatomic, retain) MGSceneController *sceneController;
-@property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
+@property (nonatomic, retain) MGBoundaryController *boundaryController;
 @property (nonatomic, retain) NSMutableArray *sceneObjects;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer SceneObjects:(NSMutableArray *)scene_objects;
+- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjects:(NSMutableArray *)scene_objects;
 
 @end
