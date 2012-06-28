@@ -21,9 +21,9 @@
     self = [super init];
     if (self) {
         _savedDucksPresenter = [[MGNumberPresenter alloc] initWithSceneController:scene_controller StartAtPoint:MGPointMake(SAVED_DUCKS_SCORE_START_X, SAVED_DUCKS_SCORE_START_Y, 0.0) ScaleOfPresentation:MGPointMake(NUMBERS_SCALE, NUMBERS_SCALE, 1.0)];
-        _killedBirdsPresenter = [[MGNumberPresenter alloc] initWithSceneController:scene_controller StartAtPoint:MGPointMake(SAVED_DUCKS_SCORE_START_X, SAVED_DUCKS_SCORE_START_Y - SPACE_BETWEEN_NUMBERS_NUMBERS, 0.0) ScaleOfPresentation:MGPointMake(NUMBERS_SCALE, NUMBERS_SCALE, 1.0)];
+        _killedBirdsPresenter = [[MGNumberPresenter alloc] initWithSceneController:scene_controller StartAtPoint:MGPointMake(KILLED_BIRDS_SCORE_START_X, KILLED_BIRDS_SCORE_START_Y, 0.0) ScaleOfPresentation:MGPointMake(NUMBERS_SCALE, NUMBERS_SCALE, 1.0)];
         _savedDucksIconPresenter = [[MGIconPresenter alloc] initWithSceneController:scene_controller StartPointOfTheNumberThatComesAfter:MGPointMake(SAVED_DUCKS_SCORE_START_X, SAVED_DUCKS_SCORE_START_Y, 0.0) ScaleOfPresentation:MGPointMake(ICONS_SCALE, ICONS_SCALE, 1.0)];
-        _killedBirdsIconPresenter = [[MGIconPresenter alloc] initWithSceneController:scene_controller StartPointOfTheNumberThatComesAfter:MGPointMake(SAVED_DUCKS_SCORE_START_X, SAVED_DUCKS_SCORE_START_Y - SPACE_BETWEEN_NUMBERS_NUMBERS, 0.0) ScaleOfPresentation:MGPointMake(ICONS_SCALE, ICONS_SCALE, 1.0)];
+        _killedBirdsIconPresenter = [[MGIconPresenter alloc] initWithSceneController:scene_controller StartPointOfTheNumberThatComesAfter:MGPointMake(KILLED_BIRDS_SCORE_START_X, KILLED_BIRDS_SCORE_START_Y, 0.0) ScaleOfPresentation:MGPointMake(ICONS_SCALE, ICONS_SCALE, 1.0)];
         self.sceneObjects = scene_objects;
         self.sceneObjectDestroyer = scene_object_destroyer;
     }

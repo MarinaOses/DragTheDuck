@@ -17,6 +17,7 @@
 @synthesize scoreTransmitter = _scoreTransmitter;
 @synthesize numbersDelegate = _numbersDelegate;
 @synthesize boundaryController = _boundaryController;
+@synthesize lifesController = _lifesController;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller TimeController:(MGTimeController *)time_controller {
     self = [super initWithSceneController:scene_controller];
@@ -37,9 +38,15 @@
         
         _numbersDelegate = [[MGNumbersDelegate alloc] initWithSceneController:scene_controller SceneObjects:self.sceneObjects SceneObjectDestroyer:self.sceneObjectDestroyer];
         
-        _scoreTransmitter = [[MGScoreTransmitter alloc] initWithScoreBoard:self.scoreBoard NumbersDelegate:self.numbersDelegate];
         
-        _boundaryController = [[MGBoundaryController alloc] initWithSceneController:self.sceneControllerForState ScoreTransmitter:self.scoreTransmitter SceneObjectDestroyer:self.sceneObjectDestroyer];
+        
+        
+        _lifesController = [[MGLifesController alloc] initWithSceneController:self.sceneControllerForState SceneObjects:self.sceneObjects FirstTranslation:MGPointMake(LIFES_FIRST_TRANSLATION_X, LIFES_FIRST_TRANSLATION_Y, 0.0) ScaleOfPresentation:MGPointMake(LIFES_SCALE, LIFES_SCALE, 1.0) NumberOfLifes:NUMBER_OF_LIFES];
+        
+        _scoreTransmitter = [[MGScoreTransmitter alloc] initWithScoreBoard:self.scoreBoard NumbersDelegate:self.numbersDelegate LifesController:self.lifesController];
+        
+        _boundaryController = [[MGBoundaryController alloc] initWithSceneController:self.sceneControllerForState ScoreTransmitter:self.scoreTransmitter SceneObjectDestroyer:self.sceneObjectDestroyer LifesController:self.lifesController SceneObjects:self.sceneObjects];
+
 
         self.takenLeavesButton.target = self;
         self.takenLeavesButton.buttonGoodAction = @selector(goodTouchOfTakenLeavesButton);
@@ -57,6 +64,8 @@
     [self.sceneObjects addObject:self.takenLeavesButton];
     [self.sceneObjects addObject:self.takenLeavesButton.takenLeavesButtonShowerLayer];
     [self.numbersDelegate initializeAllMembersOfStaff];
+    [self.lifesController createAndAddLifesMarker];
+    [self.boundaryController createEggBreaker];
     [timedMultipleObjectGeneratorForDucks loadNewObjectsWaveToAdd];
     [timedMultipleObjectGeneratorForBirds loadNewObjectsWaveToAdd];
     //[timedMultipleObjectGeneratorForLeaves loadNewObjectsWaveToAdd];
@@ -128,6 +137,7 @@
     [_scoreTransmitter release];
     [_numbersDelegate release];
     [_boundaryController release];
+    [_lifesController release];
     [super dealloc];
 }
 

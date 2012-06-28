@@ -61,7 +61,7 @@ static CGFloat MGMobileColorValues[16] ={
 - (MGPoint)randomTranslationOnSide:(int)side {
     //Se obtiene la anchura de la ventana teniendo en cuenta que en el juego es igual a la altura
     CGFloat maxHeightToAppearance = CGRectGetWidth(self.sceneController.openGLView.window.frame);    
-    CGFloat randomAppearanceHeight = RANDOM_FLOAT(0.0, maxHeightToAppearance) - maxHeightToAppearance/2;
+    CGFloat randomAppearanceHeight = RANDOM_FLOAT(GRASS_HEIGHT, maxHeightToAppearance) - maxHeightToAppearance/2;
     return MGPointMake(side * CGRectGetMidY(self.sceneController.openGLView.window.frame), randomAppearanceHeight, 0.0);
 }
 

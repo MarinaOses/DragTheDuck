@@ -58,7 +58,7 @@ static CGFloat MGLeafSecondColorValues[16] ={
     CGFloat meshBoundsMidY = leaf_mesh_bounds.size.height/2.0;
     //Para que no se salga de la pantalla se suma o resta la mitad del tamaño de la hoja
     CGFloat randomX = RANDOM_FLOAT(meshBoundsMidX, screenY-meshBoundsMidX) - screenY/2.0;
-    CGFloat randomY = RANDOM_FLOAT(meshBoundsMidY, screenX-meshBoundsMidY) - screenX/2.0;
+    CGFloat randomY = RANDOM_FLOAT(meshBoundsMidY + GRASS_HEIGHT, screenX-meshBoundsMidY) - screenX/2.0;
     return MGPointMake(randomX, randomY, 0.0);
 }
 

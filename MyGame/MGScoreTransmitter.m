@@ -12,12 +12,14 @@
 
 @synthesize numbersDelegate =_numbersDelegate;
 @synthesize scoreBoard = _scoreBoard;
+@synthesize lifesController = _lifesController;
 
-- (id)initWithScoreBoard:(MGScoreBoard *)score_board NumbersDelegate:(MGNumbersDelegate *)numbers_delegate {
+- (id)initWithScoreBoard:(MGScoreBoard *)score_board NumbersDelegate:(MGNumbersDelegate *)numbers_delegate LifesController:(MGLifesController *)lifes_controller {
     self = [super init];
     if (self) {
         self.numbersDelegate = numbers_delegate;
         self.scoreBoard = score_board;
+        self.lifesController = lifes_controller;
     }
     return self;
 }
@@ -39,7 +41,7 @@
     [self.scoreBoard addNewKilledBird];
     [self.numbersDelegate updateTheMarker:2 With:self.scoreBoard.killedBirds];
     if (self.scoreBoard.killedBirds % BIRDS_TO_RECOVER_A_LIFE == 0) {
-        //recover a life
+        [self.lifesController aLifeHasBeenRecovered];
     }
 }
 
@@ -66,6 +68,7 @@
 - (void)dealloc {
     [_numbersDelegate release];
     [_scoreBoard release];
+    [_lifesController release];
     [super dealloc];
 }
 

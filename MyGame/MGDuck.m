@@ -76,6 +76,7 @@ static CGFloat MGDuckColorValues[16] ={
         //touchEvents contiene todos los toques o deslizamientos que se an hecho en pantalla
         NSSet *touchesSet = [self.sceneController.inputViewController touchEvents];
         for (MGTouch *atouch in touchesSet) {
+            
             if (atouch.phase == UITouchPhaseBegan && atouch.numberOfFingersOnTheScreen == 1) {
                 CGRect screenRectToAccess = self.screenRect;
                 CGRect touchableArea = CGRectMake(CGRectGetMinX(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DUCKS, CGRectGetMinY(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DUCKS, CGRectGetWidth(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DUCKS*2, CGRectGetHeight(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DUCKS*2);
@@ -83,7 +84,7 @@ static CGFloat MGDuckColorValues[16] ={
                     taken = YES;
                 }
             }
-            else if (atouch.phase == UITouchPhaseMoved && taken == YES) {
+            else if (atouch.phase == UITouchPhaseMoved && taken == YES && atouch.location.x > GRASS_HEIGHT) {
                 self.translation = [self.sceneController.inputViewController meshCenterFromMGTouchLocation:atouch.location];
             }
             else if (atouch.phase == UITouchPhaseEnded){

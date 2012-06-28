@@ -134,8 +134,6 @@
 //**********************************************************************************************
 #define DEBUG_DRAW_COLLIDERS 1
 
-//**********************************************************************************************
-#define MAX_TAKEN_LEAVES 10
 
 //**********************************************************************************************
 //Número de píxeles que se agregan a cada lado del pato para formar el área en que el pato puede cogerse
@@ -144,25 +142,45 @@
 
 
 //**********************************************************************************************
-#define NUMBERS_SCALE 20
+#define NUMBERS_SCALE 20 //Los números tienen 20 píxeles de alto/ancho
 #define ICONS_SCALE 20
 #define SPACE_BETWEEN_ICON_NUMBERS 10
-#define SPACE_BETWEEN_NUMBERS_NUMBERS 30
+#define SPACE_BETWEEN_NUMBERS_NUMBERS 20
+
 
 //**********************************************************************************************
+//start_x representa el punto en el eje x donde se sitúa el lado izquierdo del primer número
 #define SAVED_DUCKS_SCORE_START_X 150
-#define SAVED_DUCKS_SCORE_START_Y -110
+#define SAVED_DUCKS_SCORE_START_Y -120
 
 
 //**********************************************************************************************
-#define BIRDS_TO_RECOVER_A_LIFE 5
+//start_x representa el punto en el eje x donde se sitúa el lado izquierdo del primer número
+#define KILLED_BIRDS_SCORE_START_X 150
+#define KILLED_BIRDS_SCORE_START_Y -145
 
 
+//**********************************************************************************************
+#define BIRDS_TO_RECOVER_A_LIFE 3
+
+//**********************************************************************************************
+#define MAX_TAKEN_LEAVES 10
 
 //**********************************************************************************************
 #define EGG_INITIAL_JUMP_SPEED 2.0
 #define EGG_ACCELERATION 0.1
 
+//**********************************************************************************************
+#define SPACE_BETWEEN_LIFE_LIFE 10
+#define LIFES_FIRST_TRANSLATION_X -200
+#define LIFES_FIRST_TRANSLATION_Y -130
+#define LIFES_SCALE 20
+#define NUMBER_OF_LIFES 5
 
+//**********************************************************************************************
+#define GRASS_HEIGHT 70
+
+//**********************************************************************************************
+#define UPDATES_FOR_A_TRAVEL 100
 
 #endif

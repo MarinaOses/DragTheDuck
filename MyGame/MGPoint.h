@@ -36,4 +36,20 @@ static inline CGFloat MGPointDistance(MGPoint p1, MGPoint p2) {
                 (p1.z - p2.z) * (p1.x - p2.z));
 }
 
+static inline BOOL MGPointHasCrossedMGPointInDirection(MGPoint p1, MGPoint p2, NSInteger direction) {
+    BOOL hasCrossed = NO;
+    if (direction == -1) {
+        if (p1.x < p2.x && p1.y < p2.y) {
+            hasCrossed = YES;
+        }
+    }
+    else {
+        if (p1.x >= p2.x && p1.y < p2.y) {
+            hasCrossed = YES;
+        }
+    }
+    return hasCrossed;
+
+}
+
 #endif

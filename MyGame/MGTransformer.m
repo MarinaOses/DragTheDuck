@@ -80,7 +80,7 @@ static CGFloat MGTransformerColorValues[16] = {
                     taken = YES;
                 }
             }
-            else if (atouch.phase == UITouchPhaseMoved && taken == YES) {
+            else if (atouch.phase == UITouchPhaseMoved && taken == YES && atouch.location.x > GRASS_HEIGHT) {
                 self.translation = [self.sceneController.inputViewController meshCenterFromMGTouchLocation:atouch.location];
             }
             else if (atouch.phase == UITouchPhaseEnded){

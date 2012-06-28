@@ -11,6 +11,7 @@
 #import "MGSceneObjectDestroyer.h"
 #import "MGMultipleArmorGenerator.h"
 #import "MGTakenLeavesButton.h"
+#import "MGLifesController.h"
 
 
 @class MGSceneController;
@@ -28,6 +29,7 @@
     MGScoreTransmitter *_scoreTransmitter;
     MGNumbersDelegate *_numbersDelegate;
     MGBoundaryController *_boundaryController;
+    MGLifesController *_lifesController;
 }
 
 @property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
@@ -38,6 +40,7 @@
 @property (nonatomic, retain) MGScoreTransmitter *scoreTransmitter;
 @property (nonatomic, retain) MGNumbersDelegate *numbersDelegate;
 @property (nonatomic, retain) MGBoundaryController *boundaryController;
+@property (nonatomic, retain) MGLifesController *lifesController;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller TimeController:(MGTimeController *)time_controller;
 - (void)loadPlayState;
