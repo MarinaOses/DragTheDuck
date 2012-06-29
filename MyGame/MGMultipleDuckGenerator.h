@@ -11,6 +11,7 @@
 #import "MGDuck.h"
 #import "MGGenerator.h"
 #import "MGTransformationController.h"
+#import "MGFinger.h"
 
 @class MGSceneController;
 
@@ -20,6 +21,7 @@
     MGScoreTransmitter *_scoreTransmitter;
     MGTransformationController *_transformationController;
     MGBoundaryController *_boundaryController;
+    MGFinger *_finger;
 }
 
 @property (nonatomic, retain) MGSceneController *sceneController;
@@ -27,6 +29,7 @@
 @property (nonatomic, retain) MGScoreTransmitter *scoreTransmitter;
 @property (nonatomic, retain) MGTransformationController *transformationController;
 @property (nonatomic, retain) MGBoundaryController *boundaryController;
+@property (nonatomic, retain) MGFinger *finger;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter SceneObjects:(NSMutableArray *)scene_objects;
 

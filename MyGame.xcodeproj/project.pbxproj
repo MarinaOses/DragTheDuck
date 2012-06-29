@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C04E0C7159DBAD200F5A221 /* MGFinger.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C04E0C6159DBAD200F5A221 /* MGFinger.m */; };
 		9C1137061598B2340057FB80 /* MGBoundaryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1137051598B2340057FB80 /* MGBoundaryController.m */; };
 		9C15DD2515458A210095FBED /* MGSceneObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD2415458A1F0095FBED /* MGSceneObject.m */; };
 		9C15DD73154E9AD20095FBED /* MGButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD72154E9AD20095FBED /* MGButton.m */; };
@@ -71,6 +72,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C04E0C5159DBAD200F5A221 /* MGFinger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFinger.h; sourceTree = "<group>"; };
+		9C04E0C6159DBAD200F5A221 /* MGFinger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFinger.m; sourceTree = "<group>"; };
 		9C1137041598B2340057FB80 /* MGBoundaryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGBoundaryController.h; sourceTree = "<group>"; };
 		9C1137051598B2340057FB80 /* MGBoundaryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGBoundaryController.m; sourceTree = "<group>"; };
 		9C15DD2315458A1E0095FBED /* MGSceneObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSceneObject.h; sourceTree = "<group>"; };
@@ -314,6 +317,8 @@
 			children = (
 				9CAC5B14153D8B23003ECB4F /* MGTouch.h */,
 				9CAC5B15153D8B23003ECB4F /* MGTouch.m */,
+				9C04E0C5159DBAD200F5A221 /* MGFinger.h */,
+				9C04E0C6159DBAD200F5A221 /* MGFinger.m */,
 			);
 			name = Touches;
 			sourceTree = "<group>";
@@ -608,6 +613,7 @@
 				9C366EF6159A3A8900222538 /* MGLifesController.m in Sources */,
 				9C366EFC159B827800222538 /* MGBrokenEgg.m in Sources */,
 				9C366EFF159C7F4100222538 /* MGEggBreaker.m in Sources */,
+				9C04E0C7159DBAD200F5A221 /* MGFinger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

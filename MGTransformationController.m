@@ -23,7 +23,7 @@
 
 - (void)spawnBeeFrom:(MGDuck *)duck {
     self.duckWhoStartsTheTransformation = duck;
-    MGTransformer *transformerToAdd = [[MGTransformer alloc] initWithSceneController:duck.sceneController BoundaryController:duck.boundaryController SceneObjectDestroyer:duck.sceneObjectDestroyer ScoreTransmitter:duck.scoreTransmitter TransformationController:duck.transformationController StartAtPoint:duck.translation];
+    MGTransformer *transformerToAdd = [[MGTransformer alloc] initWithDuck:duck];
     [self.sceneObjects addObject:transformerToAdd];
     [transformerToAdd release];
 }
@@ -31,6 +31,7 @@
 - (void)spawnDuckFrom:(MGTransformer *)transformer {
     MGDuck *duckToAdd = self.duckWhoStartsTheTransformation;
     duckToAdd.translation = transformer.translation;
+    duckToAdd.taken = transformer.taken;
     [self.sceneObjects addObject:duckToAdd];
     [_duckWhoStartsTheTransformation release];
     _duckWhoStartsTheTransformation = nil;

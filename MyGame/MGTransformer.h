@@ -6,9 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MGMobileObject.h"
+#import "MGDuck.h"
 #import "MGCollisionable.h"
 #import "MGScoreTransmitter.h"
+#import "MGFinger.h"
 
 @class MGSceneController;
 @class MGTransformationController;
@@ -18,13 +19,16 @@
     MGTransformationController *_tranformationController;
     NSInteger lifeTimeInUpdates;
     MGSceneObjectDestroyer *_sceneObjectDestroyer;
+    MGFinger *_finger;
+    BOOL taken;
 }
 
 @property (nonatomic, retain) MGScoreTransmitter *scoreTransmitter;
 @property (nonatomic, retain) MGTransformationController *transformationController;
 @property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
+@property (nonatomic, retain) MGFinger *finger;
+@property (nonatomic, assign) BOOL taken;
 
 
-
-- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTransmitter:(MGScoreTransmitter *)score_transmitter TransformationController:(MGTransformationController *)transformation_controller StartAtPoint:(MGPoint)start_point;
+- (id)initWithDuck:(MGDuck *)duck;
 @end

@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MGDuck.h"
 #import "MGTransformer.h"
 #import "MGBee.h"
 

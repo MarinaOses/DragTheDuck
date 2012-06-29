@@ -28,19 +28,23 @@ static CGFloat MGTransformerColorValues[16] = {
 @synthesize scoreTransmitter = _scoreTransmitter;
 @synthesize transformationController = _transformationController;
 @synthesize sceneObjectDestroyer =_sceneObjectDestroyer;
+@synthesize finger = _finger;
+@synthesize taken;
 
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTransmitter:(MGScoreTransmitter *)score_transmitter TransformationController:(MGTransformationController *)transformation_controller StartAtPoint:(MGPoint)start_point {
+- (id)initWithDuck:(MGDuck *)duck {
     
-    self = [super initWithSceneController:scene_controller BoundaryController:boundary_controller RangeForScale:NSMakeRange(MIN_TRANSFORMER_SCALE, MAX_TRANSFORMER_SCALE) RangeForSpeed:NSMakeRange(MIN_TRANSFORMER_SPEED, MAX_TRANSFORMER_SPEED) Direction:1];
+    self = [super initWithSceneController:duck.sceneController BoundaryController:duck.boundaryController RangeForScale:NSMakeRange(MIN_TRANSFORMER_SCALE, MAX_TRANSFORMER_SCALE) RangeForSpeed:NSMakeRange(MIN_TRANSFORMER_SPEED, MAX_TRANSFORMER_SPEED) Direction:1];
     if (self) {
+        self.taken = duck.taken;
         self.mesh.colors = MGTransformerColorValues;
-        self.translation = start_point;
+        self.translation = duck.translation;
         self.collider.checkForCollision = YES;
-        self.scoreTransmitter = score_transmitter;
-        self.transformationController = transformation_controller;
+        self.scoreTransmitter = duck.scoreTransmitter;
+        self.transformationController = duck.transformationController;
         lifeTimeInUpdates = (int) ([self randomLifeTime] * MAXIMUM_FRAME_RATE);
-        self.sceneObjectDestroyer = scene_object_destroyer;
+        self.sceneObjectDestroyer = duck.sceneObjectDestroyer;
+        self.finger = duck.finger;
     }
     return self;
 }
@@ -55,6 +59,7 @@ static CGFloat MGTransformerColorValues[16] = {
     }
     else {
         //Animacion: igual no hace falta el remove
+        self.finger.isFree = YES;
         [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
         //sumar a marcador "número de pájaros muertos"
         [self.scoreTransmitter aNewBirdIsKilled];
@@ -71,24 +76,29 @@ static CGFloat MGTransformerColorValues[16] = {
         [self.scoreTransmitter theTransformerHasCrossedTheLine];
     }
     else {
-        NSSet *touchesSet = [self.sceneController.inputViewController touchEvents];
-        for (MGTouch *atouch in touchesSet) {
-            if (atouch.phase == UITouchPhaseBegan && atouch.numberOfFingersOnTheScreen == 1) {
-                CGRect screenRectToAccess = self.screenRect;
-                CGRect touchableArea = CGRectMake(CGRectGetMinX(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DUCKS, CGRectGetMinY(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DUCKS, CGRectGetWidth(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DUCKS*2, CGRectGetHeight(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DUCKS*2);
-                if (CGRectContainsPoint(touchableArea, atouch.location)) {
-                    taken = YES;
+        if (self.finger.isFree || self.taken) {
+            NSSet *touchesSet = [self.sceneController.inputViewController touchEvents];
+            for (MGTouch *atouch in touchesSet) {
+                if (atouch.phase == UITouchPhaseBegan && atouch.numberOfFingersOnTheScreen == 1) {
+                    CGRect screenRectToAccess = self.screenRect;
+                    CGRect touchableArea = CGRectMake(CGRectGetMinX(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DUCKS, CGRectGetMinY(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DUCKS, CGRectGetWidth(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DUCKS*2, CGRectGetHeight(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DUCKS*2);
+                    if (CGRectContainsPoint(touchableArea, atouch.location)) {
+                        self.taken = YES;
+                        self.finger.isFree = NO;
+
+                    }
                 }
-            }
-            else if (atouch.phase == UITouchPhaseMoved && taken == YES && atouch.location.x > GRASS_HEIGHT) {
-                self.translation = [self.sceneController.inputViewController meshCenterFromMGTouchLocation:atouch.location];
-            }
-            else if (atouch.phase == UITouchPhaseEnded){
-                taken = NO;
+                else if (atouch.phase == UITouchPhaseMoved && taken == YES && atouch.location.x > GRASS_HEIGHT) {
+                    self.translation = [self.sceneController.inputViewController meshCenterFromMGTouchLocation:atouch.location];
+                }
+                else if (atouch.phase == UITouchPhaseEnded){
+                    self.taken = NO;
+                    self.finger.isFree = YES;
+
+                }
             }
         }
     }
-    
     [super update];
 }
 
@@ -97,6 +107,7 @@ static CGFloat MGTransformerColorValues[16] = {
     [_scoreTransmitter release];
     [_tranformationController release];
     [_sceneObjectDestroyer release];
+    [_finger release];
     [super dealloc];
 }
 

@@ -17,6 +17,7 @@
 @synthesize scoreTransmitter = _scoreTransmitter;
 @synthesize transformationController = _transformationController;
 @synthesize boundaryController = _boundaryController;
+@synthesize finger = _finger;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter SceneObjects:(NSMutableArray *)scene_objects {
     self = [super init];
@@ -26,6 +27,7 @@
         self.scoreTransmitter = score_transmitter;
         _transformationController = [[MGTransformationController alloc] initWithSceneObjects:scene_objects];
         self.boundaryController = boundary_controller;
+        _finger = [[MGFinger alloc] init];
     }
     return self;
 }
@@ -37,7 +39,7 @@
     NSInteger ducksToAppear = RANDOM_INT(MIN_DUCKS_TO_APPEAR, MAX_DUCKS_TO_APPEAR);
     NSInteger ducksCount;
     for (ducksCount = 0; ducksCount < ducksToAppear; ducksCount++) {
-        MGDuck *duckToAdd = [[MGDuck alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTrasnmitter:self.scoreTransmitter TransformationController:self.transformationController];
+        MGDuck *duckToAdd = [[MGDuck alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTrasnmitter:self.scoreTransmitter TransformationController:self.transformationController TouchFinger:self.finger];
         [arrayWithDucksWave addObject:duckToAdd];
         [duckToAdd release];
     }
@@ -55,6 +57,7 @@
     [_scoreTransmitter release];
     [_transformationController release];
     [_boundaryController release];
+    [_finger release];
     [super dealloc];
 }
 

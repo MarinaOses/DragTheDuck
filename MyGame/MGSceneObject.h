@@ -26,7 +26,6 @@
     CGRect _screenRect;
     CGPoint screenRectCenter;
     
-    BOOL taken;
     NSInteger positionOfNumber;
     
     CGFloat *_matrix;
