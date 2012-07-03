@@ -32,6 +32,9 @@
     MGDuck *duckToAdd = self.duckWhoStartsTheTransformation;
     duckToAdd.translation = transformer.translation;
     duckToAdd.taken = transformer.taken;
+    if (duckToAdd.taken) {
+        duckToAdd.speed = transformer.speed;
+    }
     [self.sceneObjects addObject:duckToAdd];
     [_duckWhoStartsTheTransformation release];
     _duckWhoStartsTheTransformation = nil;

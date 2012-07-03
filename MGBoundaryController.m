@@ -64,12 +64,20 @@
     
     if (outOfBoundaries) {
         if ([mobile_object isKindOfClass:[MGDuck class]]) {
-            [self.scoreTransmitter aNewDuckIsSaved];
-            [self.sceneObjectDestroyer markToRemoveSceneObject:mobile_object];
+            MGDuck *duck = (MGDuck *)mobile_object;
+            duck.finger.isFree = YES;
+            if (centerX > (midYOfWindowRect + midXOfMeshRect)) { //Derecha
+                [self.scoreTransmitter aNewDuckIsSaved];
+                [self.sceneObjectDestroyer markToRemoveSceneObject:mobile_object];
+            }
         }
         else if ([mobile_object isKindOfClass:[MGTransformer class]]) {
-            [self.scoreTransmitter theTransformerHasCrossedTheLine];
-            [self.sceneObjectDestroyer markToRemoveSceneObject:mobile_object];
+            MGTransformer *transformer = (MGTransformer *)mobile_object;
+            transformer.finger.isFree = YES;
+            if (centerX > (midYOfWindowRect + midXOfMeshRect)) { //Derecha
+                [self.scoreTransmitter theTransformerHasCrossedTheLine];
+                [self.sceneObjectDestroyer markToRemoveSceneObject:mobile_object];
+            }
 
         }
         else if ([mobile_object isKindOfClass:[MGBird class]] || [mobile_object isKindOfClass:[MGArmor class]]) {

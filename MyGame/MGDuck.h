@@ -22,6 +22,8 @@
     MGTransformationController *_transformationController;
     MGSceneObjectDestroyer *_sceneObjectDestroyer;
     MGFinger *_finger;
+    MGPoint savedSpeed;
+    NSInteger takenTimeWithoutMovingInUpdates;
 }
 
 

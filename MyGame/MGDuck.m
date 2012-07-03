@@ -12,6 +12,12 @@
 #import "MGTransformationController.h"
 #import "MGEgg.h"
 
+@interface MGDuck()
+- (void)stop;
+- (void)start;
+- (void)loadTakenTimeWithoutMovingInUpdates;
+@end
+
 static CGFloat MGDuckColorValues[16] ={
     1.0, 1.0, 0.0, 1.0, 
     1.0, 1.0, 0.0, 1.0, 
@@ -38,6 +44,10 @@ static CGFloat MGDuckColorValues[16] ={
         self.transformationController = transformation_controller;
         self.sceneObjectDestroyer = scene_object_destroyer;
         self.finger = touch_finger;
+        savedSpeed = self.speed;
+        [self loadTakenTimeWithoutMovingInUpdates];
+;
+
     }
     return self;
 }
@@ -78,30 +88,53 @@ static CGFloat MGDuckColorValues[16] ={
 }
 
 - (void)update {
-    if (self.draggeable && (self.finger.isFree || self.taken)) {
-        //Ha habido algún toque?
-        //touchEvents contiene todos los toques o deslizamientos que se an hecho en pantalla
-        NSSet *touchesSet = [self.sceneController.inputViewController touchEvents];
-        for (MGTouch *atouch in touchesSet) {
-            
-            if (atouch.phase == UITouchPhaseBegan && atouch.numberOfFingersOnTheScreen == 1) {
-                CGRect screenRectToAccess = self.screenRect;
-                CGRect touchableArea = CGRectMake(CGRectGetMinX(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DUCKS, CGRectGetMinY(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DUCKS, CGRectGetWidth(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DUCKS*2, CGRectGetHeight(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DUCKS*2);
-                if (CGRectContainsPoint(touchableArea, atouch.location)) {
-                    self.taken = YES;
-                    self.finger.isFree = NO;
-                }
-            }
-            else if (atouch.phase == UITouchPhaseMoved && taken == YES && atouch.location.x > GRASS_HEIGHT) {
-                self.translation = [self.sceneController.inputViewController meshCenterFromMGTouchLocation:atouch.location];
-            }
-            else if (atouch.phase == UITouchPhaseEnded){
-                self.taken = NO;
-                self.finger.isFree = YES;
-            }
+    NSSet *newTouches = [self.sceneController.inputViewController touchEvents];
+    if (self.taken && [newTouches count] == 0) {
+        takenTimeWithoutMovingInUpdates--;
+        if (takenTimeWithoutMovingInUpdates <= 0) {
+            self.taken = NO;
+            self.finger.isFree = YES;
+            [self start];
         }
     }
+    else {
+        if (self.draggeable && (self.finger.isFree || self.taken)) {
+            for (MGTouch *atouch in newTouches) {
+                
+                if (atouch.phase == UITouchPhaseBegan && atouch.numberOfFingersOnTheScreen == 1) {
+                    CGRect screenRectToAccess = self.screenRect;
+                    CGRect touchableArea = CGRectMake(CGRectGetMinX(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DUCKS, CGRectGetMinY(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DUCKS, CGRectGetWidth(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DUCKS*2, CGRectGetHeight(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DUCKS*2);
+                    if (CGRectContainsPoint(touchableArea, atouch.location)) {
+                        self.taken = YES;
+                        self.finger.isFree = NO;
+                        [self stop];
+                    }
+                }
+                else if (atouch.phase == UITouchPhaseMoved && taken == YES && atouch.location.x > GRASS_HEIGHT) {
+                    self.translation = [self.sceneController.inputViewController meshCenterFromMGTouchLocation:atouch.location];
+                }
+                else if (atouch.phase == UITouchPhaseEnded){
+                    self.taken = NO;
+                    self.finger.isFree = YES;
+                    [self start];
+                }
+            }
+        }
+        [self loadTakenTimeWithoutMovingInUpdates];
+    }
     [super update];
+}
+
+- (void)loadTakenTimeWithoutMovingInUpdates {
+    takenTimeWithoutMovingInUpdates = TAKEN_TIME_WITHOUT_MOVING * MAXIMUM_FRAME_RATE;
+}
+
+- (void)stop {
+    self.speed = MGPointMake(0.0, 0.0, 0.0);
+}
+
+- (void)start {
+    self.speed = savedSpeed;
 }
 
 

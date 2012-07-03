@@ -13,6 +13,9 @@
 
 @interface MGTransformer()
 - (CGFloat)randomLifeTime;
+- (void)stop;
+- (void)start;
+- (void)loadTakenTimeWithoutMovingInUpdates;
 @end
 
 
@@ -36,7 +39,11 @@ static CGFloat MGTransformerColorValues[16] = {
     
     self = [super initWithSceneController:duck.sceneController BoundaryController:duck.boundaryController RangeForScale:NSMakeRange(MIN_TRANSFORMER_SCALE, MAX_TRANSFORMER_SCALE) RangeForSpeed:NSMakeRange(MIN_TRANSFORMER_SPEED, MAX_TRANSFORMER_SPEED) Direction:1];
     if (self) {
+        savedSpeed = self.speed;
         self.taken = duck.taken;
+        if (self.taken) {
+            self.speed = duck.speed;
+        }
         self.mesh.colors = MGTransformerColorValues;
         self.translation = duck.translation;
         self.collider.checkForCollision = YES;
@@ -45,6 +52,7 @@ static CGFloat MGTransformerColorValues[16] = {
         lifeTimeInUpdates = (int) ([self randomLifeTime] * MAXIMUM_FRAME_RATE);
         self.sceneObjectDestroyer = duck.sceneObjectDestroyer;
         self.finger = duck.finger;
+        [self loadTakenTimeWithoutMovingInUpdates];
     }
     return self;
 }
@@ -59,7 +67,6 @@ static CGFloat MGTransformerColorValues[16] = {
     }
     else {
         //Animacion: igual no hace falta el remove
-        self.finger.isFree = YES;
         [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
         //sumar a marcador "número de pájaros muertos"
         [self.scoreTransmitter aNewBirdIsKilled];
@@ -76,30 +83,57 @@ static CGFloat MGTransformerColorValues[16] = {
         [self.scoreTransmitter theTransformerHasCrossedTheLine];
     }
     else {
-        if (self.finger.isFree || self.taken) {
-            NSSet *touchesSet = [self.sceneController.inputViewController touchEvents];
-            for (MGTouch *atouch in touchesSet) {
-                if (atouch.phase == UITouchPhaseBegan && atouch.numberOfFingersOnTheScreen == 1) {
-                    CGRect screenRectToAccess = self.screenRect;
-                    CGRect touchableArea = CGRectMake(CGRectGetMinX(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DUCKS, CGRectGetMinY(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DUCKS, CGRectGetWidth(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DUCKS*2, CGRectGetHeight(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DUCKS*2);
-                    if (CGRectContainsPoint(touchableArea, atouch.location)) {
-                        self.taken = YES;
-                        self.finger.isFree = NO;
-
+        NSSet *newTouches = [self.sceneController.inputViewController touchEvents];
+        if (self.taken && [newTouches count] == 0) {
+            takenTimeWithoutMovingInUpdates--;
+            if (takenTimeWithoutMovingInUpdates <= 0) {
+                self.taken = NO;
+                self.finger.isFree = YES;
+                [self start];
+            }
+        }
+        else {
+            if (self.finger.isFree || self.taken) {
+                for (MGTouch *atouch in newTouches) {
+                    if (atouch.phase == UITouchPhaseBegan && atouch.numberOfFingersOnTheScreen == 1) {
+                        CGRect screenRectToAccess = self.screenRect;
+                        CGRect touchableArea = CGRectMake(CGRectGetMinX(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DUCKS, CGRectGetMinY(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DUCKS, CGRectGetWidth(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DUCKS*2, CGRectGetHeight(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DUCKS*2);
+                        if (CGRectContainsPoint(touchableArea, atouch.location)) {
+                            self.taken = YES;
+                            self.finger.isFree = NO;
+                            [self stop];
+                            
+                        }
+                    }
+                    else if (atouch.phase == UITouchPhaseMoved && taken == YES && atouch.location.x > GRASS_HEIGHT) {
+                        self.translation = [self.sceneController.inputViewController meshCenterFromMGTouchLocation:atouch.location];
+                    }
+                    else if (atouch.phase == UITouchPhaseEnded){
+                        self.taken = NO;
+                        self.finger.isFree = YES;
+                        [self start];
+                        
                     }
                 }
-                else if (atouch.phase == UITouchPhaseMoved && taken == YES && atouch.location.x > GRASS_HEIGHT) {
-                    self.translation = [self.sceneController.inputViewController meshCenterFromMGTouchLocation:atouch.location];
-                }
-                else if (atouch.phase == UITouchPhaseEnded){
-                    self.taken = NO;
-                    self.finger.isFree = YES;
-
-                }
             }
+            [self loadTakenTimeWithoutMovingInUpdates];
+
         }
     }
     [super update];
+}
+
+
+- (void)loadTakenTimeWithoutMovingInUpdates {
+    takenTimeWithoutMovingInUpdates = TAKEN_TIME_WITHOUT_MOVING * MAXIMUM_FRAME_RATE;
+}
+
+- (void)stop {
+    self.speed = MGPointMake(0.0, 0.0, 0.0);
+}
+
+- (void)start {
+    self.speed = savedSpeed;
 }
 
 

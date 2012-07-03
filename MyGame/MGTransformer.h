@@ -21,6 +21,8 @@
     MGSceneObjectDestroyer *_sceneObjectDestroyer;
     MGFinger *_finger;
     BOOL taken;
+    MGPoint savedSpeed;
+    NSInteger takenTimeWithoutMovingInUpdates;
 }
 
 @property (nonatomic, retain) MGScoreTransmitter *scoreTransmitter;
