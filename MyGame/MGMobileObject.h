@@ -13,11 +13,13 @@
 
 @interface MGMobileObject : MGSceneObject {
     MGPoint _speed;
+    NSInteger movingDirection;
     MGBoundaryController *_boundaryController;
 }
 
 @property (nonatomic, assign) MGPoint speed;
 @property (nonatomic, retain) MGBoundaryController *boundaryController;
+@property (nonatomic, assign) NSInteger movingDirection;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller RangeForScale:(NSRange)scale_range RangeForSpeed:(NSRange)speed_range Direction:(int)direction;
 - (MGPoint)randomScaleInRange:(NSRange)scale_range;

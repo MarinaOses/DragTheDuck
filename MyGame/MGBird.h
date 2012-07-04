@@ -7,12 +7,18 @@
 //
 
 #import "MGMobileObject.h"
+#import "MGFlyingObject.h"
+
 
 @class MGSceneController;
 
-@interface MGBird : MGMobileObject {
+@interface MGBird : MGMobileObject <MGFlyingObject> {
+    BOOL wingsDown;
+    NSInteger timeToFlapItsWingsInUpdates;
     
 }
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller;
+
+
+- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer;
 @end

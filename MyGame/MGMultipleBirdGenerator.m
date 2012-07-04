@@ -14,11 +14,16 @@
 
 @synthesize sceneController = _sceneController;
 @synthesize boundaryController =_boundaryController;
-- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller {
+@synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
+
+
+
+- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {
     self = [super init];
     if (self) {
         self.sceneController = scene_controller;
         self.boundaryController = boundary_controller;
+        self.sceneObjectDestroyer = scene_object_destroyer;
     }
     return self;
 }
@@ -30,7 +35,7 @@
     NSInteger birdsToAppear = RANDOM_INT(MIN_BIRDS_TO_APPEAR, MAX_BIRDS_TO_APPEAR);
     NSInteger birdsCount;
     for (birdsCount = 0; birdsCount < birdsToAppear; birdsCount++) {
-        MGBird *birdToAdd = [[MGBird alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController];
+        MGBird *birdToAdd = [[MGBird alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer];
         [arrayWithBirdsWave addObject:birdToAdd];
         [birdToAdd release];
     }
@@ -45,6 +50,7 @@
 - (void)dealloc {
     [_sceneController release];
     [_boundaryController release];
+    [_sceneObjectDestroyer release];
     [super dealloc];
 }
 

@@ -35,7 +35,7 @@
         return [[[MGMultipleDuckGenerator alloc] initWithSceneController:scene_controller BoundaryController:boundary_controller SceneObjectDestroyer:scene_object_destroyer ScoreTrasnmitter:score_transmitter SceneObjects:scene_objects] autorelease];
     }
     else if (type == BIRDS) {
-        return [[[MGMultipleBirdGenerator alloc] initWithSceneController:scene_controller BoundaryController:boundary_controller] autorelease];
+        return [[[MGMultipleBirdGenerator alloc] initWithSceneController:scene_controller BoundaryController:boundary_controller SceneObjectDestroyer:scene_object_destroyer] autorelease];
     }
     else if (type == LEAVES){
         return [[[MGMultipleLeafGenerator alloc] initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer] autorelease];

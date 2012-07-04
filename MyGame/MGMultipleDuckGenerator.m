@@ -25,8 +25,9 @@
         self.sceneController = scene_controller;
         self.sceneObjectDestroyer = scene_object_destroyer;
         self.scoreTransmitter = score_transmitter;
-        _transformationController = [[MGTransformationController alloc] initWithSceneObjects:scene_objects];
         self.boundaryController = boundary_controller;
+
+        _transformationController = [[MGTransformationController alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController SceneObjectsDestroyer:self.sceneObjectDestroyer SceneObjects:scene_objects];
         _finger = [[MGFinger alloc] init];
     }
     return self;

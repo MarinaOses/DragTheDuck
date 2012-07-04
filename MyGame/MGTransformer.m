@@ -19,11 +19,18 @@
 @end
 
 
-static CGFloat MGTransformerColorValues[16] = {
+static CGFloat MGTransformerWingsDownColorValues[16] = {
     1.0, 0.5, 0.3, 1.0,
     1.0, 0.5, 0.3, 1.0,
     1.0, 0.5, 0.3, 1.0,
     1.0, 0.5, 0.3, 1.0
+};
+
+static CGFloat MGTransformerWingsUpColorValues[16] = {
+    1.0, 0.6, 0.5, 1.0,
+    1.0, 0.6, 0.5, 1.0,
+    1.0, 0.6, 0.5, 1.0,
+    1.0, 0.6, 0.5, 1.0
 };
 
 
@@ -44,7 +51,6 @@ static CGFloat MGTransformerColorValues[16] = {
         if (self.taken) {
             self.speed = duck.speed;
         }
-        self.mesh.colors = MGTransformerColorValues;
         self.translation = duck.translation;
         self.collider.checkForCollision = YES;
         self.scoreTransmitter = duck.scoreTransmitter;
@@ -53,6 +59,9 @@ static CGFloat MGTransformerColorValues[16] = {
         self.sceneObjectDestroyer = duck.sceneObjectDestroyer;
         self.finger = duck.finger;
         [self loadTakenTimeWithoutMovingInUpdates];
+        wingsDown = duck.wingsDown;
+        [self flapItsWings];
+        [self loadTimeToFlapItsWingsInUpdates];
     }
     return self;
 }
@@ -70,6 +79,20 @@ static CGFloat MGTransformerColorValues[16] = {
         [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
         //sumar a marcador "número de pájaros muertos"
         [self.scoreTransmitter aNewBirdIsKilled];
+        [self.transformationController spawnFeathersFrom:(MGBird *)scene_object];
+    }
+}
+
+- (void)loadTimeToFlapItsWingsInUpdates {
+    timeToFlapItsWingsInUpdates = (TIME_TO_FLAP_ITS_WINGS * MAXIMUM_FRAME_RATE) * (self.speed.x * self.movingDirection);
+}
+
+- (void)flapItsWings {
+    if (wingsDown) {
+        self.mesh.colors = MGTransformerWingsDownColorValues;
+    }
+    else {
+        self.mesh.colors = MGTransformerWingsUpColorValues;
     }
 }
 
@@ -83,6 +106,15 @@ static CGFloat MGTransformerColorValues[16] = {
         [self.scoreTransmitter theTransformerHasCrossedTheLine];
     }
     else {
+        if (!self.taken) {
+            timeToFlapItsWingsInUpdates--;
+            if (timeToFlapItsWingsInUpdates <= 0) {
+                [self flapItsWings];
+                wingsDown = !wingsDown;
+                [self loadTimeToFlapItsWingsInUpdates];
+                
+            }
+        }
         NSSet *newTouches = [self.sceneController.inputViewController touchEvents];
         if (self.taken && [newTouches count] == 0) {
             takenTimeWithoutMovingInUpdates--;
@@ -117,7 +149,6 @@ static CGFloat MGTransformerColorValues[16] = {
                 }
             }
             [self loadTakenTimeWithoutMovingInUpdates];
-
         }
     }
     [super update];

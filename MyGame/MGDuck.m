@@ -10,7 +10,7 @@
 
 #import "MGSceneController.h"
 #import "MGTransformationController.h"
-#import "MGEgg.h"
+
 
 @interface MGDuck()
 - (void)stop;
@@ -18,11 +18,19 @@
 - (void)loadTakenTimeWithoutMovingInUpdates;
 @end
 
-static CGFloat MGDuckColorValues[16] ={
+static CGFloat MGDuckWingsDownColorValues[16] ={
     1.0, 1.0, 0.0, 1.0, 
     1.0, 1.0, 0.0, 1.0, 
     1.0, 1.0, 0.0, 1.0, 
     1.0, 1.0, 0.0, 1.0
+};
+
+
+static CGFloat MGDuckWingsUpColorValues[16] ={
+    0.9, 0.9, 0.5, 1.0, 
+    0.9, 0.9, 0.5, 1.0, 
+    0.9, 0.9, 0.5, 1.0, 
+    0.9, 0.9, 0.5, 1.0
 };
 
 @implementation MGDuck
@@ -32,11 +40,11 @@ static CGFloat MGDuckColorValues[16] ={
 @synthesize transformationController = _transformationController;
 @synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
 @synthesize finger = _finger;
+@synthesize wingsDown;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter TransformationController:(MGTransformationController *)transformation_controller TouchFinger:(MGFinger *)touch_finger {
     self = [super initWithSceneController:scene_controller BoundaryController:boundary_controller RangeForScale:NSMakeRange(MIN_DUCK_SCALE, MAX_DUCK_SCALE) RangeForSpeed:NSMakeRange(MIN_DUCK_SPEED, MAX_DUCK_SPEED) Direction:1];
-    if (self) {       
-        self.mesh.colors = MGDuckColorValues;
+    if (self) { 
         self.collider.checkForCollision = YES;
         self.draggeable = YES;
         self.taken = NO;
@@ -46,7 +54,9 @@ static CGFloat MGDuckColorValues[16] ={
         self.finger = touch_finger;
         savedSpeed = self.speed;
         [self loadTakenTimeWithoutMovingInUpdates];
-;
+        wingsDown = YES;
+        [self flapItsWings];
+        [self loadTimeToFlapItsWingsInUpdates];
 
     }
     return self;
@@ -65,8 +75,8 @@ static CGFloat MGDuckColorValues[16] ={
         //Animacion: igual no hace falta el remove
         [self.sceneObjectDestroyer markToRemoveSceneObject:self];
         [self.scoreTransmitter aNewDuckIsKilled];
-        MGEgg *egg = [[MGEgg alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController DropsFromKilledDuck:self];
-        [self.transformationController addAnEgg:egg];
+        [self.transformationController spawnFeathersFrom:self];
+        [self.transformationController spawnEggFrom:self];
         //sumar a marcador "número de patos muertos"
         
     }
@@ -87,7 +97,31 @@ static CGFloat MGDuckColorValues[16] ={
     }
 }
 
+- (void)loadTimeToFlapItsWingsInUpdates {
+    timeToFlapItsWingsInUpdates = (TIME_TO_FLAP_ITS_WINGS * MAXIMUM_FRAME_RATE) / (self.speed.x * self.movingDirection);
+}
+
+
+- (void)flapItsWings {
+    if (wingsDown) {
+        self.mesh.colors = MGDuckWingsDownColorValues;
+    }
+    else {
+        self.mesh.colors = MGDuckWingsUpColorValues;
+    }
+}
+
 - (void)update {
+    if (!self.taken) {
+        timeToFlapItsWingsInUpdates--;
+        if (timeToFlapItsWingsInUpdates <= 0) {
+            [self flapItsWings];
+            wingsDown = !wingsDown;
+            [self loadTimeToFlapItsWingsInUpdates];
+            
+        }
+
+    }
     NSSet *newTouches = [self.sceneController.inputViewController touchEvents];
     if (self.taken && [newTouches count] == 0) {
         takenTimeWithoutMovingInUpdates--;

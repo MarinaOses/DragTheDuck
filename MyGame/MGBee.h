@@ -7,6 +7,8 @@
 //
 
 #import "MGStoppedObject.h"
+#import "MGFlyingObject.h"
+
 
 #define RIGHT (-1)
 #define LEFT 1

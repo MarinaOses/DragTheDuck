@@ -14,7 +14,7 @@
 @class MGSceneController;
 @class MGTransformationController;
 
-@interface MGTransformer : MGMobileObject <MGCollisionable> {
+@interface MGTransformer : MGMobileObject <MGCollisionable, MGFlyingObject> {
     MGScoreTransmitter *_scoreTransmitter;
     MGTransformationController *_tranformationController;
     NSInteger lifeTimeInUpdates;
@@ -23,6 +23,9 @@
     BOOL taken;
     MGPoint savedSpeed;
     NSInteger takenTimeWithoutMovingInUpdates;
+    BOOL wingsDown;
+    NSInteger timeToFlapItsWingsInUpdates;
+  
 }
 
 @property (nonatomic, retain) MGScoreTransmitter *scoreTransmitter;

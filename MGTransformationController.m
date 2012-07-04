@@ -8,14 +8,22 @@
 
 #import "MGTransformationController.h"
 
+
+#import "MGSceneController.h"
+
 @implementation MGTransformationController
 @synthesize sceneObjects = _sceneObjects;
 @synthesize duckWhoStartsTheTransformation = _duckWhoStartsTheTransformation;
+@synthesize sceneController =_sceneController;
+@synthesize boundaryController = _boundaryController;
+@synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
 
-
-- (id)initWithSceneObjects:(NSMutableArray *)scene_objects {
+- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectsDestroyer:(MGSceneObjectDestroyer *)scene_objects_destroyer SceneObjects:(NSMutableArray *)scene_objects {
     self = [super init];
     if (self) {
+        self.sceneController = scene_controller;
+        self.boundaryController = boundary_controller;
+        self.sceneObjectDestroyer = scene_objects_destroyer;
         self.sceneObjects = scene_objects;
     }
     return self;
@@ -41,8 +49,16 @@
     
 }
 
-- (void)addAnEgg:(MGEgg *)egg {
-    [self.sceneObjects addObject:egg];
+- (void)spawnEggFrom:(MGDuck *)killed_duck {
+    MGEgg *eggToAdd = [[MGEgg alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController DropsFromKilledDuck:killed_duck];
+    [self.sceneObjects addObject:eggToAdd];
+    [eggToAdd release];
+}
+
+- (void)spawnFeathersFrom:(MGMobileObject *)killed_mobile_object {
+    MGFeathers *feathersToAdd = [[MGFeathers alloc] initWithSceneController:self.sceneController SceneObjectDestroyer:self.sceneObjectDestroyer Translation:killed_mobile_object.translation Scale:killed_mobile_object.scale Color:killed_mobile_object.mesh.colors];
+    [self.sceneObjects addObject:feathersToAdd];
+    [feathersToAdd release];
 }
 
 
@@ -51,6 +67,9 @@
     if (_duckWhoStartsTheTransformation != nil) {
         [_duckWhoStartsTheTransformation release];
     }
+    [_sceneController release];
+    [_boundaryController release];
+    [_sceneObjectDestroyer release];
     [super dealloc];
 }
 

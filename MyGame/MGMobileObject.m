@@ -32,6 +32,7 @@ static CGFloat MGMobileColorValues[16] ={
 
 @synthesize speed = _speed;
 @synthesize boundaryController = _boundaryController;
+@synthesize movingDirection;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller RangeForScale:(NSRange)scale_range RangeForSpeed:(NSRange)speed_range Direction:(int)direction {
     self = [super initWithSceneController:scene_controller];
@@ -41,9 +42,8 @@ static CGFloat MGMobileColorValues[16] ={
         [meshToAssign release];
         self.mesh.colorSize = MGMobileColorSize;
         self.mesh.colors = MGMobileColorValues;
-        
+        self.movingDirection = direction;
         self.collider = [[MGCollider alloc] initWithSceneController:scene_controller];
-
         self.scale = [self randomScaleInRange:scale_range];
         self.translation = [self randomTranslationOnSide:-direction];
         self.speed = [self randomSpeedInRange:speed_range WithDirection:direction];
@@ -69,7 +69,6 @@ static CGFloat MGMobileColorValues[16] ={
     GLfloat speedToassign = RANDOM_FLOAT(speed_range.location, speed_range.length)/100.0;
     return MGPointMake(direction * speedToassign, 0.0, 0.0);
 }
-
 
 
 

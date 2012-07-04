@@ -10,12 +10,14 @@
 #import "MGCollisionable.h"
 #import "MGScoreTransmitter.h"
 #import "MGFinger.h"
+#import "MGFlyingObject.h"
 
-@class MGEgg;
+
+
 @class MGSceneController;
 @class MGTransformationController;
 
-@interface MGDuck : MGMobileObject <MGCollisionable> {
+@interface MGDuck : MGMobileObject <MGCollisionable, MGFlyingObject>{
     MGScoreTransmitter *_scoreTransmitter;
     BOOL draggeable;
     BOOL taken;
@@ -24,6 +26,8 @@
     MGFinger *_finger;
     MGPoint savedSpeed;
     NSInteger takenTimeWithoutMovingInUpdates;
+    BOOL wingsDown;
+    NSInteger timeToFlapItsWingsInUpdates;
 }
 
 
@@ -33,6 +37,7 @@
 @property (nonatomic, retain) MGTransformationController *transformationController;
 @property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
 @property (nonatomic, retain) MGFinger *finger;
+@property (nonatomic, assign) BOOL wingsDown;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter TransformationController:(MGTransformationController *)transformation_controller TouchFinger:(MGFinger *)touch_finger;
 
