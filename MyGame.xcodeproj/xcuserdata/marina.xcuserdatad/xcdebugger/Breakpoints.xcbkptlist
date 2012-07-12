@@ -9,12 +9,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "MyGame/MGPlayState.m"
-         timestampString = "362596544.783868"
+         timestampString = "363815429.953101"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "82"
-         endingLineNumber = "82"
-         landmarkName = "-updatePlayState"
+         startingLineNumber = "87"
+         endingLineNumber = "87"
+         landmarkName = "-updateState"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -37,25 +37,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "MyGame/MGSceneController.m"
-         timestampString = "359839919.627095"
+         timestampString = "363815429.953101"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "111"
-         endingLineNumber = "111"
-         landmarkName = "-gameLoop"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "MyGame/MGSceneController.m"
-         timestampString = "359839919.627095"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "121"
-         endingLineNumber = "121"
+         startingLineNumber = "116"
+         endingLineNumber = "116"
          landmarkName = "-gameLoop"
          landmarkType = "5">
       </FileBreakpoint>

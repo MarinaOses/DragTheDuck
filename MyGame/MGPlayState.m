@@ -8,9 +8,12 @@
 
 #import "MGPlayState.h"
 
+
+#import "MGSceneController.h"
+
 @implementation MGPlayState
 @synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
-@synthesize timeController = _timeController;
+@synthesize collisionController = _collisionController;
 @synthesize sceneObjects = _sceneObjects;
 @synthesize scoreBoard = _scoreBoard;
 @synthesize takenLeavesButton = _takenLeavesButton;
@@ -19,11 +22,12 @@
 @synthesize boundaryController = _boundaryController;
 @synthesize lifesController = _lifesController;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller TimeController:(MGTimeController *)time_controller {
+- (id)initWithSceneController:(MGSceneController *)scene_controller {
     self = [super initWithSceneController:scene_controller];
     if (self) {
         _sceneObjectDestroyer = [[MGSceneObjectDestroyer alloc] init];
         _sceneObjects = [[NSMutableArray alloc] init];
+        _collisionController = [[MGCollisionController alloc] initWithSceneObjects:self.sceneObjects];
         _scoreBoard = [[MGScoreBoard alloc] init];
 //        _takenLeavesButton = [[MGTakenLeavesButton alloc] initWithSceneController:scene_controller 
 //                            Translation:MGPointMake(-210.0, -130.0, 0.0) 
@@ -51,16 +55,16 @@
         self.takenLeavesButton.target = self;
         self.takenLeavesButton.buttonGoodAction = @selector(goodTouchOfTakenLeavesButton);
         self.takenLeavesButton.buttonBadAction = @selector(badTouchOfTakenLeavesButton);
-        self.timeController = time_controller;
-        timedMultipleObjectGeneratorForDucks = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:DUCKS WithSceneController:scene_controller BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTransmitter:self.scoreTransmitter SceneObjects:self.sceneObjects] TimeController:time_controller];
-        timedMultipleObjectGeneratorForBirds = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:BIRDS WithSceneController:scene_controller BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTransmitter:self.scoreTransmitter SceneObjects:self.sceneObjects] TimeController:time_controller];
-        timedMultipleObjectGeneratorForLeaves = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:LEAVES WithSceneController:scene_controller BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTransmitter:self.scoreTransmitter SceneObjects:self.sceneObjects] TimeController:time_controller];
-        timedMultipleObjectGeneratorForBees = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:BEES WithSceneController:scene_controller BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTransmitter:self.scoreTransmitter SceneObjects:self.sceneObjects] TimeController:time_controller];
+        MGTimeController *timeControllerToAssign = self.sceneControllerForState.timeController;
+        timedMultipleObjectGeneratorForDucks = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:DUCKS WithSceneController:scene_controller BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTransmitter:self.scoreTransmitter SceneObjects:self.sceneObjects] TimeController:timeControllerToAssign];
+        timedMultipleObjectGeneratorForBirds = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:BIRDS WithSceneController:scene_controller BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTransmitter:self.scoreTransmitter SceneObjects:self.sceneObjects] TimeController:timeControllerToAssign];
+        timedMultipleObjectGeneratorForLeaves = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:LEAVES WithSceneController:scene_controller BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTransmitter:self.scoreTransmitter SceneObjects:self.sceneObjects] TimeController:timeControllerToAssign];
+        timedMultipleObjectGeneratorForBees = [[MGTimedMultipleObjectGenerator alloc] initWithMGGenerator:[MGTimedMultipleObjectGenerator createSpecificMGGenerator:BEES WithSceneController:scene_controller BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTransmitter:self.scoreTransmitter SceneObjects:self.sceneObjects] TimeController:timeControllerToAssign];
     }
     return self;
 }
 
-- (void)loadPlayState {
+- (void)loadState {
     [self.sceneObjects addObject:self.takenLeavesButton];
     [self.sceneObjects addObject:self.takenLeavesButton.takenLeavesButtonShowerLayer];
     [self.numbersDelegate initializeAllMembersOfStaff];
@@ -71,15 +75,15 @@
     //[timedMultipleObjectGeneratorForLeaves loadNewObjectsWaveToAdd];
 }
 
-- (void)startPlayState {
-    [self.timeController start];
+- (void)startState {
+    [self.sceneControllerForState.timeController start];
     [timedMultipleObjectGeneratorForDucks setNextTimeToAppear];
     [timedMultipleObjectGeneratorForBirds setNextTimeToAppear];
     [timedMultipleObjectGeneratorForLeaves setNextTimeToAppear];
     [timedMultipleObjectGeneratorForBees setNextTimeToAppear];
 }
 
-- (void)updatePlayState {
+- (void)updateState {
     if ([[timedMultipleObjectGeneratorForDucks objectsToAdd] count] > 0) {
         [self.sceneObjects addObjectsFromArray:[timedMultipleObjectGeneratorForDucks objectsToAdd]];
         [timedMultipleObjectGeneratorForDucks clearObjectsToAdd];
@@ -99,17 +103,18 @@
         [timedMultipleObjectGeneratorForBees clearObjectsToAdd];
     }
     [self.sceneObjectDestroyer destroyFrom:self.sceneObjects];
-    [self.sceneObjects makeObjectsPerformSelector:@selector(update)];    
+    [self.sceneObjects makeObjectsPerformSelector:@selector(update)];
+    [self.collisionController handleCollisions];
+
 }
 
 
-- (void)renderPlayState {
+- (void)renderState {
     [self.sceneObjects makeObjectsPerformSelector:@selector(render)];    
     //NSLog(@"sceneObjects count = %d",[sceneObjects count]);
 }
 
-- (void)stopPlayState {
-    [self.timeController stop];
+- (void)stopState {
 }
 
 - (void)goodTouchOfTakenLeavesButton {
@@ -129,8 +134,8 @@
     [timedMultipleObjectGeneratorForBirds release];
     [timedMultipleObjectGeneratorForLeaves release];
     [timedMultipleObjectGeneratorForBees release];
-    [_timeController release];
     [_sceneObjectDestroyer release];
+    [_collisionController release];
     [_sceneObjects release];
     [_scoreBoard release];
     [_takenLeavesButton release];

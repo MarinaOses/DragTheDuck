@@ -12,6 +12,8 @@
 #import "MGMultipleArmorGenerator.h"
 #import "MGTakenLeavesButton.h"
 #import "MGLifesController.h"
+#import "MGCollisionController.h"
+
 
 
 @class MGSceneController;
@@ -22,7 +24,7 @@
     MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForLeaves;
     MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForBees;
     MGSceneObjectDestroyer *_sceneObjectDestroyer;
-    MGTimeController *_timeController;
+    MGCollisionController *_collisionController;
     NSMutableArray *_sceneObjects;
     MGScoreBoard *_scoreBoard;
     MGTakenLeavesButton *_takenLeavesButton;
@@ -33,7 +35,7 @@
 }
 
 @property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
-@property (nonatomic, retain) MGTimeController *timeController;
+@property (nonatomic, retain) MGCollisionController *collisionController;
 @property (nonatomic, retain) NSMutableArray *sceneObjects;
 @property (nonatomic, retain) MGScoreBoard *scoreBoard;
 @property (nonatomic, retain) MGTakenLeavesButton *takenLeavesButton;
@@ -42,11 +44,11 @@
 @property (nonatomic, retain) MGBoundaryController *boundaryController;
 @property (nonatomic, retain) MGLifesController *lifesController;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller TimeController:(MGTimeController *)time_controller;
-- (void)loadPlayState;
-- (void)startPlayState;
-- (void)updatePlayState;
-- (void)renderPlayState;
-- (void)stopPlayState;
+- (id)initWithSceneController:(MGSceneController *)scene_controller;
+- (void)loadState;
+- (void)startState;
+- (void)updateState;
+- (void)renderState;
+- (void)stopState;
 
 @end

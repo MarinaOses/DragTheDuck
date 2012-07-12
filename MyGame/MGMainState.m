@@ -23,7 +23,7 @@
 
 
 
-- (void)loadMainState {
+- (void)loadState {
     //Se borran todos los objetos que pudiera haber previamente
     [sceneObjects removeAllObjects];
     
@@ -63,13 +63,15 @@
 }
 
 
-- (void)updateMainState {
+
+
+- (void)updateState {
     [sceneObjects makeObjectsPerformSelector:@selector(update)];
 }
 
 
 //Los botones hacen el render() de MGSceneObjects
-- (void)renderMainState {
+- (void)renderState {
     [sceneObjects makeObjectsPerformSelector:@selector(render)];
 }
 

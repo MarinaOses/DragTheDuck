@@ -22,7 +22,6 @@
 @synthesize openGLView = _openGLView;
 @synthesize stateManager = _stateManager;
 @synthesize timeController = _timeController;
-@synthesize collisionController = _collisionController;
 
 
 
@@ -51,19 +50,16 @@
 
 //Se cargan todos los objetos de la escena
 - (void)loadScene {
-    MGPlayState *playState = (MGPlayState *)self.stateManager.activeState;
-    [playState loadPlayState];
-    MGCollisionController *collisionControllerToAssign = [[MGCollisionController alloc] initWithSceneObjects:playState.sceneObjects];
-    self.collisionController = collisionControllerToAssign;
-    [collisionControllerToAssign release];
+    MGState *state = self.stateManager.activeState;
+    [state loadState];
 }
 
 - (void)startScene {
     //Partiendo de los fps establecidos para la animación se obtiene el número de por fotograma, es decir, se calcula la inversa de los fps.
     animationInterval = 1.0/ANIMATION_FRAME_RATE;
     [self startAnimation];
-    MGPlayState *playState = (MGPlayState *)self.stateManager.activeState;
-    [playState startPlayState];
+    MGState *state = self.stateManager.activeState;
+    [state startState];
 }
 
 
@@ -71,8 +67,8 @@
 
 - (void)updateScene {
     //llamar a 'update' de todos los objetos de la escena
-    MGPlayState *playState = (MGPlayState *)self.stateManager.activeState;
-    [playState updatePlayState];
+    MGState *state = self.stateManager.activeState;
+    [state updateState];
     //limpiar los eventos que ya se han updateado
     [self.inputViewController clearEvents];
 }
@@ -81,8 +77,8 @@
     //poner activo el frame para dibujar
     [self.openGLView beginDraw];
     //llamar al 'render' de todos los objetos para que se dibujen en pantalla
-    MGPlayState *playState = (MGPlayState *)self.stateManager.activeState;
-    [playState renderPlayState];
+    MGState *state = self.stateManager.activeState;
+    [state renderState];
     //finalizar el frame
     [self.openGLView finishDraw];
 }
@@ -107,7 +103,6 @@
     while (updateIterations >= SMALL_UPDATE_INTERVAL) {
         updateIterations -= SMALL_UPDATE_INTERVAL;
         [self updateScene];
-        [self.collisionController handleCollisions];
         [self.timeController anUpdateHappens];
         
     }
@@ -128,8 +123,9 @@
 }
 
 - (void)stopAnimation {
-    MGPlayState *playState = (MGPlayState *)self.stateManager.activeState;
-    [playState stopPlayState];
+    MGState *state = self.stateManager.activeState;
+    [state stopState];
+    [self.timeController stop];
     animationTimer = nil;
 }
 
@@ -138,12 +134,13 @@
 #pragma mark - dealloc
 
 - (void)dealloc {
-    [self stopAnimation];
+    if (animationTimer != nil) {
+        [self stopAnimation];
+    }
     [_inputViewController release];
     [_openGLView release];
     [_stateManager release];
     [_timeController release];
-    [_collisionController release];
     [super dealloc];
 }
 

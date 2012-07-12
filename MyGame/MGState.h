@@ -17,5 +17,10 @@
 @property (nonatomic, retain) MGSceneController *sceneControllerForState;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;
+- (void)loadState;
+- (void)startState;
+- (void)updateState;
+- (void)renderState;
+- (void)stopState;
 
 @end

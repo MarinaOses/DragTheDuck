@@ -51,7 +51,7 @@
     [timeControllerToAssign release];
     
     //Se crea el manager de estados del juego
-    MGStateManager *managerToAssign = [[MGStateManager alloc] initWithSceneController:sceneController TimeController:sceneController.timeController];
+    MGStateManager *managerToAssign = [[MGStateManager alloc] initWithSceneController:sceneController];
     sceneController.stateManager = managerToAssign;
     [managerToAssign release];
     

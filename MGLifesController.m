@@ -8,6 +8,8 @@
 
 #import "MGLifesController.h"
 
+#import "MGSceneController.h"
+
 static CGFloat MGSpentLifesColorValues[16] ={
     1.0, 0.5, 0.0, 1.0, 
     1.0, 0.5, 0.0, 1.0, 
@@ -27,12 +29,14 @@ static CGFloat MGLifesColorValues[16] ={
 @synthesize lifesMarker = _lifesMarker;
 @synthesize sceneObjects = _sceneObjects;
 @synthesize nextLifeWithoutUsing;
+@synthesize sceneController = _sceneController;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjects:(NSMutableArray *)scene_objects FirstTranslation:(MGPoint)first_translation ScaleOfPresentation:(MGPoint)scale_of_presentation NumberOfLifes:(NSInteger)number_of_lifes {
     
     self = [super init];
     if (self) {
-        _lifesPresenter = [[MGLifesPresenter alloc] initWithSceneController:scene_controller FirstTranslation:first_translation ScaleOfPresentation:scale_of_presentation];
+        self.sceneController = scene_controller;
+        _lifesPresenter = [[MGLifesPresenter alloc] initWithSceneController:self.sceneController FirstTranslation:first_translation ScaleOfPresentation:scale_of_presentation];
         numberOfLifes = number_of_lifes;
         self.nextLifeWithoutUsing = numberOfLifes - 1;
         self.sceneObjects = scene_objects;
@@ -51,7 +55,7 @@ static CGFloat MGLifesColorValues[16] ={
     life.mesh.colors = MGSpentLifesColorValues;
     self.nextLifeWithoutUsing--;
     if (self.nextLifeWithoutUsing < 0) {
-        exit(0);
+        [self.sceneController stopAnimation];
     }
 }
 
@@ -68,6 +72,7 @@ static CGFloat MGLifesColorValues[16] ={
     [_lifesPresenter release];
     [_lifesMarker release];
     [_sceneObjects release];
+    [_sceneController release];
     [super dealloc];
 }
 

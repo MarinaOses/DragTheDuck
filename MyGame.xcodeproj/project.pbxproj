@@ -305,6 +305,7 @@
 				9C366EFE159C7F4100222538 /* MGEggBreaker.m */,
 			);
 			name = Lifes;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		9CA68A25152C6FE4008E11AF /* Configuration Files */ = {
@@ -383,7 +384,6 @@
 		9CE04F3D151380CF00185442 = {
 			isa = PBXGroup;
 			children = (
-				9C366EED159A2C9800222538 /* Lifes */,
 				9CE04F52151380CF00185442 /* MyGame */,
 				9CE04F4B151380CF00185442 /* Frameworks */,
 				9CE04F49151380CF00185442 /* Products */,
@@ -413,6 +413,7 @@
 		9CE04F52151380CF00185442 /* MyGame */ = {
 			isa = PBXGroup;
 			children = (
+				9C366EED159A2C9800222538 /* Lifes */,
 				9CE04F5B151380CF00185442 /* MGAppDelegate.h */,
 				9CE04F5C151380CF00185442 /* MGAppDelegate.m */,
 				9CEEFF14152F70FC0004D9AA /* MGInputViewController.h */,

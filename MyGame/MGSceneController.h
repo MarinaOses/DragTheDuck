@@ -10,7 +10,6 @@
 #import "MGInputViewController.h"
 #import "MGStateManager.h"
 #import "MGTimeController.h"
-#import "MGCollisionController.h"
 
 @interface MGSceneController : NSObject {
         
@@ -25,19 +24,18 @@
     NSTimeInterval cyclesLeftOver;
     
     MGTimeController *_timeController;
-    MGCollisionController *_collisionController;
 }
 
 @property (nonatomic, retain) MGInputViewController *inputViewController;
 @property (nonatomic, retain) EAGLView *openGLView;
 @property (nonatomic, retain) MGStateManager *stateManager;
 @property (nonatomic, retain) MGTimeController *timeController;
-@property (nonatomic, retain) MGCollisionController *collisionController;
 
 
 - (id)init;
 - (void)loadScene;
 - (void)startScene;
+- (void)stopAnimation;
 
 
 

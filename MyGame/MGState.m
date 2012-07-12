@@ -24,6 +24,27 @@
     return self;
 }
 
+
+- (void)loadState {
+    
+}
+
+- (void)startState {
+    
+}
+
+- (void)updateState {
+    
+}
+
+- (void)renderState {
+    
+}
+
+- (void)stopState {
+    
+}
+
 - (void)dealloc {
     [_sceneControllerForState release];
     [super dealloc];

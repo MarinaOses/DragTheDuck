@@ -11,13 +11,17 @@
 #import "MGMainState.h"
 #import "MGPlayState.h"
 
+@class MGSceneController;
+
 @interface MGStateManager : NSObject {
     MGState *_activeState;
+    MGSceneController *_sceneController;
 }
 
 @property (nonatomic, retain) MGState *activeState;
+@property (nonatomic, retain) MGSceneController *sceneController;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller TimeController:(MGTimeController *)time_controller;
+- (id)initWithSceneController:(MGSceneController *)scene_controller;
 - (void)goToMainState;
 - (void)goToHelpState;
 - (void)goToPlayState;
