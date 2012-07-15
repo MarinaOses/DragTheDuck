@@ -10,6 +10,10 @@
 
 #import "MGSceneController.h"
 
+@interface MGStateManager()
+- (void)loadFirstState;
+@end
+
 @implementation MGStateManager
 
 @synthesize activeState = _activeState;
@@ -20,8 +24,8 @@
 - (id)initWithSceneController:(MGSceneController *)scene_controller {
     self = [super init];
     if (self) {
-        _activeState = [[MGMainState alloc] initWithSceneController:scene_controller];
         self.sceneController = scene_controller;
+        [self loadFirstState];
     }
     return self;
 }
@@ -29,6 +33,14 @@
 
 
 #pragma mark - Tratar los diferentes estados
+
+- (void)loadFirstState {
+    _activeState = [[MGMainState alloc] initWithSceneController:self.sceneController];
+}
+
+- (void)stopActiveState {
+    [self.activeState stopState];
+}
 
 
 - (void)goToMainState {

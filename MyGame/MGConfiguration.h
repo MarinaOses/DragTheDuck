@@ -26,8 +26,8 @@
 
 //--RANDOM FUNCTIONS
 //No necesita SEED. Calcula un número aleatorio entre _MIN_ y _MAX_
-#define RANDOM_INT(_MIN_, _MAX_) ((arc4random() % (_MAX_ - _MIN_ + 1)) + _MIN_)
-#define RANDOM_FLOAT(smallNumber, bigNumber) ((((float) (arc4random() % ((unsigned)RAND_MAX + 1)) / RAND_MAX) * (bigNumber - smallNumber)) + smallNumber)
+#define RANDOM_INT(_MIN_, _MAX_) ((arc4random() % ((_MAX_) - (_MIN_) + 1)) + (_MIN_))
+#define RANDOM_FLOAT(_smallNumber_, _bigNumber_) (floorf(((float)arc4random() / 0xFFFFFFFFu) * ((_bigNumber_) - (_smallNumber_))) + (_smallNumber_))
 
 //**********************************************************************************************
 

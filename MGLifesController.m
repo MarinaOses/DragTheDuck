@@ -55,7 +55,7 @@ static CGFloat MGLifesColorValues[16] ={
     life.mesh.colors = MGSpentLifesColorValues;
     self.nextLifeWithoutUsing--;
     if (self.nextLifeWithoutUsing < 0) {
-        [self.sceneController stopAnimation];
+        [self.sceneController.stateManager stopActiveState];
     }
 }
 

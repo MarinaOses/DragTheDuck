@@ -65,6 +65,7 @@
 }
 
 - (void)loadState {
+    [self.sceneObjects removeAllObjects];
     [self.sceneObjects addObject:self.takenLeavesButton];
     [self.sceneObjects addObject:self.takenLeavesButton.takenLeavesButtonShowerLayer];
     [self.numbersDelegate initializeAllMembersOfStaff];
@@ -73,6 +74,7 @@
     [timedMultipleObjectGeneratorForDucks loadNewObjectsWaveToAdd];
     [timedMultipleObjectGeneratorForBirds loadNewObjectsWaveToAdd];
     //[timedMultipleObjectGeneratorForLeaves loadNewObjectsWaveToAdd];
+    [super loadState];
 }
 
 - (void)startState {
@@ -81,6 +83,7 @@
     [timedMultipleObjectGeneratorForBirds setNextTimeToAppear];
     [timedMultipleObjectGeneratorForLeaves setNextTimeToAppear];
     [timedMultipleObjectGeneratorForBees setNextTimeToAppear];
+    [super startState];
 }
 
 - (void)updateState {
@@ -105,16 +108,21 @@
     [self.sceneObjectDestroyer destroyFrom:self.sceneObjects];
     [self.sceneObjects makeObjectsPerformSelector:@selector(update)];
     [self.collisionController handleCollisions];
+    [super updateState];
 
 }
 
 
 - (void)renderState {
     [self.sceneObjects makeObjectsPerformSelector:@selector(render)];    
-    //NSLog(@"sceneObjects count = %d",[sceneObjects count]);
+    [super renderState];
 }
 
 - (void)stopState {
+    [self.sceneControllerForState.timeController stop];
+    [super stopState];
+
+    [self.sceneControllerForState.stateManager goToGameOverState];
 }
 
 - (void)goodTouchOfTakenLeavesButton {

@@ -32,6 +32,7 @@
 @property (nonatomic, retain) MGTimeController *timeController;
 
 
+
 - (id)init;
 - (void)loadScene;
 - (void)startScene;

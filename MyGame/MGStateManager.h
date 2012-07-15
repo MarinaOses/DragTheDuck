@@ -28,5 +28,6 @@
 - (void)goToPauseState;
 - (void)goToGameOverState;
 - (void)changeSoundState;
+- (void)stopActiveState;
 
 @end

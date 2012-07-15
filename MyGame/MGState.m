@@ -42,7 +42,7 @@
 }
 
 - (void)stopState {
-    
+    [self.sceneControllerForState stopAnimation];
 }
 
 - (void)dealloc {

@@ -60,6 +60,8 @@
     helpButton.buttonBadAction = @selector(badTouchOfHelpButtonIsDone);
     [sceneObjects addObject:helpButton];
     [helpButton release];
+    
+    [super loadState];
 }
 
 
@@ -67,19 +69,24 @@
 
 - (void)updateState {
     [sceneObjects makeObjectsPerformSelector:@selector(update)];
+    [super updateState];
 }
 
 
 //Los botones hacen el render() de MGSceneObjects
 - (void)renderState {
     [sceneObjects makeObjectsPerformSelector:@selector(render)];
+    [super updateState];
 }
 
 
 
 - (void)goodTouchOfPlayButtonIsDone {
+    [self.sceneControllerForState.stateManager stopActiveState];
     [self.sceneControllerForState.stateManager goToPlayState];
 }
+
+
 
 - (void)badTouchOfPlayButtonIsDone {
     //Podría ampliarse la funcionalidad

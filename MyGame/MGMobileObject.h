@@ -23,7 +23,7 @@
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller RangeForScale:(NSRange)scale_range RangeForSpeed:(NSRange)speed_range Direction:(int)direction;
 - (MGPoint)randomScaleInRange:(NSRange)scale_range;
-- (MGPoint)randomTranslationOnSide:(int)side;
+- (MGPoint)randomTranslationWithMeshBounds:(CGRect)mesh_bounds OnSide:(int)side;
 - (MGPoint)randomSpeedInRange:(NSRange)speed_range WithDirection:(int)direction;
 
 @end

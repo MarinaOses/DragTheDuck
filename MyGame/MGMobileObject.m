@@ -45,7 +45,7 @@ static CGFloat MGMobileColorValues[16] ={
         self.movingDirection = direction;
         self.collider = [[MGCollider alloc] initWithSceneController:scene_controller];
         self.scale = [self randomScaleInRange:scale_range];
-        self.translation = [self randomTranslationOnSide:-direction];
+        self.translation = [self randomTranslationWithMeshBounds:self.meshBounds OnSide:-direction];
         self.speed = [self randomSpeedInRange:speed_range WithDirection:direction];
         
         self.boundaryController = boundary_controller;
@@ -58,10 +58,15 @@ static CGFloat MGMobileColorValues[16] ={
     return MGPointMake(randomScale, randomScale, 1.0);
 }
 
-- (MGPoint)randomTranslationOnSide:(int)side {
+
+- (MGPoint)randomTranslationWithMeshBounds:(CGRect)mesh_bounds OnSide:(int)side {
     //Se obtiene la anchura de la ventana teniendo en cuenta que en el juego es igual a la altura
-    CGFloat maxHeightToAppearance = CGRectGetWidth(self.sceneController.openGLView.window.frame);    
-    CGFloat randomAppearanceHeight = RANDOM_FLOAT(GRASS_HEIGHT, maxHeightToAppearance) - maxHeightToAppearance/2;
+    CGFloat maxHeightToAppearance = CGRectGetWidth(self.sceneController.openGLView.window.frame);
+
+    CGFloat meshBoundsMidY = mesh_bounds.size.height/2.0; 
+
+    CGFloat randomAppearanceHeight = RANDOM_FLOAT(meshBoundsMidY + GRASS_HEIGHT, maxHeightToAppearance - meshBoundsMidY) - maxHeightToAppearance/2.0;
+    NSLog(@"height = %f", randomAppearanceHeight);
     return MGPointMake(side * CGRectGetMidY(self.sceneController.openGLView.window.frame), randomAppearanceHeight, 0.0);
 }
 

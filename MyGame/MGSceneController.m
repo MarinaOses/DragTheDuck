@@ -58,6 +58,7 @@
     //Partiendo de los fps establecidos para la animación se obtiene el número de por fotograma, es decir, se calcula la inversa de los fps.
     animationInterval = 1.0/ANIMATION_FRAME_RATE;
     [self startAnimation];
+    
     MGState *state = self.stateManager.activeState;
     [state startState];
 }
@@ -123,10 +124,9 @@
 }
 
 - (void)stopAnimation {
-    MGState *state = self.stateManager.activeState;
-    [state stopState];
-    [self.timeController stop];
+    [animationTimer invalidate];
     animationTimer = nil;
+    
 }
 
 
