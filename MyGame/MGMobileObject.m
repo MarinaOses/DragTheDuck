@@ -66,7 +66,6 @@ static CGFloat MGMobileColorValues[16] ={
     CGFloat meshBoundsMidY = mesh_bounds.size.height/2.0; 
 
     CGFloat randomAppearanceHeight = RANDOM_FLOAT(meshBoundsMidY + GRASS_HEIGHT, maxHeightToAppearance - meshBoundsMidY) - maxHeightToAppearance/2.0;
-    NSLog(@"height = %f", randomAppearanceHeight);
     return MGPointMake(side * CGRectGetMidY(self.sceneController.openGLView.window.frame), randomAppearanceHeight, 0.0);
 }
 

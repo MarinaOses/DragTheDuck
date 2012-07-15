@@ -51,7 +51,6 @@ static CGFloat MGBeeColorValues[16] ={
     //Para que no se salga de la pantalla se suma o resta la mitad del tamaño de la hoja
     CGFloat randomX = RANDOM_FLOAT(meshBoundsMidX, screenY-meshBoundsMidX) - screenY/2.0;
     CGFloat randomY = RANDOM_FLOAT(meshBoundsMidY + GRASS_HEIGHT, screenX-meshBoundsMidY) - screenX/2.0;
-    NSLog(@"x = %f y = %f", randomX, randomY);
     return MGPointMake(randomX, randomY, 0.0);
 }
 
