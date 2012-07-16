@@ -13,7 +13,6 @@
 
 @interface MGTransformer()
 - (CGFloat)randomLifeTime;
-- (void)stop;
 - (void)start;
 - (void)loadTakenTimeWithoutMovingInUpdates;
 @end
@@ -159,9 +158,6 @@ static CGFloat MGTransformerWingsUpColorValues[16] = {
     takenTimeWithoutMovingInUpdates = TAKEN_TIME_WITHOUT_MOVING * MAXIMUM_FRAME_RATE;
 }
 
-- (void)stop {
-    self.speed = MGPointMake(0.0, 0.0, 0.0);
-}
 
 - (void)start {
     self.speed = savedSpeed;

@@ -74,6 +74,9 @@ static CGFloat MGMobileColorValues[16] ={
     return MGPointMake(direction * speedToassign, 0.0, 0.0);
 }
 
+- (void)stop {
+    self.speed = MGPointMake(0.0, 0.0, 0.0);
+}
 
 
 - (void)update {

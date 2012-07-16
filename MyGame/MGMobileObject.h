@@ -25,5 +25,5 @@
 - (MGPoint)randomScaleInRange:(NSRange)scale_range;
 - (MGPoint)randomTranslationWithMeshBounds:(CGRect)mesh_bounds OnSide:(int)side;
 - (MGPoint)randomSpeedInRange:(NSRange)speed_range WithDirection:(int)direction;
-
+- (void)stop;
 @end

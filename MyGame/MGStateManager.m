@@ -44,12 +44,21 @@
 
 
 - (void)goToMainState {
-    
+    NSLog(@"In manager: goToMainState()");
+    MGMainState *mainStateToAssign = [[MGMainState alloc] initWithSceneController:self.sceneController];
+    self.activeState = mainStateToAssign;
+    [self.sceneController loadScene];
+    [self.sceneController startScene];
+    [mainStateToAssign release];
 }
 
 - (void)goToHelpState {
     NSLog(@"In manager: goToHelpState()");
-
+    MGHelpState *helpStateToAssign = [[MGHelpState alloc] initWithSceneController:self.sceneController];
+    self.activeState = helpStateToAssign;
+    [self.sceneController loadScene];
+    [self.sceneController startScene];
+    [helpStateToAssign release];
 }
 
 - (void)goToPlayState {

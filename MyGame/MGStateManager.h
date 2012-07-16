@@ -10,6 +10,7 @@
 
 #import "MGMainState.h"
 #import "MGPlayState.h"
+#import "MGHelpState.h"
 
 @class MGSceneController;
 

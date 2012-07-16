@@ -41,11 +41,11 @@
     duckToAdd.translation = transformer.translation;
     duckToAdd.taken = transformer.taken;
     if (duckToAdd.taken) {
-        duckToAdd.speed = transformer.speed;
+        [duckToAdd stop];
     }
     [self.sceneObjects addObject:duckToAdd];
-    [_duckWhoStartsTheTransformation release];
-    _duckWhoStartsTheTransformation = nil;
+    
+    self.duckWhoStartsTheTransformation = nil;
     
 }
 

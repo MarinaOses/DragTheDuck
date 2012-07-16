@@ -12,11 +12,12 @@
 
 
 @implementation MGMainState
+@synthesize sceneObjects = _sceneObjects;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller {
     self = [super initWithSceneController:scene_controller];
     if (self) {
-        sceneObjects = [[NSMutableArray alloc] init];
+        _sceneObjects = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -25,7 +26,7 @@
 
 - (void)loadState {
     //Se borran todos los objetos que pudiera haber previamente
-    [sceneObjects removeAllObjects];
+    [self.sceneObjects removeAllObjects];
     
     //************************************
     //Creación de botones
@@ -38,7 +39,7 @@
     playButton.target = self;
     playButton.buttonGoodAction = @selector(goodTouchOfPlayButtonIsDone);
     playButton.buttonBadAction = @selector(badTouchOfPlayButtonIsDone);
-    [sceneObjects addObject:playButton];
+    [self.sceneObjects addObject:playButton];
     [playButton release];
     
     //SOUNDBUTTON
@@ -48,7 +49,7 @@
     soundButton.target = self;
     soundButton.buttonGoodAction = @selector(goodTouchOfSoundButtonIsDone);
     soundButton.buttonBadAction = @selector(badTouchOfSoundButtonIsDone);
-    [sceneObjects addObject:soundButton];
+    [self.sceneObjects addObject:soundButton];
     [soundButton release];
     
     //HELPBUTTON
@@ -58,7 +59,7 @@
     helpButton.target = self;
     helpButton.buttonGoodAction = @selector(goodTouchOfHelpButtonIsDone);
     helpButton.buttonBadAction = @selector(badTouchOfHelpButtonIsDone);
-    [sceneObjects addObject:helpButton];
+    [self.sceneObjects addObject:helpButton];
     [helpButton release];
     
     [super loadState];
@@ -68,14 +69,14 @@
 
 
 - (void)updateState {
-    [sceneObjects makeObjectsPerformSelector:@selector(update)];
+    [self.sceneObjects makeObjectsPerformSelector:@selector(update)];
     [super updateState];
 }
 
 
 //Los botones hacen el render() de MGSceneObjects
 - (void)renderState {
-    [sceneObjects makeObjectsPerformSelector:@selector(render)];
+    [self.sceneObjects makeObjectsPerformSelector:@selector(render)];
     [super updateState];
 }
 
@@ -103,16 +104,17 @@
 }
 
 - (void)goodTouchOfHelpButtonIsDone {
+    [self.sceneControllerForState.stateManager stopActiveState];
     [self.sceneControllerForState.stateManager goToHelpState];
 }
 
 -(void)badTouchOfHelpButtonIsDone {
-    
+    //Podría ampliarse la funcionalidad
 }
 
 
 - (void)dealloc {
-    [sceneObjects release];
+    [_sceneObjects release];
     [super dealloc];
 }
 
