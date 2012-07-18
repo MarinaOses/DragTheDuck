@@ -42,13 +42,17 @@
     [self.activeState stopState];
 }
 
+- (void)startState {
+    [self.sceneController loadScene];
+    [self.sceneController startScene];
+}
+
 
 - (void)goToMainState {
     NSLog(@"In manager: goToMainState()");
     MGMainState *mainStateToAssign = [[MGMainState alloc] initWithSceneController:self.sceneController];
     self.activeState = mainStateToAssign;
-    [self.sceneController loadScene];
-    [self.sceneController startScene];
+    [self startState];
     [mainStateToAssign release];
 }
 
@@ -56,8 +60,7 @@
     NSLog(@"In manager: goToHelpState()");
     MGHelpState *helpStateToAssign = [[MGHelpState alloc] initWithSceneController:self.sceneController];
     self.activeState = helpStateToAssign;
-    [self.sceneController loadScene];
-    [self.sceneController startScene];
+    [self startState];
     [helpStateToAssign release];
 }
 
@@ -65,17 +68,20 @@
     NSLog(@"In manager: goToPlayState()");
     MGPlayState *playStateToAssign = [[MGPlayState alloc] initWithSceneController:self.sceneController];
     self.activeState = playStateToAssign;
-    [self.sceneController loadScene];
-    [self.sceneController startScene];
+    [self startState];
     [playStateToAssign release];
 }
 
 - (void)goToPauseState {
-    
+
 } 
 
-- (void)goToGameOverState {
-    
+- (void)goToGameOverStateWith:(MGScoreBoard *)score_board {
+    NSLog(@"In manager: goToGameOverState()");
+    MGGameOverState *gameOverStateToAssign = [[MGGameOverState alloc] initWithSceneController:self.sceneController ScoreBoard:score_board];
+    self.activeState = gameOverStateToAssign;
+    [self startState];
+    [gameOverStateToAssign release];
 }
 
 - (void)changeSoundState {

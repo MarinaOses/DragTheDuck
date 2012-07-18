@@ -11,6 +11,7 @@
 #import "MGMainState.h"
 #import "MGPlayState.h"
 #import "MGHelpState.h"
+#import "MGGameOverState.h"
 
 @class MGSceneController;
 
@@ -27,7 +28,7 @@
 - (void)goToHelpState;
 - (void)goToPlayState;
 - (void)goToPauseState;
-- (void)goToGameOverState;
+- (void)goToGameOverStateWith:(MGScoreBoard *)score_board;
 - (void)changeSoundState;
 - (void)stopActiveState;
 

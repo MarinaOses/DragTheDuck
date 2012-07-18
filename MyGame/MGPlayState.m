@@ -122,7 +122,7 @@
     [self.sceneControllerForState.timeController stop];
     [super stopState];
 
-    [self.sceneControllerForState.stateManager goToGameOverState];
+    [self.sceneControllerForState.stateManager goToGameOverStateWith:self.scoreBoard];
 }
 
 - (void)goodTouchOfTakenLeavesButton {

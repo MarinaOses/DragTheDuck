@@ -32,7 +32,7 @@
     //HOMEBUTTON
     MGButton *homeButton = [[MGButton alloc] initWithSceneController:self.sceneControllerForState];
     homeButton.scale = MGPointMake(40.0, 40.0, 1.0);
-    homeButton.translation = MGPointMake(-170.0, -130.0, 0.0);
+    homeButton.translation = MGPointMake(-190.0, -130.0, 0.0);
     homeButton.target = self;
     homeButton.buttonGoodAction = @selector(goodTouchOfHomeButtonIsDone);
     homeButton.buttonBadAction = @selector(badTouchOfHomeButtonIsDone);

@@ -19,7 +19,6 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.currentUpdate = 0;
         self.activated = NO;
         _notificationArray = [[NSMutableArray alloc] init];
         _notificationsToAdd = [[NSMutableArray alloc] init];
@@ -29,6 +28,8 @@
 }
 
 - (void)start {
+    self.currentUpdate = 0;
+    [self.notificationArray removeAllObjects]; 
     self.activated = YES;
 }
 

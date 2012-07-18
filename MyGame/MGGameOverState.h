@@ -7,7 +7,22 @@
 //
 
 #import "MGState.h"
+#import "MGScoreBoard.h"
+#import "MGNumbersDelegate.h"
 
-@interface MGGameOverState : MGState
+@class MGSceneController;
 
+@interface MGGameOverState : MGState {
+    NSMutableArray *_sceneObjects;
+    MGNumbersDelegate *_numbersDelegate;
+    MGSceneObjectDestroyer *_sceneObjectDestroyer;
+    MGScoreBoard *_scoreBoard;
+}
+
+@property (nonatomic, retain) NSMutableArray *sceneObjects;
+@property (nonatomic, retain) MGNumbersDelegate *numbersDelegate;
+@property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
+@property (nonatomic, retain) MGScoreBoard *scoreBoard;
+
+- (id)initWithSceneController:(MGSceneController *)scene_controller ScoreBoard:(MGScoreBoard *)score_board;
 @end

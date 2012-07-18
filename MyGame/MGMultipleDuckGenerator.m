@@ -38,10 +38,10 @@
 - (NSArray *)createWave {
     NSMutableArray *arrayWithDucksWave = [[NSMutableArray alloc] init];
     NSInteger ducksToAppear = RANDOM_INT(MIN_DUCKS_TO_APPEAR, MAX_DUCKS_TO_APPEAR);
-    NSInteger ducksCount;
-    for (ducksCount = 0; ducksCount < ducksToAppear; ducksCount++) {
+    for (NSInteger ducksCount = 0; ducksCount < ducksToAppear; ducksCount++) {
         MGDuck *duckToAdd = [[MGDuck alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTrasnmitter:self.scoreTransmitter TransformationController:self.transformationController TouchFinger:self.finger];
         [arrayWithDucksWave addObject:duckToAdd];
+        NSLog(@"translationDuckX = %f translationDuckY= %f", duckToAdd.translation.x, duckToAdd.translation.y);
         [duckToAdd release];
     }
     return [arrayWithDucksWave autorelease];

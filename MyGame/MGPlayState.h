@@ -45,10 +45,6 @@
 @property (nonatomic, retain) MGLifesController *lifesController;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;
-- (void)loadState;
-- (void)startState;
-- (void)updateState;
-- (void)renderState;
-- (void)stopState;
+
 
 @end

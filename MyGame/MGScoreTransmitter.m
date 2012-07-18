@@ -29,6 +29,7 @@
     [self.numbersDelegate updateTheMarker:1 With:self.scoreBoard.savedDucks];
 }
 
+
 - (void)aNewLeafIsTaken {
     [self.scoreBoard addNewTakenLeaf];    
 }
@@ -62,6 +63,7 @@
     }
     return isPossible;
 }
+
 
 
 

@@ -18,8 +18,6 @@
 @property (nonatomic, retain) NSMutableArray *sceneObjects;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;
-- (void)loadState;
-- (void)updateState;
-- (void)renderState;
+
 @end
 
