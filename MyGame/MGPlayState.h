@@ -28,6 +28,7 @@
     NSMutableArray *_sceneObjects;
     MGScoreBoard *_scoreBoard;
     MGTakenLeavesButton *_takenLeavesButton;
+    MGButton *_pauseButton;
     MGScoreTransmitter *_scoreTransmitter;
     MGNumbersDelegate *_numbersDelegate;
     MGBoundaryController *_boundaryController;
@@ -39,6 +40,7 @@
 @property (nonatomic, retain) NSMutableArray *sceneObjects;
 @property (nonatomic, retain) MGScoreBoard *scoreBoard;
 @property (nonatomic, retain) MGTakenLeavesButton *takenLeavesButton;
+@property (nonatomic, retain) MGButton *pauseButton;
 @property (nonatomic, retain) MGScoreTransmitter *scoreTransmitter;
 @property (nonatomic, retain) MGNumbersDelegate *numbersDelegate;
 @property (nonatomic, retain) MGBoundaryController *boundaryController;

@@ -18,6 +18,7 @@
 
 @synthesize activeState = _activeState;
 @synthesize sceneController = _sceneController;
+@synthesize playStateToRemember = _playStateToRemember;
 
 
 //Creo el manager inicializando su estado activo al estado principal o MainState
@@ -42,8 +43,12 @@
     [self.activeState stopState];
 }
 
-- (void)startState {
+- (void)activateState {
     [self.sceneController loadScene];
+    [self.sceneController startScene];
+}
+
+- (void)reactivateState {
     [self.sceneController startScene];
 }
 
@@ -52,7 +57,7 @@
     NSLog(@"In manager: goToMainState()");
     MGMainState *mainStateToAssign = [[MGMainState alloc] initWithSceneController:self.sceneController];
     self.activeState = mainStateToAssign;
-    [self startState];
+    [self activateState];
     [mainStateToAssign release];
 }
 
@@ -60,7 +65,7 @@
     NSLog(@"In manager: goToHelpState()");
     MGHelpState *helpStateToAssign = [[MGHelpState alloc] initWithSceneController:self.sceneController];
     self.activeState = helpStateToAssign;
-    [self startState];
+    [self activateState];
     [helpStateToAssign release];
 }
 
@@ -68,20 +73,36 @@
     NSLog(@"In manager: goToPlayState()");
     MGPlayState *playStateToAssign = [[MGPlayState alloc] initWithSceneController:self.sceneController];
     self.activeState = playStateToAssign;
-    [self startState];
+    [self.sceneController.timeController start];
+    [self activateState];
     [playStateToAssign release];
 }
 
-- (void)goToPauseState {
-
+- (void)goToPauseStateWithSceneObjects:(NSMutableArray *)scene_objects PauseButton:(MGButton *)pause_button {
+    NSLog(@"In manager: goToPauseState()");
+    self.playStateToRemember = (MGPlayState *)self.activeState;
+    [self.sceneController.timeController deactivate];
+    MGPauseState *pauseStateToAssign = [[MGPauseState alloc] initWithSceneController:self.sceneController SceneObjects:scene_objects PauseButton:pause_button];
+    self.activeState = pauseStateToAssign;
+    [self activateState];
+    [pauseStateToAssign release];
 } 
 
 - (void)goToGameOverStateWith:(MGScoreBoard *)score_board {
     NSLog(@"In manager: goToGameOverState()");
+    [self.sceneController.timeController deactivate];
     MGGameOverState *gameOverStateToAssign = [[MGGameOverState alloc] initWithSceneController:self.sceneController ScoreBoard:score_board];
     self.activeState = gameOverStateToAssign;
-    [self startState];
+    [self activateState];
     [gameOverStateToAssign release];
+}
+
+- (void)restartPlayState {
+    NSLog(@"In manager: restartPlayState()");
+    self.activeState = self.playStateToRemember;
+    [self reactivateState];    
+    [self.sceneController.timeController activate];
+
 }
 
 - (void)changeSoundState {
@@ -93,6 +114,7 @@
 - (void)dealloc {
     [_activeState release];
     [_sceneController release];
+    [_playStateToRemember release];
     [super dealloc];
 }
 

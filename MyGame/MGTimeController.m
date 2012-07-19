@@ -27,10 +27,18 @@
     return self;
 }
 
-- (void)start {
+- (void)reset {
     self.currentUpdate = 0;
     [self.notificationArray removeAllObjects]; 
+}
+
+- (void)activate {
     self.activated = YES;
+}
+
+- (void)start {
+    [self reset];
+    [self activate];
 }
 
 - (void)addNotificationsFrom:(NSMutableArray *)newNotifications {
@@ -76,7 +84,7 @@
     [notification release];
 }
 
-- (void)stop {
+- (void)deactivate {
     self.activated = NO;
 }
 

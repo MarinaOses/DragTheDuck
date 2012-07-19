@@ -26,8 +26,8 @@
 
 - (id)init;
 - (void)start;
+- (void)activate;
 - (void)anUpdateHappens;
 - (void)createAndAddNotificationIn:(NSInteger)seconds WithObject:(id)object Selector:(SEL)selector;
-- (void)stop;
-
+- (void)deactivate;
 @end

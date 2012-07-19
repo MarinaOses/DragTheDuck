@@ -17,6 +17,7 @@
 @synthesize sceneObjects = _sceneObjects;
 @synthesize scoreBoard = _scoreBoard;
 @synthesize takenLeavesButton = _takenLeavesButton;
+@synthesize pauseButton = _pauseButton;
 @synthesize scoreTransmitter = _scoreTransmitter;
 @synthesize numbersDelegate = _numbersDelegate;
 @synthesize boundaryController = _boundaryController;
@@ -39,6 +40,15 @@
                             Rotation:MGPointZero() 
                             Scale:MGPointMake(40.0, 40.0, 1.0) 
                             scoreBoard:self.scoreBoard];
+        //PAUSEBUTTON
+        MGButton *pauseButtonToAssign = [[MGButton alloc] initWithSceneController:self.sceneControllerForState];
+        pauseButtonToAssign.scale = MGPointMake(35.0,35.0, 1.0);
+        pauseButtonToAssign.translation = MGPointMake(220.0, 140.0, 0.0);
+        pauseButtonToAssign.target = self;
+        pauseButtonToAssign.buttonGoodAction = @selector(goodTouchOfPauseButtonIsDone);
+        pauseButtonToAssign.buttonBadAction = @selector(badTouchOfPauseButtonIsDone);
+        self.pauseButton = pauseButtonToAssign;
+        [pauseButtonToAssign release];
         
         _numbersDelegate = [[MGNumbersDelegate alloc] initWithSceneController:scene_controller SceneObjects:self.sceneObjects SceneObjectDestroyer:self.sceneObjectDestroyer];
         
@@ -68,23 +78,29 @@
     [self.sceneObjects removeAllObjects];
     [self.sceneObjects addObject:self.takenLeavesButton];
     [self.sceneObjects addObject:self.takenLeavesButton.takenLeavesButtonShowerLayer];
+    [self.sceneObjects addObject:self.pauseButton];
     [self.numbersDelegate initializeAllMembersOfStaff];
     [self.lifesController createAndAddLifesMarker];
     [self.boundaryController createEggBreaker];
     [timedMultipleObjectGeneratorForDucks loadNewObjectsWaveToAdd];
     [timedMultipleObjectGeneratorForBirds loadNewObjectsWaveToAdd];
+    
     //[timedMultipleObjectGeneratorForLeaves loadNewObjectsWaveToAdd];
-    [super loadState];
-}
-
-- (void)startState {
-    [self.sceneControllerForState.timeController start];
     [timedMultipleObjectGeneratorForDucks setNextTimeToAppear];
     [timedMultipleObjectGeneratorForBirds setNextTimeToAppear];
     [timedMultipleObjectGeneratorForLeaves setNextTimeToAppear];
     [timedMultipleObjectGeneratorForBees setNextTimeToAppear];
+    [super loadState];
+}
+
+
+- (void)startState {
+    self.pauseButton.target = self;
+
     [super startState];
 }
+
+
 
 - (void)updateState {
     if ([[timedMultipleObjectGeneratorForDucks objectsToAdd] count] > 0) {
@@ -119,10 +135,11 @@
 }
 
 - (void)stopState {
-    [self.sceneControllerForState.timeController stop];
     [super stopState];
+    if (self.lifesController.nextLifeWithoutUsing < 0) {
+        [self.sceneControllerForState.stateManager goToGameOverStateWith:self.scoreBoard];
+    }
 
-    [self.sceneControllerForState.stateManager goToGameOverStateWith:self.scoreBoard];
 }
 
 - (void)goodTouchOfTakenLeavesButton {
@@ -134,6 +151,16 @@
 - (void)badTouchOfTakenLeavesButton {
     
 }
+
+- (void)goodTouchOfPauseButtonIsDone {
+    [self.sceneControllerForState.stateManager stopActiveState];
+    [self.sceneControllerForState.stateManager goToPauseStateWithSceneObjects:self.sceneObjects PauseButton:self.pauseButton];    
+}
+
+- (void)badTouchOfPauseButtonIsDone {
+    //Podría ampliarse la funcionalidad
+}
+
 
 
 
@@ -147,6 +174,7 @@
     [_sceneObjects release];
     [_scoreBoard release];
     [_takenLeavesButton release];
+    [_pauseButton release];
     [_scoreTransmitter release];
     [_numbersDelegate release];
     [_boundaryController release];

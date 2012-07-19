@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "MyGame/MGPlayState.m"
-         timestampString = "363882832.407974"
+         timestampString = "364422604.341249"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "90"
-         endingLineNumber = "90"
+         startingLineNumber = "106"
+         endingLineNumber = "106"
          landmarkName = "-updateState"
          landmarkType = "5">
       </FileBreakpoint>
@@ -57,6 +57,20 @@
          startingLineNumber = "32"
          endingLineNumber = "32"
          landmarkName = "-spawnBeeFrom:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "MyGame/MGTimedMultipleObjectGenerator.m"
+         timestampString = "364420820.423262"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "59"
+         endingLineNumber = "59"
+         landmarkName = "-setNextTimeToAppear"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

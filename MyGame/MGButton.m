@@ -95,6 +95,7 @@ static CGFloat MGSquareFillVertexes[8] = {-0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5,
     pressed = YES;
     [self setPressedVertexes];
     [self.target performSelector:self.buttonGoodAction];
+    pressed = NO;
 }
 
 -(void)badTouch {
@@ -106,6 +107,12 @@ static CGFloat MGSquareFillVertexes[8] = {-0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5,
     [self.target performSelector:self.buttonBadAction];
 }
 
+- (void)setNotPressedVertexes {
+    self.mesh.vertexes = MGSquareOutlineVertexes;
+    self.mesh.renderStyle = MGSquareOutlineRenderStyle;
+    self.mesh.vertexCount = MGSquareOutlineVertexCount;
+    self.mesh.colors = MGSquareOutlineColorValues;
+}
 
 - (void)setPressedVertexes {
     self.mesh.vertexes = MGSquareFillVertexes;
@@ -115,12 +122,7 @@ static CGFloat MGSquareFillVertexes[8] = {-0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5,
 }
 
 
-- (void)setNotPressedVertexes {
-    self.mesh.vertexes = MGSquareOutlineVertexes;
-    self.mesh.renderStyle = MGSquareOutlineRenderStyle;
-    self.mesh.vertexCount = MGSquareOutlineVertexCount;
-    self.mesh.colors = MGSquareOutlineColorValues;
-}
+
 
 - (void)dealloc {
     [super dealloc];
