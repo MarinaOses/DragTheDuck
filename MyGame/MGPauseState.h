@@ -13,11 +13,12 @@
 
 
 @interface MGPauseState : MGState {
-    NSMutableArray *_sceneObjects;
+    NSMutableArray *_sceneObjectsOfPlayState;
+    
     MGButton *_pauseButton;
 }
 
-@property (nonatomic, retain) NSMutableArray *sceneObjects;
+@property (nonatomic, retain) NSMutableArray *sceneObjectsOfPlayState;
 @property (nonatomic, retain) MGButton *pauseButton;
 
 

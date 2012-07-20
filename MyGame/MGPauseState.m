@@ -12,7 +12,7 @@
 #import "MGSceneController.h"
 
 @implementation MGPauseState
-@synthesize sceneObjects = _sceneObjects;
+@synthesize sceneObjectsOfPlayState = _sceneObjectsOfPlayState;
 @synthesize pauseButton = _pauseButton;
 
 
@@ -20,7 +20,7 @@
 - (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjects:(NSMutableArray *)scene_objects PauseButton:(MGButton *)pause_button {
     self = [super initWithSceneController:scene_controller];
     if (self) {
-        self.sceneObjects = scene_objects;
+        self.sceneObjectsOfPlayState = scene_objects;
         self.pauseButton = pause_button;
     }
     return self;
@@ -32,16 +32,27 @@
     //************************************
     //Creación de botones
     //************************************
+    [self.sceneObjects removeAllObjects];
     
-    //PAUSEBUTTON
-//    MGButton *pauseButton = [[MGButton alloc] initWithSceneController:self.sceneControllerForState];
-//    pauseButton.scale = MGPointMake(35.0,35.0, 1.0);
-//    pauseButton.translation = MGPointMake(220.0, 140.0, 0.0);
-//    pauseButton.target = self;
-//    pauseButton.buttonGoodAction = @selector(goodTouchOfPauseButtonIsDone);
-//    pauseButton.buttonBadAction = @selector(badTouchOfPauseButtonIsDone);
-//    [self.sceneObjects addObject:pauseButton];
-//    [pauseButton release];
+    //HOMEBUTTON
+    MGButton *homeButton = [[MGButton alloc] initWithSceneController:self.sceneControllerForState];
+    homeButton.scale = MGPointMake(50.0, 50.0, 1.0);
+    homeButton.translation = MGPointMake(-120.0, -60.0, 0.0);
+    homeButton.target = self;
+    homeButton.buttonGoodAction = @selector(goodTouchOfHomeButtonIsDone);
+    homeButton.buttonBadAction = @selector(badTouchOfHomeButtonIsDone);
+    [self.sceneObjects addObject:homeButton];
+    [homeButton release];
+    
+    //RESTARTBUTTON
+    MGButton *restartButton = [[MGButton alloc] initWithSceneController:self.sceneControllerForState];
+    restartButton.scale = MGPointMake(50.0, 50.0, 1.0);
+    restartButton.translation = MGPointMake(120.0, -60.0, 0.0);
+    restartButton.target = self;
+    restartButton.buttonGoodAction = @selector(goodTouchOfRestartButtonIsDone);
+    restartButton.buttonBadAction = @selector(badTouchOfRestartButtonIsDone);
+    [self.sceneObjects addObject:restartButton];
+    [restartButton release];
 
     self.pauseButton.target = self;
     [super loadState];
@@ -51,12 +62,13 @@
 
 - (void)updateState {
     [self.pauseButton update];
+    [self.sceneObjects makeObjectsPerformSelector:@selector(update)];
     [super updateState];
 }
 
 - (void)renderState {
-    [self.sceneObjects makeObjectsPerformSelector:@selector(render)];
-    [super updateState];
+    [self.sceneObjectsOfPlayState makeObjectsPerformSelector:@selector(render)];
+    [super renderState];
 }
 
 - (void)goodTouchOfPauseButtonIsDone {
@@ -68,10 +80,27 @@
     //Podría ampliarse la funcionalidad
 }
 
+- (void)goodTouchOfHomeButtonIsDone {
+    [self.sceneControllerForState.stateManager stopActiveState];
+    [self.sceneControllerForState.stateManager goToMainState];    
+}
+
+- (void)badTouchOfHomeButtonIsDone {
+    //Podría ampliarse la funcionalidad
+}
+
+- (void)goodTouchOfRestartButtonIsDone {
+    [self.sceneControllerForState.stateManager stopActiveState];
+    [self.sceneControllerForState.stateManager goToPlayState];    
+}
+
+- (void)badTouchOfRestartButtonIsDone {
+    //Podría ampliarse la funcionalidad
+}
 
 - (void)dealloc {
-    [_sceneObjects release];
     [_pauseButton release];
+    [_sceneObjectsOfPlayState release];
     [super dealloc];
 }
 

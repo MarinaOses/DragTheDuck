@@ -25,7 +25,6 @@
     MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForBees;
     MGSceneObjectDestroyer *_sceneObjectDestroyer;
     MGCollisionController *_collisionController;
-    NSMutableArray *_sceneObjects;
     MGScoreBoard *_scoreBoard;
     MGTakenLeavesButton *_takenLeavesButton;
     MGButton *_pauseButton;
@@ -37,7 +36,6 @@
 
 @property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
 @property (nonatomic, retain) MGCollisionController *collisionController;
-@property (nonatomic, retain) NSMutableArray *sceneObjects;
 @property (nonatomic, retain) MGScoreBoard *scoreBoard;
 @property (nonatomic, retain) MGTakenLeavesButton *takenLeavesButton;
 @property (nonatomic, retain) MGButton *pauseButton;

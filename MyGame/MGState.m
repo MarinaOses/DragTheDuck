@@ -13,6 +13,7 @@
 @implementation MGState
 
 @synthesize sceneControllerForState = _sceneControllerForState;
+@synthesize sceneObjects = _sceneObjects;
 
 
 
@@ -20,6 +21,7 @@
     self = [super init];
     if (self) {
         self.sceneControllerForState = scene_controller;
+        _sceneObjects = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -38,7 +40,7 @@
 }
 
 - (void)renderState {
-    
+    [self.sceneObjects makeObjectsPerformSelector:@selector(render)];
 }
 
 - (void)stopState {
@@ -47,6 +49,7 @@
 
 - (void)dealloc {
     [_sceneControllerForState release];
+    [_sceneObjects release];
     [super dealloc];
 }
 @end

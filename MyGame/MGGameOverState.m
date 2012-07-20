@@ -11,7 +11,6 @@
 #import "MGSceneController.h"
 
 @implementation MGGameOverState
-@synthesize sceneObjects = _sceneObjects;
 @synthesize numbersDelegate = _numbersDelegate;
 @synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
 @synthesize scoreBoard = _scoreBoard;
@@ -19,7 +18,6 @@
 - (id)initWithSceneController:(MGSceneController *)scene_controller ScoreBoard:(MGScoreBoard *)score_board {
     self = [super initWithSceneController:scene_controller];
     if (self) {
-        _sceneObjects = [[NSMutableArray alloc] init];
         self.scoreBoard = score_board;
         _sceneObjectDestroyer = [[MGSceneObjectDestroyer alloc] init];
         _numbersDelegate = [[MGNumbersDelegate alloc] initWithSceneController:scene_controller SceneObjects:self.sceneObjects SceneObjectDestroyer:self.sceneObjectDestroyer];
@@ -73,8 +71,7 @@
 }
 
 - (void)renderState {
-    [self.sceneObjects makeObjectsPerformSelector:@selector(render)];
-    [super updateState];
+    [super renderState];
 }
 
 - (void)goodTouchOfHomeButtonIsDone {
@@ -96,7 +93,6 @@
 }
 
 - (void)dealloc {
-    [_sceneObjects release];
     [_numbersDelegate release];
     [_sceneObjectDestroyer release];
     [_scoreBoard release];

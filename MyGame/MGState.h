@@ -12,9 +12,13 @@
 
 @interface MGState : NSObject {
     MGSceneController *_sceneControllerForState;
+    NSMutableArray *_sceneObjects;    
+
 }
 
 @property (nonatomic, retain) MGSceneController *sceneControllerForState;
+@property (nonatomic, retain) NSMutableArray *sceneObjects;
+
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;
 - (void)loadState;

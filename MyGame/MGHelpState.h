@@ -11,13 +11,10 @@
 @class MGSceneController;
 
 @interface MGHelpState : MGState {
-    NSMutableArray *_sceneObjects;
 }
 
 
-@property (nonatomic, retain) NSMutableArray *sceneObjects;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller;
 
 @end
 

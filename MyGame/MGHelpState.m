@@ -11,15 +11,6 @@
 #import "MGSceneController.h"
 
 @implementation MGHelpState
-@synthesize sceneObjects = _sceneObjects;
-
-- (id)initWithSceneController:(MGSceneController *)scene_controller {
-    self = [super initWithSceneController:scene_controller];
-    if (self) {
-        _sceneObjects = [[NSMutableArray alloc] init];
-    }
-    return self;
-}
 
 - (void)loadState {
     //Se borran todos los objetos que pudiera haber previamente
@@ -49,8 +40,7 @@
 }
 
 - (void)renderState {
-    [self.sceneObjects makeObjectsPerformSelector:@selector(render)];
-    [super updateState];
+    [super renderState];
 }
 
 - (void)goodTouchOfHomeButtonIsDone {
@@ -63,7 +53,6 @@
 }
 
 - (void)dealloc {
-    [_sceneObjects release];
     [super dealloc];
 }
 @end

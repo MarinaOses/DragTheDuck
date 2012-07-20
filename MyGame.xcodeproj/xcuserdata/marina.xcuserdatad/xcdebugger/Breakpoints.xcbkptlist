@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "MyGame/MGPlayState.m"
-         timestampString = "364422604.341249"
+         timestampString = "364496683.251006"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "106"
-         endingLineNumber = "106"
+         startingLineNumber = "104"
+         endingLineNumber = "104"
          landmarkName = "-updateState"
          landmarkType = "5">
       </FileBreakpoint>
@@ -71,6 +71,34 @@
          startingLineNumber = "59"
          endingLineNumber = "59"
          landmarkName = "-setNextTimeToAppear"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "MyGame/MGArmor.m"
+         timestampString = "364500362.423753"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "25"
+         endingLineNumber = "25"
+         landmarkName = "-initWithSceneController:BoundaryController:ToPutItOnDuck:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "MyGame/MGMultipleArmorGenerator.m"
+         timestampString = "364500492.174642"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "32"
+         endingLineNumber = "32"
+         landmarkName = "-createWave"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

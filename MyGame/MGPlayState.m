@@ -14,7 +14,6 @@
 @implementation MGPlayState
 @synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
 @synthesize collisionController = _collisionController;
-@synthesize sceneObjects = _sceneObjects;
 @synthesize scoreBoard = _scoreBoard;
 @synthesize takenLeavesButton = _takenLeavesButton;
 @synthesize pauseButton = _pauseButton;
@@ -27,7 +26,6 @@
     self = [super initWithSceneController:scene_controller];
     if (self) {
         _sceneObjectDestroyer = [[MGSceneObjectDestroyer alloc] init];
-        _sceneObjects = [[NSMutableArray alloc] init];
         _collisionController = [[MGCollisionController alloc] initWithSceneObjects:self.sceneObjects];
         _scoreBoard = [[MGScoreBoard alloc] init];
 //        _takenLeavesButton = [[MGTakenLeavesButton alloc] initWithSceneController:scene_controller 
@@ -130,7 +128,6 @@
 
 
 - (void)renderState {
-    [self.sceneObjects makeObjectsPerformSelector:@selector(render)];    
     [super renderState];
 }
 
@@ -171,7 +168,6 @@
     [timedMultipleObjectGeneratorForBees release];
     [_sceneObjectDestroyer release];
     [_collisionController release];
-    [_sceneObjects release];
     [_scoreBoard release];
     [_takenLeavesButton release];
     [_pauseButton release];

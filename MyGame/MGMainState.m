@@ -12,15 +12,6 @@
 
 
 @implementation MGMainState
-@synthesize sceneObjects = _sceneObjects;
-
-- (id)initWithSceneController:(MGSceneController *)scene_controller {
-    self = [super initWithSceneController:scene_controller];
-    if (self) {
-        _sceneObjects = [[NSMutableArray alloc] init];
-    }
-    return self;
-}
 
 
 
@@ -76,8 +67,7 @@
 
 //Los botones hacen el render() de MGSceneObjects
 - (void)renderState {
-    [self.sceneObjects makeObjectsPerformSelector:@selector(render)];
-    [super updateState];
+    [super renderState];
 }
 
 
@@ -114,7 +104,6 @@
 
 
 - (void)dealloc {
-    [_sceneObjects release];
     [super dealloc];
 }
 
