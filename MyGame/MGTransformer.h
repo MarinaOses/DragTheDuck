@@ -25,6 +25,8 @@
     NSInteger takenTimeWithoutMovingInUpdates;
     BOOL wingsDown;
     NSInteger timeToFlapItsWingsInUpdates;
+    MGTexturedQuad *_upWingsQuad;
+    MGTexturedQuad *_downWingsQuad;
   
 }
 
@@ -33,6 +35,8 @@
 @property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
 @property (nonatomic, retain) MGFinger *finger;
 @property (nonatomic, assign) BOOL taken;
+@property (nonatomic, retain) MGTexturedQuad *upWingsQuad;
+@property (nonatomic, retain) MGTexturedQuad *downWingsQuad;
 
 
 - (id)initWithDuck:(MGDuck *)duck;

@@ -16,12 +16,12 @@
 @end
 
 
-static CGFloat MGFeathersColorValues[16] ={
-    1.0, 1.0, 1.0, 1.0, 
-    1.0, 1.0, 1.0, 1.0, 
-    1.0, 1.0, 1.0, 1.0, 
-    1.0, 1.0, 1.0, 1.0
-};
+//static CGFloat MGFeathersColorValues[16] ={
+//    1.0, 1.0, 1.0, 1.0, 
+//    1.0, 1.0, 1.0, 1.0, 
+//    1.0, 1.0, 1.0, 1.0, 
+//    1.0, 1.0, 1.0, 1.0
+//};
 
 @implementation MGFeathers
 
@@ -29,8 +29,9 @@ static CGFloat MGFeathersColorValues[16] ={
 - (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer Translation:(MGPoint)feathers_translation Scale:(MGPoint)feathers_scale Color:(CGFloat *)feathers_color {
     self = [super initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer];
     if (self) {
-        self.mesh.colors = MGFeathersColorValues;
-        self.mesh.colors = feathers_color;
+        self.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_feathers.png"];
+//        self.mesh.colors = MGFeathersColorValues;
+//        self.mesh.colors = feathers_color;
         self.translation = feathers_translation;
         self.rotation = [self randomRotation];
         self.scale = feathers_scale;

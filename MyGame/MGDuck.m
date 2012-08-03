@@ -17,20 +17,20 @@
 - (void)loadTakenTimeWithoutMovingInUpdates;
 @end
 
-static CGFloat MGDuckWingsDownColorValues[16] ={
-    1.0, 1.0, 0.0, 1.0, 
-    1.0, 1.0, 0.0, 1.0, 
-    1.0, 1.0, 0.0, 1.0, 
-    1.0, 1.0, 0.0, 1.0
-};
-
-
-static CGFloat MGDuckWingsUpColorValues[16] ={
-    0.9, 0.9, 0.5, 1.0, 
-    0.9, 0.9, 0.5, 1.0, 
-    0.9, 0.9, 0.5, 1.0, 
-    0.9, 0.9, 0.5, 1.0
-};
+//static CGFloat MGDuckWingsDownColorValues[16] ={
+//    1.0, 1.0, 0.0, 1.0, 
+//    1.0, 1.0, 0.0, 1.0, 
+//    1.0, 1.0, 0.0, 1.0, 
+//    1.0, 1.0, 0.0, 1.0
+//};
+//
+//
+//static CGFloat MGDuckWingsUpColorValues[16] ={
+//    0.9, 0.9, 0.5, 1.0, 
+//    0.9, 0.9, 0.5, 1.0, 
+//    0.9, 0.9, 0.5, 1.0, 
+//    0.9, 0.9, 0.5, 1.0
+//};
 
 @implementation MGDuck
 @synthesize scoreTransmitter = _scoreTransmitter;
@@ -40,6 +40,8 @@ static CGFloat MGDuckWingsUpColorValues[16] ={
 @synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
 @synthesize finger = _finger;
 @synthesize wingsDown;
+@synthesize downWingsQuad = _downWingsQuad;
+@synthesize upWingsQuad = _upWingsQuad;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter TransformationController:(MGTransformationController *)transformation_controller TouchFinger:(MGFinger *)touch_finger {
     self = [super initWithSceneController:scene_controller BoundaryController:boundary_controller RangeForScale:NSMakeRange(MIN_DUCK_SCALE, MAX_DUCK_SCALE) RangeForSpeed:NSMakeRange(MIN_DUCK_SPEED, MAX_DUCK_SPEED) Direction:1];
@@ -54,9 +56,11 @@ static CGFloat MGDuckWingsUpColorValues[16] ={
         savedSpeed = self.speed;
         [self loadTakenTimeWithoutMovingInUpdates];
         wingsDown = YES;
+        self.downWingsQuad = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_duck_ala_abajo.png"];
+        self.upWingsQuad = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_duck_ala_arriba.png"];
+
         [self flapItsWings];
         [self loadTimeToFlapItsWingsInUpdates];
-
     }
     return self;
 }
@@ -103,10 +107,10 @@ static CGFloat MGDuckWingsUpColorValues[16] ={
 
 - (void)flapItsWings {
     if (wingsDown) {
-        self.mesh.colors = MGDuckWingsDownColorValues;
+        self.mesh = self.downWingsQuad;
     }
     else {
-        self.mesh.colors = MGDuckWingsUpColorValues;
+        self.mesh = self.upWingsQuad; 
     }
 }
 
@@ -174,6 +178,8 @@ static CGFloat MGDuckWingsUpColorValues[16] ={
     [_transformationController release];
     [_sceneObjectDestroyer release];
     [_finger release];
+    [_upWingsQuad release];
+    [_downWingsQuad release];
     [super dealloc];
 }
 

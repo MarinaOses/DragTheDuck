@@ -13,21 +13,23 @@
 
 
 
-static CGFloat MGBirdWingsDownColorValues[16] ={
-    1.0, 0.0, 0.0, 1.0, 
-    1.0, 0.0, 0.0, 1.0, 
-    1.0, 0.0, 0.0, 1.0, 
-    1.0, 0.0, 0.0, 1.0
-};
-
-static CGFloat MGBirdWingsUpColorValues[16] ={
-    0.5, 0.0, 0.0, 1.0, 
-    0.5, 0.0, 0.0, 1.0, 
-    0.5, 0.0, 0.0, 1.0, 
-    0.5, 0.0, 0.0, 1.0
-};
+//static CGFloat MGBirdWingsDownColorValues[16] ={
+//    1.0, 0.0, 0.0, 1.0, 
+//    1.0, 0.0, 0.0, 1.0, 
+//    1.0, 0.0, 0.0, 1.0, 
+//    1.0, 0.0, 0.0, 1.0
+//};
+//
+//static CGFloat MGBirdWingsUpColorValues[16] ={
+//    0.5, 0.0, 0.0, 1.0, 
+//    0.5, 0.0, 0.0, 1.0, 
+//    0.5, 0.0, 0.0, 1.0, 
+//    0.5, 0.0, 0.0, 1.0
+//};
 
 @implementation MGBird
+@synthesize upWingsQuad = _upWingsQuad;
+@synthesize downWingsQuad = _downWingsQuad;
 
 
 
@@ -36,8 +38,12 @@ static CGFloat MGBirdWingsUpColorValues[16] ={
     self = [super initWithSceneController:scene_controller BoundaryController:boundary_controller RangeForScale:NSMakeRange(MIN_BIRD_SCALE, MAX_BIRD_SCALE) RangeForSpeed:NSMakeRange(MIN_BIRD_SPEED, MAX_BIRD_SPEED) Direction:-1];
     if (self) {
         wingsDown = YES;
+        self.downWingsQuad = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_bird_ala_abajo.png"];
+        self.upWingsQuad = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_bird_ala_arriba.png"];
+
         [self flapItsWings];    
         [self loadTimeToFlapItsWingsInUpdates];
+        
     }
     return self;
 }
@@ -48,10 +54,10 @@ static CGFloat MGBirdWingsUpColorValues[16] ={
 
 - (void)flapItsWings {
     if (wingsDown) {
-        self.mesh.colors = MGBirdWingsDownColorValues;
+        self.mesh = self.downWingsQuad;
     }
     else {
-        self.mesh.colors = MGBirdWingsUpColorValues;
+        self.mesh = self.upWingsQuad;
     }
     
 }
@@ -71,6 +77,8 @@ static CGFloat MGBirdWingsUpColorValues[16] ={
 
 
 - (void)dealloc {
+    [_downWingsQuad release];
+    [_upWingsQuad release];
     [super dealloc];
 }
 

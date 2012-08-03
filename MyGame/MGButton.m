@@ -15,16 +15,16 @@
 - (void)handleTouches;
 @end
 
-static NSInteger MGSquareVertexSize = 2;
-static NSInteger MGSquareColorSize = 4;
-static GLenum MGSquareOutlineRenderStyle = GL_LINE_LOOP;
-static NSInteger MGSquareOutlineVertexCount = 4;
-static CGFloat MGSquareOutlineVertexes[8] = {-0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5};
-static CGFloat MGSquareOutlineColorValues[16] ={1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
-//Parra comprobar que el botón se pulsa
-static GLenum MGSquareFillRenderStyle = GL_TRIANGLE_STRIP;
-static NSInteger MGSquareFillVertexesCount = 4;
-static CGFloat MGSquareFillVertexes[8] = {-0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5};
+//static NSInteger MGSquareVertexSize = 2;
+//static NSInteger MGSquareColorSize = 4;
+//static GLenum MGSquareOutlineRenderStyle = GL_LINE_LOOP;
+//static NSInteger MGSquareOutlineVertexCount = 4;
+//static CGFloat MGSquareOutlineVertexes[8] = {-0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5};
+//static CGFloat MGSquareOutlineColorValues[16] ={1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
+////Parra comprobar que el botón se pulsa
+//static GLenum MGSquareFillRenderStyle = GL_TRIANGLE_STRIP;
+//static NSInteger MGSquareFillVertexesCount = 4;
+//static CGFloat MGSquareFillVertexes[8] = {-0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5};
 
 
 
@@ -40,11 +40,11 @@ static CGFloat MGSquareFillVertexes[8] = {-0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5,
     if (self) {
         pressed = NO;
         startedInButton = NO;
-        MGMesh *meshToAssign = [[MGMesh alloc] initWithVertexes:MGSquareOutlineVertexes vertexCount:MGSquareOutlineVertexCount vertexSize:MGSquareVertexSize renderStyle:MGSquareOutlineRenderStyle];
-        self.mesh = meshToAssign;
-        [meshToAssign release];
-        self.mesh.colorSize = MGSquareColorSize;
-        self.mesh.colors = MGSquareOutlineColorValues;
+//        MGMesh *meshToAssign = [[MGMesh alloc] initWithVertexes:MGSquareOutlineVertexes vertexCount:MGSquareOutlineVertexCount vertexSize:MGSquareVertexSize renderStyle:MGSquareOutlineRenderStyle];
+//        self.mesh = meshToAssign;
+//        [meshToAssign release];
+//        self.mesh.colorSize = MGSquareColorSize;
+//        self.mesh.colors = MGSquareOutlineColorValues;
     }
     return self;
 }
@@ -89,6 +89,7 @@ static CGFloat MGSquareFillVertexes[8] = {-0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5,
 }
 
 - (void)goodTouch {
+
     if (pressed) {
         return;
     }
@@ -108,17 +109,17 @@ static CGFloat MGSquareFillVertexes[8] = {-0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5,
 }
 
 - (void)setNotPressedVertexes {
-    self.mesh.vertexes = MGSquareOutlineVertexes;
-    self.mesh.renderStyle = MGSquareOutlineRenderStyle;
-    self.mesh.vertexCount = MGSquareOutlineVertexCount;
-    self.mesh.colors = MGSquareOutlineColorValues;
+//    self.mesh.vertexes = MGSquareOutlineVertexes;
+//    self.mesh.renderStyle = MGSquareOutlineRenderStyle;
+//    self.mesh.vertexCount = MGSquareOutlineVertexCount;
+//    self.mesh.colors = MGSquareOutlineColorValues;
 }
 
 - (void)setPressedVertexes {
-    self.mesh.vertexes = MGSquareFillVertexes;
-    self.mesh.renderStyle = MGSquareFillRenderStyle;
-    self.mesh.vertexCount = MGSquareFillVertexesCount;
-    self.mesh.colors = MGSquareOutlineColorValues;
+//    self.mesh.vertexes = MGSquareFillVertexes;
+//    self.mesh.renderStyle = MGSquareFillRenderStyle;
+//    self.mesh.vertexCount = MGSquareFillVertexesCount;
+//    self.mesh.colors = MGSquareOutlineColorValues;
 }
 
 

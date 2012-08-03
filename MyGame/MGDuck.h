@@ -28,6 +28,8 @@
     NSInteger takenTimeWithoutMovingInUpdates;
     BOOL wingsDown;
     NSInteger timeToFlapItsWingsInUpdates;
+    MGTexturedQuad *_upWingsQuad;
+    MGTexturedQuad *_downWingsQuad;
 }
 
 
@@ -38,6 +40,8 @@
 @property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
 @property (nonatomic, retain) MGFinger *finger;
 @property (nonatomic, assign) BOOL wingsDown;
+@property (nonatomic, retain) MGTexturedQuad *downWingsQuad;
+@property (nonatomic, retain) MGTexturedQuad *upWingsQuad;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter TransformationController:(MGTransformationController *)transformation_controller TouchFinger:(MGFinger *)touch_finger;
 

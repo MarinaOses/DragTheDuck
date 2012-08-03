@@ -18,19 +18,19 @@
 @end
 
 
-static CGFloat MGTransformerWingsDownColorValues[16] = {
-    1.0, 0.5, 0.3, 1.0,
-    1.0, 0.5, 0.3, 1.0,
-    1.0, 0.5, 0.3, 1.0,
-    1.0, 0.5, 0.3, 1.0
-};
-
-static CGFloat MGTransformerWingsUpColorValues[16] = {
-    1.0, 0.6, 0.5, 1.0,
-    1.0, 0.6, 0.5, 1.0,
-    1.0, 0.6, 0.5, 1.0,
-    1.0, 0.6, 0.5, 1.0
-};
+//static CGFloat MGTransformerWingsDownColorValues[16] = {
+//    1.0, 0.5, 0.3, 1.0,
+//    1.0, 0.5, 0.3, 1.0,
+//    1.0, 0.5, 0.3, 1.0,
+//    1.0, 0.5, 0.3, 1.0
+//};
+//
+//static CGFloat MGTransformerWingsUpColorValues[16] = {
+//    1.0, 0.6, 0.5, 1.0,
+//    1.0, 0.6, 0.5, 1.0,
+//    1.0, 0.6, 0.5, 1.0,
+//    1.0, 0.6, 0.5, 1.0
+//};
 
 
 @implementation MGTransformer
@@ -39,6 +39,8 @@ static CGFloat MGTransformerWingsUpColorValues[16] = {
 @synthesize sceneObjectDestroyer =_sceneObjectDestroyer;
 @synthesize finger = _finger;
 @synthesize taken;
+@synthesize downWingsQuad = _downWingsQuad;
+@synthesize upWingsQuad = _upWingsQuad;
 
 
 - (id)initWithDuck:(MGDuck *)duck {
@@ -59,6 +61,8 @@ static CGFloat MGTransformerWingsUpColorValues[16] = {
         self.finger = duck.finger;
         [self loadTakenTimeWithoutMovingInUpdates];
         wingsDown = duck.wingsDown;
+        self.downWingsQuad = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_transformer_ala_abajo.png"];
+        self.upWingsQuad = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_transformer_ala_arriba.png"];
         [self flapItsWings];
         [self loadTimeToFlapItsWingsInUpdates];
     }
@@ -88,10 +92,10 @@ static CGFloat MGTransformerWingsUpColorValues[16] = {
 
 - (void)flapItsWings {
     if (wingsDown) {
-        self.mesh.colors = MGTransformerWingsDownColorValues;
+        self.mesh = self.downWingsQuad;
     }
     else {
-        self.mesh.colors = MGTransformerWingsUpColorValues;
+        self.mesh = self.upWingsQuad;
     }
 }
 
@@ -169,6 +173,8 @@ static CGFloat MGTransformerWingsUpColorValues[16] = {
     [_tranformationController release];
     [_sceneObjectDestroyer release];
     [_finger release];
+    [_upWingsQuad release];
+    [_downWingsQuad release];
     [super dealloc];
 }
 

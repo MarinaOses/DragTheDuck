@@ -10,23 +10,23 @@
 
 #import "MGSceneController.h"
 
-static NSInteger MGLifesVertexSize = 2;
-static NSInteger MGLifesColorSize = 4;
-static GLenum MGLifesRenderStyle = GL_TRIANGLE_STRIP;
-static NSInteger MGLifesVertexCount = 4;
-static CGFloat MGLifesVertexes[8] = {
-    -0.5, -0.5, 
-    0.5, -0.5,
-    -0.5, 0.5,
-    0.5, 0.5
-};
-
-static CGFloat MGLifesColorValues[16] ={
-    0.9, 0.8, 0.7, 1.0, 
-    0.9, 0.8, 0.7, 1.0, 
-    0.9, 0.8, 0.7, 1.0, 
-    0.9, 0.8, 0.7, 1.0
-};
+//static NSInteger MGLifesVertexSize = 2;
+//static NSInteger MGLifesColorSize = 4;
+//static GLenum MGLifesRenderStyle = GL_TRIANGLE_STRIP;
+//static NSInteger MGLifesVertexCount = 4;
+//static CGFloat MGLifesVertexes[8] = {
+//    -0.5, -0.5, 
+//    0.5, -0.5,
+//    -0.5, 0.5,
+//    0.5, 0.5
+//};
+//
+//static CGFloat MGLifesColorValues[16] ={
+//    0.9, 0.8, 0.7, 1.0, 
+//    0.9, 0.8, 0.7, 1.0, 
+//    0.9, 0.8, 0.7, 1.0, 
+//    0.9, 0.8, 0.7, 1.0
+//};
 
 @implementation MGLifesPresenter 
 @synthesize sceneController = _sceneController;
@@ -45,12 +45,12 @@ static CGFloat MGLifesColorValues[16] ={
 
 - (MGSceneObject *)createALife {
     MGSceneObject *obj = [[MGSceneObject alloc] initWithSceneController:self.sceneController];
-    MGMesh *meshToAssign = [[MGMesh alloc] initWithVertexes:MGLifesVertexes vertexCount:MGLifesVertexCount vertexSize:MGLifesVertexSize renderStyle:MGLifesRenderStyle];
-    obj.mesh = meshToAssign;
-    [meshToAssign release];
-    obj.mesh.colorSize = MGLifesColorSize;
-    obj.mesh.colors = MGLifesColorValues;
-    
+//    MGMesh *meshToAssign = [[MGMesh alloc] initWithVertexes:MGLifesVertexes vertexCount:MGLifesVertexCount vertexSize:MGLifesVertexSize renderStyle:MGLifesRenderStyle];
+//    obj.mesh = meshToAssign;
+//    [meshToAssign release];
+//    obj.mesh.colorSize = MGLifesColorSize;
+//    obj.mesh.colors = MGLifesColorValues;
+    obj.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_egg.png"];    
     obj.collider = [[MGCollider alloc] initWithSceneController:self.sceneController];
     
     obj.scale = scaleOfPresentation;

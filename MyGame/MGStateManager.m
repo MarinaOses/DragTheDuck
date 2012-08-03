@@ -78,7 +78,7 @@
     [playStateToAssign release];
 }
 
-- (void)goToPauseStateWithSceneObjects:(NSMutableArray *)scene_objects PauseButton:(MGButton *)pause_button {
+- (void)goToPauseStateWithSceneObjects:(NSMutableArray *)scene_objects PauseButton:(MGTexturedButton *)pause_button {
     NSLog(@"In manager: goToPauseState()");
     self.playStateToRemember = (MGPlayState *)self.activeState;
     [self.sceneController.timeController deactivate];

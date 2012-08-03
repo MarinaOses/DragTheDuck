@@ -16,12 +16,12 @@
 - (CGFloat)randomLifeTime;
 @end
 
-static CGFloat MGBeeColorValues[16] ={
-    1.0, 1.0, 0.0, 1.0, 
-    0.0, 0.0, 0.0, 1.0, 
-    1.0, 1.0, 0.0, 1.0, 
-    0.0, 0.0, 0.0, 1.0
-};
+//static CGFloat MGBeeColorValues[16] ={
+//    1.0, 1.0, 0.0, 1.0, 
+//    0.0, 0.0, 0.0, 1.0, 
+//    1.0, 1.0, 0.0, 1.0, 
+//    0.0, 0.0, 0.0, 1.0
+//};
 
 
 @implementation MGBee
@@ -31,8 +31,7 @@ static CGFloat MGBeeColorValues[16] ={
 - (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {
     self = [super initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer];
     if (self) {
-        self.mesh.colors = MGBeeColorValues;
-        
+        self.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_bee.png"];
         self.translation = [self randomTranslation:self.meshBounds];
         self.rotation = [self randomRotation];
         self.scale = [self randomScale];

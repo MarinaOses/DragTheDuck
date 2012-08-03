@@ -12,12 +12,13 @@
 #import "MGSceneObject.h"
 
 @interface MGFigureDecorator : NSObject {
-    CGFloat *RGBAColors;
-    
+    //CGFloat *RGBAColors;
+    NSArray *_numberImagesNames;
     MGSceneController *_sceneController;
 }
 
-@property (nonatomic, assign) CGFloat *RGBAColors;
+//@property (nonatomic, assign) CGFloat *RGBAColors;
+@property (nonatomic, retain) NSArray *numberImagesNames;
 @property (nonatomic, retain) MGSceneController *sceneController;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;

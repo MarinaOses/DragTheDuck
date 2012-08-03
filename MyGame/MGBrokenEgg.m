@@ -11,12 +11,12 @@
 #import "MGSceneController.h"
 #import "MGLifesController.h"
 
-static CGFloat MGBrokenEggColorValues[16] ={
-    0.9, 0.7, 0.5, 1.0, 
-    0.9, 0.7, 0.5, 1.0, 
-    0.9, 0.7, 0.5, 1.0, 
-    0.9, 0.7, 0.5, 1.0
-};
+//static CGFloat MGBrokenEggColorValues[16] ={
+//    0.9, 0.7, 0.5, 1.0, 
+//    0.9, 0.7, 0.5, 1.0, 
+//    0.9, 0.7, 0.5, 1.0, 
+//    0.9, 0.7, 0.5, 1.0
+//};
 
 @interface MGBrokenEgg()
 - (MGPoint)speedToGoFrom:(MGPoint)start To:(MGPoint)finish In:(NSInteger)updates;
@@ -32,7 +32,7 @@ static CGFloat MGBrokenEggColorValues[16] ={
         MGSceneObject *life = (MGSceneObject *)[self.lifesController.lifesMarker objectAtIndex:self.lifesController.nextLifeWithoutUsing];
         finishingPoint = life.translation;
         self.translation = MGPointMake(egg.translation.x, egg.translation.y + CGRectGetHeight(egg.meshBounds), 0.0) ;
-        self.mesh.colors = MGBrokenEggColorValues;
+        self.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_broken_egg"];
         self.speed = [self speedToGoFrom:self.translation To:finishingPoint In:UPDATES_FOR_A_TRAVEL];
         if (self.speed.x < 0) {
             fallingDirection = -1;

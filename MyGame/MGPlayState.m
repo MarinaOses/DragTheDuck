@@ -39,7 +39,7 @@
                             Scale:MGPointMake(40.0, 40.0, 1.0) 
                             scoreBoard:self.scoreBoard];
         //PAUSEBUTTON
-        MGButton *pauseButtonToAssign = [[MGButton alloc] initWithSceneController:self.sceneControllerForState];
+        MGTexturedButton *pauseButtonToAssign = [[MGTexturedButton alloc] initWithSceneController:self.sceneControllerForState UpKey:@"mg_button_pause.png" downKey:@"mg_button_pause_pressed.png"];
         pauseButtonToAssign.scale = MGPointMake(35.0,35.0, 1.0);
         pauseButtonToAssign.translation = MGPointMake(220.0, 140.0, 0.0);
         pauseButtonToAssign.target = self;

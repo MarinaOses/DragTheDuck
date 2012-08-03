@@ -11,12 +11,12 @@
 
 #import "MGSceneController.h"
 
-static CGFloat MGArmorColorValues[16] ={
-    0.2, 0.0, 0.0, 1.0, 
-    0.2, 0.0, 0.0, 1.0, 
-    0.0, 0.7, 0.0, 1.0, 
-    0.0, 0.7, 0.0, 1.0
-};
+//static CGFloat MGArmorColorValues[16] ={
+//    0.2, 0.0, 0.0, 1.0, 
+//    0.2, 0.0, 0.0, 1.0, 
+//    0.0, 0.7, 0.0, 1.0, 
+//    0.0, 0.7, 0.0, 1.0
+//};
 
 
 @implementation MGArmor
@@ -25,8 +25,8 @@ static CGFloat MGArmorColorValues[16] ={
     self = [super initWithSceneController:scene_controller BoundaryController:boundary_controller RangeForScale:NSMakeRange(duck.scale.x, duck.scale.x) RangeForSpeed:NSMakeRange((NSUInteger)(roundf(duck.speed.x*100.0)), (NSUInteger)(roundf(duck.speed.x*100.0))) Direction:1];
     if (self) {
         self.translation = duck.translation;
-        self.mesh.colors = MGArmorColorValues;
-    }
+        self.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_hojas.png"];
+     }
     return self;
 }
 

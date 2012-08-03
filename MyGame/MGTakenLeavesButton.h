@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MGButton.h"
+#import "MGTexturedButton.h"
 #import "MGTakenLeavesButtonShowerLayer.h"
 #import "MGScoreBoard.h"
 
-@interface MGTakenLeavesButton : MGButton {
+@interface MGTakenLeavesButton : MGTexturedButton {
     MGScoreBoard *_scoreBoard;
     MGTakenLeavesButtonShowerLayer *_takenLeavesButtonShowerLayer;
     BOOL isActive;

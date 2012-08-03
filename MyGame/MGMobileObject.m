@@ -10,23 +10,23 @@
 
 #import "MGSceneController.h"
 
-static NSInteger MGMobileVertexSize = 2;
-static NSInteger MGMobileColorSize = 4;
-static GLenum MGMobileRenderStyle = GL_TRIANGLE_STRIP;
-static NSInteger MGMobileVertexCount = 4;
-static CGFloat MGMobileVertexes[8] = {
-    -0.5, -0.5, 
-    0.5, -0.5,
-    -0.5, 0.5,
-    0.5, 0.5
-};
-
-static CGFloat MGMobileColorValues[16] ={
-    0.0, 0.0, 0.0, 1.0, 
-    0.0, 0.0, 0.0, 1.0, 
-    0.0, 0.0, 0.0, 1.0, 
-    0.0, 0.0, 0.0, 1.0
-};
+//static NSInteger MGMobileVertexSize = 2;
+//static NSInteger MGMobileColorSize = 4;
+//static GLenum MGMobileRenderStyle = GL_TRIANGLE_STRIP;
+//static NSInteger MGMobileVertexCount = 4;
+//static CGFloat MGMobileVertexes[8] = {
+//    -0.5, -0.5, 
+//    0.5, -0.5,
+//    -0.5, 0.5,
+//    0.5, 0.5
+//};
+//
+//static CGFloat MGMobileColorValues[16] ={
+//    0.0, 0.0, 0.0, 1.0, 
+//    0.0, 0.0, 0.0, 1.0, 
+//    0.0, 0.0, 0.0, 1.0, 
+//    0.0, 0.0, 0.0, 1.0
+//};
 
 @implementation MGMobileObject
 
@@ -37,11 +37,11 @@ static CGFloat MGMobileColorValues[16] ={
 - (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller RangeForScale:(NSRange)scale_range RangeForSpeed:(NSRange)speed_range Direction:(int)direction {
     self = [super initWithSceneController:scene_controller];
     if (self) {
-        MGMesh *meshToAssign = [[MGMesh alloc] initWithVertexes:MGMobileVertexes vertexCount:MGMobileVertexCount vertexSize:MGMobileVertexSize renderStyle:MGMobileRenderStyle];
-        self.mesh = meshToAssign;
-        [meshToAssign release];
-        self.mesh.colorSize = MGMobileColorSize;
-        self.mesh.colors = MGMobileColorValues;
+//        MGMesh *meshToAssign = [[MGMesh alloc] initWithVertexes:MGMobileVertexes vertexCount:MGMobileVertexCount vertexSize:MGMobileVertexSize renderStyle:MGMobileRenderStyle];
+//        self.mesh = meshToAssign;
+//        [meshToAssign release];
+//        self.mesh.colorSize = MGMobileColorSize;
+//        self.mesh.colors = MGMobileColorValues;
         self.movingDirection = direction;
         self.collider = [[MGCollider alloc] initWithSceneController:scene_controller];
         self.scale = [self randomScaleInRange:scale_range];
@@ -77,6 +77,7 @@ static CGFloat MGMobileColorValues[16] ={
 - (void)stop {
     self.speed = MGPointMake(0.0, 0.0, 0.0);
 }
+
 
 
 - (void)update {

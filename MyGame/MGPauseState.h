@@ -7,7 +7,7 @@
 //
 
 #import "MGState.h"
-#import "MGButton.h"
+#import "MGTexturedButton.h"
 
 @class MGSceneController;
 
@@ -15,12 +15,12 @@
 @interface MGPauseState : MGState {
     NSMutableArray *_sceneObjectsOfPlayState;
     
-    MGButton *_pauseButton;
+    MGTexturedButton *_pauseButton;
 }
 
 @property (nonatomic, retain) NSMutableArray *sceneObjectsOfPlayState;
-@property (nonatomic, retain) MGButton *pauseButton;
+@property (nonatomic, retain) MGTexturedButton *pauseButton;
 
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjects:(NSMutableArray *)scene_objects PauseButton:(MGButton *)pause_button;
+- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjects:(NSMutableArray *)scene_objects PauseButton:(MGTexturedButton *)pause_button;
 @end

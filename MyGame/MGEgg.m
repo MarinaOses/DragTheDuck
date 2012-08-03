@@ -12,12 +12,12 @@
 
 #import "MGSceneController.h"
 
-static CGFloat MGEggColorValues[16] ={
-    0.9, 0.8, 0.7, 1.0, 
-    0.9, 0.8, 0.7, 1.0, 
-    0.9, 0.8, 0.7, 1.0, 
-    0.9, 0.8, 0.7, 1.0
-};
+//static CGFloat MGEggColorValues[16] ={
+//    0.9, 0.8, 0.7, 1.0, 
+//    0.9, 0.8, 0.7, 1.0, 
+//    0.9, 0.8, 0.7, 1.0, 
+//    0.9, 0.8, 0.7, 1.0
+//};
 
 
 @implementation MGEgg
@@ -29,7 +29,7 @@ static CGFloat MGEggColorValues[16] ={
         MGPoint s = MGPointMake(duck.speed.x, EGG_INITIAL_JUMP_SPEED, duck.speed.z);
         self.speed = s;
         self.translation = duck.translation;
-        self.mesh.colors = MGEggColorValues;
+        self.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_egg"];
     }
     return self;
 }

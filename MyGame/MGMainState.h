@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "MGButton.h"
+#import "MGTexturedButton.h"
 #import "MGState.h"
 
 @class MGSceneController;

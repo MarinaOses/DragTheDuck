@@ -15,10 +15,12 @@
 @interface MGBird : MGMobileObject <MGFlyingObject> {
     BOOL wingsDown;
     NSInteger timeToFlapItsWingsInUpdates;
-    
+    MGTexturedQuad *_upWingsQuad;
+    MGTexturedQuad *_downWingsQuad;
 }
 
-
+@property (nonatomic, retain) MGTexturedQuad *upWingsQuad;
+@property (nonatomic, retain) MGTexturedQuad *downWingsQuad;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer;
 @end

@@ -24,7 +24,7 @@
     //************************************
     
     //PLAYBUTTON
-    MGButton *playButton = [[MGButton alloc] initWithSceneController:self.sceneControllerForState];
+    MGTexturedButton *playButton = [[MGTexturedButton alloc] initWithSceneController:self.sceneControllerForState UpKey:@"mg_boton_play_final.png" downKey:@"mg_boton_play_final_pressed.png"];
     playButton.scale = MGPointMake(80.0, 80.0, 1.0);
     playButton.translation = MGPointMake(0.0, 0.0, 0.0);
     playButton.target = self;
@@ -34,7 +34,7 @@
     [playButton release];
     
     //SOUNDBUTTON
-    MGButton *soundButton = [[MGButton alloc] initWithSceneController:self.sceneControllerForState];
+    MGTexturedButton *soundButton = [[MGTexturedButton alloc] initWithSceneController:self.sceneControllerForState UpKey:@"mg_button_sound_off.png" downKey:@"mg_button_sound_on.png"];
     soundButton.scale = MGPointMake(40.0, 40.0, 1.0);
     soundButton.translation = MGPointMake(0.0, 130.0, 0.0);
     soundButton.target = self;
@@ -44,7 +44,7 @@
     [soundButton release];
     
     //HELPBUTTON
-    MGButton *helpButton = [[MGButton alloc] initWithSceneController:self.sceneControllerForState];
+    MGTexturedButton *helpButton = [[MGTexturedButton alloc] initWithSceneController:self.sceneControllerForState UpKey:@"mg_button_help.png" downKey:@"mg_button_help_pressed.png"];
     helpButton.scale = MGPointMake(40.0, 40.0, 1.0);
     helpButton.translation = MGPointMake(0.0, -130.0, 0.0);
     helpButton.target = self;

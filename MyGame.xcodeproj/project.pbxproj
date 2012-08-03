@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9C04E0C7159DBAD200F5A221 /* MGFinger.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C04E0C6159DBAD200F5A221 /* MGFinger.m */; };
 		9C1137061598B2340057FB80 /* MGBoundaryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1137051598B2340057FB80 /* MGBoundaryController.m */; };
+		9C14190715CBFE8E009E0182 /* MGTexturedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C14190615CBFE8E009E0182 /* MGTexturedButton.m */; };
 		9C15DD2515458A210095FBED /* MGSceneObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD2415458A1F0095FBED /* MGSceneObject.m */; };
 		9C15DD73154E9AD20095FBED /* MGButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD72154E9AD20095FBED /* MGButton.m */; };
 		9C15DD77154E9B2F0095FBED /* MGMainState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD76154E9B2F0095FBED /* MGMainState.m */; };
@@ -28,6 +29,8 @@
 		9C366EFC159B827800222538 /* MGBrokenEgg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C366EFB159B827800222538 /* MGBrokenEgg.m */; };
 		9C366EFF159C7F4100222538 /* MGEggBreaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C366EFE159C7F4100222538 /* MGEggBreaker.m */; };
 		9C44E48A15A4AF2300D27255 /* MGFeathers.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C44E48915A4AF2300D27255 /* MGFeathers.m */; };
+		9C85040515C9618F00F9685B /* MGMaterialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85040415C9618F00F9685B /* MGMaterialController.m */; };
+		9C85041215C9B31D00F9685B /* MGTexturedQuad.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85041115C9B31C00F9685B /* MGTexturedQuad.m */; };
 		9CAC5B16153D8B23003ECB4F /* MGTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC5B15153D8B23003ECB4F /* MGTouch.m */; };
 		9CAE9C6B1557F28600C88B50 /* MGMobileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C6A1557F28600C88B50 /* MGMobileObject.m */; };
 		9CAE9C6F155A7D0000C88B50 /* MGMultipleBirdGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C6E155A7D0000C88B50 /* MGMultipleBirdGenerator.m */; };
@@ -43,6 +46,8 @@
 		9CC12372156BC29F005EABD0 /* MGStoppedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC12371156BC29E005EABD0 /* MGStoppedObject.m */; };
 		9CC12379156CE615005EABD0 /* MGMultipleBeeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC12378156CE615005EABD0 /* MGMultipleBeeGenerator.m */; };
 		9CC1237F156E5376005EABD0 /* MGCollider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1237E156E5376005EABD0 /* MGCollider.m */; };
+		9CCBEED215CC492B0082D224 /* mapa.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CCBEED015CC492B0082D224 /* mapa.plist */; };
+		9CCBEED315CC492B0082D224 /* mapa.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCBEED115CC492B0082D224 /* mapa.png */; };
 		9CE04F4D151380CF00185442 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F4C151380CF00185442 /* UIKit.framework */; };
 		9CE04F4F151380CF00185442 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F4E151380CF00185442 /* Foundation.framework */; };
 		9CE04F51151380CF00185442 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F50151380CF00185442 /* CoreGraphics.framework */; };
@@ -77,6 +82,8 @@
 		9C04E0C6159DBAD200F5A221 /* MGFinger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFinger.m; sourceTree = "<group>"; };
 		9C1137041598B2340057FB80 /* MGBoundaryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGBoundaryController.h; sourceTree = "<group>"; };
 		9C1137051598B2340057FB80 /* MGBoundaryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGBoundaryController.m; sourceTree = "<group>"; };
+		9C14190515CBFE8E009E0182 /* MGTexturedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTexturedButton.h; sourceTree = "<group>"; };
+		9C14190615CBFE8E009E0182 /* MGTexturedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTexturedButton.m; sourceTree = "<group>"; };
 		9C15DD2315458A1E0095FBED /* MGSceneObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSceneObject.h; sourceTree = "<group>"; };
 		9C15DD2415458A1F0095FBED /* MGSceneObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSceneObject.m; sourceTree = "<group>"; };
 		9C15DD71154E9AD20095FBED /* MGButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGButton.h; sourceTree = "<group>"; };
@@ -116,6 +123,10 @@
 		9C44E48615A36C8800D27255 /* MGFlyingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFlyingObject.h; sourceTree = "<group>"; };
 		9C44E48815A4AF2200D27255 /* MGFeathers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFeathers.h; sourceTree = "<group>"; };
 		9C44E48915A4AF2300D27255 /* MGFeathers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFeathers.m; sourceTree = "<group>"; };
+		9C85040315C9618F00F9685B /* MGMaterialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMaterialController.h; sourceTree = "<group>"; };
+		9C85040415C9618F00F9685B /* MGMaterialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMaterialController.m; sourceTree = "<group>"; };
+		9C85041015C9B31C00F9685B /* MGTexturedQuad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTexturedQuad.h; sourceTree = "<group>"; };
+		9C85041115C9B31C00F9685B /* MGTexturedQuad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTexturedQuad.m; sourceTree = "<group>"; };
 		9CA68A23152C6F7B008E11AF /* MGConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConfiguration.h; sourceTree = "<group>"; };
 		9CAC5B14153D8B23003ECB4F /* MGTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTouch.h; sourceTree = "<group>"; };
 		9CAC5B15153D8B23003ECB4F /* MGTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTouch.m; sourceTree = "<group>"; };
@@ -148,6 +159,8 @@
 		9CC12378156CE615005EABD0 /* MGMultipleBeeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMultipleBeeGenerator.m; sourceTree = "<group>"; };
 		9CC1237D156E5376005EABD0 /* MGCollider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCollider.h; sourceTree = "<group>"; };
 		9CC1237E156E5376005EABD0 /* MGCollider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCollider.m; sourceTree = "<group>"; };
+		9CCBEED015CC492B0082D224 /* mapa.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mapa.plist; sourceTree = "<group>"; };
+		9CCBEED115CC492B0082D224 /* mapa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapa.png; sourceTree = "<group>"; };
 		9CE04F48151380CF00185442 /* MyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CE04F4C151380CF00185442 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CE04F4E151380CF00185442 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -230,8 +243,6 @@
 		9C15DD6F154E9A860095FBED /* Scene Objects */ = {
 			isa = PBXGroup;
 			children = (
-				9C15DD71154E9AD20095FBED /* MGButton.h */,
-				9C15DD72154E9AD20095FBED /* MGButton.m */,
 				9C44E48815A4AF2200D27255 /* MGFeathers.h */,
 				9C44E48915A4AF2300D27255 /* MGFeathers.m */,
 				9C2661CE1590913F00F06E98 /* MGTransformer.h */,
@@ -250,6 +261,10 @@
 				9C366EEA1598E41C00222538 /* MGEgg.m */,
 				9C366EFA159B827700222538 /* MGBrokenEgg.h */,
 				9C366EFB159B827800222538 /* MGBrokenEgg.m */,
+				9C15DD71154E9AD20095FBED /* MGButton.h */,
+				9C15DD72154E9AD20095FBED /* MGButton.m */,
+				9C14190515CBFE8E009E0182 /* MGTexturedButton.h */,
+				9C14190615CBFE8E009E0182 /* MGTexturedButton.m */,
 			);
 			name = "Scene Objects";
 			sourceTree = "<group>";
@@ -306,6 +321,14 @@
 			);
 			name = Lifes;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		9C85040D15C9629500F9685B /* Imágenes */ = {
+			isa = PBXGroup;
+			children = (
+				9CCBEED115CC492B0082D224 /* mapa.png */,
+			);
+			name = "Imágenes";
 			sourceTree = "<group>";
 		};
 		9CA68A25152C6FE4008E11AF /* Configuration Files */ = {
@@ -448,6 +471,8 @@
 		9CE04F53151380CF00185442 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9CCBEED015CC492B0082D224 /* mapa.plist */,
+				9C85040D15C9629500F9685B /* Imágenes */,
 				9CE04F54151380CF00185442 /* MyGame-Info.plist */,
 				9CE04F55151380CF00185442 /* InfoPlist.strings */,
 				9CE04F58151380CF00185442 /* main.m */,
@@ -460,6 +485,10 @@
 		9CEEFF1E153746CF0004D9AA /* Object's properties */ = {
 			isa = PBXGroup;
 			children = (
+				9C85040315C9618F00F9685B /* MGMaterialController.h */,
+				9C85040415C9618F00F9685B /* MGMaterialController.m */,
+				9C85041015C9B31C00F9685B /* MGTexturedQuad.h */,
+				9C85041115C9B31C00F9685B /* MGTexturedQuad.m */,
 				9CEEFF271538560A0004D9AA /* MGMesh.h */,
 				9CEEFF281538560A0004D9AA /* MGMesh.m */,
 			);
@@ -557,6 +586,8 @@
 			files = (
 				9CE04F57151380CF00185442 /* InfoPlist.strings in Resources */,
 				9CEEFF2D1539941F0004D9AA /* MainWindow.xib in Resources */,
+				9CCBEED215CC492B0082D224 /* mapa.plist in Resources */,
+				9CCBEED315CC492B0082D224 /* mapa.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,6 +654,9 @@
 				9C366EFF159C7F4100222538 /* MGEggBreaker.m in Sources */,
 				9C04E0C7159DBAD200F5A221 /* MGFinger.m in Sources */,
 				9C44E48A15A4AF2300D27255 /* MGFeathers.m in Sources */,
+				9C85040515C9618F00F9685B /* MGMaterialController.m in Sources */,
+				9C85041215C9B31D00F9685B /* MGTexturedQuad.m in Sources */,
+				9C14190715CBFE8E009E0182 /* MGTexturedButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,19 +18,19 @@
 @end
 
 
-static CGFloat MGLeafFirstColorValues[16] ={
-    0.0, 1.0, 0.0, 1.0, 
-    0.0, 1.0, 0.0, 1.0, 
-    0.0, 1.0, 0.0, 1.0, 
-    0.0, 1.0, 0.0, 1.0
-};
-
-static CGFloat MGLeafSecondColorValues[16] ={
-    0.0, 0.0, 1.0, 1.0, 
-    0.0, 0.0, 1.0, 1.0, 
-    0.0, 0.0, 1.0, 1.0, 
-    0.0, 0.0, 1.0, 1.0
-};
+//static CGFloat MGLeafFirstColorValues[16] ={
+//    0.0, 1.0, 0.0, 1.0, 
+//    0.0, 1.0, 0.0, 1.0, 
+//    0.0, 1.0, 0.0, 1.0, 
+//    0.0, 1.0, 0.0, 1.0
+//};
+//
+//static CGFloat MGLeafSecondColorValues[16] ={
+//    0.0, 0.0, 1.0, 1.0, 
+//    0.0, 0.0, 1.0, 1.0, 
+//    0.0, 0.0, 1.0, 1.0, 
+//    0.0, 0.0, 1.0, 1.0
+//};
 
 
 @implementation MGLeaf
@@ -42,7 +42,7 @@ static CGFloat MGLeafSecondColorValues[16] ={
 - (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {
     self = [super initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer];
     if (self) {
-        self.mesh.colors = MGLeafFirstColorValues;
+        self.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_hoja_verde.png"];
         self.translation = [self randomTranslation:self.meshBounds];
         self.rotation = [self randomRotation];
         self.scale = [self randomScale];
@@ -77,7 +77,7 @@ static CGFloat MGLeafSecondColorValues[16] ={
 }
 
 - (void)changeColor {
-    self.mesh.colors = MGLeafSecondColorValues;
+    self.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_hoja_roja.png"];
 }
 
 - (void)update {

@@ -21,7 +21,7 @@
     //************************************
     
     //HOMEBUTTON
-    MGButton *homeButton = [[MGButton alloc] initWithSceneController:self.sceneControllerForState];
+    MGTexturedButton *homeButton = [[MGTexturedButton alloc] initWithSceneController:self.sceneControllerForState UpKey:@"mg_button_home.png" downKey:@"mg_button_home_pressed.png"];
     homeButton.scale = MGPointMake(40.0, 40.0, 1.0);
     homeButton.translation = MGPointMake(-190.0, -130.0, 0.0);
     homeButton.target = self;

@@ -17,7 +17,7 @@
 
 
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjects:(NSMutableArray *)scene_objects PauseButton:(MGButton *)pause_button {
+- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjects:(NSMutableArray *)scene_objects PauseButton:(MGTexturedButton *)pause_button {
     self = [super initWithSceneController:scene_controller];
     if (self) {
         self.sceneObjectsOfPlayState = scene_objects;
@@ -35,7 +35,7 @@
     [self.sceneObjects removeAllObjects];
     
     //HOMEBUTTON
-    MGButton *homeButton = [[MGButton alloc] initWithSceneController:self.sceneControllerForState];
+    MGTexturedButton *homeButton = [[MGTexturedButton alloc] initWithSceneController:self.sceneControllerForState UpKey:@"mg_button_home.png" downKey:@"mg_button_home_pressed.png"];
     homeButton.scale = MGPointMake(50.0, 50.0, 1.0);
     homeButton.translation = MGPointMake(-120.0, -60.0, 0.0);
     homeButton.target = self;
@@ -45,7 +45,7 @@
     [homeButton release];
     
     //RESTARTBUTTON
-    MGButton *restartButton = [[MGButton alloc] initWithSceneController:self.sceneControllerForState];
+    MGTexturedButton *restartButton = [[MGTexturedButton alloc] initWithSceneController:self.sceneControllerForState UpKey:@"mg_button_reload.png" downKey:@"mg_button_reload_pressed.png"];
     restartButton.scale = MGPointMake(50.0, 50.0, 1.0);
     restartButton.translation = MGPointMake(120.0, -60.0, 0.0);
     restartButton.target = self;

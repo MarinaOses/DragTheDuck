@@ -9,30 +9,30 @@
 #import "MGIconPresenter.h"
 
 
-static NSInteger MGIconVertexSize = 2;
-static NSInteger MGIconColorSize = 4;
-static GLenum MGIconRenderStyle = GL_TRIANGLE_STRIP;
-static NSInteger MGIconVertexCount = 4;
-static CGFloat MGIconVertexes[8] = {
-    -0.5, -0.5, 
-    0.5, -0.5,
-    -0.5, 0.5,
-    0.5, 0.5
-};
-
-static CGFloat MGSavedDucksIconColorValues[16] = {
-    1.0, 0.0, 0.0, 1.0, 
-    0.0, 1.0, 0.0, 1.0, 
-    0.0, 0.0, 1.0, 1.0, 
-    1.0, 1.0, 1.0, 1.0
-};
-
-static CGFloat MGKilledBirdsIconColorValues[16] = {
-    1.0, 1.0, 1.0, 1.0, 
-    0.0, 1.0, 0.0, 1.0, 
-    0.0, 0.0, 1.0, 1.0, 
-    0.0, 0.0, 0.0, 1.0
-};
+//static NSInteger MGIconVertexSize = 2;
+//static NSInteger MGIconColorSize = 4;
+//static GLenum MGIconRenderStyle = GL_TRIANGLE_STRIP;
+//static NSInteger MGIconVertexCount = 4;
+//static CGFloat MGIconVertexes[8] = {
+//    -0.5, -0.5, 
+//    0.5, -0.5,
+//    -0.5, 0.5,
+//    0.5, 0.5
+//};
+//
+//static CGFloat MGSavedDucksIconColorValues[16] = {
+//    1.0, 0.0, 0.0, 1.0, 
+//    0.0, 1.0, 0.0, 1.0, 
+//    0.0, 0.0, 1.0, 1.0, 
+//    1.0, 1.0, 1.0, 1.0
+//};
+//
+//static CGFloat MGKilledBirdsIconColorValues[16] = {
+//    1.0, 1.0, 1.0, 1.0, 
+//    0.0, 1.0, 0.0, 1.0, 
+//    0.0, 0.0, 1.0, 1.0, 
+//    0.0, 0.0, 0.0, 1.0
+//};
 
 @implementation MGIconPresenter
 @synthesize sceneController = _sceneController;
@@ -50,15 +50,17 @@ static CGFloat MGKilledBirdsIconColorValues[16] = {
 
 - (MGSceneObject *)createIconObject {
     MGSceneObject *icon = [[MGSceneObject alloc] initWithSceneController:self.sceneController];
-    MGMesh *meshToAssign = [[MGMesh alloc] initWithVertexes:MGIconVertexes vertexCount:MGIconVertexCount vertexSize:MGIconVertexSize renderStyle:MGIconRenderStyle];
-    icon.mesh = meshToAssign;
-    [meshToAssign release];
-    icon.mesh.colorSize = MGIconColorSize;
+//    MGMesh *meshToAssign = [[MGMesh alloc] initWithVertexes:MGIconVertexes vertexCount:MGIconVertexCount vertexSize:MGIconVertexSize renderStyle:MGIconRenderStyle];
+//    icon.mesh = meshToAssign;
+//    [meshToAssign release];
+//    icon.mesh.colorSize = MGIconColorSize;
     if (startPointOfTheNumberThatComesAfter.y == SAVED_DUCKS_SCORE_START_Y) {
-        icon.mesh.colors = MGSavedDucksIconColorValues;
+        //icon.mesh.colors = MGSavedDucksIconColorValues;
+        icon.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_icono_patito.png"];
     }
     else {
-        icon.mesh.colors = MGKilledBirdsIconColorValues;
+        //icon.mesh.colors = MGKilledBirdsIconColorValues;
+        icon.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_icono_pajaro_muerto.png"];
     }
     icon.scale = scaleOfPresentation;
     icon.translation = MGPointMake(startPointOfTheNumberThatComesAfter.x - CGRectGetWidth(icon.meshBounds)/2 - SPACE_BETWEEN_ICON_NUMBERS, startPointOfTheNumberThatComesAfter.y, startPointOfTheNumberThatComesAfter.z);

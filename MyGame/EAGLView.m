@@ -69,7 +69,8 @@
     glOrthof(-1.0f, 1.0f, -1.5f, 1.5f, -1.0f, 1.0f);
     //definir el color del fondo
     glMatrixMode(GL_MODELVIEW);
-    glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+	glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+
 }
 
 
@@ -87,7 +88,8 @@
     glOrthof(-backingHeight/2.0f, backingHeight/2.0f, -backingWidth/2.0f, backingWidth/2.0f, -1.0f, 1.0f);
     glMatrixMode(GL_MODELVIEW);
     //Se limpia la pantalla con gris
-    glClearColor(0.5f, 0.5f, 0.5f, 0.0f);
+    glClearColor(0.5f, 0.5f, 0.5f, 0.3f);
+
     
 }
 
