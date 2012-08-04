@@ -79,9 +79,9 @@
         //activar el uso de texturas 2D
         glEnable(GL_TEXTURE_2D);
         //set a blending function to use
-        glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+        //glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
         //enable blending
-        glEnable(GL_BLEND);
+        //glEnable(GL_BLEND);
 
 
     }

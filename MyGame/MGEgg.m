@@ -29,7 +29,7 @@
         MGPoint s = MGPointMake(duck.speed.x, EGG_INITIAL_JUMP_SPEED, duck.speed.z);
         self.speed = s;
         self.translation = duck.translation;
-        self.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_egg"];
+        self.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_egg.png"];
     }
     return self;
 }

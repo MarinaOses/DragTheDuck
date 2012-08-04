@@ -45,7 +45,6 @@
         self.movingDirection = direction;
         self.collider = [[MGCollider alloc] initWithSceneController:scene_controller];
         self.scale = [self randomScaleInRange:scale_range];
-        self.translation = [self randomTranslationWithMeshBounds:self.meshBounds OnSide:-direction];
         self.speed = [self randomSpeedInRange:speed_range WithDirection:direction];
         
         self.boundaryController = boundary_controller;

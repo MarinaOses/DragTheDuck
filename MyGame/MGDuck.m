@@ -60,7 +60,10 @@
         self.upWingsQuad = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_duck_ala_arriba.png"];
 
         [self flapItsWings];
+
         [self loadTimeToFlapItsWingsInUpdates];
+        self.translation = [self randomTranslationWithMeshBounds:self.meshBounds OnSide:-self.movingDirection];
+
     }
     return self;
 }

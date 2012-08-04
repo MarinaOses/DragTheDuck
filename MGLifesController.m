@@ -10,19 +10,19 @@
 
 #import "MGSceneController.h"
 
-static CGFloat MGSpentLifesColorValues[16] ={
-    1.0, 0.5, 0.0, 1.0, 
-    1.0, 0.5, 0.0, 1.0, 
-    1.0, 0.5, 0.0, 1.0, 
-    1.0, 0.5, 0.0, 1.0
-};
-
-static CGFloat MGLifesColorValues[16] ={
-    0.9, 0.8, 0.7, 1.0, 
-    0.9, 0.8, 0.7, 1.0, 
-    0.9, 0.8, 0.7, 1.0, 
-    0.9, 0.8, 0.7, 1.0
-};
+//static CGFloat MGSpentLifesColorValues[16] ={
+//    1.0, 0.5, 0.0, 1.0, 
+//    1.0, 0.5, 0.0, 1.0, 
+//    1.0, 0.5, 0.0, 1.0, 
+//    1.0, 0.5, 0.0, 1.0
+//};
+//
+//static CGFloat MGLifesColorValues[16] ={
+//    0.9, 0.8, 0.7, 1.0, 
+//    0.9, 0.8, 0.7, 1.0, 
+//    0.9, 0.8, 0.7, 1.0, 
+//    0.9, 0.8, 0.7, 1.0
+//};
 
 @implementation MGLifesController
 @synthesize lifesPresenter = _lifesPresenter;
@@ -52,7 +52,7 @@ static CGFloat MGLifesColorValues[16] ={
 
 - (void)aLifeHasBeenSpent {
     MGSceneObject *life = [self.lifesMarker objectAtIndex:self.nextLifeWithoutUsing];
-    life.mesh.colors = MGSpentLifesColorValues;
+    life.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_fried_egg.png"];
     self.nextLifeWithoutUsing--;
     if (self.nextLifeWithoutUsing < 0) {
         [self.sceneController.stateManager stopActiveState];
@@ -62,7 +62,7 @@ static CGFloat MGLifesColorValues[16] ={
 - (void)aLifeHasBeenRecovered {
     if (self.nextLifeWithoutUsing+1 < numberOfLifes) {
         MGSceneObject *life = [self.lifesMarker objectAtIndex:self.nextLifeWithoutUsing+1];
-        life.mesh.colors = MGLifesColorValues;
+        life.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_egg.png"];
         self.nextLifeWithoutUsing++;
     }
     

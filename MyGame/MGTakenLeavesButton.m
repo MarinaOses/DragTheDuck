@@ -16,7 +16,7 @@
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller Translation:(MGPoint)button_translation Rotation:(MGPoint)button_rotation Scale:(MGPoint)button_scale scoreBoard:(MGScoreBoard *)score_board {
-    self = [super initWithSceneController:scene_controller];
+    self = [super initWithSceneController:scene_controller UpKey:@"mg_boton_hojas.png" downKey:@"mg_boton_hojas.png"];
     if (self) {
         
         self.scoreBoard = score_board;

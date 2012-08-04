@@ -40,9 +40,11 @@
         wingsDown = YES;
         self.downWingsQuad = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_bird_ala_abajo.png"];
         self.upWingsQuad = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_bird_ala_arriba.png"];
-
-        [self flapItsWings];    
+        [self flapItsWings]; 
+        
         [self loadTimeToFlapItsWingsInUpdates];
+        self.translation = [self randomTranslationWithMeshBounds:self.meshBounds OnSide:-self.movingDirection];
+
         
     }
     return self;

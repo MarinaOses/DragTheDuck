@@ -32,7 +32,7 @@
         MGSceneObject *life = (MGSceneObject *)[self.lifesController.lifesMarker objectAtIndex:self.lifesController.nextLifeWithoutUsing];
         finishingPoint = life.translation;
         self.translation = MGPointMake(egg.translation.x, egg.translation.y + CGRectGetHeight(egg.meshBounds), 0.0) ;
-        self.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_broken_egg"];
+        self.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_broken_egg.png"];
         self.speed = [self speedToGoFrom:self.translation To:finishingPoint In:UPDATES_FOR_A_TRAVEL];
         if (self.speed.x < 0) {
             fallingDirection = -1;
