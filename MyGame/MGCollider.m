@@ -99,6 +99,9 @@ static CGFloat MGCircleColorValues[80] =
 }
 
 - (BOOL)doesCollideWithVertexes:(CGFloat *)verts vertexCount:(NSInteger)vertex_count vertexSize:(NSInteger)vertex_size transformMatrix:(CGFloat *)tranform_matrix {
+    if (verts == nil) {
+        NSLog(@"CUIDADOOOOO");
+    }
     NSInteger index;
     for (index = 0; index < vertex_count; index++) {
         NSInteger position = index * vertex_size;

@@ -64,24 +64,19 @@
         glGenTextures(1, &textureID); //openGL nos deja el identificador de esa textura en la dirección pasada por parámetro
         glBindTexture(GL_TEXTURE_2D, textureID);
         
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
-        //release the image data
-        free(imageData);
-        //Se especifica el tipo de filtrado que se debe hacer cuando la textura se agranda
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        //o se estrecha
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-
-        //GL_LINEAR produce un efecto de suavizado
-        //GL_NEAREST intenta producir el mismo efecto pero con mayor rapidez, de modo que en ocasiones pueden aparecer
-        //cuadros inesperados
         
-        //activar el uso de texturas 2D
-        glEnable(GL_TEXTURE_2D);
-        //set a blending function to use
-        //glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-        //enable blending
-        //glEnable(GL_BLEND);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
+        free(imageData);
+
+        glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);        
+        //glBlendFunc (GL_SRC_ALPHA, GL_DST_ALPHA);
+
+        glEnable(GL_BLEND);
 
 
     }
@@ -98,7 +93,9 @@
     NSNumber *numberObj = [self.materialLibrary objectForKey:material_key];
     if (numberObj != nil) {
         GLuint textureID = [numberObj unsignedIntValue];
+        //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glEnable(GL_TEXTURE_2D);
+        glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
         glBindTexture(GL_TEXTURE_2D, textureID);
     }
 }

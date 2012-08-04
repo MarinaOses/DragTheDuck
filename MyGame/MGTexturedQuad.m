@@ -59,6 +59,8 @@ static NSInteger MGTexturedQuadColorSize = 4;
     
     //dibujar
     glDrawArrays(self.renderStyle, 0, self.vertexCount);
+    glFlush();
+    glDisable(GL_TEXTURE_2D);
 }
 
 - (void)dealloc {
