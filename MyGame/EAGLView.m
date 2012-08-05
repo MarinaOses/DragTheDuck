@@ -140,6 +140,7 @@
     //se une el almacén de objetos a dibujar con el renderbuffer
     [context renderbufferStorage:GL_RENDERBUFFER_OES fromDrawable:(CAEAGLLayer *)self.layer];
     //se une el renderbuffer a uno de los puntos de acoplamiento del framebuffer
+
     glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_COLOR_ATTACHMENT0_OES, GL_RENDERBUFFER_OES, viewRenderBuffer);
     
     //almacena en las variables backingWidth y backingHeight las dimensiones del renderbuffer, es decir, las dimensiones de la superficie en la que se va a dibujar
@@ -153,7 +154,7 @@
         glGenRenderbuffersOES(1, &depthRenderBuffer);
         glBindRenderbuffer(GL_RENDERBUFFER_OES, depthRenderBuffer);
         //GL_DEPTH_COMPONENT16_OES representa la dirección de memoria donde está el valor de depth. Como no se va a utilizar transición de páginas, lo mejor es que este a cero.
-        glRenderbufferStorageOES(GL_RENDERBUFFER_OES, GL_DEPTH_COMPONENT16_OES, backingWidth, backingHeight);
+        glRenderbufferStorageOES(GL_RENDERBUFFER_OES, GL_DEPTH_COMPONENT16_OES, backingWidth, backingHeight); 
         glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_DEPTH_ATTACHMENT_OES, GL_RENDERBUFFER_OES, depthRenderBuffer);
 
     }

@@ -25,7 +25,7 @@
     
     //PLAYBUTTON
     MGTexturedButton *playButton = [[MGTexturedButton alloc] initWithSceneController:self.sceneControllerForState UpKey:@"mg_boton_play_final.png" downKey:@"mg_boton_play_final_pressed.png"];
-    playButton.scale = MGPointMake(80.0, 80.0, 1.0);
+    playButton.scale = MGPointMake(160.0, 160.0, 1.0);
     playButton.translation = MGPointMake(0.0, 0.0, 0.0);
     playButton.target = self;
     playButton.buttonGoodAction = @selector(goodTouchOfPlayButtonIsDone);
