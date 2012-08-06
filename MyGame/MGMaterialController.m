@@ -61,21 +61,24 @@
         contextRef = CGBitmapContextCreate(imageData, width, height, 8, width * 4, CGImageGetColorSpace(imageRef), kCGImageAlphaPremultipliedLast);
         CGContextDrawImage(contextRef, CGRectMake(0.0, 0.0, (CGFloat)width, (CGFloat)height), imageRef);
         CGContextRelease(contextRef);
-        glGenTextures(1, &textureID); //openGL nos deja el identificador de esa textura en la dirección pasada por parámetro
+        
+        glGenTextures(1, &textureID);
         glBindTexture(GL_TEXTURE_2D, textureID);
-        
-        
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, (CGFloat)width, (CGFloat)height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
+        glGenerateMipmap(GL_TEXTURE_2D);  
 
-        
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
         free(imageData);
-
         glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);        
         glEnable(GL_BLEND);
+        //glHint (GL_LINE_SMOOTH_HINT, GL_NICEST);
+        //glEnable (GL_LINE_SMOOTH);
 
 
     }
@@ -92,7 +95,7 @@
     NSNumber *numberObj = [self.materialLibrary objectForKey:material_key];
     if (numberObj != nil) {
         GLuint textureID = [numberObj unsignedIntValue];
-        //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        //glClear(GL_COLOR_BUFFER_BIT);
         glEnable(GL_TEXTURE_2D);
         glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
         glBindTexture(GL_TEXTURE_2D, textureID);
