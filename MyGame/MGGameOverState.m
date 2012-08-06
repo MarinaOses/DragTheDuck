@@ -30,6 +30,17 @@
     [self.sceneObjects removeAllObjects];
     
     //************************************
+    //Creación de fondo
+    //************************************
+    
+    MGSceneObject *background = [[MGSceneObject alloc] initWithSceneController:self.sceneControllerForState];
+    background.scale = MGPointMake(480.0, 320.0, 1.0);
+    background.translation = MGPointMake(0.0, 0.0, 0.0);
+    background.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_fondo_game_over.png"];
+    [self.sceneObjects addObject:background];
+    [background release];
+    
+    //************************************
     //Creación de botones
     //************************************
     

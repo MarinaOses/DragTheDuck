@@ -38,7 +38,13 @@
                             Rotation:MGPointZero() 
                             Scale:MGPointMake(40.0, 40.0, 1.0) 
                             scoreBoard:self.scoreBoard];
-        //PAUSEBUTTON
+        
+
+        
+        //************************************
+        //Creación de botón
+        //************************************
+        
         MGTexturedButton *pauseButtonToAssign = [[MGTexturedButton alloc] initWithSceneController:self.sceneControllerForState UpKey:@"mg_button_pause.png" downKey:@"mg_button_pause_pressed.png"];
         pauseButtonToAssign.scale = MGPointMake(35.0,35.0, 1.0);
         pauseButtonToAssign.translation = MGPointMake(220.0, 140.0, 0.0);
@@ -74,6 +80,18 @@
 
 - (void)loadState {
     [self.sceneObjects removeAllObjects];
+    //************************************
+    //Creación de fondo
+    //************************************
+    
+    MGSceneObject *background = [[MGSceneObject alloc] initWithSceneController:self.sceneControllerForState];
+    background.scale = MGPointMake(480.0, 320.0, 1.0);
+    background.translation = MGPointMake(0.0, 0.0, 0.0);
+    background.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_fondo_completo.png"];
+    [self.sceneObjects addObject:background];
+    [background release];
+    
+    
     [self.sceneObjects addObject:self.takenLeavesButton];
     [self.sceneObjects addObject:self.takenLeavesButton.takenLeavesButtonShowerLayer];
     [self.sceneObjects addObject:self.pauseButton];
