@@ -99,9 +99,6 @@ static CGFloat MGCircleColorValues[80] =
 }
 
 - (BOOL)doesCollideWithVertexes:(CGFloat *)verts vertexCount:(NSInteger)vertex_count vertexSize:(NSInteger)vertex_size transformMatrix:(CGFloat *)tranform_matrix {
-    if (verts == nil) {
-        NSLog(@"CUIDADOOOOO");
-    }
     NSInteger index;
     for (index = 0; index < vertex_count; index++) {
         NSInteger position = index * vertex_size;
@@ -114,7 +111,7 @@ static CGFloat MGCircleColorValues[80] =
         }
         aVert = MGPointMatrixMultiply(tranform_matrix, aVert);
         CGFloat distance = MGPointDistance(aVert, self.translation);
-        if (distance < self.maxRadius) {
+        if (distance < (self.maxRadius - SECURITY_DISTANCE)) {
             return YES;
         }
     }

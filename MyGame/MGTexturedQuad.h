@@ -18,4 +18,6 @@
 @property (nonatomic, retain) NSString *materialKey;
 @property (nonatomic, assign) CGFloat *uvCoordinates;
 
+- (id)initWithVertexes:(GLfloat *)vertexes_from_texture;
+
 @end

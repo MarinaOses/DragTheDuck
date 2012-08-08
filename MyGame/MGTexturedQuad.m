@@ -8,12 +8,7 @@
 
 #import "MGTexturedQuad.h"
 
-static CGFloat MGTexturedQuadVertexes[8] = {
-    -0.5, -0.5,
-    0.5, -0.5,
-    -0.5, 0.5,
-    0.5, 0.5
-};
+
 
 static CGFloat MGTexturedQuadColorValues[16] = {
     1.0, 1.0, 1.0, 1.0,
@@ -32,8 +27,8 @@ static NSInteger MGTexturedQuadColorSize = 4;
 @synthesize uvCoordinates;
 
 
-- (id)init {
-    self = [super initWithVertexes:MGTexturedQuadVertexes vertexCount:MGTexturedQuadVertexCount vertexSize:MGTexturedQuadVertexSize renderStyle:MGTexturedQuadRenderStyle];
+- (id)initWithVertexes:(GLfloat *)vertexes_from_texture {
+    self = [super initWithVertexes:vertexes_from_texture vertexCount:MGTexturedQuadVertexCount vertexSize:MGTexturedQuadVertexSize renderStyle:MGTexturedQuadRenderStyle];
     if (self != nil) {
         uvCoordinates = (CGFloat *)malloc(8 * sizeof(CGFloat)); 
         self.colors = MGTexturedQuadColorValues;

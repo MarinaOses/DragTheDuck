@@ -52,4 +52,5 @@ static inline BOOL MGPointHasCrossedMGPointInDirection(MGPoint p1, MGPoint p2, N
 
 }
 
+
 #endif

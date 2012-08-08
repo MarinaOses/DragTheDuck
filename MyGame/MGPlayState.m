@@ -36,7 +36,7 @@
         _takenLeavesButton = [[MGTakenLeavesButton alloc] initWithSceneController:scene_controller 
                             Translation:MGPointMake(0.0, -130.0, 0.0) 
                             Rotation:MGPointZero() 
-                            Scale:MGPointMake(40.0, 40.0, 1.0) 
+                            Scale:MGPointMake(60.0, 60.0, 1.0) 
                             scoreBoard:self.scoreBoard];
         
 

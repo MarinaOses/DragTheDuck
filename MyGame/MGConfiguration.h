@@ -32,47 +32,47 @@
 //**********************************************************************************************
 
 //--BIRD SIZES
-#define MIN_BIRD_SCALE 35
-#define MAX_BIRD_SCALE 55
+#define MIN_BIRD_SCALE 40
+#define MAX_BIRD_SCALE 60
 
 //--BIRD SPEED
 //Es la proporción entre los objetos más rápidos y más lentos. Una vez se haya calculado aleatoriamente la velocidad entre estos dos números tendremos que adecuar el resultado a píxeles de pantalla.
-#define MIN_BIRD_SPEED 40    
-#define MAX_BIRD_SPEED 100
+#define MIN_BIRD_SPEED 80    
+#define MAX_BIRD_SPEED 120
 
 //--NUMBER OF BIRDS TO APPEAR
 #define MIN_BIRDS_TO_APPEAR 1
-#define MAX_BIRDS_TO_APPEAR 1
+#define MAX_BIRDS_TO_APPEAR 2
 
 //--NUMBER OF SECONDS BETWEEN BIRDS APPEARANCES
-#define MINSEC_TO_BIRD_APPEARANCE  3 
+#define MINSEC_TO_BIRD_APPEARANCE 3 
 #define MAXSEC_TO_BIRD_APPEARANCE 8 
 
 //**********************************************************************************************
 //Por el momento las escalas y velocidades de los patos serán siempre las mismas
 //--DUCK SIZES
-#define MIN_DUCK_SCALE 40
-#define MAX_DUCK_SCALE 40
+#define MIN_DUCK_SCALE 50
+#define MAX_DUCK_SCALE 50
 
 //--BIRD SPEED
-#define MIN_DUCK_SPEED 50    
-#define MAX_DUCK_SPEED 50
+#define MIN_DUCK_SPEED 60   
+#define MAX_DUCK_SPEED 60
 
 //--NUMBER OF DUCKS TO APPEAR
 #define MIN_DUCKS_TO_APPEAR 1
 #define MAX_DUCKS_TO_APPEAR 1
 
 //--NUMBER OF SECONDS BETWEEN DUCKS APPEARANCES
-#define MINSEC_TO_DUCK_APPEARANCE 7
-#define MAXSEC_TO_DUCK_APPEARANCE 8
+#define MINSEC_TO_DUCK_APPEARANCE 2
+#define MAXSEC_TO_DUCK_APPEARANCE 4
 
 
 
 
 //**********************************************************************************************
 //---TRANSFORMER SIZES
-#define MIN_TRANSFORMER_SCALE 50
-#define MAX_TRANSFORMER_SCALE 50
+#define MIN_TRANSFORMER_SCALE 70
+#define MAX_TRANSFORMER_SCALE 70
 
 //--TRANFORMER SPEED
 #define MIN_TRANSFORMER_SPEED 100    
@@ -84,13 +84,13 @@
 #define MAX_LEAF_ROTATION 359
 
 //--LEAF SIZES
-#define MIN_LEAF_SCALE 20
-#define MAX_LEAF_SCALE 40
+#define MIN_LEAF_SCALE 40
+#define MAX_LEAF_SCALE 60
 
 
 //--NUMBER OF LEAVES TO APPEAR
 #define MIN_LEAVES_TO_APPEAR 1
-#define MAX_LEAVES_TO_APPEAR 3
+#define MAX_LEAVES_TO_APPEAR 1
 
 
 //-- LEAF'S LIFE TIME
@@ -99,8 +99,8 @@
 
 
 //--NUMBER OF SECONDS BETWEEN LEAVES APPEARANCES
-#define MINSEC_TO_LEAF_APPEARANCE 10
-#define MAXSEC_TO_LEAF_APPEARANCE 15
+#define MINSEC_TO_LEAF_APPEARANCE 15
+#define MAXSEC_TO_LEAF_APPEARANCE 35
 
 
 //**********************************************************************************************
@@ -108,8 +108,8 @@
 #define MAX_BEE_ROTATION 45
 
 //--BEE SIZES
-#define MIN_BEE_SCALE 20
-#define MAX_BEE_SCALE 40
+#define MIN_BEE_SCALE 40
+#define MAX_BEE_SCALE 70
 
 
 //--NUMBER OF BEES TO APPEAR
@@ -123,13 +123,13 @@
 
 
 //--NUMBER OF SECONDS BETWEEN BEES APPEARANCES
-#define MINSEC_TO_BEE_APPEARANCE 20
-#define MAXSEC_TO_BEE_APPEARANCE 30
+#define MINSEC_TO_BEE_APPEARANCE 50
+#define MAXSEC_TO_BEE_APPEARANCE 80
 
 
 //**********************************************************************************************
-#define MINSEC_TO_TRANSFORMER_DISAPPEARANCE 10
-#define MAXSEC_TO_TRANSFORMER_DISAPPEARANCE 30
+#define MINSEC_TO_TRANSFORMER_DISAPPEARANCE 5
+#define MAXSEC_TO_TRANSFORMER_DISAPPEARANCE 20
 
 //**********************************************************************************************
 #define DEBUG_DRAW_COLLIDERS 0
@@ -142,26 +142,25 @@
 
 
 //**********************************************************************************************
-#define NUMBERS_SCALE 20 //Los números tienen 20 píxeles de alto/ancho
-#define ICONS_SCALE 20
+#define NUMBERS_SAVED_DUCKS_SCALE 50 
+#define ICON_SAVED_DUCKS_SCALE 60
 #define SPACE_BETWEEN_ICON_NUMBERS 10
-#define SPACE_BETWEEN_NUMBERS_NUMBERS 20
+#define SPACE_BETWEEN_NUMBERS_NUMBERS 15
+//start_x representa el punto en el eje x donde se sitúa el lado izquierdo del primer número
+#define SAVED_DUCKS_SCORE_START_X -170
+#define SAVED_DUCKS_SCORE_START_Y -125
 
 
 //**********************************************************************************************
 //start_x representa el punto en el eje x donde se sitúa el lado izquierdo del primer número
-#define SAVED_DUCKS_SCORE_START_X 150
-#define SAVED_DUCKS_SCORE_START_Y -120
+#define NUMBERS_KILLED_BIRDS_SCALE 30
+#define ICON_KILLED_BIRDS_SCALE 30
+#define KILLED_BIRDS_SCORE_START_X -5
+#define KILLED_BIRDS_SCORE_START_Y 140
 
 
 //**********************************************************************************************
-//start_x representa el punto en el eje x donde se sitúa el lado izquierdo del primer número
-#define KILLED_BIRDS_SCORE_START_X 150
-#define KILLED_BIRDS_SCORE_START_Y -145
-
-
-//**********************************************************************************************
-#define BIRDS_TO_RECOVER_A_LIFE 3
+#define BIRDS_TO_RECOVER_A_LIFE 5
 
 //**********************************************************************************************
 #define MAX_TAKEN_LEAVES 5
@@ -172,13 +171,13 @@
 
 //**********************************************************************************************
 #define SPACE_BETWEEN_LIFE_LIFE 10
-#define LIFES_FIRST_TRANSLATION_X -200
+#define LIFES_FIRST_TRANSLATION_X 70
 #define LIFES_FIRST_TRANSLATION_Y -130
-#define LIFES_SCALE 20
+#define LIFES_SCALE 30
 #define NUMBER_OF_LIFES 5
 
 //**********************************************************************************************
-#define GRASS_HEIGHT 70
+#define GRASS_HEIGHT 80
 
 //**********************************************************************************************
 #define UPDATES_FOR_A_TRAVEL 100
@@ -194,5 +193,9 @@
 
 #define MAX_FEATHERS_ROTATION 359
 #define SEC_TO_FEATHERS_DISAPPEARANCE 1
+
+//**********************************************************************************************
+#define SECURITY_DISTANCE 10
+
 
 #endif

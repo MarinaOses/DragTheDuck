@@ -14,6 +14,8 @@
 - (void)loadAtlasData:(NSString *)atlas_name;
 @end
 
+
+
 @implementation MGMaterialController
 @synthesize materialLibrary = _materialLibrary;
 @synthesize quadLibrary = _quadLibrary;
@@ -102,9 +104,45 @@
     }
 }
 
+
+
+- (CGFloat *)vertexesFromTextureRect:(CGRect)texture_rect {
+    
+    CGFloat realWidth = texture_rect.size.width;
+    CGFloat realHeight = texture_rect.size.height;
+    CGFloat *vertexes = (CGFloat *)malloc(8 * sizeof(CGFloat));
+    CGFloat x;
+    CGFloat y;
+    if (realWidth > realHeight) {
+        if (realWidth == 960.0 && realHeight == 640.0) { //es un fondo
+            x = 0.5;
+            y = 0.5;
+        }
+        else {
+            x = 0.5; 
+            y = (realHeight/realWidth)/2.0;
+        }
+       
+    }
+    else {
+        x = (realWidth/realHeight)/2.0;
+        y = 0.5;
+    }
+    vertexes[0] = -x;
+    vertexes[1] = -y;
+    vertexes[2] = x;
+    vertexes[3] = -y;
+    vertexes[4] = -x;
+    vertexes[5] = y;
+    vertexes[6] = x;
+    vertexes[7] = y;
+    return vertexes;
+}
+
 - (MGTexturedQuad *)texturedQuadFromAtlasRecord:(NSDictionary *)record AtlasSize:(CGSize)atlas_size MaterialKey:(NSString *)material_key {
-    MGTexturedQuad *quad = [[MGTexturedQuad alloc] init];
     CGRect rect = CGRectFromString([record objectForKey:@"rect"]);
+    GLfloat *vertexesFromTexture = [self vertexesFromTextureRect:rect];
+    MGTexturedQuad *quad = [[MGTexturedQuad alloc] initWithVertexes:vertexesFromTexture];
     CGFloat uMin = rect.origin.x / atlas_size.width;
     CGFloat vMin = rect.origin.y / atlas_size.height;
     CGFloat uMax = (rect.origin.x + rect.size.width) / atlas_size.width;
