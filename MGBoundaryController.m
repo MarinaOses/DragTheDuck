@@ -94,6 +94,13 @@
     }
 }
 
+- (BOOL)hasTheNest:(MGNest *)nest arrivedToPointX:(CGFloat)point_x {
+    BOOL hasArrived = NO;
+    if (nest.translation.x >= point_x) {
+        hasArrived = YES;
+    }
+    return hasArrived;
+}
 
 - (void)checkIf:(MGMobileObject *)mobile_object HasArrivedTo:(MGPoint)point FallingInDirection:(NSInteger)direction {
     if (MGPointHasCrossedMGPointInDirection(mobile_object.translation, point, direction)) {

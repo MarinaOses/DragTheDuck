@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MGMultipleDuckGenerator.h"
+#import "MGMultipleNestGenerator.h"
 #import "MGMultipleBirdGenerator.h"
 #import "MGMultipleLeafGenerator.h"
 #import "MGMultipleBeeGenerator.h"

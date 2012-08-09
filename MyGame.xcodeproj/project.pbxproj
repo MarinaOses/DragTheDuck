@@ -37,7 +37,7 @@
 		9CAE9C72155A9D9C00C88B50 /* MGTimedMultipleObjectGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C71155A9D9C00C88B50 /* MGTimedMultipleObjectGenerator.m */; };
 		9CAE9C76155BE9CE00C88B50 /* MGSceneObjectDestroyer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C75155BE9CE00C88B50 /* MGSceneObjectDestroyer.m */; };
 		9CAE9C79156253FD00C88B50 /* MGDuck.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C78156253FC00C88B50 /* MGDuck.m */; };
-		9CAE9C7C156264FA00C88B50 /* MGMultipleDuckGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C7B156264FA00C88B50 /* MGMultipleDuckGenerator.m */; };
+		9CAE9C7C156264FA00C88B50 /* MGMultipleNestGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C7B156264FA00C88B50 /* MGMultipleNestGenerator.m */; };
 		9CAE9C851565285600C88B50 /* MGLeaf.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C841565285600C88B50 /* MGLeaf.m */; };
 		9CAE9C891566656700C88B50 /* MGTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C881566656700C88B50 /* MGTimeController.m */; };
 		9CAE9C8C1566720800C88B50 /* MGMultipleLeafGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C8B1566720800C88B50 /* MGMultipleLeafGenerator.m */; };
@@ -57,6 +57,7 @@
 		9CE04F651513CCBA00185442 /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE04F641513CCBA00185442 /* EAGLView.m */; };
 		9CE04F67151B463100185442 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F66151B463100185442 /* QuartzCore.framework */; };
 		9CE04F69151B464D00185442 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F68151B464D00185442 /* OpenGLES.framework */; };
+		9CEDC28C15D43AFE00618CA9 /* MGNest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEDC28B15D43AFE00618CA9 /* MGNest.m */; };
 		9CEEFF16152F70FC0004D9AA /* MGInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEEFF15152F70FC0004D9AA /* MGInputViewController.m */; };
 		9CEEFF1A1531C37F0004D9AA /* MGSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEEFF191531C37F0004D9AA /* MGSceneController.m */; };
 		9CEEFF291538560A0004D9AA /* MGMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEEFF281538560A0004D9AA /* MGMesh.m */; };
@@ -140,8 +141,8 @@
 		9CAE9C75155BE9CE00C88B50 /* MGSceneObjectDestroyer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSceneObjectDestroyer.m; sourceTree = "<group>"; };
 		9CAE9C77156253FB00C88B50 /* MGDuck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGDuck.h; sourceTree = "<group>"; };
 		9CAE9C78156253FC00C88B50 /* MGDuck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGDuck.m; sourceTree = "<group>"; };
-		9CAE9C7A156264FA00C88B50 /* MGMultipleDuckGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMultipleDuckGenerator.h; sourceTree = "<group>"; };
-		9CAE9C7B156264FA00C88B50 /* MGMultipleDuckGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMultipleDuckGenerator.m; sourceTree = "<group>"; };
+		9CAE9C7A156264FA00C88B50 /* MGMultipleNestGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMultipleNestGenerator.h; sourceTree = "<group>"; };
+		9CAE9C7B156264FA00C88B50 /* MGMultipleNestGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMultipleNestGenerator.m; sourceTree = "<group>"; };
 		9CAE9C7D1564F23D00C88B50 /* MGGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGGenerator.h; sourceTree = "<group>"; };
 		9CAE9C831565285600C88B50 /* MGLeaf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGLeaf.h; sourceTree = "<group>"; };
 		9CAE9C841565285600C88B50 /* MGLeaf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGLeaf.m; sourceTree = "<group>"; };
@@ -175,6 +176,8 @@
 		9CE04F641513CCBA00185442 /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
 		9CE04F66151B463100185442 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9CE04F68151B464D00185442 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		9CEDC28A15D43AFE00618CA9 /* MGNest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGNest.h; sourceTree = "<group>"; };
+		9CEDC28B15D43AFE00618CA9 /* MGNest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGNest.m; sourceTree = "<group>"; };
 		9CEEFF14152F70FC0004D9AA /* MGInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGInputViewController.h; sourceTree = "<group>"; };
 		9CEEFF15152F70FC0004D9AA /* MGInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGInputViewController.m; sourceTree = "<group>"; };
 		9CEEFF181531C37F0004D9AA /* MGSceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSceneController.h; sourceTree = "<group>"; };
@@ -265,6 +268,8 @@
 				9C15DD72154E9AD20095FBED /* MGButton.m */,
 				9C14190515CBFE8E009E0182 /* MGTexturedButton.h */,
 				9C14190615CBFE8E009E0182 /* MGTexturedButton.m */,
+				9CEDC28A15D43AFE00618CA9 /* MGNest.h */,
+				9CEDC28B15D43AFE00618CA9 /* MGNest.m */,
 			);
 			name = "Scene Objects";
 			sourceTree = "<group>";
@@ -359,8 +364,8 @@
 			children = (
 				9CAE9C6D155A7D0000C88B50 /* MGMultipleBirdGenerator.h */,
 				9CAE9C6E155A7D0000C88B50 /* MGMultipleBirdGenerator.m */,
-				9CAE9C7A156264FA00C88B50 /* MGMultipleDuckGenerator.h */,
-				9CAE9C7B156264FA00C88B50 /* MGMultipleDuckGenerator.m */,
+				9CAE9C7A156264FA00C88B50 /* MGMultipleNestGenerator.h */,
+				9CAE9C7B156264FA00C88B50 /* MGMultipleNestGenerator.m */,
 				9CAE9C8A1566720800C88B50 /* MGMultipleLeafGenerator.h */,
 				9CAE9C8B1566720800C88B50 /* MGMultipleLeafGenerator.m */,
 				9CC12377156CE615005EABD0 /* MGMultipleBeeGenerator.h */,
@@ -620,7 +625,7 @@
 				9CAE9C72155A9D9C00C88B50 /* MGTimedMultipleObjectGenerator.m in Sources */,
 				9CAE9C76155BE9CE00C88B50 /* MGSceneObjectDestroyer.m in Sources */,
 				9CAE9C79156253FD00C88B50 /* MGDuck.m in Sources */,
-				9CAE9C7C156264FA00C88B50 /* MGMultipleDuckGenerator.m in Sources */,
+				9CAE9C7C156264FA00C88B50 /* MGMultipleNestGenerator.m in Sources */,
 				9CAE9C851565285600C88B50 /* MGLeaf.m in Sources */,
 				9CAE9C891566656700C88B50 /* MGTimeController.m in Sources */,
 				9CAE9C8C1566720800C88B50 /* MGMultipleLeafGenerator.m in Sources */,
@@ -657,6 +662,7 @@
 				9C85040515C9618F00F9685B /* MGMaterialController.m in Sources */,
 				9C85041215C9B31D00F9685B /* MGTexturedQuad.m in Sources */,
 				9C14190715CBFE8E009E0182 /* MGTexturedButton.m in Sources */,
+				9CEDC28C15D43AFE00618CA9 /* MGNest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

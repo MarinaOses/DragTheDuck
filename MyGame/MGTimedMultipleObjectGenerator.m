@@ -32,7 +32,7 @@
 + (id<MGGenerator>)createSpecificMGGenerator:(int)type WithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTransmitter:(MGScoreTransmitter *)score_transmitter SceneObjects:(NSMutableArray *)scene_objects {
     
     if (type == DUCKS) {
-        return [[[MGMultipleDuckGenerator alloc] initWithSceneController:scene_controller BoundaryController:boundary_controller SceneObjectDestroyer:scene_object_destroyer ScoreTrasnmitter:score_transmitter SceneObjects:scene_objects] autorelease];
+        return [[[MGMultipleNestGenerator alloc] initWithSceneController:scene_controller BoundaryController:boundary_controller SceneObjectDestroyer:scene_object_destroyer ScoreTrasnmitter:score_transmitter SceneObjects:scene_objects] autorelease];
     }
     else if (type == BIRDS) {
         return [[[MGMultipleBirdGenerator alloc] initWithSceneController:scene_controller BoundaryController:boundary_controller SceneObjectDestroyer:scene_object_destroyer] autorelease];

@@ -68,6 +68,17 @@
 
 
 
+//**********************************************************************************************
+//Por el momento las escalas y velocidades de los nidos serán siempre las mismas
+//--DUCK SIZES
+#define MIN_NEST_SCALE 50
+#define MAX_NEST_SCALE 50
+
+//--BIRD SPEED
+#define MIN_NEST_SPEED 40   
+#define MAX_NEST_SPEED 40
+#define NEST_ROUTE 50
+
 
 //**********************************************************************************************
 //---TRANSFORMER SIZES
@@ -137,7 +148,7 @@
 
 //**********************************************************************************************
 //Número de píxeles que se agregan a cada lado del pato para formar el área en que el pato puede cogerse
-#define ADD_TO_SCREENRECT_OF_DUCKS 20
+#define ADD_TO_SCREENRECT_OF_DRAGGEABLE 20
 #define ADD_TO_SCREENRECT_OF_BUTTONS 4
 
 

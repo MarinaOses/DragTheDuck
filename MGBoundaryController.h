@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MGScoreTransmitter.h"
 #import "MGLifesController.h"
+#import "MGNest.h"
 
 @class MGSceneController;
 @class MGMobileObject;
@@ -35,4 +36,5 @@
 - (void)createEggBreaker;
 - (void)checkIfItIsOutOfBondaries:(MGMobileObject *)mobile_object;
 - (void)checkIf:(MGMobileObject *)mobile_object HasArrivedTo:(MGPoint)point FallingInDirection:(NSInteger)direction;
+- (BOOL)hasTheNest:(MGNest *)nest arrivedToPointX:(CGFloat)point_x;
 @end
