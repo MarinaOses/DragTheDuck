@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "MGScoreTransmitter.h"
 #import "MGLifesController.h"
-#import "MGNest.h"
 
 @class MGSceneController;
-@class MGMobileObject;
 @class MGEggBreaker;
+@class MGNest;
+@class MGMobileObject;
 
 @interface MGBoundaryController : NSObject {
     MGSceneController *_sceneController;

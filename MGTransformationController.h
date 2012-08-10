@@ -30,7 +30,7 @@
 @property (nonatomic, retain) MGBoundaryController *boundaryController;
 @property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectsDestroyer:(MGSceneObjectDestroyer *)scene_objects_destroyer SceneObjects:(NSMutableArray *)scene_objects;
+- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_objects_destroyer SceneObjects:(NSMutableArray *)scene_objects;
 - (void)spawnBeeFrom:(MGDuck *)duck;
 - (void)spawnDuckFrom:(MGTransformer *)transformer;
 - (void)spawnEggFrom:(MGDuck *)killed_duck;

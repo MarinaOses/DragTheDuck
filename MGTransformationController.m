@@ -18,7 +18,7 @@
 @synthesize boundaryController = _boundaryController;
 @synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectsDestroyer:(MGSceneObjectDestroyer *)scene_objects_destroyer SceneObjects:(NSMutableArray *)scene_objects {
+- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_objects_destroyer SceneObjects:(NSMutableArray *)scene_objects {
     self = [super init];
     if (self) {
         self.sceneController = scene_controller;

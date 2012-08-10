@@ -9,8 +9,8 @@
 #import "MGBoundaryController.h"
 
 #import "MGSceneController.h"
-#import "MGMobileObject.h"
 #import "MGEggBreaker.h"
+#import "MGNest.h"
 
 @implementation MGBoundaryController
 @synthesize sceneController = _sceneController;

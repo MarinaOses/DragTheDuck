@@ -53,6 +53,7 @@
         self.transformationController = transformation_controller;
         self.sceneObjectDestroyer = scene_object_destroyer;
         self.finger = touch_finger;
+        takenNest = NO;
         savedSpeed = self.speed;
         [self loadTakenTimeWithoutMovingInUpdates];
         wingsDown = YES;
@@ -70,7 +71,7 @@
 
 
 - (void)collideWith:(MGSceneObject *)scene_object {
-    if (![scene_object isKindOfClass:[MGBird class]] && ![scene_object isKindOfClass:[MGBee class]] && ![scene_object isKindOfClass:[MGLeaf class]]) {
+    if (![scene_object isKindOfClass:[MGBird class]] && ![scene_object isKindOfClass:[MGBee class]] && ![scene_object isKindOfClass:[MGLeaf class]] && ![scene_object isKindOfClass:[MGNest class]]) {
         return;
     }
     if ([scene_object isKindOfClass:[MGBird class]]) {
@@ -95,10 +96,16 @@
             [self.sceneObjectDestroyer markToRemoveSceneObject:self];
         }
     }
-    else { //hoja
+    else if ([scene_object isKindOfClass:[MGLeaf class]]) {
         if ([self.scoreTransmitter isPossibleToCollideWithLeaves]) {
             [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
             [self.scoreTransmitter aNewLeafIsTaken];
+        }
+    }
+    else { //nest
+        if (!takenNest) {
+            [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
+            takenNest = YES;
         }
     }
 }

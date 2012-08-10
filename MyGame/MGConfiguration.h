@@ -54,13 +54,10 @@
 #define MIN_DUCK_SCALE 50
 #define MAX_DUCK_SCALE 50
 
-//--BIRD SPEED
+//--DUCK SPEED
 #define MIN_DUCK_SPEED 60   
 #define MAX_DUCK_SPEED 60
 
-//--NUMBER OF DUCKS TO APPEAR
-#define MIN_DUCKS_TO_APPEAR 1
-#define MAX_DUCKS_TO_APPEAR 1
 
 //--NUMBER OF SECONDS BETWEEN DUCKS APPEARANCES
 #define MINSEC_TO_DUCK_APPEARANCE 2
@@ -70,14 +67,19 @@
 
 //**********************************************************************************************
 //Por el momento las escalas y velocidades de los nidos serán siempre las mismas
-//--DUCK SIZES
+//--NEST SIZES
 #define MIN_NEST_SCALE 50
 #define MAX_NEST_SCALE 50
 
-//--BIRD SPEED
+//--NEST SPEED
 #define MIN_NEST_SPEED 40   
 #define MAX_NEST_SPEED 40
-#define NEST_ROUTE 50
+#define NEST_ROUTE 30
+#define SEC_BEFORE_THE_DUCK_APPEARS 3
+
+//--NUMBER OF NESTS TO APPEAR
+#define MIN_NESTS_TO_APPEAR 1
+#define MAX_NESTS_TO_APPEAR 1
 
 
 //**********************************************************************************************
@@ -148,7 +150,7 @@
 
 //**********************************************************************************************
 //Número de píxeles que se agregan a cada lado del pato para formar el área en que el pato puede cogerse
-#define ADD_TO_SCREENRECT_OF_DRAGGEABLE 20
+#define ADD_TO_SCREENRECT_OF_DRAGGEABLE 30
 #define ADD_TO_SCREENRECT_OF_BUTTONS 4
 
 

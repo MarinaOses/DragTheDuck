@@ -1,5 +1,5 @@
 //
-//  MGMultipleDuckGenerator.m
+//  MGMultipleNestGenerator.m
 //  MyGame
 //
 //  Created by Marina Osés Merino on 15/05/12.
@@ -18,6 +18,7 @@
 @synthesize transformationController = _transformationController;
 @synthesize boundaryController = _boundaryController;
 @synthesize finger = _finger;
+@synthesize sceneObjects = _sceneObjects;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter SceneObjects:(NSMutableArray *)scene_objects {
     self = [super init];
@@ -26,24 +27,24 @@
         self.sceneObjectDestroyer = scene_object_destroyer;
         self.scoreTransmitter = score_transmitter;
         self.boundaryController = boundary_controller;
-
-        _transformationController = [[MGTransformationController alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController SceneObjectsDestroyer:self.sceneObjectDestroyer SceneObjects:scene_objects];
+        self.sceneObjects = scene_objects;
+        _transformationController = [[MGTransformationController alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer SceneObjects:scene_objects];
         _finger = [[MGFinger alloc] init];
     }
     return self;
 }
 
 
-//Crea una oleada de patos, cuyo número de objetos se calcula aleatoriamente entre un mínimo y un máximo definidos en el archivo de configuración. El intervalo para el random será más pequeño que en el caso de los pájaros.
+//Crea una oleada de nidos, cuyo número de objetos se calcula aleatoriamente entre un mínimo y un máximo definidos en el archivo de configuración. El intervalo para el random será más pequeño que en el caso de los pájaros.
 - (NSArray *)createWave {
-    NSMutableArray *arrayWithDucksWave = [[NSMutableArray alloc] init];
-    NSInteger ducksToAppear = RANDOM_INT(MIN_DUCKS_TO_APPEAR, MAX_DUCKS_TO_APPEAR);
-    for (NSInteger ducksCount = 0; ducksCount < ducksToAppear; ducksCount++) {
-        MGDuck *duckToAdd = [[MGDuck alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTrasnmitter:self.scoreTransmitter TransformationController:self.transformationController TouchFinger:self.finger];
-        [arrayWithDucksWave addObject:duckToAdd];
-        [duckToAdd release];
+    NSMutableArray *arrayWithNestsWave = [[NSMutableArray alloc] init];
+    NSInteger nestsToAppear = RANDOM_INT(MIN_NESTS_TO_APPEAR, MAX_NESTS_TO_APPEAR);
+    for (NSInteger nestsCount = 0; nestsCount < nestsToAppear; nestsCount++) {
+        MGNest *nestToAdd = [[MGNest alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTrasnmitter:self.scoreTransmitter TransformationController:self.transformationController TouchFinger:self.finger SceneObjects:self.sceneObjects];
+        [arrayWithNestsWave addObject:nestToAdd];
+        [nestToAdd release];
     }
-    return [arrayWithDucksWave autorelease];
+    return [arrayWithNestsWave autorelease];
 }
 
 - (CGFloat)getWaitTimeToNextWave {
@@ -58,6 +59,7 @@
     [_transformationController release];
     [_boundaryController release];
     [_finger release];
+    [_sceneObjects release];
     [super dealloc];
 }
 
