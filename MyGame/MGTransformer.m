@@ -130,18 +130,25 @@
         else {
             if (self.finger.isFree || self.taken) {
                 for (MGTouch *atouch in newTouches) {
-                    if (atouch.phase == UITouchPhaseBegan && atouch.numberOfFingersOnTheScreen == 1) {
+                    if (atouch.phase == UITouchPhaseBegan) {
                         CGRect screenRectToAccess = self.screenRect;
                         CGRect touchableArea = CGRectMake(CGRectGetMinX(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DRAGGEABLE, CGRectGetMinY(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DRAGGEABLE, CGRectGetWidth(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DRAGGEABLE*2, CGRectGetHeight(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DRAGGEABLE*2);
                         if (CGRectContainsPoint(touchableArea, atouch.location)) {
                             self.taken = YES;
                             self.finger.isFree = NO;
                             [self stop];
-                            
+
                         }
                     }
-                    else if (atouch.phase == UITouchPhaseMoved && taken == YES && atouch.location.x > GRASS_HEIGHT) {
-                        self.translation = [self.sceneController.inputViewController meshCenterFromMGTouchLocation:atouch.location];
+                    else if (atouch.phase == UITouchPhaseMoved && taken == YES) {
+                        if (atouch.location.x > GRASS_HEIGHT) {
+                            self.translation = [self.sceneController.inputViewController meshCenterFromMGTouchLocation:atouch.location];
+                        }
+                        else {
+                            self.taken = NO;
+                            self.finger.isFree = YES;
+                            [self start];
+                        }
                     }
                     else if (atouch.phase == UITouchPhaseEnded){
                         self.taken = NO;

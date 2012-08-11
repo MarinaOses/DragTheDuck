@@ -64,7 +64,7 @@
     CGRect screenRectToAccess = self.screenRect;
     CGRect touchableArea = CGRectMake(CGRectGetMinX(screenRectToAccess) - ADD_TO_SCREENRECT_OF_BUTTONS, CGRectGetMinY(self.screenRect) - ADD_TO_SCREENRECT_OF_BUTTONS, CGRectGetWidth(screenRectToAccess) + ADD_TO_SCREENRECT_OF_BUTTONS*2, CGRectGetHeight(screenRectToAccess) + ADD_TO_SCREENRECT_OF_BUTTONS*2);
     for (MGTouch *handleTouch in touchesHandler) {
-        if (CGRectContainsPoint(touchableArea, [handleTouch location]) &&  handleTouch.numberOfFingersOnTheScreen == 1) {
+        if (CGRectContainsPoint(touchableArea, [handleTouch location])) {
             pointInBounds = YES;
             switch (handleTouch.phase) {
                 case UITouchPhaseBegan:
@@ -79,7 +79,7 @@
                     break;
             }
         }
-        if (handleTouch.phase == UITouchPhaseEnded && handleTouch.numberOfFingersOnTheScreen == 1) {
+        if (handleTouch.phase == UITouchPhaseEnded) {
             startedInButton = NO;
         }
     }

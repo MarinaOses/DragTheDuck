@@ -43,7 +43,7 @@
         [self flapItsWings]; 
         
         [self loadTimeToFlapItsWingsInUpdates];
-        self.translation = MGPointMake(-self.movingDirection * CGRectGetMidY(self.sceneController.openGLView.window.frame), appearance_height, 0.0);
+        self.translation = MGPointMake(self.startingPointX, appearance_height, 0.0);
         
     }
     return self;

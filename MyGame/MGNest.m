@@ -53,10 +53,9 @@
     }
     else {
         timeBeforeTheDuckAppearsInUpdates--;
-        CGFloat startingPointX = -CGRectGetMidY(self.sceneController.openGLView.window.frame);
         NSSet *newTouches = [self.sceneController.inputViewController touchEvents];
         if (!self.draggeable) {
-            BOOL hasArrived = [self.boundaryController hasTheNest:self arrivedToPointX:(startingPointX + NEST_ROUTE)];
+            BOOL hasArrived = [self.boundaryController hasTheNest:self arrivedToPointX:(self.startingPointX + NEST_ROUTE)];
             if (hasArrived) {
                 [self stop];
                 self.draggeable = YES;
@@ -65,7 +64,7 @@
         else {
             if (self.finger.isFree || self.taken) {
                 for (MGTouch *atouch in newTouches) {
-                    if (atouch.phase == UITouchPhaseBegan && atouch.numberOfFingersOnTheScreen == 1) {
+                    if (atouch.phase == UITouchPhaseBegan) {
                         CGRect screenRectToAccess = self.screenRect;
                         CGRect touchableArea = CGRectMake(CGRectGetMinX(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DRAGGEABLE, CGRectGetMinY(screenRectToAccess) - ADD_TO_SCREENRECT_OF_DRAGGEABLE, CGRectGetWidth(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DRAGGEABLE*2, CGRectGetHeight(screenRectToAccess) + ADD_TO_SCREENRECT_OF_DRAGGEABLE*2);
                         if (CGRectContainsPoint(touchableArea, atouch.location)) {
@@ -74,15 +73,22 @@
                             [self stop];
                         }
                     }
-                    else if (atouch.phase == UITouchPhaseMoved && taken == YES && atouch.location.x > GRASS_HEIGHT) {
-                        MGPoint touchLocation =  [self.sceneController.inputViewController meshCenterFromMGTouchLocation:atouch.location];
-                        if (atouch.location.y > NEST_ROUTE) {
-                            self.translation = MGPointMake(startingPointX + NEST_ROUTE, touchLocation.y, 0.0);
+                    else if (atouch.phase == UITouchPhaseMoved && taken == YES) {
+                        if (atouch.location.x > GRASS_HEIGHT) {
+                            MGPoint touchLocation =  [self.sceneController.inputViewController meshCenterFromMGTouchLocation:atouch.location];
+                            if (atouch.location.y > NEST_ROUTE) {
+                                self.translation = MGPointMake(self.startingPointX + NEST_ROUTE, touchLocation.y, 0.0);
+                            }
+                            else {
+                                self.translation = touchLocation;
+                            }
                         }
                         else {
-                            self.translation = touchLocation;
+                            self.taken = NO;
+                            self.finger.isFree = YES;
+                            self.draggeable = NO;
+                            [self start];
                         }
-                        
                     }
                     else if (atouch.phase == UITouchPhaseEnded){
                         self.taken = NO;

@@ -33,6 +33,7 @@
 @synthesize speed = _speed;
 @synthesize boundaryController = _boundaryController;
 @synthesize movingDirection;
+@synthesize startingPointX;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller RangeForScale:(NSRange)scale_range RangeForSpeed:(NSRange)speed_range Direction:(int)direction {
     self = [super initWithSceneController:scene_controller];
@@ -43,6 +44,7 @@
 //        self.mesh.colorSize = MGMobileColorSize;
 //        self.mesh.colors = MGMobileColorValues;
         self.movingDirection = direction;
+        self.startingPointX = -self.movingDirection * CGRectGetMidY(self.sceneController.openGLView.window.frame);
         self.collider = [[MGCollider alloc] initWithSceneController:scene_controller];
         self.scale = [self randomScaleInRange:scale_range];
         self.speed = [self randomSpeedInRange:speed_range WithDirection:direction];
