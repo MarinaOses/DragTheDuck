@@ -154,8 +154,8 @@
 
 
 //--NUMBER OF SECONDS BETWEEN BEES APPEARANCES
-#define MINSEC_TO_BEE_APPEARANCE 50
-#define MAXSEC_TO_BEE_APPEARANCE 80
+#define MINSEC_TO_BEE_APPEARANCE 10
+#define MAXSEC_TO_BEE_APPEARANCE 20
 
 
 //**********************************************************************************************

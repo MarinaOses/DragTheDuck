@@ -109,6 +109,7 @@
         [self.scoreTransmitter theTransformerHasCrossedTheLine];
     }
     else {
+        NSSet *newTouches = [self.sceneController.inputViewController touchEvents];
         if (!self.taken) {
             timeToFlapItsWingsInUpdates--;
             if (timeToFlapItsWingsInUpdates <= 0) {
@@ -117,18 +118,7 @@
                 [self loadTimeToFlapItsWingsInUpdates];
                 
             }
-        }
-        NSSet *newTouches = [self.sceneController.inputViewController touchEvents];
-        if (self.taken && [newTouches count] == 0) {
-            takenTimeWithoutMovingInUpdates--;
-            if (takenTimeWithoutMovingInUpdates <= 0) {
-                self.taken = NO;
-                self.finger.isFree = YES;
-                [self start];
-            }
-        }
-        else {
-            if (self.finger.isFree || self.taken) {
+            if (self.finger.isFree) {
                 for (MGTouch *atouch in newTouches) {
                     if (atouch.phase == UITouchPhaseBegan) {
                         CGRect screenRectToAccess = self.screenRect;
@@ -137,28 +127,41 @@
                             self.taken = YES;
                             self.finger.isFree = NO;
                             [self stop];
-
                         }
                     }
-                    else if (atouch.phase == UITouchPhaseMoved && taken == YES) {
+                }
+            }
+        }
+        else {
+            if ([newTouches count] == 0) {
+                takenTimeWithoutMovingInUpdates--;
+                if (takenTimeWithoutMovingInUpdates <= 0) {
+                    self.taken = NO;
+                    self.finger.isFree = YES;
+                    [self start];
+                }
+            }
+            else {
+                for (MGTouch *atouch in newTouches) {
+                    if (atouch.phase == UITouchPhaseMoved) {
                         if (atouch.location.x > GRASS_HEIGHT) {
                             self.translation = [self.sceneController.inputViewController meshCenterFromMGTouchLocation:atouch.location];
                         }
-                        else {
-                            self.taken = NO;
-                            self.finger.isFree = YES;
-                            [self start];
-                        }
+//                        else {
+//                            self.taken = NO;
+//                            self.finger.isFree = YES;
+//                            [self start];
+//                        }
+                        
                     }
                     else if (atouch.phase == UITouchPhaseEnded){
                         self.taken = NO;
                         self.finger.isFree = YES;
                         [self start];
-                        
                     }
                 }
+                [self loadTakenTimeWithoutMovingInUpdates];
             }
-            [self loadTakenTimeWithoutMovingInUpdates];
         }
     }
     [super update];
@@ -166,8 +169,8 @@
 
 
 - (void)loadTakenTimeWithoutMovingInUpdates {
-    takenTimeWithoutMovingInUpdates = TAKEN_TIME_WITHOUT_MOVING * MAXIMUM_FRAME_RATE;
-}
+        takenTimeWithoutMovingInUpdates = TAKEN_TIME_WITHOUT_MOVING * MAXIMUM_FRAME_RATE;
+    }
 
 
 - (void)start {

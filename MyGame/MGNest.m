@@ -16,7 +16,6 @@
 
 @implementation MGNest
 @synthesize scoreTransmitter = _scoreTransmitter;
-@synthesize  draggeable;
 @synthesize taken;
 @synthesize transformationController = _transformationController;
 @synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
@@ -32,7 +31,6 @@
         self.transformationController = transformation_controller;
         self.sceneObjects = scene_objects;
         self.finger = touch_finger;
-        self.draggeable = NO;
         self.taken = NO;
         throwedDuck = NO;
         timeBeforeTheDuckAppearsInUpdates = SEC_BEFORE_THE_DUCK_APPEARS * MAXIMUM_FRAME_RATE;
@@ -45,24 +43,14 @@
 
 
 - (void)update {
-    if (timeBeforeTheDuckAppearsInUpdates <= 0 && !throwedDuck) {
-        MGDuck *duck = [[MGDuck alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTrasnmitter:self.scoreTransmitter TransformationController:self.transformationController TouchFinger:self.finger AppearanceHeight:self.translation.y];
-        [self.sceneObjects addObject:duck];
-        [duck release];
-        throwedDuck = YES;
-    }
-    else {
-        timeBeforeTheDuckAppearsInUpdates--;
+    if (timeBeforeTheDuckAppearsInUpdates > 0) {
         NSSet *newTouches = [self.sceneController.inputViewController touchEvents];
-        if (!self.draggeable) {
+        if (!self.taken) {
             BOOL hasArrived = [self.boundaryController hasTheNest:self arrivedToPointX:(self.startingPointX + NEST_ROUTE)];
             if (hasArrived) {
                 [self stop];
-                self.draggeable = YES;
             }
-        }
-        else {
-            if (self.finger.isFree || self.taken) {
+            if (self.finger.isFree) {
                 for (MGTouch *atouch in newTouches) {
                     if (atouch.phase == UITouchPhaseBegan) {
                         CGRect screenRectToAccess = self.screenRect;
@@ -73,31 +61,45 @@
                             [self stop];
                         }
                     }
-                    else if (atouch.phase == UITouchPhaseMoved && taken == YES) {
-                        if (atouch.location.x > GRASS_HEIGHT) {
-                            MGPoint touchLocation =  [self.sceneController.inputViewController meshCenterFromMGTouchLocation:atouch.location];
-                            if (atouch.location.y > NEST_ROUTE) {
-                                self.translation = MGPointMake(self.startingPointX + NEST_ROUTE, touchLocation.y, 0.0);
-                            }
-                            else {
-                                self.translation = touchLocation;
-                            }
-                        }
-                        else {
-                            self.taken = NO;
-                            self.finger.isFree = YES;
-                            self.draggeable = NO;
-                            [self start];
-                        }
-                    }
-                    else if (atouch.phase == UITouchPhaseEnded){
-                        self.taken = NO;
-                        self.finger.isFree = YES;
-                        self.draggeable = NO;
-                        [self start];
-                    }
                 }
             }
+        }
+        else {
+            for (MGTouch *atouch in newTouches) {
+                if (atouch.phase == UITouchPhaseMoved) {
+                    if (atouch.location.x > GRASS_HEIGHT) {
+                        MGPoint touchLocation =  [self.sceneController.inputViewController meshCenterFromMGTouchLocation:atouch.location];
+                        if (atouch.location.y > NEST_ROUTE) {
+                            self.translation = MGPointMake(self.startingPointX + NEST_ROUTE, touchLocation.y, 0.0);
+                        }
+                        else {
+                            self.translation = touchLocation;
+                        }
+                    }
+//                    else {
+//                        self.taken = NO;
+//                        self.finger.isFree = YES;
+//                        [self start];
+//                    }
+                }
+                else if (atouch.phase == UITouchPhaseEnded){
+                    self.taken = NO;
+                    self.finger.isFree = YES;
+                    [self start];
+                }
+            }
+        }
+        timeBeforeTheDuckAppearsInUpdates--;
+    }
+    else {
+        if (!throwedDuck) {
+            MGDuck *duck = [[MGDuck alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTrasnmitter:self.scoreTransmitter TransformationController:self.transformationController TouchFinger:self.finger AppearanceHeight:self.translation.y];
+            [self.sceneObjects addObject:duck];
+            [duck release];
+            throwedDuck = YES;
+            self.taken = NO;
+            self.finger.isFree = YES;
+            [self start];
         }
     }
     [super update];

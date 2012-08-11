@@ -12,7 +12,6 @@
 @class MGSceneController;
 
 @interface MGNest : MGMobileObject {
-    BOOL draggeable;
     BOOL taken;
     MGScoreTransmitter *_scoreTransmitter;
     MGTransformationController *_transformationController;
@@ -24,7 +23,6 @@
     BOOL throwedDuck;
 }
 
-@property (nonatomic, assign) BOOL draggeable;
 @property (nonatomic, assign) BOOL taken;
 @property (nonatomic, retain) MGScoreTransmitter *scoreTransmitter;
 @property (nonatomic, retain) MGTransformationController *transformationController;
