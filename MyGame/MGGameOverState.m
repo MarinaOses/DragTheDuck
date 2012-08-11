@@ -12,15 +12,13 @@
 
 @implementation MGGameOverState
 @synthesize numbersDelegate = _numbersDelegate;
-@synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
 @synthesize scoreBoard = _scoreBoard;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller ScoreBoard:(MGScoreBoard *)score_board {
     self = [super initWithSceneController:scene_controller];
     if (self) {
         self.scoreBoard = score_board;
-        _sceneObjectDestroyer = [[MGSceneObjectDestroyer alloc] init];
-        _numbersDelegate = [[MGNumbersDelegate alloc] initWithSceneController:scene_controller SceneObjects:self.sceneObjects SceneObjectDestroyer:self.sceneObjectDestroyer];
+        _numbersDelegate = [[MGNumbersDelegate alloc] initWithSceneController:scene_controller SceneObjects:self.sceneObjects SceneObjectDestroyer:self.sceneObjectDestroyerForState];
     }
     return self;
 }
@@ -77,6 +75,7 @@
 
 
 - (void)updateState {
+    [self.sceneObjectDestroyerForState destroyFrom:self.sceneObjects];
     [self.sceneObjects makeObjectsPerformSelector:@selector(update)];
     [super updateState];
 }
@@ -105,7 +104,6 @@
 
 - (void)dealloc {
     [_numbersDelegate release];
-    [_sceneObjectDestroyer release];
     [_scoreBoard release];
     [super dealloc];
 }

@@ -22,5 +22,5 @@
 @property (nonatomic, retain) MGTexturedQuad *upWingsQuad;
 @property (nonatomic, retain) MGTexturedQuad *downWingsQuad;
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer;
+- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer AppearanceHeight:(CGFloat)appearance_height;
 @end

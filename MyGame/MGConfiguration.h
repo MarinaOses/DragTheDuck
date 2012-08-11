@@ -40,13 +40,32 @@
 #define MIN_BIRD_SPEED 80    
 #define MAX_BIRD_SPEED 120
 
-//--NUMBER OF BIRDS TO APPEAR
-#define MIN_BIRDS_TO_APPEAR 1
-#define MAX_BIRDS_TO_APPEAR 2
 
-//--NUMBER OF SECONDS BETWEEN BIRDS APPEARANCES
-#define MINSEC_TO_BIRD_APPEARANCE 3 
-#define MAXSEC_TO_BIRD_APPEARANCE 8 
+
+
+
+
+//**********************************************************************************************
+
+//--ARROW SIZES
+#define MIN_ARROW_SCALE 30
+#define MAX_ARROW_SCALE 30
+
+//--ARROW SPEED
+
+#define MIN_ARROW_SPEED 40    
+#define MAX_ARROW_SPEED 40
+#define SEC_BEFORE_THE_BIRD_APPEARS 3
+
+//--NUMBER OF ARROWS TO APPEAR
+#define MIN_ARROWS_TO_APPEAR 1
+#define MAX_ARROWS_TO_APPEAR 2
+
+//--NUMBER OF SECONDS BETWEEN ARROWS APPEARANCES
+#define MINSEC_TO_ARROW_APPEARANCE 3 
+#define MAXSEC_TO_ARROW_APPEARANCE 8 
+
+
 
 //**********************************************************************************************
 //Por el momento las escalas y velocidades de los patos serán siempre las mismas
@@ -57,12 +76,6 @@
 //--DUCK SPEED
 #define MIN_DUCK_SPEED 60   
 #define MAX_DUCK_SPEED 60
-
-
-//--NUMBER OF SECONDS BETWEEN DUCKS APPEARANCES
-#define MINSEC_TO_DUCK_APPEARANCE 2
-#define MAXSEC_TO_DUCK_APPEARANCE 4
-
 
 
 //**********************************************************************************************
@@ -80,6 +93,11 @@
 //--NUMBER OF NESTS TO APPEAR
 #define MIN_NESTS_TO_APPEAR 1
 #define MAX_NESTS_TO_APPEAR 1
+
+//--NUMBER OF SECONDS BETWEEN NEST APPEARANCES
+#define MINSEC_TO_NEST_APPEARANCE 2
+#define MAXSEC_TO_NEST_APPEARANCE 4
+
 
 
 //**********************************************************************************************
@@ -150,7 +168,7 @@
 
 //**********************************************************************************************
 //Número de píxeles que se agregan a cada lado del pato para formar el área en que el pato puede cogerse
-#define ADD_TO_SCREENRECT_OF_DRAGGEABLE 30
+#define ADD_TO_SCREENRECT_OF_DRAGGEABLE 10
 #define ADD_TO_SCREENRECT_OF_BUTTONS 4
 
 

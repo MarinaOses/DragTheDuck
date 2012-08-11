@@ -14,12 +14,10 @@
 
 @interface MGGameOverState : MGState {
     MGNumbersDelegate *_numbersDelegate;
-    MGSceneObjectDestroyer *_sceneObjectDestroyer;
     MGScoreBoard *_scoreBoard;
 }
 
 @property (nonatomic, retain) MGNumbersDelegate *numbersDelegate;
-@property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
 @property (nonatomic, retain) MGScoreBoard *scoreBoard;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller ScoreBoard:(MGScoreBoard *)score_board;

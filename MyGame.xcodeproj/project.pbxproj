@@ -29,11 +29,12 @@
 		9C366EFC159B827800222538 /* MGBrokenEgg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C366EFB159B827800222538 /* MGBrokenEgg.m */; };
 		9C366EFF159C7F4100222538 /* MGEggBreaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C366EFE159C7F4100222538 /* MGEggBreaker.m */; };
 		9C44E48A15A4AF2300D27255 /* MGFeathers.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C44E48915A4AF2300D27255 /* MGFeathers.m */; };
+		9C5BE8F215D67D3000B179C1 /* MGArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5BE8F115D67D3000B179C1 /* MGArrow.m */; };
 		9C85040515C9618F00F9685B /* MGMaterialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85040415C9618F00F9685B /* MGMaterialController.m */; };
 		9C85041215C9B31D00F9685B /* MGTexturedQuad.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85041115C9B31C00F9685B /* MGTexturedQuad.m */; };
 		9CAC5B16153D8B23003ECB4F /* MGTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC5B15153D8B23003ECB4F /* MGTouch.m */; };
 		9CAE9C6B1557F28600C88B50 /* MGMobileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C6A1557F28600C88B50 /* MGMobileObject.m */; };
-		9CAE9C6F155A7D0000C88B50 /* MGMultipleBirdGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C6E155A7D0000C88B50 /* MGMultipleBirdGenerator.m */; };
+		9CAE9C6F155A7D0000C88B50 /* MGMultipleArrowGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C6E155A7D0000C88B50 /* MGMultipleArrowGenerator.m */; };
 		9CAE9C72155A9D9C00C88B50 /* MGTimedMultipleObjectGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C71155A9D9C00C88B50 /* MGTimedMultipleObjectGenerator.m */; };
 		9CAE9C76155BE9CE00C88B50 /* MGSceneObjectDestroyer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C75155BE9CE00C88B50 /* MGSceneObjectDestroyer.m */; };
 		9CAE9C79156253FD00C88B50 /* MGDuck.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C78156253FC00C88B50 /* MGDuck.m */; };
@@ -124,6 +125,8 @@
 		9C44E48615A36C8800D27255 /* MGFlyingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFlyingObject.h; sourceTree = "<group>"; };
 		9C44E48815A4AF2200D27255 /* MGFeathers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFeathers.h; sourceTree = "<group>"; };
 		9C44E48915A4AF2300D27255 /* MGFeathers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFeathers.m; sourceTree = "<group>"; };
+		9C5BE8F015D67D3000B179C1 /* MGArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGArrow.h; sourceTree = "<group>"; };
+		9C5BE8F115D67D3000B179C1 /* MGArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGArrow.m; sourceTree = "<group>"; };
 		9C85040315C9618F00F9685B /* MGMaterialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMaterialController.h; sourceTree = "<group>"; };
 		9C85040415C9618F00F9685B /* MGMaterialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMaterialController.m; sourceTree = "<group>"; };
 		9C85041015C9B31C00F9685B /* MGTexturedQuad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTexturedQuad.h; sourceTree = "<group>"; };
@@ -133,8 +136,8 @@
 		9CAC5B15153D8B23003ECB4F /* MGTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTouch.m; sourceTree = "<group>"; };
 		9CAE9C691557F28600C88B50 /* MGMobileObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMobileObject.h; sourceTree = "<group>"; };
 		9CAE9C6A1557F28600C88B50 /* MGMobileObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMobileObject.m; sourceTree = "<group>"; };
-		9CAE9C6D155A7D0000C88B50 /* MGMultipleBirdGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMultipleBirdGenerator.h; sourceTree = "<group>"; };
-		9CAE9C6E155A7D0000C88B50 /* MGMultipleBirdGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMultipleBirdGenerator.m; sourceTree = "<group>"; };
+		9CAE9C6D155A7D0000C88B50 /* MGMultipleArrowGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMultipleArrowGenerator.h; sourceTree = "<group>"; };
+		9CAE9C6E155A7D0000C88B50 /* MGMultipleArrowGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMultipleArrowGenerator.m; sourceTree = "<group>"; };
 		9CAE9C70155A9D9C00C88B50 /* MGTimedMultipleObjectGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTimedMultipleObjectGenerator.h; sourceTree = "<group>"; };
 		9CAE9C71155A9D9C00C88B50 /* MGTimedMultipleObjectGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTimedMultipleObjectGenerator.m; sourceTree = "<group>"; };
 		9CAE9C74155BE9CE00C88B50 /* MGSceneObjectDestroyer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSceneObjectDestroyer.h; sourceTree = "<group>"; };
@@ -270,6 +273,8 @@
 				9C14190615CBFE8E009E0182 /* MGTexturedButton.m */,
 				9CEDC28A15D43AFE00618CA9 /* MGNest.h */,
 				9CEDC28B15D43AFE00618CA9 /* MGNest.m */,
+				9C5BE8F015D67D3000B179C1 /* MGArrow.h */,
+				9C5BE8F115D67D3000B179C1 /* MGArrow.m */,
 			);
 			name = "Scene Objects";
 			sourceTree = "<group>";
@@ -362,8 +367,8 @@
 		9CAE9C6C155A7CBA00C88B50 /* Generators */ = {
 			isa = PBXGroup;
 			children = (
-				9CAE9C6D155A7D0000C88B50 /* MGMultipleBirdGenerator.h */,
-				9CAE9C6E155A7D0000C88B50 /* MGMultipleBirdGenerator.m */,
+				9CAE9C6D155A7D0000C88B50 /* MGMultipleArrowGenerator.h */,
+				9CAE9C6E155A7D0000C88B50 /* MGMultipleArrowGenerator.m */,
 				9CAE9C7A156264FA00C88B50 /* MGMultipleNestGenerator.h */,
 				9CAE9C7B156264FA00C88B50 /* MGMultipleNestGenerator.m */,
 				9CAE9C8A1566720800C88B50 /* MGMultipleLeafGenerator.h */,
@@ -621,7 +626,7 @@
 				9C15DD971553EFB70095FBED /* MGPauseState.m in Sources */,
 				9C15DD9F1553F84C0095FBED /* MGBird.m in Sources */,
 				9CAE9C6B1557F28600C88B50 /* MGMobileObject.m in Sources */,
-				9CAE9C6F155A7D0000C88B50 /* MGMultipleBirdGenerator.m in Sources */,
+				9CAE9C6F155A7D0000C88B50 /* MGMultipleArrowGenerator.m in Sources */,
 				9CAE9C72155A9D9C00C88B50 /* MGTimedMultipleObjectGenerator.m in Sources */,
 				9CAE9C76155BE9CE00C88B50 /* MGSceneObjectDestroyer.m in Sources */,
 				9CAE9C79156253FD00C88B50 /* MGDuck.m in Sources */,
@@ -663,6 +668,7 @@
 				9C85041215C9B31D00F9685B /* MGTexturedQuad.m in Sources */,
 				9C14190715CBFE8E009E0182 /* MGTexturedButton.m in Sources */,
 				9CEDC28C15D43AFE00618CA9 /* MGNest.m in Sources */,
+				9C5BE8F215D67D3000B179C1 /* MGArrow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

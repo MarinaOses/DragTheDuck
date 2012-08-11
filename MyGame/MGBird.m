@@ -34,7 +34,7 @@
 
 
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer {
+- (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer AppearanceHeight:(CGFloat)appearance_height {
     self = [super initWithSceneController:scene_controller BoundaryController:boundary_controller RangeForScale:NSMakeRange(MIN_BIRD_SCALE, MAX_BIRD_SCALE) RangeForSpeed:NSMakeRange(MIN_BIRD_SPEED, MAX_BIRD_SPEED) Direction:-1];
     if (self) {
         wingsDown = YES;
@@ -43,8 +43,7 @@
         [self flapItsWings]; 
         
         [self loadTimeToFlapItsWingsInUpdates];
-        self.translation = [self randomTranslationWithMeshBounds:self.meshBounds OnSide:-self.movingDirection];
-
+        self.translation = MGPointMake(-self.movingDirection * CGRectGetMidY(self.sceneController.openGLView.window.frame), appearance_height, 0.0);
         
     }
     return self;

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MGMultipleNestGenerator.h"
-#import "MGMultipleBirdGenerator.h"
+#import "MGMultipleArrowGenerator.h"
 #import "MGMultipleLeafGenerator.h"
 #import "MGMultipleBeeGenerator.h"
 #import "MGTimeController.h"

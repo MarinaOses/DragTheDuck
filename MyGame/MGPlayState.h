@@ -23,7 +23,6 @@
     MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForBirds;
     MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForLeaves;
     MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForBees;
-    MGSceneObjectDestroyer *_sceneObjectDestroyer;
     MGCollisionController *_collisionController;
     MGScoreBoard *_scoreBoard;
     MGTakenLeavesButton *_takenLeavesButton;
@@ -34,7 +33,6 @@
     MGLifesController *_lifesController;
 }
 
-@property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
 @property (nonatomic, retain) MGCollisionController *collisionController;
 @property (nonatomic, retain) MGScoreBoard *scoreBoard;
 @property (nonatomic, retain) MGTakenLeavesButton *takenLeavesButton;

@@ -7,18 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MGSceneObjectDestroyer.h"
 
 @class MGSceneController;
 
 @interface MGState : NSObject {
     MGSceneController *_sceneControllerForState;
-    NSMutableArray *_sceneObjects;    
+    NSMutableArray *_sceneObjects;
+    MGSceneObjectDestroyer *_sceneObjectDestroyerForState;
 
 }
 
 @property (nonatomic, retain) MGSceneController *sceneControllerForState;
 @property (nonatomic, retain) NSMutableArray *sceneObjects;
-
+@property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyerForState;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;
 - (void)loadState;

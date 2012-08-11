@@ -14,6 +14,7 @@
 
 @synthesize sceneControllerForState = _sceneControllerForState;
 @synthesize sceneObjects = _sceneObjects;
+@synthesize sceneObjectDestroyerForState = _sceneObjectDestroyerForState;
 
 
 
@@ -22,6 +23,7 @@
     if (self) {
         self.sceneControllerForState = scene_controller;
         _sceneObjects = [[NSMutableArray alloc] init];
+        _sceneObjectDestroyerForState = [[MGSceneObjectDestroyer alloc] init];
     }
     return self;
 }
@@ -50,6 +52,7 @@
 - (void)dealloc {
     [_sceneControllerForState release];
     [_sceneObjects release];
+    [_sceneObjectDestroyerForState release];
     [super dealloc];
 }
 @end
