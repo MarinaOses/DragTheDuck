@@ -21,10 +21,10 @@ static CGFloat MGShowerLayerVertexes[8] = {
 };
 
 static CGFloat MGShowerLayerdColorValues[16] ={
-    0.2, 0.2, 0.2, 0.5, 
-    0.2, 0.2, 0.2, 0.5, 
-    0.2, 0.2, 0.2, 0.5, 
-    0.2, 0.2, 0.2, 0.5
+    0.2, 0.2, 0.2, 0.7, 
+    0.2, 0.2, 0.2, 0.7, 
+    0.2, 0.2, 0.2, 0.7, 
+    0.2, 0.2, 0.2, 0.7
 };
 
 

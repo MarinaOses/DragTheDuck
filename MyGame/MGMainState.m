@@ -37,7 +37,7 @@
     //PLAYBUTTON
     MGTexturedButton *playButton = [[MGTexturedButton alloc] initWithSceneController:self.sceneControllerForState UpKey:@"mg_boton_play_final.png" downKey:@"mg_boton_play_final_pressed.png"];
     playButton.scale = MGPointMake(160.0, 160.0, 1.0);
-    playButton.translation = MGPointMake(0.0, 0.0, 0.0);
+    playButton.translation = MGPointMake(0.0, -80.0, 0.0);
     playButton.target = self;
     playButton.buttonGoodAction = @selector(goodTouchOfPlayButtonIsDone);
     playButton.buttonBadAction = @selector(badTouchOfPlayButtonIsDone);
@@ -46,8 +46,8 @@
     
     //SOUNDBUTTON
     MGTexturedButton *soundButton = [[MGTexturedButton alloc] initWithSceneController:self.sceneControllerForState UpKey:@"mg_button_sound_off.png" downKey:@"mg_button_sound_on.png"];
-    soundButton.scale = MGPointMake(40.0, 40.0, 1.0);
-    soundButton.translation = MGPointMake(0.0, 130.0, 0.0);
+    soundButton.scale = MGPointMake(60.0, 60.0, 1.0);
+    soundButton.translation = MGPointMake(150.0, -100.0, 0.0);
     soundButton.target = self;
     soundButton.buttonGoodAction = @selector(goodTouchOfSoundButtonIsDone);
     soundButton.buttonBadAction = @selector(badTouchOfSoundButtonIsDone);
@@ -56,8 +56,8 @@
     
     //HELPBUTTON
     MGTexturedButton *helpButton = [[MGTexturedButton alloc] initWithSceneController:self.sceneControllerForState UpKey:@"mg_button_help.png" downKey:@"mg_button_help_pressed.png"];
-    helpButton.scale = MGPointMake(40.0, 40.0, 1.0);
-    helpButton.translation = MGPointMake(0.0, -130.0, 0.0);
+    helpButton.scale = MGPointMake(60.0, 60.0, 1.0);
+    helpButton.translation = MGPointMake(-150.0, -100.0, 0.0);
     helpButton.target = self;
     helpButton.buttonGoodAction = @selector(goodTouchOfHelpButtonIsDone);
     helpButton.buttonBadAction = @selector(badTouchOfHelpButtonIsDone);
