@@ -76,11 +76,6 @@
                             self.translation = touchLocation;
                         }
                     }
-//                    else {
-//                        self.taken = NO;
-//                        self.finger.isFree = YES;
-//                        [self start];
-//                    }
                 }
                 else if (atouch.phase == UITouchPhaseEnded){
                     self.taken = NO;

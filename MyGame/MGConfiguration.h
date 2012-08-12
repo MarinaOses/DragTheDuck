@@ -58,8 +58,8 @@
 #define SEC_BEFORE_THE_BIRD_APPEARS 3
 
 //--NUMBER OF ARROWS TO APPEAR
-#define MIN_ARROWS_TO_APPEAR 0
-#define MAX_ARROWS_TO_APPEAR 0
+#define MIN_ARROWS_TO_APPEAR 1
+#define MAX_ARROWS_TO_APPEAR 2
 
 //--NUMBER OF SECONDS BETWEEN ARROWS APPEARANCES
 #define MINSEC_TO_ARROW_APPEARANCE 3 
@@ -130,8 +130,8 @@
 
 
 //--NUMBER OF SECONDS BETWEEN LEAVES APPEARANCES
-#define MINSEC_TO_LEAF_APPEARANCE 15
-#define MAXSEC_TO_LEAF_APPEARANCE 35
+#define MINSEC_TO_LEAF_APPEARANCE 10
+#define MAXSEC_TO_LEAF_APPEARANCE 25
 
 
 //**********************************************************************************************
@@ -154,13 +154,13 @@
 
 
 //--NUMBER OF SECONDS BETWEEN BEES APPEARANCES
-#define MINSEC_TO_BEE_APPEARANCE 10
-#define MAXSEC_TO_BEE_APPEARANCE 20
+#define MINSEC_TO_BEE_APPEARANCE 40
+#define MAXSEC_TO_BEE_APPEARANCE 70
 
 
 //**********************************************************************************************
 #define MINSEC_TO_TRANSFORMER_DISAPPEARANCE 5
-#define MAXSEC_TO_TRANSFORMER_DISAPPEARANCE 20
+#define MAXSEC_TO_TRANSFORMER_DISAPPEARANCE 15
 
 //**********************************************************************************************
 #define DEBUG_DRAW_COLLIDERS 0
@@ -173,13 +173,13 @@
 
 
 //**********************************************************************************************
-#define NUMBERS_SAVED_DUCKS_SCALE 50 
+#define NUMBERS_SAVED_DUCKS_SCALE 45 
 #define ICON_SAVED_DUCKS_SCALE 60
-#define SPACE_BETWEEN_ICON_NUMBERS 10
+#define SPACE_BETWEEN_ICON_NUMBERS 8
 #define SPACE_BETWEEN_NUMBERS_NUMBERS 15
 //start_x representa el punto en el eje x donde se sitúa el lado izquierdo del primer número
 #define SAVED_DUCKS_SCORE_START_X -170
-#define SAVED_DUCKS_SCORE_START_Y -125
+#define SAVED_DUCKS_SCORE_START_Y -130
 
 
 //**********************************************************************************************

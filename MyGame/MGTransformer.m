@@ -139,6 +139,7 @@
                     self.taken = NO;
                     self.finger.isFree = YES;
                     [self start];
+                    [self loadTakenTimeWithoutMovingInUpdates];
                 }
             }
             else {
@@ -147,12 +148,6 @@
                         if (atouch.location.x > GRASS_HEIGHT) {
                             self.translation = [self.sceneController.inputViewController meshCenterFromMGTouchLocation:atouch.location];
                         }
-//                        else {
-//                            self.taken = NO;
-//                            self.finger.isFree = YES;
-//                            [self start];
-//                        }
-                        
                     }
                     else if (atouch.phase == UITouchPhaseEnded){
                         self.taken = NO;
