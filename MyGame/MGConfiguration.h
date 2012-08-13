@@ -62,6 +62,12 @@
 #define MAXSEC_TO_ARROW_APPEARANCE 8 
 
 
+//--AUMENTO DE DIFICULTAD POR LA FRECUENCIA EN LA QUE APARECEN
+#define ARROWS_TO_LEVEL_UP 50
+#define MINSEC_TO_ARROW_APPEARANCE_DECREASE 1
+#define MAXSEC_TO_ARROW_APPEARANCE_DECREASE 4
+
+
 
 //**********************************************************************************************
 //Por el momento las escalas y velocidades de los patos serán siempre las mismas
@@ -90,10 +96,17 @@
 #define MIN_NESTS_TO_APPEAR 1
 #define MAX_NESTS_TO_APPEAR 1
 
+
+
 //--NUMBER OF SECONDS BETWEEN NEST APPEARANCES
 #define MINSEC_TO_NEST_APPEARANCE 2
 #define MAXSEC_TO_NEST_APPEARANCE 4
 
+
+//--AUMENTO DE DIFICULTAD POR EL NÚMERO DE NIDOS QUE APARECEN
+#define NESTS_TO_LEVEL_UP 20
+#define MIN_NESTS_TO_APPEAR_INCREASE 0
+#define MAX_NESTS_TO_APPEAR_INCREASE 1
 
 
 //**********************************************************************************************

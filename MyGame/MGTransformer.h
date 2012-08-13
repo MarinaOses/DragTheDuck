@@ -21,7 +21,6 @@
     MGSceneObjectDestroyer *_sceneObjectDestroyer;
     MGFinger *_finger;
     BOOL taken;
-    MGPoint savedSpeed;
     NSInteger takenTimeWithoutMovingInUpdates;
     BOOL wingsDown;
     NSInteger timeToFlapItsWingsInUpdates;

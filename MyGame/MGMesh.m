@@ -94,10 +94,6 @@
     //Se calculan las coordenadas máximas y mínimas del objeto para crear el rectángulo que recoja todos lo vértices del objeto
     CGFloat xMin, xMax, yMin, yMax;
     //Se inicializan las variables con los valores de primer vértice
-    if (aMesh.vertexes == nil) {
-        NSLog(@"NIIIIL");
-
-    }
     xMin = xMax = aMesh.vertexes[0] * aScale.x;
     yMin = yMax = aMesh.vertexes[1] * aScale.y;
     

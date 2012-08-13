@@ -18,9 +18,9 @@
     MGSceneObjectDestroyer *_sceneObjectDestroyer;
     NSMutableArray *_sceneObjects;
     MGFinger *_finger;
-    MGPoint savedSpeed;
     NSInteger timeBeforeTheDuckAppearsInUpdates;
     BOOL throwedDuck;
+    MGDuck *_generatedDuck;
 }
 
 @property (nonatomic, assign) BOOL taken;
@@ -29,6 +29,7 @@
 @property (nonatomic, retain) MGSceneObjectDestroyer *sceneObjectDestroyer;
 @property (nonatomic, retain) NSMutableArray *sceneObjects;
 @property (nonatomic, retain) MGFinger *finger;
+@property (nonatomic, retain) MGDuck *generatedDuck;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter TransformationController:(MGTransformationController *)transformation_controller TouchFinger:(MGFinger *)touch_finger SceneObjects:(NSMutableArray *)scene_objects;
 

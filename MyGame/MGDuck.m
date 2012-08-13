@@ -13,7 +13,6 @@
 
 
 @interface MGDuck()
-- (void)start;
 - (void)loadTakenTimeWithoutMovingInUpdates;
 @end
 
@@ -54,7 +53,6 @@
         self.sceneObjectDestroyer = scene_object_destroyer;
         self.finger = touch_finger;
         takenNest = NO;
-        savedSpeed = self.speed;
         [self loadTakenTimeWithoutMovingInUpdates];
         wingsDown = YES;
         self.downWingsQuad = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_duck_ala_abajo.png"];
@@ -102,11 +100,15 @@
             [self.scoreTransmitter aNewLeafIsTaken];
         }
     }
-    else { //nest
-        if (!takenNest) {
-            [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
-            takenNest = YES;
+    else if ([scene_object isKindOfClass:[MGNest class]]){ //nest
+        MGNest *nest = (MGNest *)scene_object;
+        if (nest.generatedDuck == self) {
+            if (!takenNest) {
+                [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
+                takenNest = YES;
+            }
         }
+       
     }
 }
 
@@ -187,9 +189,7 @@
 }
 
 
-- (void)start {
-    self.speed = savedSpeed;
-}
+
 
 
 - (void)dealloc {

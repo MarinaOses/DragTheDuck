@@ -24,7 +24,6 @@
     MGTransformationController *_transformationController;
     MGSceneObjectDestroyer *_sceneObjectDestroyer;
     MGFinger *_finger;
-    MGPoint savedSpeed;
     BOOL takenNest;
     NSInteger takenTimeWithoutMovingInUpdates;
     BOOL wingsDown;

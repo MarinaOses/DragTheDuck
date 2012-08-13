@@ -13,7 +13,6 @@
 
 @interface MGTransformer()
 - (CGFloat)randomLifeTime;
-- (void)start;
 - (void)loadTakenTimeWithoutMovingInUpdates;
 @end
 
@@ -47,7 +46,6 @@
     
     self = [super initWithSceneController:duck.sceneController BoundaryController:duck.boundaryController RangeForScale:NSMakeRange(MIN_TRANSFORMER_SCALE, MAX_TRANSFORMER_SCALE) RangeForSpeed:NSMakeRange(MIN_TRANSFORMER_SPEED, MAX_TRANSFORMER_SPEED) Direction:1];
     if (self) {
-        savedSpeed = self.speed;
         self.taken = duck.taken;
         if (self.taken) {
             self.speed = duck.speed;
@@ -167,10 +165,6 @@
         takenTimeWithoutMovingInUpdates = TAKEN_TIME_WITHOUT_MOVING * MAXIMUM_FRAME_RATE;
     }
 
-
-- (void)start {
-    self.speed = savedSpeed;
-}
 
 
 - (void)dealloc {

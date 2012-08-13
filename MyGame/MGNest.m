@@ -10,9 +10,6 @@
 
 #import "MGSceneController.h"
 
-@interface MGNest()
-- (void)start;
-@end
 
 @implementation MGNest
 @synthesize scoreTransmitter = _scoreTransmitter;
@@ -21,6 +18,7 @@
 @synthesize sceneObjectDestroyer = _sceneObjectDestroyer;
 @synthesize sceneObjects = _sceneObjects;
 @synthesize finger = _finger;
+@synthesize generatedDuck = _generatedDuck;
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter TransformationController:(MGTransformationController *)transformation_controller TouchFinger:(MGFinger *)touch_finger SceneObjects:(NSMutableArray *)scene_objects {
@@ -34,9 +32,8 @@
         self.taken = NO;
         throwedDuck = NO;
         timeBeforeTheDuckAppearsInUpdates = SEC_BEFORE_THE_DUCK_APPEARS * MAXIMUM_FRAME_RATE;
-        savedSpeed = self.speed;
         self.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_nest.png"];
-        self.translation = [self randomTranslationWithMeshBounds:self.meshBounds OnSide:-self.movingDirection];
+        self.translation = [self randomTranslationWithMeshBounds:self.meshBounds OnSide:-self.movingDirection];        
     }
     return self;
 }
@@ -46,6 +43,7 @@
     if (timeBeforeTheDuckAppearsInUpdates > 0) {
         NSSet *newTouches = [self.sceneController.inputViewController touchEvents];
         if (!self.taken) {
+
             BOOL hasArrived = [self.boundaryController hasTheNest:self arrivedToPointX:(self.startingPointX + NEST_ROUTE)];
             if (hasArrived) {
                 [self stop];
@@ -89,8 +87,9 @@
     else {
         if (!throwedDuck) {
             MGDuck *duck = [[MGDuck alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTrasnmitter:self.scoreTransmitter TransformationController:self.transformationController TouchFinger:self.finger AppearanceHeight:self.translation.y];
-            [self.sceneObjects addObject:duck];
+            self.generatedDuck = duck;
             [duck release];
+            [self.sceneObjects addObject:self.generatedDuck];
             throwedDuck = YES;
             self.taken = NO;
             self.finger.isFree = YES;
@@ -100,9 +99,7 @@
     [super update];
 }
 
-- (void)start {
-    self.speed = savedSpeed;
-}
+
 
 - (void)dealloc {
     [_scoreTransmitter release];
@@ -110,6 +107,7 @@
     [_sceneObjectDestroyer release];
     [_sceneObjects release];
     [_finger release];
+    [_generatedDuck release];
     [super dealloc];
 }
 

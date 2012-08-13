@@ -43,6 +43,9 @@
     if (duckToAdd.taken) {
         [duckToAdd stop];
     }
+    else {
+        [duckToAdd start];
+    }
     [self.sceneObjects addObject:duckToAdd];
     
     self.duckWhoStartsTheTransformation = nil;

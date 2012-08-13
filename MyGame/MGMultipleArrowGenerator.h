@@ -18,6 +18,7 @@
     MGBoundaryController *_boundaryController;
     MGSceneObjectDestroyer *_sceneObjectDestroyer;
     NSMutableArray *_sceneObjects;
+    NSInteger throwedArrowsCount;
 }
 
 @property (nonatomic, retain) MGSceneController *sceneController;

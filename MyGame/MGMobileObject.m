@@ -34,6 +34,7 @@
 @synthesize boundaryController = _boundaryController;
 @synthesize movingDirection;
 @synthesize startingPointX;
+@synthesize savedSpeed;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller RangeForScale:(NSRange)scale_range RangeForSpeed:(NSRange)speed_range Direction:(int)direction {
     self = [super initWithSceneController:scene_controller];
@@ -48,7 +49,7 @@
         self.collider = [[MGCollider alloc] initWithSceneController:scene_controller];
         self.scale = [self randomScaleInRange:scale_range];
         self.speed = [self randomSpeedInRange:speed_range WithDirection:direction];
-        
+        self.savedSpeed = self.speed;
         self.boundaryController = boundary_controller;
     }
     return self;
@@ -73,6 +74,10 @@
 - (MGPoint)randomSpeedInRange:(NSRange)speed_range WithDirection:(int)direction {
     GLfloat speedToassign = RANDOM_FLOAT(speed_range.location, speed_range.length)/100.0;
     return MGPointMake(direction * speedToassign, 0.0, 0.0);
+}
+
+- (void)start {
+    self.speed = self.savedSpeed;
 }
 
 - (void)stop {

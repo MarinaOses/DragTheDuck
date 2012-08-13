@@ -26,6 +26,7 @@
         self.boundaryController = boundary_controller;
         self.sceneObjectDestroyer = scene_object_destroyer;
         self.sceneObjects = scene_objects;
+        throwedArrowsCount = 0;
     }
     return self;
 }
@@ -35,6 +36,7 @@
 - (NSArray *)createWave {
     NSMutableArray *arrayWithArrowsWave = [[NSMutableArray alloc] init];
     NSInteger arrowsToAppear = RANDOM_INT(MIN_ARROWS_TO_APPEAR, MAX_ARROWS_TO_APPEAR);
+    throwedArrowsCount += arrowsToAppear;
     NSInteger arrowsCount;
     for (arrowsCount = 0; arrowsCount < arrowsToAppear; arrowsCount++) {
         MGArrow *arrowToAdd = [[MGArrow alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer SceneObjects:self.sceneObjects]; 
@@ -45,7 +47,11 @@
 }
 
 - (CGFloat)getWaitTimeToNextWave {
-    return RANDOM_FLOAT(MINSEC_TO_ARROW_APPEARANCE, MAXSEC_TO_ARROW_APPEARANCE);    
+    NSInteger minsecToArrowAppearanceDecrease = MIN((throwedArrowsCount/(ARROWS_TO_LEVEL_UP*2)), MINSEC_TO_ARROW_APPEARANCE_DECREASE);
+    NSInteger maxsecToArrowAppearanceDecrease = MIN((throwedArrowsCount/ARROWS_TO_LEVEL_UP), MAXSEC_TO_ARROW_APPEARANCE_DECREASE);
+    NSInteger down = MINSEC_TO_ARROW_APPEARANCE - minsecToArrowAppearanceDecrease;
+    NSInteger up = MAXSEC_TO_ARROW_APPEARANCE - maxsecToArrowAppearanceDecrease;
+    return RANDOM_FLOAT(down, up);    
 }
 
 

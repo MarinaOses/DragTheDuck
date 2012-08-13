@@ -23,6 +23,7 @@
     MGBoundaryController *_boundaryController;
     MGFinger *_finger;
     NSMutableArray *_sceneObjects;
+    NSInteger throwedNestsCount;
 }
 
 @property (nonatomic, retain) MGSceneController *sceneController;
