@@ -8,7 +8,7 @@
 			<string>mg_arrow.png</string>
 
 			<key>rect</key>
-			<string>{{770, 1474}, {149, 128}}</string>
+			<string>{{926, 1744}, {149, 128}}</string>
 		</dict>
 		
 		<dict>
@@ -16,7 +16,7 @@
 			<string>mg_bee.png</string>
 
 			<key>rect</key>
-			<string>{{762, 1608}, {162, 128}}</string>
+			<string>{{762, 1794}, {162, 128}}</string>
 		</dict>
 		
 		<dict>
@@ -24,7 +24,7 @@
 			<string>mg_bird_ala_abajo.png</string>
 
 			<key>rect</key>
-			<string>{{689, 1776}, {164, 128}}</string>
+			<string>{{892, 1284}, {164, 128}}</string>
 		</dict>
 		
 		<dict>
@@ -32,7 +32,7 @@
 			<string>mg_bird_ala_arriba.png</string>
 
 			<key>rect</key>
-			<string>{{689, 1906}, {164, 128}}</string>
+			<string>{{858, 1452}, {164, 128}}</string>
 		</dict>
 		
 		<dict>
@@ -40,7 +40,7 @@
 			<string>mg_boton_hojas.png</string>
 
 			<key>rect</key>
-			<string>{{1300, 1284}, {128, 128}}</string>
+			<string>{{1058, 1284}, {128, 128}}</string>
 		</dict>
 		
 		<dict>
@@ -64,7 +64,7 @@
 			<string>mg_broken_egg.png</string>
 
 			<key>rect</key>
-			<string>{{632, 1284}, {128, 188}}</string>
+			<string>{{468, 1478}, {128, 188}}</string>
 		</dict>
 		
 		<dict>
@@ -72,7 +72,7 @@
 			<string>mg_button_help.png</string>
 
 			<key>rect</key>
-			<string>{{1181, 1414}, {128, 128}}</string>
+			<string>{{1284, 1414}, {128, 128}}</string>
 		</dict>
 		
 		<dict>
@@ -80,7 +80,7 @@
 			<string>mg_button_help_pressed.png</string>
 
 			<key>rect</key>
-			<string>{{1311, 1414}, {128, 128}}</string>
+			<string>{{1316, 1820}, {128, 128}}</string>
 		</dict>
 		
 		<dict>
@@ -88,7 +88,7 @@
 			<string>mg_button_home.png</string>
 
 			<key>rect</key>
-			<string>{{1924, 126}, {122, 124}}</string>
+			<string>{{1924, 0}, {122, 124}}</string>
 		</dict>
 		
 		<dict>
@@ -96,7 +96,7 @@
 			<string>mg_button_home_pressed.png</string>
 
 			<key>rect</key>
-			<string>{{1924, 0}, {122, 124}}</string>
+			<string>{{1924, 126}, {122, 124}}</string>
 		</dict>
 		
 		<dict>
@@ -104,7 +104,7 @@
 			<string>mg_button_pause.png</string>
 
 			<key>rect</key>
-			<string>{{1430, 1284}, {128, 128}}</string>
+			<string>{{1154, 1414}, {128, 128}}</string>
 		</dict>
 		
 		<dict>
@@ -112,7 +112,7 @@
 			<string>mg_button_pause_pressed.png</string>
 
 			<key>rect</key>
-			<string>{{1115, 1690}, {128, 128}}</string>
+			<string>{{1129, 1560}, {128, 128}}</string>
 		</dict>
 		
 		<dict>
@@ -120,7 +120,7 @@
 			<string>mg_button_reload.png</string>
 
 			<key>rect</key>
-			<string>{{1056, 1560}, {128, 128}}</string>
+			<string>{{1318, 1284}, {128, 128}}</string>
 		</dict>
 		
 		<dict>
@@ -128,7 +128,7 @@
 			<string>mg_button_reload_pressed.png</string>
 
 			<key>rect</key>
-			<string>{{1170, 1284}, {128, 128}}</string>
+			<string>{{1188, 1284}, {128, 128}}</string>
 		</dict>
 		
 		<dict>
@@ -136,7 +136,7 @@
 			<string>mg_button_sound_off.png</string>
 
 			<key>rect</key>
-			<string>{{1186, 1544}, {128, 128}}</string>
+			<string>{{1207, 1690}, {128, 128}}</string>
 		</dict>
 		
 		<dict>
@@ -144,7 +144,7 @@
 			<string>mg_button_sound_on.png</string>
 
 			<key>rect</key>
-			<string>{{985, 1880}, {128, 128}}</string>
+			<string>{{1259, 1544}, {128, 128}}</string>
 		</dict>
 		
 		<dict>
@@ -152,7 +152,7 @@
 			<string>mg_duck_ala_abajo.png</string>
 
 			<key>rect</key>
-			<string>{{985, 1734}, {128, 144}}</string>
+			<string>{{1186, 1870}, {128, 144}}</string>
 		</dict>
 		
 		<dict>
@@ -160,7 +160,7 @@
 			<string>mg_duck_ala_arriba.png</string>
 
 			<key>rect</key>
-			<string>{{855, 1884}, {128, 144}}</string>
+			<string>{{926, 1874}, {128, 144}}</string>
 		</dict>
 		
 		<dict>
@@ -168,7 +168,7 @@
 			<string>mg_egg.png</string>
 
 			<key>rect</key>
-			<string>{{429, 1868}, {128, 174}}</string>
+			<string>{{632, 1284}, {128, 174}}</string>
 		</dict>
 		
 		<dict>
@@ -176,15 +176,23 @@
 			<string>mg_eight.png</string>
 
 			<key>rect</key>
-			<string>{{372, 1284}, {128, 198}}</string>
+			<string>{{372, 1798}, {128, 198}}</string>
 		</dict>
 		
 		<dict>
 			<key>name</key>
-			<string>mg_feathers.png</string>
+			<string>mg_feathers_bird.png</string>
 
 			<key>rect</key>
-			<string>{{1022, 1284}, {146, 128}}</string>
+			<string>{{368, 1672}, {140, 124}}</string>
+		</dict>
+		
+		<dict>
+			<key>name</key>
+			<string>mg_feathers_duck.png</string>
+
+			<key>rect</key>
+			<string>{{226, 1672}, {140, 124}}</string>
 		</dict>
 		
 		<dict>
@@ -192,7 +200,7 @@
 			<string>mg_five.png</string>
 
 			<key>rect</key>
-			<string>{{468, 1484}, {128, 172}}</string>
+			<string>{{632, 1798}, {128, 172}}</string>
 		</dict>
 		
 		<dict>
@@ -200,7 +208,7 @@
 			<string>mg_fondo_ayuda.png</string>
 
 			<key>rect</key>
-			<string>{{0, 642}, {960, 640}}</string>
+			<string>{{962, 642}, {960, 640}}</string>
 		</dict>
 		
 		<dict>
@@ -224,7 +232,7 @@
 			<string>mg_fondo_main.png</string>
 
 			<key>rect</key>
-			<string>{{962, 642}, {960, 640}}</string>
+			<string>{{0, 642}, {960, 640}}</string>
 		</dict>
 		
 		<dict>
@@ -232,7 +240,7 @@
 			<string>mg_four.png</string>
 
 			<key>rect</key>
-			<string>{{502, 1658}, {128, 188}}</string>
+			<string>{{502, 1284}, {128, 188}}</string>
 		</dict>
 		
 		<dict>
@@ -240,7 +248,7 @@
 			<string>mg_fried_egg.png</string>
 
 			<key>rect</key>
-			<string>{{502, 1284}, {128, 192}}</string>
+			<string>{{372, 1284}, {128, 192}}</string>
 		</dict>
 		
 		<dict>
@@ -264,7 +272,7 @@
 			<string>mg_hojas.png</string>
 
 			<key>rect</key>
-			<string>{{892, 1284}, {128, 160}}</string>
+			<string>{{869, 1582}, {128, 160}}</string>
 		</dict>
 		
 		<dict>
@@ -272,7 +280,7 @@
 			<string>mg_icono_pajaro_muerto.png</string>
 
 			<key>rect</key>
-			<string>{{598, 1478}, {170, 128}}</string>
+			<string>{{697, 1664}, {170, 128}}</string>
 		</dict>
 		
 		<dict>
@@ -280,7 +288,7 @@
 			<string>mg_icono_patito.png</string>
 
 			<key>rect</key>
-			<string>{{372, 1672}, {128, 194}}</string>
+			<string>{{242, 1284}, {128, 194}}</string>
 		</dict>
 		
 		<dict>
@@ -288,7 +296,7 @@
 			<string>mg_nest.png</string>
 
 			<key>rect</key>
-			<string>{{242, 1872}, {185, 128}}</string>
+			<string>{{510, 1668}, {185, 128}}</string>
 		</dict>
 		
 		<dict>
@@ -296,7 +304,7 @@
 			<string>mg_nine.png</string>
 
 			<key>rect</key>
-			<string>{{242, 1284}, {128, 220}}</string>
+			<string>{{242, 1798}, {128, 220}}</string>
 		</dict>
 		
 		<dict>
@@ -304,7 +312,7 @@
 			<string>mg_one.png</string>
 
 			<key>rect</key>
-			<string>{{242, 1672}, {128, 198}}</string>
+			<string>{{502, 1798}, {128, 198}}</string>
 		</dict>
 		
 		<dict>
@@ -312,7 +320,7 @@
 			<string>mg_seven.png</string>
 
 			<key>rect</key>
-			<string>{{559, 1848}, {128, 168}}</string>
+			<string>{{728, 1460}, {128, 168}}</string>
 		</dict>
 		
 		<dict>
@@ -320,7 +328,7 @@
 			<string>mg_six.png</string>
 
 			<key>rect</key>
-			<string>{{921, 1446}, {128, 148}}</string>
+			<string>{{999, 1582}, {128, 148}}</string>
 		</dict>
 		
 		<dict>
@@ -328,7 +336,7 @@
 			<string>mg_three.png</string>
 
 			<key>rect</key>
-			<string>{{632, 1608}, {128, 166}}</string>
+			<string>{{762, 1284}, {128, 166}}</string>
 		</dict>
 		
 		<dict>
@@ -336,7 +344,7 @@
 			<string>mg_transformer_ala_abajo.png</string>
 
 			<key>rect</key>
-			<string>{{855, 1738}, {128, 144}}</string>
+			<string>{{1024, 1414}, {128, 144}}</string>
 		</dict>
 		
 		<dict>
@@ -344,7 +352,7 @@
 			<string>mg_transformer_ala_arriba.png</string>
 
 			<key>rect</key>
-			<string>{{1051, 1414}, {128, 144}}</string>
+			<string>{{1056, 1874}, {128, 144}}</string>
 		</dict>
 		
 		<dict>
@@ -352,7 +360,7 @@
 			<string>mg_two.png</string>
 
 			<key>rect</key>
-			<string>{{926, 1596}, {128, 136}}</string>
+			<string>{{1077, 1732}, {128, 136}}</string>
 		</dict>
 		
 		<dict>
@@ -360,7 +368,7 @@
 			<string>mg_zero.png</string>
 
 			<key>rect</key>
-			<string>{{762, 1284}, {128, 188}}</string>
+			<string>{{598, 1474}, {128, 188}}</string>
 		</dict>
 		
 </array>

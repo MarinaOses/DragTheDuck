@@ -10,6 +10,8 @@
 
 #import "MGSceneController.h"
 
+
+
 @interface MGFeathers()
 - (MGPoint)randomRotation;
 - (CGFloat)randomLifeTime;
@@ -26,10 +28,16 @@
 @implementation MGFeathers
 
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer Translation:(MGPoint)feathers_translation Scale:(MGPoint)feathers_scale Color:(CGFloat *)feathers_color {
+- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer Translation:(MGPoint)feathers_translation Scale:(MGPoint)feathers_scale Color:(NSInteger)feathers_color {
     self = [super initWithSceneController:scene_controller SceneObjectDestroyer:scene_object_destroyer];
     if (self) {
-        self.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_feathers.png"];
+        if (feathers_color == DUCK_COLOR) {
+            self.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_feathers_duck.png"];
+
+        }
+        else if (feathers_color == BIRD_COLOR) {
+            self.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_feathers_bird.png"];
+        }
 //        self.mesh.colors = MGFeathersColorValues;
 //        self.mesh.colors = feathers_color;
         self.translation = feathers_translation;

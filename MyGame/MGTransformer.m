@@ -80,7 +80,7 @@
         [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
         //sumar a marcador "número de pájaros muertos"
         [self.scoreTransmitter aNewBirdIsKilled];
-        [self.transformationController spawnFeathersFrom:(MGBird *)scene_object];
+        [self.transformationController spawnFeathersFrom:(MGBird *)scene_object WithColor:BIRD_COLOR];
     }
 }
 

@@ -34,6 +34,5 @@
 - (void)spawnBeeFrom:(MGDuck *)duck;
 - (void)spawnDuckFrom:(MGTransformer *)transformer;
 - (void)spawnEggFrom:(MGDuck *)killed_duck;
-- (void)spawnFeathersFrom:(MGMobileObject *)killed_mobile_object;
-
+- (void)spawnFeathersFrom:(MGMobileObject *)killed_mobile_object WithColor:(NSInteger)color;
 @end

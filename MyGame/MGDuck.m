@@ -80,7 +80,7 @@
         //Animacion: igual no hace falta el remove
         [self.sceneObjectDestroyer markToRemoveSceneObject:self];
         [self.scoreTransmitter aNewDuckIsKilled];
-        [self.transformationController spawnFeathersFrom:self];
+        [self.transformationController spawnFeathersFrom:self WithColor:DUCK_COLOR];
         [self.transformationController spawnEggFrom:self];
         //sumar a marcador "número de patos muertos"
         

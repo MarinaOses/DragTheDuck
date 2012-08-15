@@ -58,8 +58,10 @@
     [eggToAdd release];
 }
 
-- (void)spawnFeathersFrom:(MGMobileObject *)killed_mobile_object {
-    MGFeathers *feathersToAdd = [[MGFeathers alloc] initWithSceneController:self.sceneController SceneObjectDestroyer:self.sceneObjectDestroyer Translation:killed_mobile_object.translation Scale:killed_mobile_object.scale Color:killed_mobile_object.mesh.colors];
+- (void)spawnFeathersFrom:(MGMobileObject *)killed_mobile_object WithColor:(NSInteger)color{
+
+    MGFeathers *feathersToAdd = [[MGFeathers alloc] initWithSceneController:self.sceneController SceneObjectDestroyer:self.sceneObjectDestroyer Translation:killed_mobile_object.translation Scale:killed_mobile_object.scale Color:color];
+  
     [self.sceneObjects addObject:feathersToAdd];
     [feathersToAdd release];
 }

@@ -14,6 +14,6 @@
 @interface MGFeathers : MGStoppedObject
 
 
-- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer Translation:(MGPoint)feathers_translation Scale:(MGPoint)feathers_scale Color:(CGFloat *)feathers_color;
+- (id)initWithSceneController:(MGSceneController *)scene_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer Translation:(MGPoint)feathers_translation Scale:(MGPoint)feathers_scale Color:(NSInteger)feathers_color;
 
 @end
