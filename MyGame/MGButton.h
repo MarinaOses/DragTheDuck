@@ -29,5 +29,6 @@
 - (void)setNotPressedVertexes;
 - (void)goodTouch;
 - (void)badTouch;
+- (void)update;
 
 @end

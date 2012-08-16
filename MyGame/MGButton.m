@@ -61,11 +61,13 @@
         return;
     }
     BOOL pointInBounds = NO;
+    [self setNotPressedVertexes];
     CGRect screenRectToAccess = self.screenRect;
     CGRect touchableArea = CGRectMake(CGRectGetMinX(screenRectToAccess) - ADD_TO_SCREENRECT_OF_BUTTONS, CGRectGetMinY(self.screenRect) - ADD_TO_SCREENRECT_OF_BUTTONS, CGRectGetWidth(screenRectToAccess) + ADD_TO_SCREENRECT_OF_BUTTONS*2, CGRectGetHeight(screenRectToAccess) + ADD_TO_SCREENRECT_OF_BUTTONS*2);
     for (MGTouch *handleTouch in touchesHandler) {
         if (CGRectContainsPoint(touchableArea, [handleTouch location])) {
             pointInBounds = YES;
+            [self setPressedVertexes];
             switch (handleTouch.phase) {
                 case UITouchPhaseBegan:
                     startedInButton = YES;
@@ -79,8 +81,15 @@
                     break;
             }
         }
+        else {
+            pointInBounds = NO;
+            [self setNotPressedVertexes];
+        }
         if (handleTouch.phase == UITouchPhaseEnded) {
             startedInButton = NO;
+            [self setNotPressedVertexes];
+            pressed = NO;
+
         }
     }
     if (!pointInBounds) {
@@ -89,23 +98,22 @@
 }
 
 - (void)goodTouch {
+    NSLog(@"goodTouch");
 
-    if (pressed) {
-        return;
-    }
-    pressed = YES;
-    [self setPressedVertexes];
-    [self.target performSelector:self.buttonGoodAction];
-    pressed = NO;
+    if (!pressed) {
+        pressed = YES;
+        [self.target performSelector:self.buttonGoodAction];
+    } 
+
+    
 }
 
 -(void)badTouch {
-    if (!pressed) {
-        return;
+    NSLog(@"badTouch");
+    if (pressed) {
+        pressed = NO;
+        [self.target performSelector:self.buttonBadAction];
     }
-    pressed = NO;
-    [self setNotPressedVertexes];
-    [self.target performSelector:self.buttonBadAction];
 }
 
 - (void)setNotPressedVertexes {
