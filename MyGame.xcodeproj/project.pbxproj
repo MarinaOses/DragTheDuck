@@ -32,6 +32,8 @@
 		9C5BE8F215D67D3000B179C1 /* MGArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5BE8F115D67D3000B179C1 /* MGArrow.m */; };
 		9C85040515C9618F00F9685B /* MGMaterialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85040415C9618F00F9685B /* MGMaterialController.m */; };
 		9C85041215C9B31D00F9685B /* MGTexturedQuad.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85041115C9B31C00F9685B /* MGTexturedQuad.m */; };
+		9C8FD35715DD18CD006628A6 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C8FD35515DD18CD006628A6 /* icon.png */; };
+		9C8FD35815DD18CD006628A6 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C8FD35615DD18CD006628A6 /* icon@2x.png */; };
 		9CAC5B16153D8B23003ECB4F /* MGTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC5B15153D8B23003ECB4F /* MGTouch.m */; };
 		9CAE9C6B1557F28600C88B50 /* MGMobileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C6A1557F28600C88B50 /* MGMobileObject.m */; };
 		9CAE9C6F155A7D0000C88B50 /* MGMultipleArrowGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C6E155A7D0000C88B50 /* MGMultipleArrowGenerator.m */; };
@@ -131,6 +133,8 @@
 		9C85040415C9618F00F9685B /* MGMaterialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMaterialController.m; sourceTree = "<group>"; };
 		9C85041015C9B31C00F9685B /* MGTexturedQuad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTexturedQuad.h; sourceTree = "<group>"; };
 		9C85041115C9B31C00F9685B /* MGTexturedQuad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTexturedQuad.m; sourceTree = "<group>"; };
+		9C8FD35515DD18CD006628A6 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		9C8FD35615DD18CD006628A6 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		9CA68A23152C6F7B008E11AF /* MGConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConfiguration.h; sourceTree = "<group>"; };
 		9CAC5B14153D8B23003ECB4F /* MGTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTouch.h; sourceTree = "<group>"; };
 		9CAC5B15153D8B23003ECB4F /* MGTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTouch.m; sourceTree = "<group>"; };
@@ -337,6 +341,8 @@
 			isa = PBXGroup;
 			children = (
 				9CCBEED115CC492B0082D224 /* mapa.png */,
+				9C8FD35515DD18CD006628A6 /* icon.png */,
+				9C8FD35615DD18CD006628A6 /* icon@2x.png */,
 			);
 			name = "Imágenes";
 			sourceTree = "<group>";
@@ -598,6 +604,8 @@
 				9CEEFF2D1539941F0004D9AA /* MainWindow.xib in Resources */,
 				9CCBEED215CC492B0082D224 /* mapa.plist in Resources */,
 				9CCBEED315CC492B0082D224 /* mapa.png in Resources */,
+				9C8FD35715DD18CD006628A6 /* icon.png in Resources */,
+				9C8FD35815DD18CD006628A6 /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

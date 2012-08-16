@@ -12,6 +12,10 @@
 	<array/>
 	<key>CFBundleIdentifier</key>
 	<string>es.unavarra.tlm.${PRODUCT_NAME:rfc1034identifier}</string>
+	<key>UIStatusBarHidden</key>
+	<true/>
+	<key>UIPrerenderedIcon</key>
+	<true/>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
