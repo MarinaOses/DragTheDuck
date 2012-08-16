@@ -54,7 +54,6 @@
 
 
 - (void)goToMainState {
-    NSLog(@"In manager: goToMainState()");
     MGMainState *mainStateToAssign = [[MGMainState alloc] initWithSceneController:self.sceneController];
     self.activeState = mainStateToAssign;
     [self activateState];
@@ -62,7 +61,6 @@
 }
 
 - (void)goToHelpState {
-    NSLog(@"In manager: goToHelpState()");
     MGHelpState *helpStateToAssign = [[MGHelpState alloc] initWithSceneController:self.sceneController];
     self.activeState = helpStateToAssign;
     [self activateState];
@@ -70,7 +68,6 @@
 }
 
 - (void)goToPlayState {
-    NSLog(@"In manager: goToPlayState()");
     MGPlayState *playStateToAssign = [[MGPlayState alloc] initWithSceneController:self.sceneController];
     self.activeState = playStateToAssign;
     [self.sceneController.timeController start];
@@ -80,7 +77,6 @@
 
 - (void)goToPauseState {
     if ([self.activeState isKindOfClass:[MGPlayState class]]) {
-        NSLog(@"In manager: goToPauseState()");
         self.playStateToRemember = (MGPlayState *)self.activeState;
         [self.sceneController.timeController deactivate];
         MGPauseState *pauseStateToAssign = [[MGPauseState alloc] initWithSceneController:self.sceneController SceneObjects:self.playStateToRemember.sceneObjects PauseButton:self.playStateToRemember.pauseButton];
@@ -91,7 +87,6 @@
 } 
 
 - (void)goToGameOverStateWith:(MGScoreBoard *)score_board {
-    NSLog(@"In manager: goToGameOverState()");
     [self.sceneController.timeController deactivate];
     MGGameOverState *gameOverStateToAssign = [[MGGameOverState alloc] initWithSceneController:self.sceneController ScoreBoard:score_board];
     self.activeState = gameOverStateToAssign;
@@ -100,7 +95,6 @@
 }
 
 - (void)restartPlayState {
-    NSLog(@"In manager: restartPlayState()");
     self.activeState = self.playStateToRemember;
     [self reactivateState];    
     [self.sceneController.timeController activate];

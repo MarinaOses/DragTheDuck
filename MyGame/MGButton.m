@@ -98,18 +98,13 @@
 }
 
 - (void)goodTouch {
-    NSLog(@"goodTouch");
-
     if (!pressed) {
         pressed = YES;
         [self.target performSelector:self.buttonGoodAction];
-    } 
-
-    
+    }
 }
 
 -(void)badTouch {
-    NSLog(@"badTouch");
     if (pressed) {
         pressed = NO;
         [self.target performSelector:self.buttonBadAction];
