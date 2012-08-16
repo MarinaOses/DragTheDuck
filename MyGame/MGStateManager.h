@@ -31,7 +31,7 @@
 - (void)goToHelpState;
 - (void)goToPlayState;
 - (void)restartPlayState;
-- (void)goToPauseStateWithSceneObjects:(NSMutableArray *)scene_objects PauseButton:(MGTexturedButton *)pause_button;
+- (void)goToPauseState;
 - (void)goToGameOverStateWith:(MGScoreBoard *)score_board;
 - (void)changeSoundState;
 - (void)stopActiveState;

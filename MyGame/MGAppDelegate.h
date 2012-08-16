@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MGStateManager.h"
 
 @interface MGAppDelegate : UIResponder <UIApplicationDelegate> {
     UIWindow *_window;
+    MGStateManager *_stateManager;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) MGStateManager *stateManager;
 
 @end

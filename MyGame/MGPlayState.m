@@ -167,7 +167,7 @@
 
 - (void)goodTouchOfPauseButtonIsDone {
     [self.sceneControllerForState.stateManager stopActiveState];
-    [self.sceneControllerForState.stateManager goToPauseStateWithSceneObjects:self.sceneObjects PauseButton:self.pauseButton];    
+    [self.sceneControllerForState.stateManager goToPauseState];    
 }
 
 - (void)badTouchOfPauseButtonIsDone {

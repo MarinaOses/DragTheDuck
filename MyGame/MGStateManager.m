@@ -78,14 +78,16 @@
     [playStateToAssign release];
 }
 
-- (void)goToPauseStateWithSceneObjects:(NSMutableArray *)scene_objects PauseButton:(MGTexturedButton *)pause_button {
-    NSLog(@"In manager: goToPauseState()");
-    self.playStateToRemember = (MGPlayState *)self.activeState;
-    [self.sceneController.timeController deactivate];
-    MGPauseState *pauseStateToAssign = [[MGPauseState alloc] initWithSceneController:self.sceneController SceneObjects:scene_objects PauseButton:pause_button];
-    self.activeState = pauseStateToAssign;
-    [self activateState];
-    [pauseStateToAssign release];
+- (void)goToPauseState {
+    if ([self.activeState isKindOfClass:[MGPlayState class]]) {
+        NSLog(@"In manager: goToPauseState()");
+        self.playStateToRemember = (MGPlayState *)self.activeState;
+        [self.sceneController.timeController deactivate];
+        MGPauseState *pauseStateToAssign = [[MGPauseState alloc] initWithSceneController:self.sceneController SceneObjects:self.playStateToRemember.sceneObjects PauseButton:self.playStateToRemember.pauseButton];
+        self.activeState = pauseStateToAssign;
+        [self activateState];
+        [pauseStateToAssign release];
+    }
 } 
 
 - (void)goToGameOverStateWith:(MGScoreBoard *)score_board {

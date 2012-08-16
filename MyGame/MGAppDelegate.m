@@ -13,7 +13,7 @@
 @implementation MGAppDelegate
 
 @synthesize window = _window;
-
+@synthesize stateManager = _stateManager;
 
 
 //- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -51,8 +51,9 @@
     [timeControllerToAssign release];
     
     //Se crea el manager de estados del juego
-    MGStateManager *managerToAssign = [[MGStateManager alloc] initWithSceneController:sceneController];
+    MGStateManager *managerToAssign= [[MGStateManager alloc] initWithSceneController:sceneController];
     sceneController.stateManager = managerToAssign;
+    self.stateManager = managerToAssign;
     [managerToAssign release];
     
     
@@ -61,13 +62,9 @@
     [sceneController startScene];
                         
 }
-
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    /*
-     Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-     Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-     */
+ 
+- (void)applicationWillResignActive:(UIApplication *)application {
+    [self.stateManager goToPauseState];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -106,6 +103,7 @@
 - (void)dealloc
 {
     [_window release];
+    [_stateManager release];
     [super dealloc];
 }
 
