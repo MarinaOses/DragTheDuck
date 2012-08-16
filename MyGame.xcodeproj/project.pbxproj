@@ -23,6 +23,8 @@
 		9C2661CB158B5FA500F06E98 /* MGIconPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2661CA158B5FA400F06E98 /* MGIconPresenter.m */; };
 		9C2661D01590914000F06E98 /* MGTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2661CF1590913F00F06E98 /* MGTransformer.m */; };
 		9C2661D41593288B00F06E98 /* MGTransformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2661D31593288B00F06E98 /* MGTransformationController.m */; };
+		9C2ED79B15DD1CB40093F61C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C2ED79915DD1CB40093F61C /* Default.png */; };
+		9C2ED79C15DD1CB40093F61C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C2ED79A15DD1CB40093F61C /* Default@2x.png */; };
 		9C366EEB1598E41C00222538 /* MGEgg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C366EEA1598E41C00222538 /* MGEgg.m */; };
 		9C366EF3159A2D4B00222538 /* MGLifesPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C366EF2159A2D4B00222538 /* MGLifesPresenter.m */; };
 		9C366EF6159A3A8900222538 /* MGLifesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C366EF5159A3A8900222538 /* MGLifesController.m */; };
@@ -114,6 +116,8 @@
 		9C2661CF1590913F00F06E98 /* MGTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTransformer.m; sourceTree = "<group>"; };
 		9C2661D21593288B00F06E98 /* MGTransformationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTransformationController.h; sourceTree = "<group>"; };
 		9C2661D31593288B00F06E98 /* MGTransformationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTransformationController.m; sourceTree = "<group>"; };
+		9C2ED79915DD1CB40093F61C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		9C2ED79A15DD1CB40093F61C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		9C366EE91598E41C00222538 /* MGEgg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGEgg.h; sourceTree = "<group>"; };
 		9C366EEA1598E41C00222538 /* MGEgg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGEgg.m; sourceTree = "<group>"; };
 		9C366EF1159A2D4B00222538 /* MGLifesPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGLifesPresenter.h; sourceTree = "<group>"; };
@@ -340,6 +344,8 @@
 		9C85040D15C9629500F9685B /* Imágenes */ = {
 			isa = PBXGroup;
 			children = (
+				9C2ED79915DD1CB40093F61C /* Default.png */,
+				9C2ED79A15DD1CB40093F61C /* Default@2x.png */,
 				9CCBEED115CC492B0082D224 /* mapa.png */,
 				9C8FD35515DD18CD006628A6 /* icon.png */,
 				9C8FD35615DD18CD006628A6 /* icon@2x.png */,
@@ -606,6 +612,8 @@
 				9CCBEED315CC492B0082D224 /* mapa.png in Resources */,
 				9C8FD35715DD18CD006628A6 /* icon.png in Resources */,
 				9C8FD35815DD18CD006628A6 /* icon@2x.png in Resources */,
+				9C2ED79B15DD1CB40093F61C /* Default.png in Resources */,
+				9C2ED79C15DD1CB40093F61C /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
