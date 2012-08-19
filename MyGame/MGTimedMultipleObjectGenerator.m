@@ -31,10 +31,10 @@
 
 + (id<MGGenerator>)createSpecificMGGenerator:(int)type WithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTransmitter:(MGScoreTransmitter *)score_transmitter SceneObjects:(NSMutableArray *)scene_objects {
     
-    if (type == DUCKS) {
+    if (type == NESTS) {
         return [[[MGMultipleNestGenerator alloc] initWithSceneController:scene_controller BoundaryController:boundary_controller SceneObjectDestroyer:scene_object_destroyer ScoreTrasnmitter:score_transmitter SceneObjects:scene_objects] autorelease];
     }
-    else if (type == BIRDS) {
+    else if (type == ARROWS) {
         return [[[MGMultipleArrowGenerator alloc] initWithSceneController:scene_controller BoundaryController:boundary_controller SceneObjectDestroyer:scene_object_destroyer SceneObjects:scene_objects] autorelease];
     }
     else if (type == LEAVES){

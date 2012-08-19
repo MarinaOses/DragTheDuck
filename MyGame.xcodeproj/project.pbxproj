@@ -458,7 +458,6 @@
 		9CE04F52151380CF00185442 /* MyGame */ = {
 			isa = PBXGroup;
 			children = (
-				9C366EED159A2C9800222538 /* Lifes */,
 				9CE04F5B151380CF00185442 /* MGAppDelegate.h */,
 				9CE04F5C151380CF00185442 /* MGAppDelegate.m */,
 				9CEEFF14152F70FC0004D9AA /* MGInputViewController.h */,
@@ -473,6 +472,7 @@
 				9CC12371156BC29E005EABD0 /* MGStoppedObject.m */,
 				9CAE9C691557F28600C88B50 /* MGMobileObject.h */,
 				9CAE9C6A1557F28600C88B50 /* MGMobileObject.m */,
+				9C366EED159A2C9800222538 /* Lifes */,
 				9C2661D11593277A00F06E98 /* Tranformations */,
 				9C1137021598B2070057FB80 /* Boundaries */,
 				9C15DD6F154E9A860095FBED /* Scene Objects */,

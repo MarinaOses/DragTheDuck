@@ -14,8 +14,8 @@
 #import "MGTimeController.h"
 
 
-#define DUCKS 0
-#define BIRDS 1
+#define NESTS 0
+#define ARROWS 1
 #define LEAVES 2
 #define BEES 3
 

@@ -19,8 +19,8 @@
 @class MGSceneController;
 
 @interface MGPlayState : MGState {
-    MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForDucks;
-    MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForBirds;
+    MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForNests;
+    MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForArrows;
     MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForLeaves;
     MGTimedMultipleObjectGenerator *timedMultipleObjectGeneratorForBees;
     MGCollisionController *_collisionController;
