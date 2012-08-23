@@ -25,6 +25,10 @@
 		9C2661D41593288B00F06E98 /* MGTransformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2661D31593288B00F06E98 /* MGTransformationController.m */; };
 		9C2ED79B15DD1CB40093F61C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C2ED79915DD1CB40093F61C /* Default.png */; };
 		9C2ED79C15DD1CB40093F61C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C2ED79A15DD1CB40093F61C /* Default@2x.png */; };
+		9C2F00A115E6638600E23250 /* MGAudioSessionSupport.c in Sources */ = {isa = PBXBuildFile; fileRef = 9C2F00A015E6638600E23250 /* MGAudioSessionSupport.c */; };
+		9C2F00A515E6A13400E23250 /* MGOpenALSoundController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2F00A415E6A13400E23250 /* MGOpenALSoundController.m */; };
+		9C2F00A715E6AEA900E23250 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2F00A615E6AEA900E23250 /* OpenAL.framework */; };
+		9C2F00A915E6AEF000E23250 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2F00A815E6AEF000E23250 /* AudioToolbox.framework */; };
 		9C366EEB1598E41C00222538 /* MGEgg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C366EEA1598E41C00222538 /* MGEgg.m */; };
 		9C366EF3159A2D4B00222538 /* MGLifesPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C366EF2159A2D4B00222538 /* MGLifesPresenter.m */; };
 		9C366EF6159A3A8900222538 /* MGLifesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C366EF5159A3A8900222538 /* MGLifesController.m */; };
@@ -118,6 +122,12 @@
 		9C2661D31593288B00F06E98 /* MGTransformationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTransformationController.m; sourceTree = "<group>"; };
 		9C2ED79915DD1CB40093F61C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		9C2ED79A15DD1CB40093F61C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		9C2F00A015E6638600E23250 /* MGAudioSessionSupport.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MGAudioSessionSupport.c; sourceTree = "<group>"; };
+		9C2F00A215E663AB00E23250 /* MGAudioSessionSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAudioSessionSupport.h; sourceTree = "<group>"; };
+		9C2F00A315E6A13400E23250 /* MGOpenALSoundController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOpenALSoundController.h; sourceTree = "<group>"; };
+		9C2F00A415E6A13400E23250 /* MGOpenALSoundController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGOpenALSoundController.m; sourceTree = "<group>"; };
+		9C2F00A615E6AEA900E23250 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		9C2F00A815E6AEF000E23250 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9C366EE91598E41C00222538 /* MGEgg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGEgg.h; sourceTree = "<group>"; };
 		9C366EEA1598E41C00222538 /* MGEgg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGEgg.m; sourceTree = "<group>"; };
 		9C366EF1159A2D4B00222538 /* MGLifesPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGLifesPresenter.h; sourceTree = "<group>"; };
@@ -173,7 +183,7 @@
 		9CC1237E156E5376005EABD0 /* MGCollider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCollider.m; sourceTree = "<group>"; };
 		9CCBEED015CC492B0082D224 /* mapa.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mapa.plist; sourceTree = "<group>"; };
 		9CCBEED115CC492B0082D224 /* mapa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapa.png; sourceTree = "<group>"; };
-		9CE04F48151380CF00185442 /* MyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CE04F48151380CF00185442 /* DragTheDuck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragTheDuck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CE04F4C151380CF00185442 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CE04F4E151380CF00185442 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9CE04F50151380CF00185442 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -233,6 +243,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C2F00A915E6AEF000E23250 /* AudioToolbox.framework in Frameworks */,
+				9C2F00A715E6AEA900E23250 /* OpenAL.framework in Frameworks */,
 				9CE04F69151B464D00185442 /* OpenGLES.framework in Frameworks */,
 				9CE04F67151B463100185442 /* QuartzCore.framework in Frameworks */,
 				9CE04F4D151380CF00185442 /* UIKit.framework in Frameworks */,
@@ -325,6 +337,17 @@
 			);
 			name = Tranformations;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		9C2F009E15E6631B00E23250 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				9C2F00A215E663AB00E23250 /* MGAudioSessionSupport.h */,
+				9C2F00A015E6638600E23250 /* MGAudioSessionSupport.c */,
+				9C2F00A315E6A13400E23250 /* MGOpenALSoundController.h */,
+				9C2F00A415E6A13400E23250 /* MGOpenALSoundController.m */,
+			);
+			name = Sound;
 			sourceTree = "<group>";
 		};
 		9C366EED159A2C9800222538 /* Lifes */ = {
@@ -438,7 +461,7 @@
 		9CE04F49151380CF00185442 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9CE04F48151380CF00185442 /* MyGame.app */,
+				9CE04F48151380CF00185442 /* DragTheDuck.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -446,6 +469,8 @@
 		9CE04F4B151380CF00185442 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C2F00A615E6AEA900E23250 /* OpenAL.framework */,
+				9C2F00A815E6AEF000E23250 /* AudioToolbox.framework */,
 				9CE04F68151B464D00185442 /* OpenGLES.framework */,
 				9CE04F66151B463100185442 /* QuartzCore.framework */,
 				9CE04F4C151380CF00185442 /* UIKit.framework */,
@@ -472,6 +497,7 @@
 				9CC12371156BC29E005EABD0 /* MGStoppedObject.m */,
 				9CAE9C691557F28600C88B50 /* MGMobileObject.h */,
 				9CAE9C6A1557F28600C88B50 /* MGMobileObject.m */,
+				9C2F009E15E6631B00E23250 /* Sound */,
 				9C366EED159A2C9800222538 /* Lifes */,
 				9C2661D11593277A00F06E98 /* Tranformations */,
 				9C1137021598B2070057FB80 /* Boundaries */,
@@ -559,9 +585,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9CE04F47151380CF00185442 /* MyGame */ = {
+		9CE04F47151380CF00185442 /* DragTheDuck */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9CE04F60151380CF00185442 /* Build configuration list for PBXNativeTarget "MyGame" */;
+			buildConfigurationList = 9CE04F60151380CF00185442 /* Build configuration list for PBXNativeTarget "DragTheDuck" */;
 			buildPhases = (
 				9CE04F44151380CF00185442 /* Sources */,
 				9CE04F45151380CF00185442 /* Frameworks */,
@@ -571,9 +597,9 @@
 			);
 			dependencies = (
 			);
-			name = MyGame;
+			name = DragTheDuck;
 			productName = MyGame;
-			productReference = 9CE04F48151380CF00185442 /* MyGame.app */;
+			productReference = 9CE04F48151380CF00185442 /* DragTheDuck.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -596,7 +622,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9CE04F47151380CF00185442 /* MyGame */,
+				9CE04F47151380CF00185442 /* DragTheDuck */,
 			);
 		};
 /* End PBXProject section */
@@ -685,6 +711,8 @@
 				9C14190715CBFE8E009E0182 /* MGTexturedButton.m in Sources */,
 				9CEDC28C15D43AFE00618CA9 /* MGNest.m in Sources */,
 				9C5BE8F215D67D3000B179C1 /* MGArrow.m in Sources */,
+				9C2F00A115E6638600E23250 /* MGAudioSessionSupport.c in Sources */,
+				9C2F00A515E6A13400E23250 /* MGOpenALSoundController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -779,7 +807,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9CE04F60151380CF00185442 /* Build configuration list for PBXNativeTarget "MyGame" */ = {
+		9CE04F60151380CF00185442 /* Build configuration list for PBXNativeTarget "DragTheDuck" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9CE04F61151380CF00185442 /* Debug */,

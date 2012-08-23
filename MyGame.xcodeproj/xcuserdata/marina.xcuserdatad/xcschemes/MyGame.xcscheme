@@ -14,8 +14,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9CE04F47151380CF00185442"
-               BuildableName = "MyGame.app"
-               BlueprintName = "MyGame"
+               BuildableName = "DragTheDuck.app"
+               BlueprintName = "DragTheDuck"
                ReferencedContainer = "container:MyGame.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,8 +32,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9CE04F47151380CF00185442"
-            BuildableName = "MyGame.app"
-            BlueprintName = "MyGame"
+            BuildableName = "DragTheDuck.app"
+            BlueprintName = "DragTheDuck"
             ReferencedContainer = "container:MyGame.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -45,13 +45,14 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug"
       debugDocumentVersioning = "YES"
+      enablesOpenGLESFrameCapture = "YES"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9CE04F47151380CF00185442"
-            BuildableName = "MyGame.app"
-            BlueprintName = "MyGame"
+            BuildableName = "DragTheDuck.app"
+            BlueprintName = "DragTheDuck"
             ReferencedContainer = "container:MyGame.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -68,8 +69,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9CE04F47151380CF00185442"
-            BuildableName = "MyGame.app"
-            BlueprintName = "MyGame"
+            BuildableName = "DragTheDuck.app"
+            BlueprintName = "DragTheDuck"
             ReferencedContainer = "container:MyGame.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
