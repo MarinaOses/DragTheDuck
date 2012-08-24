@@ -9,9 +9,6 @@
 #ifndef MyGame_MGAudioSessionSupport_h
 #define MyGame_MGAudioSessionSupport_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 #include <AudioToolbox/AudioToolbox.h>
 #include <stdbool.h>

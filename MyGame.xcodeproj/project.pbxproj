@@ -29,6 +29,7 @@
 		9C2F00A515E6A13400E23250 /* MGOpenALSoundController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2F00A415E6A13400E23250 /* MGOpenALSoundController.m */; };
 		9C2F00A715E6AEA900E23250 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2F00A615E6AEA900E23250 /* OpenAL.framework */; };
 		9C2F00A915E6AEF000E23250 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2F00A815E6AEF000E23250 /* AudioToolbox.framework */; };
+		9C2F00B415E7DC1700E23250 /* MGOpenALSupport.c in Sources */ = {isa = PBXBuildFile; fileRef = 9C2F00B315E7DC1700E23250 /* MGOpenALSupport.c */; };
 		9C366EEB1598E41C00222538 /* MGEgg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C366EEA1598E41C00222538 /* MGEgg.m */; };
 		9C366EF3159A2D4B00222538 /* MGLifesPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C366EF2159A2D4B00222538 /* MGLifesPresenter.m */; };
 		9C366EF6159A3A8900222538 /* MGLifesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C366EF5159A3A8900222538 /* MGLifesController.m */; };
@@ -128,6 +129,8 @@
 		9C2F00A415E6A13400E23250 /* MGOpenALSoundController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGOpenALSoundController.m; sourceTree = "<group>"; };
 		9C2F00A615E6AEA900E23250 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		9C2F00A815E6AEF000E23250 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		9C2F00B315E7DC1700E23250 /* MGOpenALSupport.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MGOpenALSupport.c; sourceTree = "<group>"; };
+		9C2F00B615E7DC2B00E23250 /* MGOpenALSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOpenALSupport.h; sourceTree = "<group>"; };
 		9C366EE91598E41C00222538 /* MGEgg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGEgg.h; sourceTree = "<group>"; };
 		9C366EEA1598E41C00222538 /* MGEgg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGEgg.m; sourceTree = "<group>"; };
 		9C366EF1159A2D4B00222538 /* MGLifesPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGLifesPresenter.h; sourceTree = "<group>"; };
@@ -346,6 +349,8 @@
 				9C2F00A015E6638600E23250 /* MGAudioSessionSupport.c */,
 				9C2F00A315E6A13400E23250 /* MGOpenALSoundController.h */,
 				9C2F00A415E6A13400E23250 /* MGOpenALSoundController.m */,
+				9C2F00B615E7DC2B00E23250 /* MGOpenALSupport.h */,
+				9C2F00B315E7DC1700E23250 /* MGOpenALSupport.c */,
 			);
 			name = Sound;
 			sourceTree = "<group>";
@@ -713,6 +718,7 @@
 				9C5BE8F215D67D3000B179C1 /* MGArrow.m in Sources */,
 				9C2F00A115E6638600E23250 /* MGAudioSessionSupport.c in Sources */,
 				9C2F00A515E6A13400E23250 /* MGOpenALSoundController.m in Sources */,
+				9C2F00B415E7DC1700E23250 /* MGOpenALSupport.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

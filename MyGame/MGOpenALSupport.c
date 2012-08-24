@@ -1,0 +1,108 @@
+//
+//  MGOpenALSupport.c
+//  MyGame
+//
+//  Created by Marina Osés Merino on 24/08/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
+
+
+#include "MGOpenALSupport.h"
+#include <stdio.h>
+#include <stddef.h> //NULL
+
+ExtAudioFileRef MyGetExtAudioFileRef(CFURLRef file_url, AudioStreamBasicDescription *audio_description) {
+    OSStatus error_status = noErr;
+    AudioStreamBasicDescription file_format;
+    UInt32 property_size = sizeof(file_format);
+    ExtAudioFileRef ext_file_ref = NULL;
+    AudioStreamBasicDescription output_format;
+    
+    //Abre un archivo con ExtAudioFileOpen()
+    error_status = ExtAudioFileOpenURL(file_url, &ext_file_ref);
+    if (noErr != error_status) {
+        printf("MyGetExtAudioFileRef: ExtAudioFileOpenURL ha fallado, error = %ld\n", error_status);
+        if (ext_file_ref != NULL) {
+            ExtAudioFileDispose(ext_file_ref);
+        }
+        return NULL;
+    }
+    
+    //Coge el formato de datos del audio
+    error_status = ExtAudioFileGetProperty(ext_file_ref, kExtAudioFileProperty_FileDataFormat, &property_size, &file_format);
+    if (noErr != error_status) {
+        printf("MyGetExtAudioFileRef: ExtAudioFileGetProperty(kExtAudioFileProperty_FileDataFormat) ha fallado, error = %ld\n", error_status);
+        ExtAudioFileDispose(ext_file_ref);
+        return NULL;
+    }
+    
+    //Los efectos de sonido en OpenAL deben ser en mono
+    
+    if (file_format.mChannelsPerFrame > 2) {
+        printf("MyGetExtAudioFileRef: formato no soportado, número de canales (%lu)\n", file_format.mChannelsPerFrame);
+        ExtAudioFileDispose(ext_file_ref);
+        return NULL;
+    }
+    
+    //El formato de salida debe ser linear PCM ya que es el unico tipo con el que openAL puede trabajar
+    //Poner el formato de salida como tipo entero con signo de 16 bits (native-endian)
+    
+    output_format.mSampleRate = file_format.mSampleRate; //preservar el sample rate original
+    output_format.mChannelsPerFrame = file_format.mChannelsPerFrame; //preservar el número de       canales
+    
+    output_format.mFormatID = kAudioFormatLinearPCM;
+    output_format.mFormatFlags = kAudioFormatFlagsNativeEndian | kAudioFormatFlagIsPacked | kAudioFormatFlagIsSignedInteger;
+    output_format.mFramesPerPacket = 1; //Para linear PCM la definicion es un frame por paquete
+    
+    output_format.mBitsPerChannel = 16;
+    output_format.mBytesPerPacket = 2 * output_format.mFramesPerPacket; // 1 frame - 1 paquete
+    //Poner el formato de datos de salida correcto
+    error_status = ExtAudioFileSetProperty(ext_file_ref, kExtAudioFileProperty_ClientDataFormat, sizeof(output_format), &output_format);
+    if (noErr != error_status) {
+        printf("MyGetExtAudioFileRef: ExtAudioFileSetProperty(kExtAudioFileProperty_ClientDataFormat) ha fallado, error = %ld\n", error_status);
+        ExtAudioFileDispose(ext_file_ref);
+        return NULL;
+    }
+    
+    //Copiar el formato de salida en el audio_description. Así le devolveremos al usuario la información
+    
+    memcpy(audio_description, &output_format, sizeof(output_format));
+    return ext_file_ref;
+    
+}
+
+
+//El calificador restrict especifica que sabemos a ciencia cierta que el puntero output_format apunta a un objeto que no es apuntado por ningún otro puntero
+OSStatus MyGetDataFromExtAudioRef(ExtAudioFileRef ext_file_ref, const AudioStreamBasicDescription *restrict output_format, ALsizei max_buffer_size, void **data_buffer, ALsizei *data_bufer_size, ALenum *al_format, ALsizei *sample_rate) {
+    
+    OSStatus error_status = noErr;
+    SInt64 buffer_size_in_frames = 0;
+    
+    //Calcular cuántos frames cabrán según el máximo tamaño del buffer
+    buffer_size_in_frames = max_buffer_size / (*output_format).mBytesPerFrame;
+    if (*data_buffer) {
+        AudioBufferList audio_buffer_list;
+        audio_buffer_list.mNumberBuffers = 1;
+        audio_buffer_list.mBuffers[0].mDataByteSize = max_buffer_size;
+        audio_buffer_list.mBuffers[0].mNumberChannels = (*output_format).mChannelsPerFrame;
+        audio_buffer_list.mBuffers[0].mData = *data_buffer;
+        
+        //Leer los datos en AudioBufferList
+        error_status = ExtAudioFileRead(ext_file_ref, (UInt32 *)&buffer_size_in_frames, &audio_buffer_list);
+        if (error_status == noErr) {
+            //buffer_size_in_frames == 0 significa que estamos al final del fichero
+            //ExtAudioFileRead devuelve el número de frames que ha leido actualmente. Hay que volverlos a convertir a bytes.
+            *data_bufer_size = (ALsizei)(buffer_size_in_frames * (*output_format).mBytesPerFrame);
+            *al_format = ((*output_format).mChannelsPerFrame > 1) ? AL_FORMAT_STEREO16 : AL_FORMAT_MONO16;
+            *sample_rate = (ALsizei)(*output_format).mSampleRate;
+        }
+        else {
+            printf("MyGetDataFromExtAudioRef: ExtAudioFileRead ha fallado, error %ld\n", error_status);
+        }
+    }
+    else {
+        printf("MyGetDataFromExtAudioRef: *data_buffer es NULL\n");
+    }
+    return error_status;
+}
+
