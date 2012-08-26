@@ -26,4 +26,5 @@
 #import <AudioToolbox/AudioToolbox.h>
 ExtAudioFileRef MyGetExtAudioFileRef(CFURLRef file_url, AudioStreamBasicDescription *audio_description);
 OSStatus MyGetDataFromExtAudioRef(ExtAudioFileRef ext_file_ref, const AudioStreamBasicDescription *restrict output_format, ALsizei max_buffer_size, void **data_buffer, ALsizei *data_bufer_size, ALenum *al_format, ALsizei *sample_rate);
+void *MyGetOpenALAudioDataAll(CFURLRef file_url, ALsizei *data_buffer_size, ALenum *al_format, ALsizei *sample_rate);
 #endif

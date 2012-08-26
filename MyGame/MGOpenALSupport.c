@@ -55,7 +55,8 @@ ExtAudioFileRef MyGetExtAudioFileRef(CFURLRef file_url, AudioStreamBasicDescript
     output_format.mFramesPerPacket = 1; //Para linear PCM la definicion es un frame por paquete
     
     output_format.mBitsPerChannel = 16;
-    output_format.mBytesPerPacket = 2 * output_format.mFramesPerPacket; // 1 frame - 1 paquete
+    output_format.mBytesPerPacket = 2 * output_format.mChannelsPerFrame; //2 bytes (16 bits) por canal por frame
+    output_format.mBytesPerFrame = 2 * output_format.mChannelsPerFrame; //1 frame es un paquete
     //Poner el formato de datos de salida correcto
     error_status = ExtAudioFileSetProperty(ext_file_ref, kExtAudioFileProperty_ClientDataFormat, sizeof(output_format), &output_format);
     if (noErr != error_status) {
@@ -105,4 +106,65 @@ OSStatus MyGetDataFromExtAudioRef(ExtAudioFileRef ext_file_ref, const AudioStrea
     }
     return error_status;
 }
+
+//Devuelve un puntero al buffer que contiene todos los datos pcm.
+//Para reservar memoria se utiliza malloc, de modo que queda en nuestras manos liberar la dicha memoria.
+
+void *MyGetOpenALAudioDataAll(CFURLRef file_url, ALsizei *data_buffer_size, ALenum *al_format, ALsizei *sample_rate) {
+    OSStatus error_status = noErr;
+    SInt64 file_length_in_frames = 0;
+    UInt32 property_size;
+    AudioStreamBasicDescription output_format;
+    ALsizei max_buffer_size;
+    void *pcm_data;
+    ExtAudioFileRef ext_file_ref = MyGetExtAudioFileRef(file_url, &output_format);
+    if (ext_file_ref == NULL) {
+        return NULL;
+    }
+    
+    //Coger el número de frames total
+    property_size = sizeof(file_length_in_frames);
+    error_status = ExtAudioFileGetProperty(ext_file_ref, kExtAudioFileProperty_FileLengthFrames, &property_size, &file_length_in_frames);
+    if (noErr != error_status) {
+        printf("MyGetOpenALAudioDataAll: ExtAudioFileGetProperty(kExtAudioFileProperty_FileLengthFrames) failed, error = %ld\n", error_status);
+        ExtAudioFileDispose(ext_file_ref);
+        return NULL;
+    }
+    
+    //Calcular los bytes que se necesitan para almacenar todos los datos del fichero
+    max_buffer_size = file_length_in_frames * output_format.mBytesPerFrame;
+    //Alojar memoria par almacenar los datos PCM
+    pcm_data = malloc(max_buffer_size);
+    if (pcm_data == NULL) {
+        printf("MyGetOpenALAudioDataAll: error al alojar memoria\n");
+        ExtAudioFileDispose(ext_file_ref);
+        return NULL;
+    }
+    
+    error_status = MyGetDataFromExtAudioRef(ext_file_ref, &output_format, max_buffer_size, &pcm_data, data_buffer_size, al_format, sample_rate);
+    if (noErr != error_status) {
+        free(pcm_data);
+        ExtAudioFileDispose(ext_file_ref);
+        return NULL;
+    }
+    
+    //No se necesita más la referencia
+    ExtAudioFileDispose(ext_file_ref);
+    return pcm_data;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
