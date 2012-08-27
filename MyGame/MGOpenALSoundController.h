@@ -11,15 +11,19 @@
 #import <OpenAL/alc.h>
 
 #import "MGAudioSessionSupport.h"
+#import "MGOpenALSupport.h"
 
 //ALC: Audio Library Context
 @interface MGOpenALSoundController : NSObject {
     ALCdevice *openALDevice;
     ALCcontext *openALContext;
     ALuint outputSource;
-    ALuint laserOutputBuffer;
+    ALuint quakOutputBuffer;
+    void *quakPCMData;
 }
 
++ (MGOpenALSoundController *) sharedSoundController;
 - (void)initOpenAL;
+- (void)playQuak;
 
 @end

@@ -10,6 +10,7 @@
 #import "MGPoint.h"
 #import "MGConfiguration.h"
 #import "MGTexturedQuad.h"
+#import "MGOpenALSoundController.h"
 
 @class MGCollider;
 @class MGSceneController;

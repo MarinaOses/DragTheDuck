@@ -11,6 +11,22 @@
 #include <stdio.h>
 #include <stddef.h> //NULL
 
+
+ALvoid alBufferDataStatic(ALint buffer_id, ALenum al_format, ALvoid *pcm_data, ALsizei buffer_size, ALsizei sample_rate) {
+    static alBufferDataStaticProcPtr the_proc = NULL;
+    
+    if (the_proc == NULL) {
+        the_proc = (alBufferDataStaticProcPtr) alGetProcAddress((ALchar *)"alBufferDataStatic");
+    }
+    
+    if (the_proc != NULL) {
+        the_proc(buffer_id, al_format, pcm_data, buffer_size, sample_rate);
+    }
+    
+    return;
+}
+
+//Se encarga de abrir un fichero
 ExtAudioFileRef MyGetExtAudioFileRef(CFURLRef file_url, AudioStreamBasicDescription *audio_description) {
     OSStatus error_status = noErr;
     AudioStreamBasicDescription file_format;
@@ -72,7 +88,7 @@ ExtAudioFileRef MyGetExtAudioFileRef(CFURLRef file_url, AudioStreamBasicDescript
     
 }
 
-
+//Se encarga de leer datos PCM de un fichero abierto
 //El calificador restrict especifica que sabemos a ciencia cierta que el puntero output_format apunta a un objeto que no es apuntado por ningún otro puntero
 OSStatus MyGetDataFromExtAudioRef(ExtAudioFileRef ext_file_ref, const AudioStreamBasicDescription *restrict output_format, ALsizei max_buffer_size, void **data_buffer, ALsizei *data_bufer_size, ALenum *al_format, ALsizei *sample_rate) {
     

@@ -24,6 +24,9 @@
 #endif
     
 #import <AudioToolbox/AudioToolbox.h>
+typedef ALvoid AL_APIENTRY (*alBufferDataStaticProcPtr) (ALint buffer_id, ALenum al_format, ALvoid *pcm_data, ALsizei buffer_size, ALsizei sample_rate);
+ALvoid alBufferDataStatic(ALint buffer_id, ALenum al_format, ALvoid *pcm_data, ALsizei buffer_size, ALsizei sample_rate);
+
 ExtAudioFileRef MyGetExtAudioFileRef(CFURLRef file_url, AudioStreamBasicDescription *audio_description);
 OSStatus MyGetDataFromExtAudioRef(ExtAudioFileRef ext_file_ref, const AudioStreamBasicDescription *restrict output_format, ALsizei max_buffer_size, void **data_buffer, ALsizei *data_bufer_size, ALenum *al_format, ALsizei *sample_rate);
 void *MyGetOpenALAudioDataAll(CFURLRef file_url, ALsizei *data_buffer_size, ALenum *al_format, ALsizei *sample_rate);
