@@ -56,6 +56,8 @@
     self.stateManager = managerToAssign;
     [managerToAssign release];
     
+    [[MGOpenALSoundController sharedSoundController] loading];
+    
     
     //Empezar el juego
     [sceneController loadScene];

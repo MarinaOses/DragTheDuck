@@ -90,7 +90,6 @@
             self.generatedDuck = duck;
             [duck release];
             [self.sceneObjects addObject:self.generatedDuck];
-            [[MGOpenALSoundController sharedSoundController] playQuak];
             throwedDuck = YES;
             self.taken = NO;
             self.finger.isFree = YES;

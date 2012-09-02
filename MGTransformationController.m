@@ -47,7 +47,7 @@
         [duckToAdd start];
     }
     [self.sceneObjects addObject:duckToAdd];
-    
+    [[MGOpenALSoundController sharedSoundController] playDuck];
     self.duckWhoStartsTheTransformation = nil;
     
 }

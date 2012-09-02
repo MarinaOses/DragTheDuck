@@ -17,13 +17,29 @@
 @interface MGOpenALSoundController : NSObject {
     ALCdevice *openALDevice;
     ALCcontext *openALContext;
-    ALuint outputSource;
-    ALuint quakOutputBuffer;
-    void *quakPCMData;
+    
+    ALuint outputSourceDuck;
+    ALuint outputSourceKilledDuck;
+    ALuint outputSourceBrokenEgg;
+    ALuint outputSourceFriedEgg;
+    
+    ALuint outputBufferDuck;
+    ALuint outputBufferKilledDuck;
+    ALuint outputBufferBrokenEgg;
+    ALuint outputBufferFriedEgg;
+    
+    void *duckPCMData;
+    void *killedDuckPCMData;
+    void *brokenEggPCMData;
+    void *friedEggPCMData;
 }
 
 + (MGOpenALSoundController *) sharedSoundController;
 - (void)initOpenAL;
-- (void)playQuak;
+- (void)playDuck;
+- (void)playKilledDuck;
+- (void)playBrokenEgg;
+- (void)playFriedEgg;
+- (void)loading;
 
 @end

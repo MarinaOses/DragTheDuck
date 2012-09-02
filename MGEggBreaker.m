@@ -30,6 +30,7 @@
 - (void)breakEgg:(MGEgg *)egg {
     MGBrokenEgg *brokenEgg = [[MGBrokenEgg alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController LifesController:self.lifesController ComesFromEgg:egg];
     [self.sceneObjects addObject:brokenEgg];
+    [[MGOpenALSoundController sharedSoundController] playBrokenEgg];
     [brokenEgg release];
 }
 

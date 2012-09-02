@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MGStateManager.h"
+#import "MGOpenALSoundController.h"
 
 @interface MGAppDelegate : UIResponder <UIApplicationDelegate> {
     UIWindow *_window;

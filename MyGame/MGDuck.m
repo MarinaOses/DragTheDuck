@@ -82,6 +82,7 @@
         [self.scoreTransmitter aNewDuckIsKilled];
         [self.transformationController spawnFeathersFrom:self WithColor:DUCK_COLOR];
         [self.transformationController spawnEggFrom:self];
+        [[MGOpenALSoundController sharedSoundController] playKilledDuck];
         //sumar a marcador "número de patos muertos"
         
     }
