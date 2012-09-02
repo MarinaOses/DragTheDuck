@@ -37,6 +37,8 @@
     void *backgroundPCMData;
 }
 
+@property (nonatomic, assign) ALCcontext *openALContext;
+
 + (MGOpenALSoundController *) sharedSoundController;
 - (void)initOpenAL;
 - (void)playDuck;

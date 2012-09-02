@@ -8,8 +8,29 @@
 
 #import "MGOpenALSoundController.h"
 
-@implementation MGOpenALSoundController
+static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
+    MGOpenALSoundController *openALSoundController = (MGOpenALSoundController *)user_data;
+    OSStatus the_error = noErr;
+    if (kAudioSessionBeginInterruption == interruption_state) {
+        //Suspende el estado del contexto
+        alcSuspendContext(openALSoundController.openALContext);
+        alcMakeContextCurrent(NULL);
+    }
+    else if (kAudioSessionEndInterruption == interruption_state) {
+        //Reactivamos la sesión de audio
+        the_error = AudioSessionSetActive(true);
+        if (noErr != the_error) {
+            printf("Error setting audio session active! %ld\n", the_error);
+        }
+        //Hacemos un contexto actual
+        alcMakeContextCurrent(openALSoundController.openALContext);
+        //Reanudamos el procesado del estado del contexto
+        alcProcessContext(openALSoundController.openALContext);
+    }
+}
 
+@implementation MGOpenALSoundController
+@synthesize openALContext;
 
 + (MGOpenALSoundController *) sharedSoundController {
     static MGOpenALSoundController *shared_sound_controller;
@@ -25,9 +46,9 @@
 - (id)init {
     self = [super init];
     if (self) {
-        initAudioSession(kAudioSessionCategory_AmbientSound, NULL, NULL);
+        initAudioSession(kAudioSessionCategory_AmbientSound, MyInterruptionCallback, self);
+        [self initOpenAL];
     }
-    [self initOpenAL];
     return self;
 }
 
