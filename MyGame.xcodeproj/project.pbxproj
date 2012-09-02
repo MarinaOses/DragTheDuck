@@ -62,6 +62,7 @@
 		9CD40E3D15F37551008AEEF2 /* egg_crash.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CD40E3A15F37551008AEEF2 /* egg_crash.wav */; };
 		9CD40E3E15F37551008AEEF2 /* egg_falling.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CD40E3B15F37551008AEEF2 /* egg_falling.wav */; };
 		9CD40E3F15F37551008AEEF2 /* fried_egg.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CD40E3C15F37551008AEEF2 /* fried_egg.wav */; };
+		9CD40E4715F3CAFA008AEEF2 /* background.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CD40E4615F3CAFA008AEEF2 /* background.wav */; };
 		9CE04F4D151380CF00185442 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F4C151380CF00185442 /* UIKit.framework */; };
 		9CE04F4F151380CF00185442 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F4E151380CF00185442 /* Foundation.framework */; };
 		9CE04F51151380CF00185442 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F50151380CF00185442 /* CoreGraphics.framework */; };
@@ -194,6 +195,7 @@
 		9CD40E3A15F37551008AEEF2 /* egg_crash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = egg_crash.wav; sourceTree = "<group>"; };
 		9CD40E3B15F37551008AEEF2 /* egg_falling.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = egg_falling.wav; sourceTree = "<group>"; };
 		9CD40E3C15F37551008AEEF2 /* fried_egg.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fried_egg.wav; sourceTree = "<group>"; };
+		9CD40E4615F3CAFA008AEEF2 /* background.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = background.wav; sourceTree = "<group>"; };
 		9CE04F48151380CF00185442 /* DragTheDuck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragTheDuck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CE04F4C151380CF00185442 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CE04F4E151380CF00185442 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -366,6 +368,7 @@
 		9C2F00BF15EBEED800E23250 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				9CD40E4615F3CAFA008AEEF2 /* background.wav */,
 				9CD40E3A15F37551008AEEF2 /* egg_crash.wav */,
 				9CD40E3B15F37551008AEEF2 /* egg_falling.wav */,
 				9CD40E3C15F37551008AEEF2 /* fried_egg.wav */,
@@ -669,6 +672,7 @@
 				9CD40E3D15F37551008AEEF2 /* egg_crash.wav in Resources */,
 				9CD40E3E15F37551008AEEF2 /* egg_falling.wav in Resources */,
 				9CD40E3F15F37551008AEEF2 /* fried_egg.wav in Resources */,
+				9CD40E4715F3CAFA008AEEF2 /* background.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

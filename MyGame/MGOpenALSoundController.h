@@ -22,16 +22,19 @@
     ALuint outputSourceKilledDuck;
     ALuint outputSourceBrokenEgg;
     ALuint outputSourceFriedEgg;
+    ALuint outputSourceBackground;
     
     ALuint outputBufferDuck;
     ALuint outputBufferKilledDuck;
     ALuint outputBufferBrokenEgg;
     ALuint outputBufferFriedEgg;
+    ALuint outputBufferBackground;
     
     void *duckPCMData;
     void *killedDuckPCMData;
     void *brokenEggPCMData;
     void *friedEggPCMData;
+    void *backgroundPCMData;
 }
 
 + (MGOpenALSoundController *) sharedSoundController;
@@ -40,6 +43,8 @@
 - (void)playKilledDuck;
 - (void)playBrokenEgg;
 - (void)playFriedEgg;
+- (void) playBackground;
+- (void) stopBackground;
 - (void)loading;
 
 @end

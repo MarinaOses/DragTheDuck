@@ -63,6 +63,7 @@
     alGenSources(1, &outputSourceKilledDuck);
     alGenSources(1, &outputSourceBrokenEgg);
     alGenSources(1, &outputSourceFriedEgg);
+    alGenSources(1, &outputSourceBackground);
     
     //El 0 no es un ID válido
     //alGetError() : para detectar errores
@@ -71,6 +72,7 @@
     alGenBuffers(1, &outputBufferKilledDuck);
     alGenBuffers(1, &outputBufferBrokenEgg);
     alGenBuffers(1, &outputBufferFriedEgg);
+    alGenBuffers(1, &outputBufferBackground);
     
     ALsizei data_size;
     ALenum al_format;
@@ -94,7 +96,11 @@
     friedEggPCMData = MyGetOpenALAudioDataAll((CFURLRef)file_url, &data_size, &al_format, &sample_rate);
     alBufferDataStatic(outputBufferFriedEgg, al_format, friedEggPCMData, data_size, sample_rate);
     [file_url release];
-    
+
+    file_url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"background" ofType:@"wav"]];
+    backgroundPCMData = MyGetOpenALAudioDataAll((CFURLRef)file_url, &data_size, &al_format, &sample_rate);
+    alBufferDataStatic(outputBufferBackground, al_format, backgroundPCMData, data_size, sample_rate);
+    [file_url release];
     
     
     //outputSource es el ID del source que queremos manipular
@@ -104,6 +110,7 @@
     alSourcei(outputSourceKilledDuck, AL_BUFFER, outputBufferKilledDuck);
     alSourcei(outputSourceBrokenEgg, AL_BUFFER, outputBufferBrokenEgg);
     alSourcei(outputSourceFriedEgg, AL_BUFFER, outputBufferFriedEgg);
+    alSourcei(outputSourceBackground, AL_BUFFER, outputBufferBackground);
     
     //OpenAL copia el contenido de quakPCMData en su buffer de memoria, de modo que si OpenAL ya tiene los datos debemos liberar la memoria que hemos alojado para dicha variable en MyGetOpenALAudioDataAll().
 //    alBufferData(quakOutputBuffer, al_format, quakPCMData, data_size, sample_rate);
@@ -130,18 +137,19 @@
 }
 
 //Si queremos hacer un bucle con un determinado sonido:
-//- (void) play
-//{
-//    alSourcei(outputSource, AL_LOOPING, AL_TRUE);
-//    alSourcePlay(outputSource);
-//}
+- (void) playBackground
+{
+    alSourcei(outputSourceBackground, AL_LOOPING, AL_TRUE);
+    alSourcef(outputSourceBackground, AL_GAIN, 0.3f);
+    alSourcePlay(outputSourceBackground);
+}
 
 //Para pararlo:
-//- (void) stop
-//{
-//    alSourceStop(outputSource);
-//    alSourcei(outputSource, AL_LOOPING, AL_FALSE);
-//}
+- (void) stopBackground
+{
+    alSourceStop(outputSourceBackground);
+    alSourcei(outputSourceBackground, AL_LOOPING, AL_FALSE);
+}
 
 
 - (void)tearDownOpenAL {

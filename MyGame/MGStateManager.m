@@ -68,6 +68,7 @@
 }
 
 - (void)goToPlayState {
+    [[MGOpenALSoundController sharedSoundController] playBackground];
     MGPlayState *playStateToAssign = [[MGPlayState alloc] initWithSceneController:self.sceneController];
     self.activeState = playStateToAssign;
     [self.sceneController.timeController start];
@@ -76,6 +77,7 @@
 }
 
 - (void)goToPauseState {
+    [[MGOpenALSoundController sharedSoundController] stopBackground];
     if ([self.activeState isKindOfClass:[MGPlayState class]]) {
         self.playStateToRemember = (MGPlayState *)self.activeState;
         [self.sceneController.timeController deactivate];
@@ -87,6 +89,7 @@
 } 
 
 - (void)goToGameOverStateWith:(MGScoreBoard *)score_board {
+    [[MGOpenALSoundController sharedSoundController] stopBackground];
     [self.sceneController.timeController deactivate];
     MGGameOverState *gameOverStateToAssign = [[MGGameOverState alloc] initWithSceneController:self.sceneController ScoreBoard:score_board];
     self.activeState = gameOverStateToAssign;
@@ -95,10 +98,10 @@
 }
 
 - (void)restartPlayState {
+    [[MGOpenALSoundController sharedSoundController] playBackground];
     self.activeState = self.playStateToRemember;
     [self reactivateState];    
     [self.sceneController.timeController activate];
-
 }
 
 - (void)changeSoundState {
