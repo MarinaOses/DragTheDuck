@@ -56,6 +56,35 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
     
 }
 
+- (void)loadSoundWithOutputSource:(ALuint *)output_source OutputBuffer:(ALuint *)output_buffer PCMData:(void *)PCM_data FileName:(NSString *)file_name {
+    
+    //solo creamos un source. Si queremos más de uno:
+    //ALuint sources_array[32];
+    //alGenSources(32, sources_array);
+    alGenSources(1, output_source);
+    
+    //El 0 no es un ID válido
+    //alGetError() : para detectar errores
+    //alIsSource(source_id) : para determinar si un source id es válido 
+    alGenBuffers(1, output_buffer);
+    
+    
+    
+    ALsizei data_size;
+    ALenum al_format;
+    ALsizei sample_rate;
+    NSURL *file_url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:file_name ofType:@"wav"]];
+    PCM_data = MyGetOpenALAudioDataAll((CFURLRef)file_url, &data_size, &al_format, &sample_rate);
+    alBufferDataStatic(*output_buffer, al_format, PCM_data, data_size, sample_rate);
+    [file_url release];
+    
+    //outputSource es el ID del source que queremos manipular
+    //AL_BUFFER especifica que tipo de operación queremos hacer. En este caso se quiere conectar el buffer con el source
+    //quakOutputBuffer es el ID del buffer
+    alSourcei(*output_source, AL_BUFFER, *output_buffer);
+    
+}
+
 
 
 - (void)initOpenAL {
@@ -77,66 +106,19 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
         NSLog(@"No se ha podido abrir el dispositivo para el audio.");
         return;
     }
-    //solo creamos un source. Si queremos más de uno:
-    //ALuint sources_array[32];
-    //alGenSources(32, sources_array);
-    alGenSources(1, &outputSourceDuck);
-    alGenSources(1, &outputSourceKilledDuck);
-    alGenSources(1, &outputSourceBrokenEgg);
-    alGenSources(1, &outputSourceFriedEgg);
-    alGenSources(1, &outputSourceBackground);
     
-    //El 0 no es un ID válido
-    //alGetError() : para detectar errores
-    //alIsSource(source_id) : para determinar si un source id es válido 
-    alGenBuffers(1, &outputBufferDuck);
-    alGenBuffers(1, &outputBufferKilledDuck);
-    alGenBuffers(1, &outputBufferBrokenEgg);
-    alGenBuffers(1, &outputBufferFriedEgg);
-    alGenBuffers(1, &outputBufferBackground);
-    
-    ALsizei data_size;
-    ALenum al_format;
-    ALsizei sample_rate;
-    NSURL *file_url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"duck" ofType:@"wav"]];
-    duckPCMData = MyGetOpenALAudioDataAll((CFURLRef)file_url, &data_size, &al_format, &sample_rate);
-    alBufferDataStatic(outputBufferDuck, al_format, duckPCMData, data_size, sample_rate);
-    [file_url release];
-    
-    file_url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"egg_falling" ofType:@"wav"]];
-    killedDuckPCMData = MyGetOpenALAudioDataAll((CFURLRef)file_url, &data_size, &al_format, &sample_rate);
-    alBufferDataStatic(outputBufferKilledDuck, al_format, killedDuckPCMData, data_size, sample_rate);
-    [file_url release];
-    
-    file_url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"egg_crash" ofType:@"wav"]];
-    brokenEggPCMData = MyGetOpenALAudioDataAll((CFURLRef)file_url, &data_size, &al_format, &sample_rate);
-    alBufferDataStatic(outputBufferBrokenEgg, al_format, brokenEggPCMData, data_size, sample_rate);
-    [file_url release];
+    [self loadSoundWithOutputSource:&outputSourceDuck OutputBuffer:&outputBufferDuck PCMData:duckPCMData FileName:@"duck"];
+    [self loadSoundWithOutputSource:&outputSourceKilledDuck OutputBuffer:&outputBufferKilledDuck PCMData:killedDuckPCMData FileName:@"egg_falling"];
+    [self loadSoundWithOutputSource:&outputSourceBrokenEgg OutputBuffer:&outputBufferBrokenEgg PCMData:brokenEggPCMData FileName:@"egg_crash"];
+    [self loadSoundWithOutputSource:&outputSourceFriedEgg OutputBuffer:&outputBufferFriedEgg PCMData:friedEggPCMData FileName:@"fried_egg"];
+    [self loadSoundWithOutputSource:&outputSourceBackground OutputBuffer:&outputBufferBackground PCMData:backgroundPCMData FileName:@"background"];
+    [self loadSoundWithOutputSource:&outputSourceSavedDuck OutputBuffer:&outputBufferSavedDuck PCMData:savedDuckPCMData FileName:@"saved_duck"];
+    [self loadSoundWithOutputSource:&outputSourceButtonClick OutputBuffer:&outputBufferButtonClick PCMData:buttonClickPCMData FileName:@"button_click"];
+    [self loadSoundWithOutputSource:&outputSourceLeaveTaking OutputBuffer: &outputBufferLeaveTaking PCMData:leaveTakingPCMData FileName:@"leave_taking"];
+    [self loadSoundWithOutputSource:&outputSourceBirdKilling OutputBuffer:&outputBufferBirdKilling PCMData:birdKillingPCMData FileName:@"bird_killing"];
+    [self loadSoundWithOutputSource:&outputSourceLeavesButtonActive OutputBuffer:&outputBufferLeavesButtonActive PCMData:leavesButtonActivePCMData FileName:@"leaves_button_active"];
+    [self loadSoundWithOutputSource:&outputSourceTransformerFlying OutputBuffer:&outputBufferTransformerFlying PCMData:transformerFlyingPCMData FileName:@"transformer_flying"];
 
-    file_url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"fried_egg" ofType:@"wav"]];
-    friedEggPCMData = MyGetOpenALAudioDataAll((CFURLRef)file_url, &data_size, &al_format, &sample_rate);
-    alBufferDataStatic(outputBufferFriedEgg, al_format, friedEggPCMData, data_size, sample_rate);
-    [file_url release];
-
-    file_url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"background" ofType:@"wav"]];
-    backgroundPCMData = MyGetOpenALAudioDataAll((CFURLRef)file_url, &data_size, &al_format, &sample_rate);
-    alBufferDataStatic(outputBufferBackground, al_format, backgroundPCMData, data_size, sample_rate);
-    [file_url release];
-    
-    
-    //outputSource es el ID del source que queremos manipular
-    //AL_BUFFER especifica que tipo de operación queremos hacer. En este caso se quiere conectar el buffer con el source
-    //quakOutputBuffer es el ID del buffer
-    alSourcei(outputSourceDuck, AL_BUFFER, outputBufferDuck);
-    alSourcei(outputSourceKilledDuck, AL_BUFFER, outputBufferKilledDuck);
-    alSourcei(outputSourceBrokenEgg, AL_BUFFER, outputBufferBrokenEgg);
-    alSourcei(outputSourceFriedEgg, AL_BUFFER, outputBufferFriedEgg);
-    alSourcei(outputSourceBackground, AL_BUFFER, outputBufferBackground);
-    
-    //OpenAL copia el contenido de quakPCMData en su buffer de memoria, de modo que si OpenAL ya tiene los datos debemos liberar la memoria que hemos alojado para dicha variable en MyGetOpenALAudioDataAll().
-//    alBufferData(quakOutputBuffer, al_format, quakPCMData, data_size, sample_rate);
-//    free(quakPCMData);
-//    quakPCMData = NULL;
 }
 
 
@@ -157,12 +139,41 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
     alSourcePlay(outputSourceFriedEgg);
 }
 
+- (void)playSavedDuck {
+    alSourcePlay(outputSourceSavedDuck);
+}
+
+- (void)playButtonClick {
+    alSourcePlay(outputSourceButtonClick);
+}
+
+- (void)playLeaveTaking {
+    alSourcePlay(outputSourceLeaveTaking);
+}
+
+
+- (void)playBirdKilling {
+    alSourcePlay(outputSourceBirdKilling);
+}
+
 //Si queremos hacer un bucle con un determinado sonido:
 - (void) playBackground
 {
     alSourcei(outputSourceBackground, AL_LOOPING, AL_TRUE);
     alSourcef(outputSourceBackground, AL_GAIN, 0.3f);
     alSourcePlay(outputSourceBackground);
+}
+
+- (void) playLeavesButtonActive
+{
+    alSourcei(outputSourceLeavesButtonActive, AL_LOOPING, AL_TRUE);
+    alSourcePlay(outputSourceLeavesButtonActive);
+}
+
+- (void) playTransformerFlying
+{
+    alSourcei(outputSourceTransformerFlying, AL_LOOPING, AL_TRUE);
+    alSourcePlay(outputSourceTransformerFlying);
 }
 
 //Para pararlo:
@@ -172,10 +183,46 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
     alSourcei(outputSourceBackground, AL_LOOPING, AL_FALSE);
 }
 
+- (void) stopLeavesButtonActive
+{
+    alSourceStop(outputSourceLeavesButtonActive);
+    alSourcei(outputSourceLeavesButtonActive, AL_LOOPING, AL_FALSE);
+}
+
+- (void) stopTransformerFlying
+{
+    alSourceStop(outputSourceTransformerFlying);
+    alSourcei(outputSourceTransformerFlying, AL_LOOPING, AL_FALSE);
+}
+
 
 - (void)tearDownOpenAL {
     alDeleteSources(1, &outputSourceDuck);
     alDeleteBuffers(1, &outputBufferDuck);
+    
+    alDeleteSources(1, &outputSourceKilledDuck);
+    alDeleteBuffers(1, &outputBufferKilledDuck);
+    
+    alDeleteSources(1, &outputSourceBrokenEgg);
+    alDeleteBuffers(1, &outputBufferBrokenEgg);
+    
+    alDeleteSources(1, &outputSourceFriedEgg);
+    alDeleteBuffers(1, &outputBufferFriedEgg);
+    
+    alDeleteSources(1, &outputSourceBackground);
+    alDeleteBuffers(1, &outputBufferBackground);
+    
+    alDeleteSources(1, &outputSourceSavedDuck);
+    alDeleteBuffers(1, &outputBufferSavedDuck);
+    
+    alDeleteSources(1, &outputSourceButtonClick);
+    alDeleteBuffers(1, &outputBufferButtonClick);
+    
+    alDeleteSources(1, &outputSourceLeaveTaking);
+    alDeleteBuffers(1, &outputBufferLeaveTaking);
+    
+    alDeleteSources(1, &outputSourceBirdKilling);
+    alDeleteBuffers(1, &outputBufferBirdKilling);
     
     alcMakeContextCurrent(NULL);
     if (openALContext) {
@@ -191,6 +238,46 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
     if (duckPCMData) {
         free(duckPCMData);
         duckPCMData = NULL;
+    }
+    
+    if (killedDuckPCMData) {
+        free(killedDuckPCMData);
+        killedDuckPCMData = NULL;
+    }
+    
+    if (brokenEggPCMData) {
+        free(brokenEggPCMData);
+        brokenEggPCMData = NULL;
+    }
+    
+    if (friedEggPCMData) {
+        free(friedEggPCMData);
+        friedEggPCMData = NULL;
+    }
+    
+    if (backgroundPCMData) {
+        free(backgroundPCMData);
+        backgroundPCMData = NULL;
+    }
+    
+    if (savedDuckPCMData) {
+        free(savedDuckPCMData);
+        savedDuckPCMData = NULL;
+    }
+    
+    if (buttonClickPCMData) {
+        free(buttonClickPCMData);
+        buttonClickPCMData = NULL;
+    }
+    
+    if (leaveTakingPCMData) {
+        free(leaveTakingPCMData);
+        leaveTakingPCMData = NULL;
+    }
+    
+    if (birdKillingPCMData) {
+        free(birdKillingPCMData);
+        birdKillingPCMData = NULL;
     }
 }
 

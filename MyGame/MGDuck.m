@@ -97,6 +97,7 @@
     }
     else if ([scene_object isKindOfClass:[MGLeaf class]]) {
         if ([self.scoreTransmitter isPossibleToCollideWithLeaves]) {
+            [[MGOpenALSoundController sharedSoundController] playLeaveTaking];
             [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
             [self.scoreTransmitter aNewLeafIsTaken];
         }

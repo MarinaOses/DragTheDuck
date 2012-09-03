@@ -38,6 +38,7 @@
 - (void)goodTouch {
     if (isActive) { //Si funciona como botón
         [super goodTouch];
+        [[MGOpenALSoundController sharedSoundController] stopLeavesButtonActive];
         //Cuando hayamos terminado la acción del toque volvemos a poner el layer
         self.takenLeavesButtonShowerLayer.scale = self.scale;
         self.takenLeavesButtonShowerLayer.translation = self.translation;
@@ -65,6 +66,7 @@
     }
     else if (taken_leaves_now == MAX_TAKEN_LEAVES){
         [self.takenLeavesButtonShowerLayer decreaseHeight:(MAX_TAKEN_LEAVES - taken_leaves_now)];
+        [[MGOpenALSoundController sharedSoundController] playLeavesButtonActive];
         isActive = YES;
     }
 }

@@ -67,6 +67,7 @@
             MGDuck *duck = (MGDuck *)mobile_object;
             duck.finger.isFree = YES;
             if (centerX > (midYOfWindowRect + midXOfMeshRect)) { //Derecha
+                [[MGOpenALSoundController sharedSoundController] playSavedDuck];
                 [self.scoreTransmitter aNewDuckIsSaved];
                 [self.sceneObjectDestroyer markToRemoveSceneObject:mobile_object];
             }

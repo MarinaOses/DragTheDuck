@@ -37,6 +37,11 @@
 		9C366EFC159B827800222538 /* MGBrokenEgg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C366EFB159B827800222538 /* MGBrokenEgg.m */; };
 		9C366EFF159C7F4100222538 /* MGEggBreaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C366EFE159C7F4100222538 /* MGEggBreaker.m */; };
 		9C44E48A15A4AF2300D27255 /* MGFeathers.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C44E48915A4AF2300D27255 /* MGFeathers.m */; };
+		9C45E10115F5237B00430F4F /* button_click.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C45E10015F5237B00430F4F /* button_click.wav */; };
+		9C45E10315F524DE00430F4F /* leave_taking.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C45E10215F524DE00430F4F /* leave_taking.wav */; };
+		9C45E10515F5273C00430F4F /* bird_killing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C45E10415F5273C00430F4F /* bird_killing.wav */; };
+		9C45E10715F5386F00430F4F /* leaves_button_active.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C45E10615F5386F00430F4F /* leaves_button_active.wav */; };
+		9C45E10915F5388800430F4F /* transformer_flying.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C45E10815F5388800430F4F /* transformer_flying.wav */; };
 		9C5BE8F215D67D3000B179C1 /* MGArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5BE8F115D67D3000B179C1 /* MGArrow.m */; };
 		9C85040515C9618F00F9685B /* MGMaterialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85040415C9618F00F9685B /* MGMaterialController.m */; };
 		9C85041215C9B31D00F9685B /* MGTexturedQuad.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85041115C9B31C00F9685B /* MGTexturedQuad.m */; };
@@ -151,6 +156,11 @@
 		9C44E48615A36C8800D27255 /* MGFlyingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFlyingObject.h; sourceTree = "<group>"; };
 		9C44E48815A4AF2200D27255 /* MGFeathers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFeathers.h; sourceTree = "<group>"; };
 		9C44E48915A4AF2300D27255 /* MGFeathers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFeathers.m; sourceTree = "<group>"; };
+		9C45E10015F5237B00430F4F /* button_click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = button_click.wav; sourceTree = "<group>"; };
+		9C45E10215F524DE00430F4F /* leave_taking.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = leave_taking.wav; sourceTree = "<group>"; };
+		9C45E10415F5273C00430F4F /* bird_killing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bird_killing.wav; sourceTree = "<group>"; };
+		9C45E10615F5386F00430F4F /* leaves_button_active.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = leaves_button_active.wav; sourceTree = "<group>"; };
+		9C45E10815F5388800430F4F /* transformer_flying.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = transformer_flying.wav; sourceTree = "<group>"; };
 		9C5BE8F015D67D3000B179C1 /* MGArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGArrow.h; sourceTree = "<group>"; };
 		9C5BE8F115D67D3000B179C1 /* MGArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGArrow.m; sourceTree = "<group>"; };
 		9C85040315C9618F00F9685B /* MGMaterialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMaterialController.h; sourceTree = "<group>"; };
@@ -370,6 +380,11 @@
 		9C2F00BF15EBEED800E23250 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				9C45E10815F5388800430F4F /* transformer_flying.wav */,
+				9C45E10615F5386F00430F4F /* leaves_button_active.wav */,
+				9C45E10415F5273C00430F4F /* bird_killing.wav */,
+				9C45E10215F524DE00430F4F /* leave_taking.wav */,
+				9C45E10015F5237B00430F4F /* button_click.wav */,
 				9CD40E4815F3EC81008AEEF2 /* saved_duck.wav */,
 				9CD40E4615F3CAFA008AEEF2 /* background.wav */,
 				9CD40E3A15F37551008AEEF2 /* egg_crash.wav */,
@@ -677,6 +692,11 @@
 				9CD40E3F15F37551008AEEF2 /* fried_egg.wav in Resources */,
 				9CD40E4715F3CAFA008AEEF2 /* background.wav in Resources */,
 				9CD40E4915F3EC81008AEEF2 /* saved_duck.wav in Resources */,
+				9C45E10115F5237B00430F4F /* button_click.wav in Resources */,
+				9C45E10315F524DE00430F4F /* leave_taking.wav in Resources */,
+				9C45E10515F5273C00430F4F /* bird_killing.wav in Resources */,
+				9C45E10715F5386F00430F4F /* leaves_button_active.wav in Resources */,
+				9C45E10915F5388800430F4F /* transformer_flying.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

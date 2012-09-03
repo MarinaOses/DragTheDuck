@@ -23,18 +23,38 @@
     ALuint outputSourceBrokenEgg;
     ALuint outputSourceFriedEgg;
     ALuint outputSourceBackground;
+    ALuint outputSourceSavedDuck;
+    ALuint outputSourceButtonClick;
+    ALuint outputSourceLeaveTaking;
+    ALuint outputSourceBirdKilling;
+    ALuint outputSourceLeavesButtonActive;
+    ALuint outputSourceTransformerFlying;
     
     ALuint outputBufferDuck;
     ALuint outputBufferKilledDuck;
     ALuint outputBufferBrokenEgg;
     ALuint outputBufferFriedEgg;
     ALuint outputBufferBackground;
+    ALuint outputBufferSavedDuck;
+    ALuint outputBufferButtonClick;
+    ALuint outputBufferLeaveTaking;
+    ALuint outputBufferBirdKilling;
+    ALuint outputBufferLeavesButtonActive;
+    ALuint outputBufferTransformerFlying;
+
     
     void *duckPCMData;
     void *killedDuckPCMData;
     void *brokenEggPCMData;
     void *friedEggPCMData;
     void *backgroundPCMData;
+    void *savedDuckPCMData;
+    void *buttonClickPCMData;
+    void *leaveTakingPCMData;
+    void *birdKillingPCMData;
+    void *leavesButtonActivePCMData;
+    void *transformerFlyingPCMData;
+    
 }
 
 @property (nonatomic, assign) ALCcontext *openALContext;
@@ -45,8 +65,16 @@
 - (void)playKilledDuck;
 - (void)playBrokenEgg;
 - (void)playFriedEgg;
+- (void)playSavedDuck;
+- (void)playButtonClick;
+- (void)playLeaveTaking;
+- (void)playBirdKilling;
 - (void) playBackground;
 - (void) stopBackground;
+- (void) playLeavesButtonActive;
+- (void) stopLeavesButtonActive;
+- (void) playTransformerFlying;
+- (void) stopTransformerFlying;
 - (void)loading;
 
 @end
