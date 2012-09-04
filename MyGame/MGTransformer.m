@@ -76,7 +76,7 @@
         return;
     }
     else {
-        [[MGOpenALSoundController sharedSoundController] playBirdKilling];
+        [[MGOpenALSoundController sharedSoundController].birdKillingSound playWithVolume:1.0f];
         //Animacion: igual no hace falta el remove
         [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
         //sumar a marcador "número de pájaros muertos"

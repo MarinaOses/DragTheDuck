@@ -6,75 +6,50 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <OpenAL/al.h>
-#import <OpenAL/alc.h>
+
 
 #import "MGAudioSessionSupport.h"
-#import "MGOpenALSupport.h"
+#import "MGSound.h"
 
 //ALC: Audio Library Context
 @interface MGOpenALSoundController : NSObject {
     ALCdevice *openALDevice;
     ALCcontext *openALContext;
     
-    ALuint outputSourceDuck;
-    ALuint outputSourceKilledDuck;
-    ALuint outputSourceBrokenEgg;
-    ALuint outputSourceFriedEgg;
-    ALuint outputSourceBackground;
-    ALuint outputSourceSavedDuck;
-    ALuint outputSourceButtonClick;
-    ALuint outputSourceLeaveTaking;
-    ALuint outputSourceBirdKilling;
-    ALuint outputSourceLeavesButtonActive;
-    ALuint outputSourceTransformerFlying;
-    
-    ALuint outputBufferDuck;
-    ALuint outputBufferKilledDuck;
-    ALuint outputBufferBrokenEgg;
-    ALuint outputBufferFriedEgg;
-    ALuint outputBufferBackground;
-    ALuint outputBufferSavedDuck;
-    ALuint outputBufferButtonClick;
-    ALuint outputBufferLeaveTaking;
-    ALuint outputBufferBirdKilling;
-    ALuint outputBufferLeavesButtonActive;
-    ALuint outputBufferTransformerFlying;
-
-    
-    void *duckPCMData;
-    void *killedDuckPCMData;
-    void *brokenEggPCMData;
-    void *friedEggPCMData;
-    void *backgroundPCMData;
-    void *savedDuckPCMData;
-    void *buttonClickPCMData;
-    void *leaveTakingPCMData;
-    void *birdKillingPCMData;
-    void *leavesButtonActivePCMData;
-    void *transformerFlyingPCMData;
+    MGSound *_duckSound;
+    MGSound *_killedDuckSound;
+    MGSound *_brokenEggSound;
+    MGSound *_friedEggSound;
+    MGSound *_backgroundSound;
+    MGSound *_savedDuckSound;
+    MGSound *_buttonClickSound;
+    MGSound *_leaveTakingSound;
+    MGSound *_birdKillingSound;
+    MGSound *_leavesButtonActiveSound;
+    MGSound *_transformerFlyingSound;
     
 }
 
 @property (nonatomic, assign) ALCcontext *openALContext;
+@property (nonatomic, retain) MGSound *duckSound;
+@property (nonatomic, retain) MGSound *killedDuckSound;
+@property (nonatomic, retain) MGSound *brokenEggSound;
+@property (nonatomic, retain) MGSound *friedEggSound;
+@property (nonatomic, retain) MGSound *backgroundSound;
+@property (nonatomic, retain) MGSound *savedDuckSound;
+@property (nonatomic, retain) MGSound *buttonClickSound;
+@property (nonatomic, retain) MGSound *leaveTakingSound;
+@property (nonatomic, retain) MGSound *birdKillingSound;
+@property (nonatomic, retain) MGSound *leavesButtonActiveSound;
+@property (nonatomic, retain) MGSound *transformerFlyingSound;
+
+
 
 + (MGOpenALSoundController *) sharedSoundController;
 - (void)initOpenAL;
-- (void)playDuck;
-- (void)playKilledDuck;
-- (void)playBrokenEgg;
-- (void)playFriedEgg;
-- (void)playSavedDuck;
-- (void)playButtonClick;
-- (void)playLeaveTaking;
-- (void)playBirdKilling;
-- (void) playBackground;
-- (void) stopBackground;
-- (void) playLeavesButtonActive;
-- (void) stopLeavesButtonActive;
-- (void) playTransformerFlying;
-- (void) stopTransformerFlying;
+- (void)pauseAllSounds;
+- (void)stopAllSounds;
+- (void)restartAllSounds;
 - (void)loading;
 
 @end

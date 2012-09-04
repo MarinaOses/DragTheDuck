@@ -82,7 +82,7 @@
         [self.scoreTransmitter aNewDuckIsKilled];
         [self.transformationController spawnFeathersFrom:self WithColor:DUCK_COLOR];
         [self.transformationController spawnEggFrom:self];
-        [[MGOpenALSoundController sharedSoundController] playKilledDuck];
+        [[MGOpenALSoundController sharedSoundController].killedDuckSound playWithVolume:1.0f];
         //sumar a marcador "número de patos muertos"
         
     }
@@ -97,7 +97,7 @@
     }
     else if ([scene_object isKindOfClass:[MGLeaf class]]) {
         if ([self.scoreTransmitter isPossibleToCollideWithLeaves]) {
-            [[MGOpenALSoundController sharedSoundController] playLeaveTaking];
+            [[MGOpenALSoundController sharedSoundController].leaveTakingSound playWithVolume:1.0f];
             [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
             [self.scoreTransmitter aNewLeafIsTaken];
         }

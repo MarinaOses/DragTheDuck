@@ -99,7 +99,7 @@
 
 - (void)goodTouch {
     if (!pressed) {
-        [[MGOpenALSoundController sharedSoundController] playButtonClick];
+        [[MGOpenALSoundController sharedSoundController].buttonClickSound playWithVolume:1.0f];
         pressed = YES;
         [self.target performSelector:self.buttonGoodAction];
     }

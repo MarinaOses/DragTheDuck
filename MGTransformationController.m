@@ -33,7 +33,7 @@
     self.duckWhoStartsTheTransformation = duck;
     MGTransformer *transformerToAdd = [[MGTransformer alloc] initWithDuck:duck];
     [self.sceneObjects addObject:transformerToAdd];
-    [[MGOpenALSoundController sharedSoundController] playTransformerFlying];
+    [[MGOpenALSoundController sharedSoundController].transformerFlyingSound playWithVolume:1.0f];
     [transformerToAdd release];
 }
 
@@ -48,8 +48,8 @@
         [duckToAdd start];
     }
     [self.sceneObjects addObject:duckToAdd];
-    [[MGOpenALSoundController sharedSoundController] stopTransformerFlying];
-    [[MGOpenALSoundController sharedSoundController] playDuck];
+    [[MGOpenALSoundController sharedSoundController].transformerFlyingSound stop];
+    [[MGOpenALSoundController sharedSoundController].duckSound playWithVolume:1.0f];
     self.duckWhoStartsTheTransformation = nil;
     
 }

@@ -57,7 +57,7 @@
     if (self.nextLifeWithoutUsing < 0) {
         [self.sceneController.stateManager stopActiveState];
     }
-    [[MGOpenALSoundController sharedSoundController] playFriedEgg];
+    [[MGOpenALSoundController sharedSoundController].friedEggSound playWithVolume:1.0f];
 }
 
 - (void)aLifeHasBeenRecovered {
