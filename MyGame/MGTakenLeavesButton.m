@@ -72,7 +72,9 @@
 }
 
 - (void)update {
-    [self checkIfShowerLayerHasToGoUp:self.scoreBoard.takenLeaves];    
+    if (!isActive) {
+        [self checkIfShowerLayerHasToGoUp:self.scoreBoard.takenLeaves];    
+    }
     [super update];
 }
 

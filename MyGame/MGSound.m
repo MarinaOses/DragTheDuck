@@ -38,15 +38,17 @@
         alSourcei(outputSource, AL_BUFFER, outputBuffer);
         loopProperty = loop_property;
         loopPropertyCurrentlyEnabled = NO;
+        loopPlaying = NO;
     }
     return self;
 }
 
 
 - (void)playWithVolume:(ALfloat)volume {
-    if (loopProperty) {
+    if (loopProperty && !loopPlaying) {
         alSourcei(outputSource, AL_LOOPING, AL_TRUE);
         loopPropertyCurrentlyEnabled = YES;
+        loopPlaying = YES;
     }
     alSourcef(outputSource, AL_GAIN, volume);
     alSourcePlay(outputSource);
@@ -55,9 +57,10 @@
 
 - (void)stop {
     alSourceStop(outputSource);
-    if (loopProperty) {
+    if (loopProperty && loopPlaying) {
         alSourcei(outputSource, AL_LOOPING, AL_FALSE);
         loopPropertyCurrentlyEnabled = NO;
+        loopPlaying = NO;
     }
 }
 

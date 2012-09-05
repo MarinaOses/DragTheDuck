@@ -79,7 +79,6 @@
 
 - (void)goToPauseState {
     [[MGOpenALSoundController sharedSoundController] pauseAllSounds];
-    //AL_API void AL_APIENTRY alSourcePause( ALuint sid );
     if ([self.activeState isKindOfClass:[MGPlayState class]]) {
         self.playStateToRemember = (MGPlayState *)self.activeState;
         [self.sceneController.timeController deactivate];

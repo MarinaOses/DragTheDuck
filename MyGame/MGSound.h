@@ -19,6 +19,7 @@
     void *PCMData;
     BOOL loopProperty;
     BOOL loopPropertyCurrentlyEnabled;
+    BOOL loopPlaying;
 }
 
 @property (nonatomic, assign) BOOL loopPropertyCurrentlyEnabled;

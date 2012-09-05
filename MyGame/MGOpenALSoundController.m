@@ -89,17 +89,17 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
         return;
     }
     
-    self.duckSound = [[MGSound alloc] initWithFileName:@"duck" LoopProperty:NO];
-    self.killedDuckSound = [[MGSound alloc] initWithFileName:@"egg_falling" LoopProperty:NO];
-    self.brokenEggSound = [[MGSound alloc] initWithFileName:@"egg_crash" LoopProperty:NO];
-    self.friedEggSound = [[MGSound alloc] initWithFileName:@"fried_egg" LoopProperty:NO];
-    self.backgroundSound = [[MGSound alloc] initWithFileName:@"background" LoopProperty:YES];
-    self.savedDuckSound = [[MGSound alloc] initWithFileName:@"saved_duck" LoopProperty:NO];
-    self.buttonClickSound = [[MGSound alloc] initWithFileName:@"button_click" LoopProperty:NO];
-    self.leaveTakingSound = [[MGSound alloc] initWithFileName:@"leave_taking" LoopProperty:NO];
-    self.birdKillingSound = [[MGSound alloc] initWithFileName:@"bird_killing" LoopProperty:NO];
-    self.leavesButtonActiveSound = [[MGSound alloc] initWithFileName:@"leaves_button_active" LoopProperty:YES];
-    self.transformerFlyingSound = [[MGSound alloc] initWithFileName:@"transformer_flying" LoopProperty:YES];
+    _duckSound = [[MGSound alloc] initWithFileName:@"duck" LoopProperty:NO];
+    _killedDuckSound = [[MGSound alloc] initWithFileName:@"egg_falling" LoopProperty:NO];
+    _brokenEggSound = [[MGSound alloc] initWithFileName:@"egg_crash" LoopProperty:NO];
+    _friedEggSound = [[MGSound alloc] initWithFileName:@"fried_egg" LoopProperty:NO];
+    _backgroundSound = [[MGSound alloc] initWithFileName:@"background" LoopProperty:YES];
+    _savedDuckSound = [[MGSound alloc] initWithFileName:@"saved_duck" LoopProperty:NO];
+    _buttonClickSound = [[MGSound alloc] initWithFileName:@"button_click" LoopProperty:NO];
+    _leaveTakingSound = [[MGSound alloc] initWithFileName:@"leave_taking" LoopProperty:NO];
+    _birdKillingSound = [[MGSound alloc] initWithFileName:@"bird_killing" LoopProperty:NO];
+    _leavesButtonActiveSound = [[MGSound alloc] initWithFileName:@"leaves_button_active" LoopProperty:YES];
+    _transformerFlyingSound = [[MGSound alloc] initWithFileName:@"transformer_flying" LoopProperty:YES];
 
 }
 
