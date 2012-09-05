@@ -44,11 +44,12 @@
     [self.sceneObjects addObject:playButton];
     [playButton release];
     
+    BOOL soundEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"soundEnabled"];
     //SOUNDBUTTON
-    MGTexturedButton *soundButton = [[MGTexturedButton alloc] initWithSceneController:self.sceneControllerForState UpKey:@"mg_button_sound_off.png" downKey:@"mg_button_sound_on.png"];
+    MGSoundButton *soundButton = [[MGSoundButton alloc] initWithSceneController:self.sceneControllerForState UpKey:@"mg_button_sound_off.png" downKey:@"mg_button_sound_on.png" Enabled:soundEnabled];
     soundButton.scale = MGPointMake(60.0, 60.0, 1.0);
     soundButton.translation = MGPointMake(207.0, -127.0, 0.0);
-    soundButton.target = self;
+    soundButton.target = [MGOpenALSoundController sharedSoundController];
     soundButton.buttonGoodAction = @selector(goodTouchOfSoundButtonIsDone);
     soundButton.buttonBadAction = @selector(badTouchOfSoundButtonIsDone);
     [self.sceneObjects addObject:soundButton];
@@ -98,14 +99,6 @@
 }
 
 
-- (void)goodTouchOfSoundButtonIsDone {
-    [self.sceneControllerForState.stateManager changeSoundState];
-    
-}
-
-- (void)badTouchOfSoundButtonIsDone {
-    //Podría ampliarse la funcionalidad
-}
 
 - (void)goodTouchOfHelpButtonIsDone {
     [self.sceneControllerForState.stateManager stopActiveState];

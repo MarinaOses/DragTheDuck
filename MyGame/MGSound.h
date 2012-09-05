@@ -12,6 +12,8 @@
 
 #import "MGOpenALSupport.h"
 
+@class MGOpenALSoundController;
+
 
 @interface MGSound : NSObject {
     ALuint outputSource;

@@ -8,6 +8,8 @@
 
 #import "MGButton.h"
 
+@class MGSceneController;
+
 @interface MGTexturedButton : MGButton {
     MGTexturedQuad *_upQuad;
     MGTexturedQuad *_downQuad;

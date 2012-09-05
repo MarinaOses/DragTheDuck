@@ -28,6 +28,8 @@
     MGSound *_leavesButtonActiveSound;
     MGSound *_transformerFlyingSound;
     
+    BOOL soundEnabled;
+    
 }
 
 @property (nonatomic, assign) ALCcontext *openALContext;
@@ -42,7 +44,7 @@
 @property (nonatomic, retain) MGSound *birdKillingSound;
 @property (nonatomic, retain) MGSound *leavesButtonActiveSound;
 @property (nonatomic, retain) MGSound *transformerFlyingSound;
-
+@property (nonatomic, assign) BOOL soundEnabled;
 
 
 + (MGOpenALSoundController *) sharedSoundController;

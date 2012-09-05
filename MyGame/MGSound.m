@@ -8,6 +8,8 @@
 
 #import "MGSound.h"
 
+#import "MGOpenALSoundController.h"
+
 @implementation MGSound
 @synthesize loopPropertyCurrentlyEnabled;
 
@@ -45,37 +47,47 @@
 
 
 - (void)playWithVolume:(ALfloat)volume {
-    if (loopProperty && !loopPlaying) {
-        alSourcei(outputSource, AL_LOOPING, AL_TRUE);
-        loopPropertyCurrentlyEnabled = YES;
-        loopPlaying = YES;
+    if ([MGOpenALSoundController sharedSoundController].soundEnabled) {
+        if (loopProperty && !loopPlaying) {
+            alSourcei(outputSource, AL_LOOPING, AL_TRUE);
+            loopPropertyCurrentlyEnabled = YES;
+            loopPlaying = YES;
+        }
+        alSourcef(outputSource, AL_GAIN, volume);
+        alSourcePlay(outputSource);
     }
-    alSourcef(outputSource, AL_GAIN, volume);
-    alSourcePlay(outputSource);
+    
 }
 
 
 - (void)stop {
-    alSourceStop(outputSource);
-    if (loopProperty && loopPlaying) {
-        alSourcei(outputSource, AL_LOOPING, AL_FALSE);
-        loopPropertyCurrentlyEnabled = NO;
-        loopPlaying = NO;
+    if ([MGOpenALSoundController sharedSoundController].soundEnabled) {
+        alSourceStop(outputSource);
+        if (loopProperty && loopPlaying) {
+            alSourcei(outputSource, AL_LOOPING, AL_FALSE);
+            loopPropertyCurrentlyEnabled = NO;
+            loopPlaying = NO;
+        }
     }
 }
 
 - (void)pause {
-    alSourcePause(outputSource);
-    if (loopProperty) {
-        alSourcei(outputSource, AL_LOOPING, AL_FALSE);
+    if ([MGOpenALSoundController sharedSoundController].soundEnabled) {
+        alSourcePause(outputSource);
+        if (loopProperty) {
+            alSourcei(outputSource, AL_LOOPING, AL_FALSE);
+        }
     }
+    
 }
 
 - (void)restart {
-    if (loopProperty) {
-        alSourcei(outputSource, AL_LOOPING, AL_TRUE);
+    if ([MGOpenALSoundController sharedSoundController].soundEnabled) {
+        if (loopProperty) {
+            alSourcei(outputSource, AL_LOOPING, AL_TRUE);
+        }
+        alSourcePlay(outputSource);
     }
-    alSourcePlay(outputSource);
 }
 
 - (void)dealloc {

@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "MGTexturedButton.h"
+#import "MGSoundButton.h"
 #import "MGState.h"
+#import "MGOpenALSoundController.h"
 
 @class MGSceneController;
 

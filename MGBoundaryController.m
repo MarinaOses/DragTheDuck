@@ -76,6 +76,7 @@
             MGTransformer *transformer = (MGTransformer *)mobile_object;
             transformer.finger.isFree = YES;
             if (centerX > (midYOfWindowRect + midXOfMeshRect)) { //Derecha
+                [[MGOpenALSoundController sharedSoundController].transformerFlyingSound stop];
                 [self.scoreTransmitter theTransformerHasCrossedTheLine];
                 [self.sceneObjectDestroyer markToRemoveSceneObject:mobile_object];
             }

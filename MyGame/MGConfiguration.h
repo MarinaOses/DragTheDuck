@@ -170,7 +170,7 @@
 
 
 //--NUMBER OF SECONDS BETWEEN BEES APPEARANCES
-#define MINSEC_TO_BEE_APPEARANCE 40
+#define MINSEC_TO_BEE_APPEARANCE 10
 #define MAXSEC_TO_BEE_APPEARANCE 70
 
 
@@ -210,7 +210,7 @@
 #define BIRDS_TO_RECOVER_A_LIFE 5
 
 //**********************************************************************************************
-#define MAX_TAKEN_LEAVES 1
+#define MAX_TAKEN_LEAVES 5
 
 //**********************************************************************************************
 #define EGG_INITIAL_JUMP_SPEED 2.0

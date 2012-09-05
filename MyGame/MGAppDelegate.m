@@ -27,6 +27,10 @@
 
 -(void) applicationDidFinishLaunching:(UIApplication *)application {
     [application setStatusBarHidden:YES];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//    [userDefaults setBool:self.soundEnabled forKey:@"soundEnabled"];
+    [userDefaults registerDefaults:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"soundEnabled"]];
+//    [userDefaults synchronize];
     //Se crea un objeto sceneController 
     MGSceneController *sceneController = [[MGSceneController alloc] init];
     

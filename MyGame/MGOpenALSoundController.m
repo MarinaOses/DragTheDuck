@@ -42,7 +42,7 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
 @synthesize birdKillingSound = _birdKillingSound;
 @synthesize leavesButtonActiveSound = _leavesButtonActiveSound;
 @synthesize transformerFlyingSound = _transformerFlyingSound;
-
+@synthesize soundEnabled;
 
 + (MGOpenALSoundController *) sharedSoundController {
     static MGOpenALSoundController *shared_sound_controller;
@@ -58,6 +58,7 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
 - (id)init {
     self = [super init];
     if (self) {
+        soundEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"soundEnabled"];
         initAudioSession(kAudioSessionCategory_AmbientSound, MyInterruptionCallback, self);
         [self initOpenAL];
     }
@@ -134,6 +135,17 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
     if ([self.transformerFlyingSound loopPropertyCurrentlyEnabled]) {
         [self.transformerFlyingSound restart];
     }
+}
+
+- (void)goodTouchOfSoundButtonIsDone {
+    self.soundEnabled = !self.soundEnabled;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:self.soundEnabled forKey:@"soundEnabled"];
+    [userDefaults synchronize];
+}
+
+- (void)badTouchOfSoundButtonIsDone {
+    //Podría ampliarse la funcionalidad
 }
 
 

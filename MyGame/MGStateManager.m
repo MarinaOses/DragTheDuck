@@ -105,10 +105,7 @@
     [self.sceneController.timeController activate];
 }
 
-- (void)changeSoundState {
-    //Se realizará al final de todo
-    NSLog(@"In manager: ChangeSoundState()");
-}
+
 
 
 - (void)dealloc {

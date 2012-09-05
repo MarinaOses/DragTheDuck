@@ -8,6 +8,9 @@
 
 #import "MGTexturedButton.h"
 
+
+#import "MGSceneController.h"
+
 @implementation MGTexturedButton
 @synthesize upQuad = _upQuad;
 @synthesize downQuad = _downQuad;

@@ -33,7 +33,6 @@
 - (void)restartPlayState;
 - (void)goToPauseState;
 - (void)goToGameOverStateWith:(MGScoreBoard *)score_board;
-- (void)changeSoundState;
 - (void)stopActiveState;
 
 @end

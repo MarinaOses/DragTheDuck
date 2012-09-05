@@ -20,6 +20,7 @@
 		9C15DD941553EF650095FBED /* MGGameOverState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD931553EF620095FBED /* MGGameOverState.m */; };
 		9C15DD971553EFB70095FBED /* MGPauseState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD961553EFB70095FBED /* MGPauseState.m */; };
 		9C15DD9F1553F84C0095FBED /* MGBird.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C15DD9E1553F84C0095FBED /* MGBird.m */; };
+		9C1A8B3215F7DA6C00809A17 /* MGSoundButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A8B3115F7DA6B00809A17 /* MGSoundButton.m */; };
 		9C25125015ED377F000C8563 /* duck.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C25124F15ED377F000C8563 /* duck.wav */; };
 		9C2661CB158B5FA500F06E98 /* MGIconPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2661CA158B5FA400F06E98 /* MGIconPresenter.m */; };
 		9C2661D01590914000F06E98 /* MGTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2661CF1590913F00F06E98 /* MGTransformer.m */; };
@@ -127,6 +128,8 @@
 		9C15DD961553EFB70095FBED /* MGPauseState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGPauseState.m; sourceTree = "<group>"; };
 		9C15DD9D1553F84C0095FBED /* MGBird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGBird.h; sourceTree = "<group>"; };
 		9C15DD9E1553F84C0095FBED /* MGBird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGBird.m; sourceTree = "<group>"; };
+		9C1A8B3015F7DA6B00809A17 /* MGSoundButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSoundButton.h; sourceTree = "<group>"; };
+		9C1A8B3115F7DA6B00809A17 /* MGSoundButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSoundButton.m; sourceTree = "<group>"; };
 		9C25124F15ED377F000C8563 /* duck.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = duck.wav; sourceTree = "<group>"; };
 		9C2661C9158B5FA400F06E98 /* MGIconPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGIconPresenter.h; sourceTree = "<group>"; };
 		9C2661CA158B5FA400F06E98 /* MGIconPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGIconPresenter.m; sourceTree = "<group>"; };
@@ -160,7 +163,7 @@
 		9C45E10015F5237B00430F4F /* button_click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = button_click.wav; sourceTree = "<group>"; };
 		9C45E10215F524DE00430F4F /* leave_taking.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = leave_taking.wav; sourceTree = "<group>"; };
 		9C45E10415F5273C00430F4F /* bird_killing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bird_killing.wav; sourceTree = "<group>"; };
-		9C45E10615F5386F00430F4F /* leaves_button_active.wav */ = {isa = PBXFileReference; path = leaves_button_active.wav; sourceTree = "<group>"; };
+		9C45E10615F5386F00430F4F /* leaves_button_active.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = leaves_button_active.wav; sourceTree = "<group>"; };
 		9C45E10815F5388800430F4F /* transformer_flying.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = transformer_flying.wav; sourceTree = "<group>"; };
 		9C5BE8F015D67D3000B179C1 /* MGArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGArrow.h; sourceTree = "<group>"; };
 		9C5BE8F115D67D3000B179C1 /* MGArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGArrow.m; sourceTree = "<group>"; };
@@ -323,6 +326,8 @@
 				9CEDC28B15D43AFE00618CA9 /* MGNest.m */,
 				9C5BE8F015D67D3000B179C1 /* MGArrow.h */,
 				9C5BE8F115D67D3000B179C1 /* MGArrow.m */,
+				9C1A8B3015F7DA6B00809A17 /* MGSoundButton.h */,
+				9C1A8B3115F7DA6B00809A17 /* MGSoundButton.m */,
 			);
 			name = "Scene Objects";
 			sourceTree = "<group>";
@@ -777,6 +782,7 @@
 				9C2F00A515E6A13400E23250 /* MGOpenALSoundController.m in Sources */,
 				9C2F00B415E7DC1700E23250 /* MGOpenALSupport.c in Sources */,
 				9CF666E615F6743F00C3CBD9 /* MGSound.m in Sources */,
+				9C1A8B3215F7DA6C00809A17 /* MGSoundButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
