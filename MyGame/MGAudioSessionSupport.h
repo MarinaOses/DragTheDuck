@@ -14,6 +14,6 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-bool initAudioSession(UInt32 session_category, AudioSessionInterruptionListener interruption_callback, void *user_data);
-
+bool initAudioSession(UInt32 session_category, AudioSessionInterruptionListener interruption_callback, void *user_data, Float64 sample_rate);
+void setPreferredSampleRate(Float64 preferred_sample_rate);
 #endif

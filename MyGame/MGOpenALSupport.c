@@ -26,6 +26,17 @@ ALvoid alBufferDataStatic(ALint buffer_id, ALenum al_format, ALvoid *pcm_data, A
     return;
 }
 
+ALvoid alcMacOSXMixerOutputRate(const ALdouble sample_rate) {
+    static alcMacOSXMixerOutputRateProcPtr the_proc = NULL;
+    if (the_proc == NULL) {
+        the_proc = (alcMacOSXMixerOutputRateProcPtr) alGetProcAddress((const ALCchar *) "alcMacOSXMixerOutputRate");
+    }
+    else {
+        the_proc(sample_rate);
+    }
+    return;
+}
+
 //Se encarga de abrir un fichero
 ExtAudioFileRef MyGetExtAudioFileRef(CFURLRef file_url, AudioStreamBasicDescription *audio_description) {
     OSStatus error_status = noErr;

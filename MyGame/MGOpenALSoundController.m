@@ -8,6 +8,10 @@
 
 #import "MGOpenALSoundController.h"
 
+#define PREFERRED_SAMPLE_OUTPUT_RATE 22050.0
+#define MAX_NUMBER_OF_ALSOURCES 32
+
+
 static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
     MGOpenALSoundController *openALSoundController = (MGOpenALSoundController *)user_data;
     OSStatus the_error = noErr;
@@ -31,17 +35,6 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
 
 @implementation MGOpenALSoundController
 @synthesize openALContext;
-@synthesize duckSound = _duckSound;
-@synthesize killedDuckSound = _killedDuckSound;
-@synthesize brokenEggSound = _brokenEggSound;
-@synthesize friedEggSound = _friedEggSound;
-@synthesize backgroundSound = _backgroundSound;
-@synthesize savedDuckSound = _savedDuckSound;
-@synthesize buttonClickSound = _buttonClickSound;
-@synthesize leaveTakingSound = _leaveTakingSound;
-@synthesize birdKillingSound = _birdKillingSound;
-@synthesize leavesButtonActiveSound = _leavesButtonActiveSound;
-@synthesize transformerFlyingSound = _transformerFlyingSound;
 @synthesize soundEnabled;
 
 + (MGOpenALSoundController *) sharedSoundController {
@@ -59,7 +52,8 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
     self = [super init];
     if (self) {
         soundEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"soundEnabled"];
-        initAudioSession(kAudioSessionCategory_AmbientSound, MyInterruptionCallback, self);
+        initAudioSession(kAudioSessionCategory_AmbientSound, MyInterruptionCallback, self, PREFERRED_SAMPLE_OUTPUT_RATE);
+        soundFileDictionary = [[NSMutableDictionary alloc] init]; 
         [self initOpenAL];
     }
     return self;
@@ -76,6 +70,7 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
     if (openALDevice) {
         // 0 -> ALC_MONO_SOURCES
         // 1 -> ALC_STEREO_SOURCES
+        alcMacOSXMixerOutputRate(PREFERRED_SAMPLE_OUTPUT_RATE);
         openALContext = alcCreateContext(openALDevice, 0);
         if (openALContext) {
             alcMakeContextCurrent(openALContext);
@@ -89,53 +84,42 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
         NSLog(@"No se ha podido abrir el dispositivo para el audio.");
         return;
     }
-    
-    _duckSound = [[MGSound alloc] initWithFileName:@"duck" LoopProperty:NO];
-    _killedDuckSound = [[MGSound alloc] initWithFileName:@"egg_falling" LoopProperty:NO];
-    _brokenEggSound = [[MGSound alloc] initWithFileName:@"egg_crash" LoopProperty:NO];
-    _friedEggSound = [[MGSound alloc] initWithFileName:@"fried_egg" LoopProperty:NO];
-    _backgroundSound = [[MGSound alloc] initWithFileName:@"background" LoopProperty:YES];
-    _savedDuckSound = [[MGSound alloc] initWithFileName:@"saved_duck" LoopProperty:NO];
-    _buttonClickSound = [[MGSound alloc] initWithFileName:@"button_click" LoopProperty:NO];
-    _leaveTakingSound = [[MGSound alloc] initWithFileName:@"leave_taking" LoopProperty:NO];
-    _birdKillingSound = [[MGSound alloc] initWithFileName:@"bird_killing" LoopProperty:NO];
-    _leavesButtonActiveSound = [[MGSound alloc] initWithFileName:@"leaves_button_active" LoopProperty:YES];
-    _transformerFlyingSound = [[MGSound alloc] initWithFileName:@"transformer_flying" LoopProperty:YES];
-
 }
 
-- (void)pauseAllSounds {
-    [self.backgroundSound pause];
-    
-    if ([self.leavesButtonActiveSound loopPropertyCurrentlyEnabled]) {
-        [self.leavesButtonActiveSound pause];
-    }
-    if ([self.transformerFlyingSound loopPropertyCurrentlyEnabled]) {
-        [self.transformerFlyingSound pause];
-    }
-}
 
-- (void)stopAllSounds {
-    [self.backgroundSound stop];
 
-    if ([self.leavesButtonActiveSound loopPropertyCurrentlyEnabled]) {
-        [self.leavesButtonActiveSound stop];
-    }
-    if ([self.transformerFlyingSound loopPropertyCurrentlyEnabled]) {
-        [self.transformerFlyingSound stop];
-    }
-}
-
-- (void)restartAllSounds {
-    [self.backgroundSound restart];
-    
-    if ([self.leavesButtonActiveSound loopPropertyCurrentlyEnabled]) {
-        [self.leavesButtonActiveSound restart];
-    }
-    if ([self.transformerFlyingSound loopPropertyCurrentlyEnabled]) {
-        [self.transformerFlyingSound restart];
-    }
-}
+//- (void)pauseAllSounds {
+//    [self.backgroundSound pause];
+//    
+//    if ([self.leavesButtonActiveSound loopPropertyCurrentlyEnabled]) {
+//        [self.leavesButtonActiveSound pause];
+//    }
+//    if ([self.transformerFlyingSound loopPropertyCurrentlyEnabled]) {
+//        [self.transformerFlyingSound pause];
+//    }
+//}
+//
+//- (void)stopAllSounds {
+//    [self.backgroundSound stop];
+//
+//    if ([self.leavesButtonActiveSound loopPropertyCurrentlyEnabled]) {
+//        [self.leavesButtonActiveSound stop];
+//    }
+//    if ([self.transformerFlyingSound loopPropertyCurrentlyEnabled]) {
+//        [self.transformerFlyingSound stop];
+//    }
+//}
+//
+//- (void)restartAllSounds {
+//    [self.backgroundSound restart];
+//    
+//    if ([self.leavesButtonActiveSound loopPropertyCurrentlyEnabled]) {
+//        [self.leavesButtonActiveSound restart];
+//    }
+//    if ([self.transformerFlyingSound loopPropertyCurrentlyEnabled]) {
+//        [self.transformerFlyingSound restart];
+//    }
+//}
 
 - (void)goodTouchOfSoundButtonIsDone {
     self.soundEnabled = !self.soundEnabled;
@@ -149,23 +133,63 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
 }
 
 
-- (void)tearDownOpenAL {
-    [_duckSound release];
-    [_killedDuckSound release];
-    [_brokenEggSound release];
-    [_friedEggSound release];
-    [_backgroundSound release];
-    [_savedDuckSound release];
-    [_buttonClickSound release];
-    [_leaveTakingSound release];
-    [_birdKillingSound release];
-    [_leavesButtonActiveSound release];
-    [_transformerFlyingSound release];
+/**
+ * Carga un fichero de sonido de la carpeta de recursos y lo almacena en un diccionario global.
+ * Las extensiones de fichero que se van a buscar son: caf, wav, aac, mp3, aiff, mp4, m4a.
+ * @param sound_file_basename Es el nombre base del fichero. No debe llevar la extensión.
+ * @return Devuelve un objeto MGSoundBufferData que es una simple estructura de datos la cual contiene todos los datos relevantes que se necesitan.
+ **/
+
+- (MGSoundBufferData *)soundBufferDataFromFileBaseName:(NSString *)sound_file_basename {
+    ALsizei data_size;
+    ALenum al_format;
+    ALsizei sample_rate;
+    NSURL *file_url = nil;
+    
+    //Primero debe asegurarse que el fichero no ha sido previamente cargado
+    MGSoundBufferData *sound_data = [soundFileDictionary valueForKey:sound_file_basename];
+    if (sound_data != nil) {
+        return sound_data;
+    }
+    else {
+        //Crear un array temporal que contenga todas las posibles extensiones.
+        //Esta no es una lista completa de todos los tipos que puede reconocer Core Audio
+        NSArray *file_extension_array = [[NSArray alloc] initWithObjects:@"caf", @"wav", @"aac", @"mp3", @"aiff", @"mp4", @"m4a", nil];
+        for (NSString *file_extension in file_extension_array) {
+            //Se debe comprobar primero si el fichero existe. Por el contrario, initFileURLWithPath:ofType fallará.
+            NSString *full_file_name = [NSString stringWithFormat:@"%@/%@.%@", [[NSBundle mainBundle] resourcePath], sound_file_basename, file_extension];
+            if ([[NSFileManager defaultManager] fileExistsAtPath:full_file_name]) {
+                file_url = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:sound_file_basename ofType:file_extension]];
+                break;
+            }
+        }
+        [file_extension_array release];
+        
+        if (file_url == nil) {
+            NSLog(@"Error al localizar el fichero con nombre base: %@", sound_file_basename);
+            return nil;
+        }
+        else {
+            void *pcm_data_buffer = MyGetOpenALAudioDataAll((CFURLRef)file_url, &data_size, &al_format, &sample_rate);
+            [file_url release];
+            if (pcm_data_buffer == NULL) {
+                NSLog(@"Error al cargar los datos de audio del fichero: %@", sound_file_basename);
+                return nil;
+            }
+            else {
+                sound_data = [[MGSoundBufferData alloc] init];
+                //Meter los datos pcm en el buffer de openAL
+                [sound_data bindDataBuffer:pcm_data_buffer WithFormat:al_format DataSize:data_size SampleRate:sample_rate];
+                
+                //Poner los datos en el diccionario de manera que podamos encontrarlo por el nombre del fichero
+                [soundFileDictionary setValue:sound_data forKey:sound_file_basename];
+                return [sound_data autorelease];
+            }
+        }
+    }
 }
 
-- (void)dealloc {
-    
-    [self tearDownOpenAL];
+- (void)tearDownOpenAL {
     alcMakeContextCurrent(NULL);
     if (openALContext) {
         alcDestroyContext(openALContext);
@@ -176,6 +200,11 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
         alcCloseDevice(openALDevice);
         openALDevice = NULL;
     }
+}
+
+- (void)dealloc {
+    [self tearDownOpenAL];
+    [soundFileDictionary release];
     [super dealloc];
 }
 

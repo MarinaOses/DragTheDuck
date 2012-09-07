@@ -79,6 +79,7 @@
 		9CE04F651513CCBA00185442 /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE04F641513CCBA00185442 /* EAGLView.m */; };
 		9CE04F67151B463100185442 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F66151B463100185442 /* QuartzCore.framework */; };
 		9CE04F69151B464D00185442 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE04F68151B464D00185442 /* OpenGLES.framework */; };
+		9CE8288A15FA791E00578D13 /* MGSoundBufferData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8288915FA791E00578D13 /* MGSoundBufferData.m */; };
 		9CEDC28C15D43AFE00618CA9 /* MGNest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEDC28B15D43AFE00618CA9 /* MGNest.m */; };
 		9CEEFF16152F70FC0004D9AA /* MGInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEEFF15152F70FC0004D9AA /* MGInputViewController.m */; };
 		9CEEFF1A1531C37F0004D9AA /* MGSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEEFF191531C37F0004D9AA /* MGSceneController.m */; };
@@ -98,7 +99,6 @@
 		9CF26FFA1580CA4600D58C62 /* MGScoreTransmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FF91580CA4500D58C62 /* MGScoreTransmitter.m */; };
 		9CF26FFD1580D63E00D58C62 /* MGTokenExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FFC1580D63D00D58C62 /* MGTokenExtractor.m */; };
 		9CF27000158219AF00D58C62 /* MGNumbersDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF26FFF158219AC00D58C62 /* MGNumbersDelegate.m */; };
-		9CF666E615F6743F00C3CBD9 /* MGSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF666E515F6743F00C3CBD9 /* MGSound.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -226,6 +226,8 @@
 		9CE04F641513CCBA00185442 /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
 		9CE04F66151B463100185442 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9CE04F68151B464D00185442 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		9CE8288815FA791E00578D13 /* MGSoundBufferData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSoundBufferData.h; sourceTree = "<group>"; };
+		9CE8288915FA791E00578D13 /* MGSoundBufferData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSoundBufferData.m; sourceTree = "<group>"; };
 		9CEDC28A15D43AFE00618CA9 /* MGNest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGNest.h; sourceTree = "<group>"; };
 		9CEDC28B15D43AFE00618CA9 /* MGNest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGNest.m; sourceTree = "<group>"; };
 		9CEEFF14152F70FC0004D9AA /* MGInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGInputViewController.h; sourceTree = "<group>"; };
@@ -265,8 +267,6 @@
 		9CF26FFC1580D63D00D58C62 /* MGTokenExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTokenExtractor.m; sourceTree = "<group>"; };
 		9CF26FFE158219AC00D58C62 /* MGNumbersDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGNumbersDelegate.h; sourceTree = "<group>"; };
 		9CF26FFF158219AC00D58C62 /* MGNumbersDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGNumbersDelegate.m; sourceTree = "<group>"; };
-		9CF666E415F6743F00C3CBD9 /* MGSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSound.h; sourceTree = "<group>"; };
-		9CF666E515F6743F00C3CBD9 /* MGSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSound.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -381,8 +381,8 @@
 				9C2F00A415E6A13400E23250 /* MGOpenALSoundController.m */,
 				9C2F00B615E7DC2B00E23250 /* MGOpenALSupport.h */,
 				9C2F00B315E7DC1700E23250 /* MGOpenALSupport.c */,
-				9CF666E415F6743F00C3CBD9 /* MGSound.h */,
-				9CF666E515F6743F00C3CBD9 /* MGSound.m */,
+				9CE8288815FA791E00578D13 /* MGSoundBufferData.h */,
+				9CE8288915FA791E00578D13 /* MGSoundBufferData.m */,
 			);
 			name = Sound;
 			sourceTree = "<group>";
@@ -781,8 +781,8 @@
 				9C2F00A115E6638600E23250 /* MGAudioSessionSupport.c in Sources */,
 				9C2F00A515E6A13400E23250 /* MGOpenALSoundController.m in Sources */,
 				9C2F00B415E7DC1700E23250 /* MGOpenALSupport.c in Sources */,
-				9CF666E615F6743F00C3CBD9 /* MGSound.m in Sources */,
 				9C1A8B3215F7DA6C00809A17 /* MGSoundButton.m in Sources */,
+				9CE8288A15FA791E00578D13 /* MGSoundBufferData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
