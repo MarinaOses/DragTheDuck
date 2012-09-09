@@ -84,7 +84,84 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
         NSLog(@"No se ha podido abrir el dispositivo para el audio.");
         return;
     }
+    //calloc() inicializa la memoria a 0
+    allSourcesArray = (ALuint *)calloc(MAX_NUMBER_OF_ALSOURCES, sizeof(ALuint));
+    alGenSources(MAX_NUMBER_OF_ALSOURCES, allSourcesArray);
+    availableSourcesCollection = [[NSMutableSet alloc] initWithCapacity:MAX_NUMBER_OF_ALSOURCES];
+    inUseSourcesCollection = [[NSMutableSet alloc] initWithCapacity:MAX_NUMBER_OF_ALSOURCES];
+    playingSourcesCollection = [[NSMutableSet alloc] initWithCapacity:MAX_NUMBER_OF_ALSOURCES];
+    
+    for (NSUInteger i = 0; i < MAX_NUMBER_OF_ALSOURCES; i++) {
+        [availableSourcesCollection addObject:[NSNumber numberWithUnsignedInt:allSourcesArray[i]]];
+    }
 }
+
+//Reserva fuentes para usar. Las borra de las fuentes disponibles introduciéndolas en las fuentes en uso.
+//Devuelve el puntero al identificador de la fuente.
+
+- (BOOL)reserveSource:(ALuint *)source_id {
+    NSNumber *source_number;
+    BOOL didSourcesBeReserved = NO;
+    if ([availableSourcesCollection count] != 0) {
+        source_number = [availableSourcesCollection anyObject];
+        [inUseSourcesCollection addObject:source_number];
+        [availableSourcesCollection removeObject:source_number];
+        *source_id = [source_number unsignedIntValue];
+        didSourcesBeReserved = YES;
+    }
+    return didSourcesBeReserved;
+}
+
+- (void)recycleSource:(ALuint)source_id {
+    NSNumber *source_number = [NSNumber numberWithUnsignedInt:source_id];
+    
+    [inUseSourcesCollection removeObject:source_number];
+    [availableSourcesCollection addObject:source_number];
+    
+}
+
+
+- (void)playSound:(ALuint)source_id {
+    [playingSourcesCollection addObject:[NSNumber numberWithUnsignedInt:source_id]];
+    alSourcePlay(source_id);
+    //alSourcei(source_id, AL_GAIN, 1.0f);
+    //alSourcei(source_id, AL_LOOPING, TRUE);
+}
+
+- (void)stopSound:(ALuint)source_id {
+    alSourceStop(source_id);
+    //Separamos el buffer de la fuente
+    alSourcei(source_id, AL_BUFFER, AL_NONE); 
+    //Se hace que el sonido esté de nuevo disponible
+    [playingSourcesCollection removeObject:[NSNumber numberWithUnsignedInt:source_id]];
+    [self recycleSource:source_id];
+}
+
+
+
+//El método de stop() sólo sirve para aquellos sonidos que tengan activada la propiedad LOOP. Los sonidos cortos se paran por sí mismos automáticamente y como no ejecutan el método stop() siguen en "uso" y no pasan a estar disponibles.
+//El siguiente método quita esos sonidos cortos del set de "uso" y los pone en el set de disponibles.
+
+- (void)update {
+    NSMutableSet *itemsToBePurgeCollection = [[NSMutableSet alloc] initWithCapacity:[playingSourcesCollection count]];
+    for (NSNumber *current_number in playingSourcesCollection) {
+        ALuint source_id = [current_number unsignedIntValue];
+        ALenum source_state;
+        alGetSourcei(source_id, AL_SOURCE_STATE, &source_state);
+        if (source_state == AL_STOPPED) {
+            alSourcei(source_id, AL_BUFFER, AL_NONE);
+            [itemsToBePurgeCollection addObject:current_number];
+        }
+    }
+    
+    for (NSNumber *current_number in itemsToBePurgeCollection) {
+        [playingSourcesCollection removeObject:current_number];
+        [self recycleSource:[current_number unsignedIntValue]];
+    }
+    
+    [itemsToBePurgeCollection release];
+}
+
 
 
 
@@ -200,6 +277,9 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
         alcCloseDevice(openALDevice);
         openALDevice = NULL;
     }
+    [availableSourcesCollection release];
+    [inUseSourcesCollection release];
+    [playingSourcesCollection release];
 }
 
 - (void)dealloc {

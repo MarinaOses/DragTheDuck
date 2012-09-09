@@ -20,6 +20,11 @@
     
     NSMutableDictionary *soundFileDictionary;
     
+    ALuint *allSourcesArray;
+    NSMutableSet *availableSourcesCollection;
+    NSMutableSet *inUseSourcesCollection;
+    NSMutableSet *playingSourcesCollection;
+    
     
     BOOL soundEnabled;
     
