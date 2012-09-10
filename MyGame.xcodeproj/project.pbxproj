@@ -37,6 +37,8 @@
 		9C366EF6159A3A8900222538 /* MGLifesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C366EF5159A3A8900222538 /* MGLifesController.m */; };
 		9C366EFC159B827800222538 /* MGBrokenEgg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C366EFB159B827800222538 /* MGBrokenEgg.m */; };
 		9C366EFF159C7F4100222538 /* MGEggBreaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C366EFE159C7F4100222538 /* MGEggBreaker.m */; };
+		9C43C4EF15FE575500886799 /* MGSoundState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C43C4EE15FE575500886799 /* MGSoundState.m */; };
+		9C43C4F315FE591C00886799 /* MGSoundSourceObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C43C4F215FE591C00886799 /* MGSoundSourceObject.m */; };
 		9C44E48A15A4AF2300D27255 /* MGFeathers.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C44E48915A4AF2300D27255 /* MGFeathers.m */; };
 		9C45E10115F5237B00430F4F /* button_click.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C45E10015F5237B00430F4F /* button_click.wav */; };
 		9C45E10315F524DE00430F4F /* leave_taking.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C45E10215F524DE00430F4F /* leave_taking.wav */; };
@@ -157,6 +159,10 @@
 		9C366EFB159B827800222538 /* MGBrokenEgg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGBrokenEgg.m; sourceTree = "<group>"; };
 		9C366EFD159C7F4100222538 /* MGEggBreaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGEggBreaker.h; sourceTree = "<group>"; };
 		9C366EFE159C7F4100222538 /* MGEggBreaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGEggBreaker.m; sourceTree = "<group>"; };
+		9C43C4ED15FE575500886799 /* MGSoundState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSoundState.h; sourceTree = "<group>"; };
+		9C43C4EE15FE575500886799 /* MGSoundState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSoundState.m; sourceTree = "<group>"; };
+		9C43C4F115FE591C00886799 /* MGSoundSourceObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSoundSourceObject.h; sourceTree = "<group>"; };
+		9C43C4F215FE591C00886799 /* MGSoundSourceObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSoundSourceObject.m; sourceTree = "<group>"; };
 		9C44E48615A36C8800D27255 /* MGFlyingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFlyingObject.h; sourceTree = "<group>"; };
 		9C44E48815A4AF2200D27255 /* MGFeathers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFeathers.h; sourceTree = "<group>"; };
 		9C44E48915A4AF2300D27255 /* MGFeathers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFeathers.m; sourceTree = "<group>"; };
@@ -383,6 +389,10 @@
 				9C2F00B315E7DC1700E23250 /* MGOpenALSupport.c */,
 				9CE8288815FA791E00578D13 /* MGSoundBufferData.h */,
 				9CE8288915FA791E00578D13 /* MGSoundBufferData.m */,
+				9C43C4ED15FE575500886799 /* MGSoundState.h */,
+				9C43C4EE15FE575500886799 /* MGSoundState.m */,
+				9C43C4F115FE591C00886799 /* MGSoundSourceObject.h */,
+				9C43C4F215FE591C00886799 /* MGSoundSourceObject.m */,
 			);
 			name = Sound;
 			sourceTree = "<group>";
@@ -783,6 +793,8 @@
 				9C2F00B415E7DC1700E23250 /* MGOpenALSupport.c in Sources */,
 				9C1A8B3215F7DA6C00809A17 /* MGSoundButton.m in Sources */,
 				9CE8288A15FA791E00578D13 /* MGSoundBufferData.m in Sources */,
+				9C43C4EF15FE575500886799 /* MGSoundState.m in Sources */,
+				9C43C4F315FE591C00886799 /* MGSoundSourceObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

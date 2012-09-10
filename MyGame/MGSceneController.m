@@ -70,6 +70,8 @@
     //llamar a 'update' de todos los objetos de la escena
     MGState *state = self.stateManager.activeState;
     [state updateState];
+    [[MGOpenALSoundController sharedSoundController] update];
+    
     //limpiar los eventos que ya se han updateado
     [self.inputViewController clearEvents];
 }

@@ -143,7 +143,7 @@
     }
     
     [self.collisionController handleCollisions];
-    [super updateState];
+    //[super updateState];
 
 }
 

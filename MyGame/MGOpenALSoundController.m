@@ -35,7 +35,9 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
 
 @implementation MGOpenALSoundController
 @synthesize openALContext;
+@synthesize inInterruption;
 @synthesize soundEnabled;
+@synthesize soundCallBackDelegate;
 
 + (MGOpenALSoundController *) sharedSoundController {
     static MGOpenALSoundController *shared_sound_controller;
@@ -157,6 +159,9 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
     for (NSNumber *current_number in itemsToBePurgeCollection) {
         [playingSourcesCollection removeObject:current_number];
         [self recycleSource:[current_number unsignedIntValue]];
+        if ([self.soundCallBackDelegate respondsToSelector:@selector(soundDidFinishPlaying:)]) {
+            [self.soundCallBackDelegate soundDidFinishPlaying:current_number];
+        }
     }
     
     [itemsToBePurgeCollection release];

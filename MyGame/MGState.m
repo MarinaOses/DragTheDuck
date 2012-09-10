@@ -24,8 +24,13 @@
         self.sceneControllerForState = scene_controller;
         _sceneObjects = [[NSMutableArray alloc] init];
         _sceneObjectDestroyerForState = [[MGSceneObjectDestroyer alloc] init];
+        [[MGOpenALSoundController sharedSoundController] setSoundCallBackDelegate:self];
     }
     return self;
+}
+
+- (void)soundDidFinishPlaying:(NSNumber *)source_number {
+    [self.sceneObjects makeObjectsPerformSelector:@selector(soundDidFinishPlaying:) withObject:source_number];
 }
 
 
@@ -38,6 +43,8 @@
 }
 
 - (void)updateState {
+    [self.sceneObjectDestroyerForState destroyFrom:self.sceneObjects];
+    [self.sceneObjects makeObjectsPerformSelector:@selector(update)];
     
 }
 

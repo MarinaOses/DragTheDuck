@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "MGSceneObjectDestroyer.h"
+#import "MGOpenALSoundController.h"
 
 @class MGSceneController;
 
-@interface MGState : NSObject {
+@interface MGState : NSObject <MGSoundCallBackDelegate> {
     MGSceneController *_sceneControllerForState;
     NSMutableArray *_sceneObjects;
     MGSceneObjectDestroyer *_sceneObjectDestroyerForState;

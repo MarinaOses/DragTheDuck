@@ -74,8 +74,6 @@
 
 
 - (void)updateState {
-    [self.sceneObjectDestroyerForState destroyFrom:self.sceneObjects];
-    [self.sceneObjects makeObjectsPerformSelector:@selector(update)];
     [super updateState];
 }
 
