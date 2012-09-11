@@ -99,7 +99,7 @@
 
 - (void)goodTouch {
     if (!pressed) {
-        [[MGOpenALSoundController sharedSoundController].buttonClickSound playWithVolume:1.0f];
+        [self.soundSourceObject playSound:[[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:BUTTON_CLICK]]; 
         pressed = YES;
         [self.target performSelector:self.buttonGoodAction];
     }
@@ -111,6 +111,11 @@
         [self.target performSelector:self.buttonBadAction];
     }
 }
+
++ (void)loadResources {
+    [[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:BUTTON_CLICK]; 
+}
+
 
 - (void)setNotPressedVertexes {
 //    self.mesh.vertexes = MGSquareOutlineVertexes;

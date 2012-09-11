@@ -22,6 +22,7 @@
     MGEggBreaker *_eggBreaker;
     MGLifesController *_lifesController;
     NSMutableArray *_sceneObjects;
+    MGSoundSourceObject *_soundSourceObject;
 }
 
 @property (nonatomic, retain) MGSceneController *sceneController;
@@ -30,6 +31,7 @@
 @property (nonatomic, retain) MGEggBreaker *eggBreaker;
 @property (nonatomic, retain) MGLifesController *lifesController;
 @property (nonatomic, retain) NSMutableArray *sceneObjects;
+@property (nonatomic, retain) MGSoundSourceObject *soundSourceObject;
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller ScoreTransmitter:(MGScoreTransmitter *)score_transmitter SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer LifesController:(MGLifesController *)lifes_controller SceneObjects:(NSMutableArray *)scene_objects;

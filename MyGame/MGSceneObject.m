@@ -20,6 +20,7 @@
 @synthesize matrix = _matrix;
 @synthesize collider = _collider;
 @synthesize positionOfNumber;
+@synthesize soundSourceObject = _soundSourceObject;
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller {
@@ -35,6 +36,7 @@
         self.screenRect = CGRectZero;
         self.collider = nil;
         self.positionOfNumber = 0;
+        _soundSourceObject = [[MGSoundSourceObject alloc] init];
         
     }
     return self;
@@ -119,12 +121,16 @@
     _screenRect = screenRect;
 }
 
+- (void)soundDidFinishPlaying:(NSNumber *)source_number {
+    [self.soundSourceObject soundDidFinishPlaying:source_number];
+}
 
 - (void)dealloc {
     [_mesh release];
     free(_matrix);
     [_sceneController release];
     [_collider release];
+    [_soundSourceObject release];
     [super dealloc];
 }
 

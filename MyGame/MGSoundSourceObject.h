@@ -18,6 +18,7 @@
 }
 
 - (BOOL)playSound:(MGSoundBufferData *)sound_buffer_data;
+- (void)soundDidFinishPlaying:(NSNumber *)source_number;
 
 
 

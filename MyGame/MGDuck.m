@@ -82,7 +82,7 @@
         [self.scoreTransmitter aNewDuckIsKilled];
         [self.transformationController spawnFeathersFrom:self WithColor:DUCK_COLOR];
         [self.transformationController spawnEggFrom:self];
-        [[MGOpenALSoundController sharedSoundController].killedDuckSound playWithVolume:1.0f];
+        [self.soundSourceObject playSound:[[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:EGG_FALLING]];
         //sumar a marcador "número de patos muertos"
         
     }
@@ -97,7 +97,7 @@
     }
     else if ([scene_object isKindOfClass:[MGLeaf class]]) {
         if ([self.scoreTransmitter isPossibleToCollideWithLeaves]) {
-            [[MGOpenALSoundController sharedSoundController].leaveTakingSound playWithVolume:1.0f];
+            [self.soundSourceObject playSound:[[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:LEAVE_TAKING]];
             [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
             [self.scoreTransmitter aNewLeafIsTaken];
         }
@@ -190,7 +190,10 @@
     takenTimeWithoutMovingInUpdates = TAKEN_TIME_WITHOUT_MOVING * MAXIMUM_FRAME_RATE;
 }
 
-
++ (void)loadResources{
+    [[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:EGG_FALLING];
+    [[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:LEAVE_TAKING];
+}
 
 
 

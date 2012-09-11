@@ -245,6 +245,21 @@
 #define SECURITY_DISTANCE 10
 
 
+//**********************************************************************************************
+//SOUNDS
+
+#define TRANSFORMER_FLYING @"transformer_flying"
+#define LEAVES_BUTTON_ACTIVE @"leaves_button_active"
+#define BIRD_KILLING @"bird_killing"
+#define LEAVE_TAKING @"leave_taking"
+#define BUTTON_CLICK @"button_click"
+#define SAVED_DUCK @"saved_duck"
+#define BACKGROUND @"background"
+#define EGG_CRASH @"egg_crash"
+#define EGG_FALLING @"egg_falling"
+#define FRIED_EGG @"fried_egg"
+#define DUCK @"duck"
+
 
 
 #endif

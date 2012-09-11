@@ -11,6 +11,7 @@
 @interface MGSceneController ()
 
 - (void)startAnimation;
+- (void)invokeLoadResources;
 
 @end
 
@@ -31,6 +32,7 @@
     if (self) {
         lastFrameTime = 0.0;
         cyclesLeftOver = 0.0;
+        [self invokeLoadResources];
     }
     return self;
 }
@@ -41,6 +43,31 @@
 
 - (void)buttonBadActionLog {
     NSLog(@"BAD");
+}
+
+- (void)invokeLoadResources {
+    int number_of_classes;
+    Class *list_of_classes = NULL;
+    //Coger el número de clases para poder crear el buffer con un tamaño correcto
+    number_of_classes = objc_getClassList(NULL, 0);
+    if (number_of_classes > 0) {
+        list_of_classes = malloc(number_of_classes * sizeof(Class));
+        number_of_classes = objc_getClassList(list_of_classes, number_of_classes);
+        for (int i = 0; i < number_of_classes; i++) {
+            Class current_class = list_of_classes[i];
+            if (class_getClassMethod(current_class, @selector(isSubclassOfClass:))) {
+                if ([current_class isSubclassOfClass:[MGSceneObject class]]) {
+                    //Se ha encontrado un MGSceneObject
+                    if ([current_class respondsToSelector:@selector(loadResources)]) {
+                        //Si se llama de la manera habitual ([current_class loadResources]) el compilador da un warning, ya que no reconoce de qué clase se trata
+                        //Evitar el warning con objc_msgSend
+                        objc_msgSend(current_class, @selector(loadResources));
+                    }
+                }
+            }
+        }
+        free(list_of_classes);
+    }
 }
 
 

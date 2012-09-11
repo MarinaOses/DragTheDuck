@@ -63,6 +63,12 @@
     }
 }
 
+- (void)soundDidFinishPlaying:(NSNumber *)source_number {
+    if ([source_number unsignedIntValue] == sourceID) {
+        hasSourceID = NO;
+    }
+}
+
 
 
 @end

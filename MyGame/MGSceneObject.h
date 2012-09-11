@@ -11,6 +11,8 @@
 #import "MGConfiguration.h"
 #import "MGTexturedQuad.h"
 #import "MGOpenALSoundController.h"
+#import "MGSoundSourceObject.h"
+
 
 @class MGCollider;
 @class MGSceneController;
@@ -35,6 +37,9 @@
     
     MGCollider *_collider;
     
+    MGSoundSourceObject *_soundSourceObject;
+    
+    
 }
 
 
@@ -48,6 +53,7 @@
 @property (nonatomic, retain) MGSceneController *sceneController;
 @property (nonatomic, retain) MGCollider *collider;
 @property (nonatomic, assign) NSInteger positionOfNumber;
+@property (nonatomic, retain) MGSoundSourceObject *soundSourceObject;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;
 - (void)update;

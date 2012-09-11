@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <objc/runtime.h>
+#import <objc/message.h>
 #import "MGInputViewController.h"
 #import "MGStateManager.h"
 #import "MGTimeController.h"
