@@ -19,7 +19,6 @@
 @synthesize eggBreaker = _eggBreaker;
 @synthesize lifesController = _lifesController;
 @synthesize sceneObjects = _sceneObjects;
-@synthesize soundSourceObject = _soundSourceObject;
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller ScoreTransmitter:(MGScoreTransmitter *)score_transmitter SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer LifesController:(MGLifesController *)lifes_controller SceneObjects:(NSMutableArray *)scene_objects {
@@ -30,7 +29,6 @@
         self.scoreTransmitter = score_transmitter;
         self.lifesController = lifes_controller;
         self.sceneObjects = scene_objects;
-        _soundSourceObject = [[MGSoundSourceObject alloc] init];
     }
     return self;
 }
@@ -69,7 +67,7 @@
             MGDuck *duck = (MGDuck *)mobile_object;
             duck.finger.isFree = YES;
             if (centerX > (midYOfWindowRect + midXOfMeshRect)) { //Derecha
-                [self.soundSourceObject playSound:[[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:SAVED_DUCK]];
+                [duck playSoundSavedDuck];
                 [self.scoreTransmitter aNewDuckIsSaved];
                 [self.sceneObjectDestroyer markToRemoveSceneObject:mobile_object];
             }
@@ -78,7 +76,7 @@
             MGTransformer *transformer = (MGTransformer *)mobile_object;
             transformer.finger.isFree = YES;
             if (centerX > (midYOfWindowRect + midXOfMeshRect)) { //Derecha
-                [[MGOpenALSoundController sharedSoundController].transformerFlyingSound stop];
+                [transformer playSound];
                 [self.scoreTransmitter theTransformerHasCrossedTheLine];
                 [self.sceneObjectDestroyer markToRemoveSceneObject:mobile_object];
             }
@@ -113,11 +111,6 @@
     }
 }
 
-+ (void)loadResources {
-    [[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:SAVED_DUCK];
-    [[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:TRANSFORMER_FLYING];
-}
-
 - (void)dealloc {
     [_sceneController release];
     [_sceneObjectDestroyer release];
@@ -125,7 +118,6 @@
     [_eggBreaker release];
     [_lifesController release];
     [_sceneObjects release];
-    [_soundSourceObject release];
     [super dealloc];
 }
 

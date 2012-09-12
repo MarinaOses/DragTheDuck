@@ -41,6 +41,7 @@
 @synthesize wingsDown;
 @synthesize downWingsQuad = _downWingsQuad;
 @synthesize upWingsQuad = _upWingsQuad;
+@synthesize soundSourceObjectForSavedDuck = _soundSourceObjectForSavedDuck;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller BoundaryController:(MGBoundaryController *)boundary_controller SceneObjectDestroyer:(MGSceneObjectDestroyer *)scene_object_destroyer ScoreTrasnmitter:(MGScoreTransmitter *)score_transmitter TransformationController:(MGTransformationController *)transformation_controller TouchFinger:(MGFinger *)touch_finger AppearanceHeight:(CGFloat)appearance_height {
     self = [super initWithSceneController:scene_controller BoundaryController:boundary_controller RangeForScale:NSMakeRange(MIN_DUCK_SCALE, MAX_DUCK_SCALE) RangeForSpeed:NSMakeRange(MIN_DUCK_SPEED, MAX_DUCK_SPEED) Direction:1];
@@ -62,6 +63,7 @@
 
         [self loadTimeToFlapItsWingsInUpdates];
         self.translation = MGPointMake(self.startingPointX, appearance_height, 0.0);
+        _soundSourceObjectForSavedDuck = [[MGSoundSourceObject alloc] init];
 
     }
     return self;
@@ -190,7 +192,18 @@
     takenTimeWithoutMovingInUpdates = TAKEN_TIME_WITHOUT_MOVING * MAXIMUM_FRAME_RATE;
 }
 
+- (void)playSoundSavedDuck {
+    [self.soundSourceObjectForSavedDuck playSound:[[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:SAVED_DUCK]];
+}
+
+- (void)playSound {
+    [self.soundSourceObject playSound:[[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:DUCK]];
+}
+
 + (void)loadResources{
+    [[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:SAVED_DUCK];
+    [[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:DUCK];
+
     [[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:EGG_FALLING];
     [[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:LEAVE_TAKING];
 }
@@ -204,6 +217,7 @@
     [_finger release];
     [_upWingsQuad release];
     [_downWingsQuad release];
+    [_soundSourceObjectForSavedDuck release];
     [super dealloc];
 }
 

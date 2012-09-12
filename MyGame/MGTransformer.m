@@ -164,9 +164,19 @@
 
 - (void)loadTakenTimeWithoutMovingInUpdates {
         takenTimeWithoutMovingInUpdates = TAKEN_TIME_WITHOUT_MOVING * MAXIMUM_FRAME_RATE;
-    }
+}
 
+- (void)playSound {
+    [self.soundSourceObject playSound:[[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:TRANSFORMER_FLYING]];
+}
 
+- (void)stopSound {
+    [self.soundSourceObject stopSound];
+}
+
++ (void)loadResources{
+    [[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:TRANSFORMER_FLYING];
+}
 
 - (void)dealloc {
     [_scoreTransmitter release];

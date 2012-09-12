@@ -60,6 +60,8 @@
 - (BOOL)reserveSource:(ALuint *)source_id;
 - (void)playSound:(ALuint)source_id;
 - (void)stopSound:(ALuint)source_id;
+- (void)pauseSound:(ALuint)source_id;
+- (void)restartSound:(ALuint)source_id;
 - (MGSoundBufferData *)soundBufferDataFromFileBaseName:(NSString *)sound_file_basename;
 
 @end

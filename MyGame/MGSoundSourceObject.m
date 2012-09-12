@@ -63,6 +63,20 @@
     }
 }
 
+- (void)pauseSound {
+    MGOpenALSoundController *openALSoundController = [MGOpenALSoundController sharedSoundController];
+    if (hasSourceID) {
+        [openALSoundController pauseSound:sourceID];
+    }
+}
+
+- (void)restartSound {
+    MGOpenALSoundController *openALSoundController = [MGOpenALSoundController sharedSoundController];
+    if (hasSourceID) {
+        [openALSoundController restartSound:sourceID];
+    }
+}
+
 - (void)soundDidFinishPlaying:(NSNumber *)source_number {
     if ([source_number unsignedIntValue] == sourceID) {
         hasSourceID = NO;

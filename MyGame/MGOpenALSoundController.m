@@ -124,21 +124,41 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
 
 
 - (void)playSound:(ALuint)source_id {
-    [playingSourcesCollection addObject:[NSNumber numberWithUnsignedInt:source_id]];
-    alSourcePlay(source_id);
-    //alSourcei(source_id, AL_GAIN, 1.0f);
-    //alSourcei(source_id, AL_LOOPING, TRUE);
+    if (![playingSourcesCollection containsObject:[NSNumber numberWithUnsignedInt:source_id]]) {
+        [playingSourcesCollection addObject:[NSNumber numberWithUnsignedInt:source_id]];
+        alSourcePlay(source_id);
+        //alSourcei(source_id, AL_GAIN, 1.0f);
+        //alSourcei(source_id, AL_LOOPING, TRUE);
+    }
 }
 
 - (void)stopSound:(ALuint)source_id {
-    alSourceStop(source_id);
-    //Separamos el buffer de la fuente
-    alSourcei(source_id, AL_BUFFER, AL_NONE); 
-    //Se hace que el sonido esté de nuevo disponible
-    [playingSourcesCollection removeObject:[NSNumber numberWithUnsignedInt:source_id]];
-    [self recycleSource:source_id];
+    if ([playingSourcesCollection containsObject:[NSNumber numberWithUnsignedInt:source_id]]) {
+        alSourceStop(source_id);
+        //Separamos el buffer de la fuente
+        alSourcei(source_id, AL_BUFFER, AL_NONE); 
+        //Se hace que el sonido esté de nuevo disponible
+        [playingSourcesCollection removeObject:[NSNumber numberWithUnsignedInt:source_id]];
+        [self recycleSource:source_id];
+    }
 }
 
+- (void)pauseSound:(ALuint)source_id {
+    if ([playingSourcesCollection containsObject:[NSNumber numberWithUnsignedInt:source_id]]) {
+        alSourcePause(source_id);
+        //Separamos el buffer de la fuente
+        //alSourcei(source_id, AL_BUFFER, AL_NONE); 
+        //Se hace que el sonido esté de nuevo disponible
+        [playingSourcesCollection removeObject:[NSNumber numberWithUnsignedInt:source_id]];
+    }
+}
+
+- (void)restartSound:(ALuint)source_id {
+    if (![playingSourcesCollection containsObject:[NSNumber numberWithUnsignedInt:source_id]]) {
+        [playingSourcesCollection addObject:[NSNumber numberWithUnsignedInt:source_id]];
+        alSourcePlay(source_id);
+    }
+}
 
 
 //El método de stop() sólo sirve para aquellos sonidos que tengan activada la propiedad LOOP. Los sonidos cortos se paran por sí mismos automáticamente y como no ejecutan el método stop() siguen en "uso" y no pasan a estar disponibles.
