@@ -99,7 +99,7 @@
 
 - (void)goodTouch {
     if (!pressed) {
-        [self.soundSourceObject playSound:[[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:BUTTON_CLICK]]; 
+        [self playSound];
         pressed = YES;
         [self.target performSelector:self.buttonGoodAction];
     }
@@ -110,6 +110,10 @@
         pressed = NO;
         [self.target performSelector:self.buttonBadAction];
     }
+}
+
+- (void)playSound {
+    [self.soundSourceObject playSound:[[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:BUTTON_CLICK]]; 
 }
 
 + (void)loadResources {

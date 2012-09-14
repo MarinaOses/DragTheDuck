@@ -33,7 +33,7 @@
     self.duckWhoStartsTheTransformation = duck;
     MGTransformer *transformerToAdd = [[MGTransformer alloc] initWithDuck:duck];
     [self.sceneObjects addObject:transformerToAdd];
-    [[MGOpenALSoundController sharedSoundController].transformerFlyingSound playWithVolume:1.0f];
+    [transformerToAdd playSound];
     [transformerToAdd release];
 }
 
@@ -48,8 +48,8 @@
         [duckToAdd start];
     }
     [self.sceneObjects addObject:duckToAdd];
-    [[MGOpenALSoundController sharedSoundController].transformerFlyingSound stop];
-    [[MGOpenALSoundController sharedSoundController].duckSound playWithVolume:1.0f];
+    [transformer stopSound];
+    [duckToAdd playSound];
     self.duckWhoStartsTheTransformation = nil;
     
 }
@@ -57,6 +57,7 @@
 - (void)spawnEggFrom:(MGDuck *)killed_duck {
     MGEgg *eggToAdd = [[MGEgg alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController DropsFromKilledDuck:killed_duck];
     [self.sceneObjects addObject:eggToAdd];
+    [eggToAdd playSound];
     [eggToAdd release];
 }
 

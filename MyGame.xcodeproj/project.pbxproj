@@ -50,6 +50,8 @@
 		9C85041215C9B31D00F9685B /* MGTexturedQuad.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C85041115C9B31C00F9685B /* MGTexturedQuad.m */; };
 		9C8FD35715DD18CD006628A6 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C8FD35515DD18CD006628A6 /* icon.png */; };
 		9C8FD35815DD18CD006628A6 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C8FD35615DD18CD006628A6 /* icon@2x.png */; };
+		9CA0580F16025524004D88F0 /* MGLife.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0580E16025524004D88F0 /* MGLife.m */; };
+		9CA0581216025FF8004D88F0 /* MGBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0581116025FF7004D88F0 /* MGBackground.m */; };
 		9CAC5B16153D8B23003ECB4F /* MGTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC5B15153D8B23003ECB4F /* MGTouch.m */; };
 		9CAE9C6B1557F28600C88B50 /* MGMobileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C6A1557F28600C88B50 /* MGMobileObject.m */; };
 		9CAE9C6F155A7D0000C88B50 /* MGMultipleArrowGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE9C6E155A7D0000C88B50 /* MGMultipleArrowGenerator.m */; };
@@ -179,6 +181,10 @@
 		9C85041115C9B31C00F9685B /* MGTexturedQuad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTexturedQuad.m; sourceTree = "<group>"; };
 		9C8FD35515DD18CD006628A6 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		9C8FD35615DD18CD006628A6 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		9CA0580D16025524004D88F0 /* MGLife.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGLife.h; sourceTree = "<group>"; };
+		9CA0580E16025524004D88F0 /* MGLife.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGLife.m; sourceTree = "<group>"; };
+		9CA0581016025FF6004D88F0 /* MGBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGBackground.h; sourceTree = "<group>"; };
+		9CA0581116025FF7004D88F0 /* MGBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGBackground.m; sourceTree = "<group>"; };
 		9CA68A23152C6F7B008E11AF /* MGConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConfiguration.h; sourceTree = "<group>"; };
 		9CAC5B14153D8B23003ECB4F /* MGTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTouch.h; sourceTree = "<group>"; };
 		9CAC5B15153D8B23003ECB4F /* MGTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTouch.m; sourceTree = "<group>"; };
@@ -334,6 +340,10 @@
 				9C5BE8F115D67D3000B179C1 /* MGArrow.m */,
 				9C1A8B3015F7DA6B00809A17 /* MGSoundButton.h */,
 				9C1A8B3115F7DA6B00809A17 /* MGSoundButton.m */,
+				9CA0580D16025524004D88F0 /* MGLife.h */,
+				9CA0580E16025524004D88F0 /* MGLife.m */,
+				9CA0581016025FF6004D88F0 /* MGBackground.h */,
+				9CA0581116025FF7004D88F0 /* MGBackground.m */,
 			);
 			name = "Scene Objects";
 			sourceTree = "<group>";
@@ -795,6 +805,8 @@
 				9CE8288A15FA791E00578D13 /* MGSoundBufferData.m in Sources */,
 				9C43C4EF15FE575500886799 /* MGSoundState.m in Sources */,
 				9C43C4F315FE591C00886799 /* MGSoundSourceObject.m in Sources */,
+				9CA0580F16025524004D88F0 /* MGLife.m in Sources */,
+				9CA0581216025FF8004D88F0 /* MGBackground.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

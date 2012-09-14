@@ -53,6 +53,7 @@
     if (number_of_classes > 0) {
         list_of_classes = malloc(number_of_classes * sizeof(Class));
         number_of_classes = objc_getClassList(list_of_classes, number_of_classes);
+        NSLog(@"numberofclasses = %d", number_of_classes);
         for (int i = 0; i < number_of_classes; i++) {
             Class current_class = list_of_classes[i];
             if (class_getClassMethod(current_class, @selector(isSubclassOfClass:))) {

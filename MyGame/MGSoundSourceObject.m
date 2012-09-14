@@ -9,12 +9,12 @@
 #import "MGSoundSourceObject.h"
 
 @implementation MGSoundSourceObject
-
+@synthesize audioLooping;
 
 - (id)init {
     self = [super init];
     if (self) {
-        audioLooping = AL_FALSE;
+        self.audioLooping = AL_FALSE;
         pitchShift = 1.0f;
     }
     return self;
@@ -24,9 +24,11 @@
     [super applyState];
     if (hasSourceID) {
         if (![[MGOpenALSoundController sharedSoundController] inInterruption]) {
-            alSourcef(sourceID, AL_GAIN, self.gainLevel);
-            alSourcei(sourceID, AL_LOOPING, audioLooping);
-            alSourcef(sourceID, AL_PITCH, pitchShift);
+            if (![[MGOpenALSoundController sharedSoundController] inInterruption]) {
+                alSourcef(sourceID, AL_GAIN, self.gainLevel);
+                alSourcei(sourceID, AL_LOOPING, self.audioLooping);
+                alSourcef(sourceID, AL_PITCH, pitchShift);
+            }
         }
     }
 }

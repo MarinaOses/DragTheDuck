@@ -75,7 +75,14 @@
 }
 
 
+- (void)playSound {
+    [self.soundSourceObject playSound:[[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:BIRD_KILLING]];
 
+}
+
++ (void)loadResources {
+    [[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:BIRD_KILLING];
+}
 
 - (void)dealloc {
     [_downWingsQuad release];

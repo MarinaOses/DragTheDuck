@@ -68,7 +68,7 @@
 
 - (void)goodTouch {
     if (!pressed) {
-        [[MGOpenALSoundController sharedSoundController].buttonClickSound playWithVolume:1.0f];
+        [self playSound];
         if (enabled) {
             [self setNotPressedVertexes];
             enabled = NO;

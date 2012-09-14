@@ -57,5 +57,11 @@
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;
 - (void)update;
+- (void)playSound;
+- (void)stopSound;
+- (void)pauseSound;
+- (void)restartSound;
++ (void)loadResources;
+
 
 @end

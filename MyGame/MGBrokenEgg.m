@@ -53,6 +53,15 @@
     [super update];
 }
 
+- (void)playSound {
+    [self.soundSourceObject playSound:[[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:EGG_CRASH]];
+
+}
+
++ (void) loadResources {
+    [[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:EGG_CRASH];
+}
+
 - (void)dealloc {
     [_lifesController release];
     [super dealloc];

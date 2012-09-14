@@ -17,6 +17,9 @@
     ALfloat pitchShift;
 }
 
+
+@property (nonatomic, assign) ALboolean audioLooping;
+
 - (BOOL)playSound:(MGSoundBufferData *)sound_buffer_data;
 - (void)stopSound;
 - (void)pauseSound;

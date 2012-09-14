@@ -16,6 +16,7 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
     MGOpenALSoundController *openALSoundController = (MGOpenALSoundController *)user_data;
     OSStatus the_error = noErr;
     if (kAudioSessionBeginInterruption == interruption_state) {
+        openALSoundController.inInterruption = YES;
         //Suspende el estado del contexto
         alcSuspendContext(openALSoundController.openALContext);
         alcMakeContextCurrent(NULL);
@@ -30,6 +31,7 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
         alcMakeContextCurrent(openALSoundController.openALContext);
         //Reanudamos el procesado del estado del contexto
         alcProcessContext(openALSoundController.openALContext);
+        openALSoundController.inInterruption = NO;
     }
 }
 
@@ -160,31 +162,65 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
     }
 }
 
+- (void)stopALLPlayingSounds {
+    if ([playingSourcesCollection count] > 0) {
+        for (NSNumber *source_number in playingSourcesCollection) {
+            ALuint source_id = [source_number unsignedIntValue];
+            alSourceStop(source_id);
+            alSourcei(source_id, AL_BUFFER, AL_NONE); 
+            [self recycleSource:source_id];
+        }
+        [playingSourcesCollection removeAllObjects];
+    }
+}
+
+- (void)pauseALLPlayingSounds {
+    if ([playingSourcesCollection count] > 0) {
+        for (NSNumber *source_number in playingSourcesCollection) {
+            ALuint source_id = [source_number unsignedIntValue];
+            alSourcePause(source_id);
+        }
+        [playingSourcesCollection removeAllObjects];
+    }
+}
+
+- (void)restartALLPlayingSounds {
+        for (NSNumber *source_number in inUseSourcesCollection) {
+            ALuint source_id = [source_number unsignedIntValue];
+            if (![playingSourcesCollection containsObject:source_number]) {
+                [playingSourcesCollection addObject:source_number];
+                alSourcePlay(source_id);
+            }
+        }
+}
+
 
 //El método de stop() sólo sirve para aquellos sonidos que tengan activada la propiedad LOOP. Los sonidos cortos se paran por sí mismos automáticamente y como no ejecutan el método stop() siguen en "uso" y no pasan a estar disponibles.
 //El siguiente método quita esos sonidos cortos del set de "uso" y los pone en el set de disponibles.
 
 - (void)update {
-    NSMutableSet *itemsToBePurgeCollection = [[NSMutableSet alloc] initWithCapacity:[playingSourcesCollection count]];
-    for (NSNumber *current_number in playingSourcesCollection) {
-        ALuint source_id = [current_number unsignedIntValue];
-        ALenum source_state;
-        alGetSourcei(source_id, AL_SOURCE_STATE, &source_state);
-        if (source_state == AL_STOPPED) {
-            alSourcei(source_id, AL_BUFFER, AL_NONE);
-            [itemsToBePurgeCollection addObject:current_number];
+    if (!self.inInterruption) {
+        NSMutableSet *itemsToBePurgeCollection = [[NSMutableSet alloc] initWithCapacity:[playingSourcesCollection count]];
+        for (NSNumber *current_number in playingSourcesCollection) {
+            ALuint source_id = [current_number unsignedIntValue];
+            ALenum source_state;
+            alGetSourcei(source_id, AL_SOURCE_STATE, &source_state);
+            if (source_state == AL_STOPPED) {
+                alSourcei(source_id, AL_BUFFER, AL_NONE);
+                [itemsToBePurgeCollection addObject:current_number];
+            }
         }
-    }
-    
-    for (NSNumber *current_number in itemsToBePurgeCollection) {
-        [playingSourcesCollection removeObject:current_number];
-        [self recycleSource:[current_number unsignedIntValue]];
-        if ([self.soundCallBackDelegate respondsToSelector:@selector(soundDidFinishPlaying:)]) {
-            [self.soundCallBackDelegate soundDidFinishPlaying:current_number];
+        
+        for (NSNumber *current_number in itemsToBePurgeCollection) {
+            [playingSourcesCollection removeObject:current_number];
+            [self recycleSource:[current_number unsignedIntValue]];
+            if ([self.soundCallBackDelegate respondsToSelector:@selector(soundDidFinishPlaying:)]) {
+                [self.soundCallBackDelegate soundDidFinishPlaying:current_number];
+            }
         }
+        
+        [itemsToBePurgeCollection release];
     }
-    
-    [itemsToBePurgeCollection release];
 }
 
 

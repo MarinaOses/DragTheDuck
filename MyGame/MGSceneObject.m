@@ -125,6 +125,26 @@
     [self.soundSourceObject soundDidFinishPlaying:source_number];
 }
 
+
+- (void)playSound {
+
+}
+
+- (void)stopSound {
+    [self.soundSourceObject stopSound];
+}
+
+- (void)pauseSound {
+    [self.soundSourceObject pauseSound];
+}
+
+- (void)restartSound {
+    [self.soundSourceObject restartSound];
+}
+
++ (void)loadResources {
+}
+
 - (void)dealloc {
     [_mesh release];
     free(_matrix);

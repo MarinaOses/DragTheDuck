@@ -43,25 +43,25 @@
     return self;
 }
 
-- (MGSceneObject *)createALife {
-    MGSceneObject *obj = [[MGSceneObject alloc] initWithSceneController:self.sceneController];
+- (MGLife *)createALife {
+    MGLife *life = [[MGLife alloc] initWithSceneController:self.sceneController];
 //    MGMesh *meshToAssign = [[MGMesh alloc] initWithVertexes:MGLifesVertexes vertexCount:MGLifesVertexCount vertexSize:MGLifesVertexSize renderStyle:MGLifesRenderStyle];
 //    obj.mesh = meshToAssign;
 //    [meshToAssign release];
 //    obj.mesh.colorSize = MGLifesColorSize;
 //    obj.mesh.colors = MGLifesColorValues;
-    obj.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_egg.png"];    
-    obj.collider = [[MGCollider alloc] initWithSceneController:self.sceneController];
+    life.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_egg.png"];    
+    life.collider = [[MGCollider alloc] initWithSceneController:self.sceneController];
     
-    obj.scale = scaleOfPresentation;
-    return [obj autorelease];
+    life.scale = scaleOfPresentation;
+    return [life autorelease];
 }
 
 - (NSMutableArray *)createLifesMarkerWith:(NSInteger)number_of_lifes {
     NSInteger i;
     NSMutableArray *lifesMarkerToAutorelease = [[NSMutableArray alloc] initWithCapacity:number_of_lifes];
     for (i = 0; i < number_of_lifes; i++) {
-        MGSceneObject *life = [self createALife];
+        MGLife *life = [self createALife];
         life.translation = MGPointMake(firstTranslation.x + i*(CGRectGetWidth(life.meshBounds)+SPACE_BETWEEN_LIFE_LIFE), firstTranslation.y, firstTranslation.z);
         [lifesMarkerToAutorelease addObject:life];
     }

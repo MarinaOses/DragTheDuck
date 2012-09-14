@@ -183,6 +183,8 @@
     return [self.quadLibrary objectForKey:key];
 }
 
+
+
 - (void)dealloc {
     [_materialLibrary release];
     [_quadLibrary release];

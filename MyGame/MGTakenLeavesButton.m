@@ -30,6 +30,7 @@
         [takenLeavesButtonShowerLayerToAssign release];
         
         isActive = NO;
+        self.soundSourceObject.audioLooping = AL_TRUE;
         
     }
     return self;
@@ -38,7 +39,7 @@
 - (void)goodTouch {
     if (isActive) { //Si funciona como botón
         [super goodTouch];
-        [[MGOpenALSoundController sharedSoundController].leavesButtonActiveSound stop];
+        [self stopSound];
         //Cuando hayamos terminado la acción del toque volvemos a poner el layer
         self.takenLeavesButtonShowerLayer.scale = self.scale;
         self.takenLeavesButtonShowerLayer.translation = self.translation;
@@ -66,7 +67,7 @@
     }
     else if (taken_leaves_now == MAX_TAKEN_LEAVES){
         [self.takenLeavesButtonShowerLayer decreaseHeight:(MAX_TAKEN_LEAVES - taken_leaves_now)];
-        [[MGOpenALSoundController sharedSoundController].leavesButtonActiveSound playWithVolume:1.0f];
+        [self playSound];
         isActive = YES;
     }
 }
@@ -76,6 +77,15 @@
         [self checkIfShowerLayerHasToGoUp:self.scoreBoard.takenLeaves];    
     }
     [super update];
+}
+
+- (void)playSound {
+    [self.soundSourceObject playSound:[[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:LEAVES_BUTTON_ACTIVE]];
+}
+
+
++ (void)loadResources {
+    [[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:LEAVES_BUTTON_ACTIVE];
 }
 
 - (void)dealloc {

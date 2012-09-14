@@ -20,10 +20,18 @@
 @synthesize numbersDelegate = _numbersDelegate;
 @synthesize boundaryController = _boundaryController;
 @synthesize lifesController = _lifesController;
+@synthesize background = _background;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller {
     self = [super initWithSceneController:scene_controller];
     if (self) {
+        
+        //************************************
+        //Creación de fondo
+        //************************************
+        _background = [[MGBackground alloc] initWithSceneController:self.sceneControllerForState];
+        
+        
         _collisionController = [[MGCollisionController alloc] initWithSceneObjects:self.sceneObjects];
         _scoreBoard = [[MGScoreBoard alloc] init];
 //        _takenLeavesButton = [[MGTakenLeavesButton alloc] initWithSceneController:scene_controller 
@@ -78,18 +86,8 @@
 
 - (void)loadState {
     [self.sceneObjects removeAllObjects];
-    //************************************
-    //Creación de fondo
-    //************************************
-    
-    MGSceneObject *background = [[MGSceneObject alloc] initWithSceneController:self.sceneControllerForState];
-    background.scale = MGPointMake(480.0, 320.0, 1.0);
-    background.translation = MGPointMake(0.0, 0.0, 0.0);
-    background.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_fondo_completo.png"];
-    [self.sceneObjects addObject:background];
-    [background release];
-    
-    
+
+    [self.sceneObjects addObject:self.background];
     [self.sceneObjects addObject:self.takenLeavesButton];
     [self.sceneObjects addObject:self.takenLeavesButton.takenLeavesButtonShowerLayer];
     [self.sceneObjects addObject:self.pauseButton];
@@ -195,6 +193,7 @@
     [_numbersDelegate release];
     [_boundaryController release];
     [_lifesController release];
+    [_background release];
     [super dealloc];
 }
 

@@ -13,6 +13,7 @@
 #import "MGTakenLeavesButton.h"
 #import "MGLifesController.h"
 #import "MGCollisionController.h"
+#import "MGBackground.h"
 
 
 
@@ -31,6 +32,7 @@
     MGNumbersDelegate *_numbersDelegate;
     MGBoundaryController *_boundaryController;
     MGLifesController *_lifesController;
+    MGBackground *_background;
 }
 
 @property (nonatomic, retain) MGCollisionController *collisionController;
@@ -41,6 +43,7 @@
 @property (nonatomic, retain) MGNumbersDelegate *numbersDelegate;
 @property (nonatomic, retain) MGBoundaryController *boundaryController;
 @property (nonatomic, retain) MGLifesController *lifesController;
+@property (nonatomic, retain) MGBackground *background;
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller;
 

@@ -11,4 +11,25 @@
 @implementation MGSoundState
 @synthesize gainLevel;
 
+
+- (id) init
+{
+	self = [super init];
+	if(nil != self)
+	{
+		self.gainLevel = 1.0f;
+	}
+	return self;
+}
+
+
+
+- (void)applyState {
+    
+}
+
+- (void)update {
+    
+}
+
 @end

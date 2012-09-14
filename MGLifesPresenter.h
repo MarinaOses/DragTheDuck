@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "MGSceneObject.h"
+#import "MGLife.h"
 
 @class MGSceneController;
 

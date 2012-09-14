@@ -62,6 +62,9 @@
 - (void)stopSound:(ALuint)source_id;
 - (void)pauseSound:(ALuint)source_id;
 - (void)restartSound:(ALuint)source_id;
+- (void)stopALLPlayingSounds;
+- (void)pauseALLPlayingSounds;
+- (void)restartALLPlayingSounds;
 - (MGSoundBufferData *)soundBufferDataFromFileBaseName:(NSString *)sound_file_basename;
 
 @end

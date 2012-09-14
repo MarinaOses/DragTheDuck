@@ -40,6 +40,14 @@
     [super update];
 }
 
+- (void)playSound {
+    [self.soundSourceObject playSound:[[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:EGG_FALLING]];
+}
+
++ (void)loadResources {
+    [[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:EGG_FALLING];
+}
+
 - (void)dealloc {
     [super dealloc];
 }

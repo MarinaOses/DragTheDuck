@@ -93,6 +93,13 @@
     [super update];
 }
 
+- (void)playSound {
+    [self.soundSourceObject playSound:[[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:LEAVE_TAKING]];
+}
+
++ (void)loadResources {
+    [[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:LEAVE_TAKING];
+}
 
 - (void)dealloc {
     [super dealloc];

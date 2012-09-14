@@ -51,18 +51,18 @@
 }
 
 - (void)aLifeHasBeenSpent {
-    MGSceneObject *life = [self.lifesMarker objectAtIndex:self.nextLifeWithoutUsing];
+    MGLife *life = [self.lifesMarker objectAtIndex:self.nextLifeWithoutUsing];
     life.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_fried_egg.png"];
     self.nextLifeWithoutUsing--;
     if (self.nextLifeWithoutUsing < 0) {
         [self.sceneController.stateManager stopActiveState];
     }
-    [[MGOpenALSoundController sharedSoundController].friedEggSound playWithVolume:1.0f];
+    [life playSound];
 }
 
 - (void)aLifeHasBeenRecovered {
     if (self.nextLifeWithoutUsing+1 < numberOfLifes) {
-        MGSceneObject *life = [self.lifesMarker objectAtIndex:self.nextLifeWithoutUsing+1];
+        MGLife *life = [self.lifesMarker objectAtIndex:self.nextLifeWithoutUsing+1];
         life.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_egg.png"];
         self.nextLifeWithoutUsing++;
     }

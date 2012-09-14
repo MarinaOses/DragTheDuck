@@ -63,6 +63,8 @@
         self.upWingsQuad = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_transformer_ala_arriba.png"];
         [self flapItsWings];
         [self loadTimeToFlapItsWingsInUpdates];
+        self.soundSourceObject.audioLooping = AL_TRUE;
+
     }
     return self;
 }
@@ -76,7 +78,7 @@
         return;
     }
     else {
-        [[MGOpenALSoundController sharedSoundController].birdKillingSound playWithVolume:1.0f];
+        [scene_object playSound];
         //Animacion: igual no hace falta el remove
         [self.sceneObjectDestroyer markToRemoveSceneObject:scene_object];
         //sumar a marcador "número de pájaros muertos"
@@ -170,9 +172,7 @@
     [self.soundSourceObject playSound:[[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:TRANSFORMER_FLYING]];
 }
 
-- (void)stopSound {
-    [self.soundSourceObject stopSound];
-}
+
 
 + (void)loadResources{
     [[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:TRANSFORMER_FLYING];
