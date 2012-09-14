@@ -36,6 +36,7 @@
     NSMutableSet *availableSourcesCollection;
     NSMutableSet *inUseSourcesCollection;
     NSMutableSet *playingSourcesCollection;
+    NSMutableSet *loopingEnabledSourcesCollection;
     
     
     BOOL soundEnabled;
@@ -58,7 +59,7 @@
 - (void)loading;
 - (void)update;
 - (BOOL)reserveSource:(ALuint *)source_id;
-- (void)playSound:(ALuint)source_id;
+- (void)playSound:(ALuint)source_id WithLoopingEnabled:(ALboolean)looping_enabled;
 - (void)stopSound:(ALuint)source_id;
 - (void)pauseSound:(ALuint)source_id;
 - (void)restartSound:(ALuint)source_id;

@@ -17,13 +17,14 @@
         self.translation = MGPointMake(0.0, 0.0, 0.0);
         self.mesh = [[MGMaterialController sharedMaterialController] quadFromKey:@"mg_fondo_completo.png"];
         self.soundSourceObject.audioLooping = AL_TRUE;
+        self.soundSourceObject.gainLevel = 0.3f;
 
     }
     return self;
 }
 
 - (void)playSound {
-//    [self.soundSourceObject playSound:[[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:BACKGROUND]];
+    [self.soundSourceObject playSound:[[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:BACKGROUND]];
 
 }
 

@@ -94,6 +94,7 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
     availableSourcesCollection = [[NSMutableSet alloc] initWithCapacity:MAX_NUMBER_OF_ALSOURCES];
     inUseSourcesCollection = [[NSMutableSet alloc] initWithCapacity:MAX_NUMBER_OF_ALSOURCES];
     playingSourcesCollection = [[NSMutableSet alloc] initWithCapacity:MAX_NUMBER_OF_ALSOURCES];
+    loopingEnabledSourcesCollection = [[NSMutableSet alloc] initWithCapacity:MAX_NUMBER_OF_ALSOURCES];
     
     for (NSUInteger i = 0; i < MAX_NUMBER_OF_ALSOURCES; i++) {
         [availableSourcesCollection addObject:[NSNumber numberWithUnsignedInt:allSourcesArray[i]]];
@@ -125,9 +126,12 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
 }
 
 
-- (void)playSound:(ALuint)source_id {
+- (void)playSound:(ALuint)source_id WithLoopingEnabled:(ALboolean)looping_enabled {
     if (![playingSourcesCollection containsObject:[NSNumber numberWithUnsignedInt:source_id]]) {
         [playingSourcesCollection addObject:[NSNumber numberWithUnsignedInt:source_id]];
+        if (looping_enabled) {
+            [loopingEnabledSourcesCollection addObject:[NSNumber numberWithUnsignedInt:source_id]];
+        }
         alSourcePlay(source_id);
         //alSourcei(source_id, AL_GAIN, 1.0f);
         //alSourcei(source_id, AL_LOOPING, TRUE);
@@ -135,18 +139,20 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
 }
 
 - (void)stopSound:(ALuint)source_id {
-    if ([playingSourcesCollection containsObject:[NSNumber numberWithUnsignedInt:source_id]]) {
+    if ([loopingEnabledSourcesCollection containsObject:[NSNumber numberWithUnsignedInt:source_id]]) {
         alSourceStop(source_id);
         //Separamos el buffer de la fuente
         alSourcei(source_id, AL_BUFFER, AL_NONE); 
         //Se hace que el sonido esté de nuevo disponible
         [playingSourcesCollection removeObject:[NSNumber numberWithUnsignedInt:source_id]];
+        [loopingEnabledSourcesCollection removeObject:[NSNumber numberWithUnsignedInt:source_id]];
+
         [self recycleSource:source_id];
     }
 }
 
 - (void)pauseSound:(ALuint)source_id {
-    if ([playingSourcesCollection containsObject:[NSNumber numberWithUnsignedInt:source_id]]) {
+    if ([loopingEnabledSourcesCollection containsObject:[NSNumber numberWithUnsignedInt:source_id]]) {
         alSourcePause(source_id);
         //Separamos el buffer de la fuente
         //alSourcei(source_id, AL_BUFFER, AL_NONE); 
@@ -163,35 +169,39 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
 }
 
 - (void)stopALLPlayingSounds {
-    if ([playingSourcesCollection count] > 0) {
-        for (NSNumber *source_number in playingSourcesCollection) {
+    if ([loopingEnabledSourcesCollection count] > 0) {
+        for (NSNumber *source_number in loopingEnabledSourcesCollection) {
             ALuint source_id = [source_number unsignedIntValue];
             alSourceStop(source_id);
             alSourcei(source_id, AL_BUFFER, AL_NONE); 
+            [playingSourcesCollection removeObject:source_number];
             [self recycleSource:source_id];
         }
-        [playingSourcesCollection removeAllObjects];
+        [loopingEnabledSourcesCollection removeAllObjects];
     }
 }
 
 - (void)pauseALLPlayingSounds {
-    if ([playingSourcesCollection count] > 0) {
-        for (NSNumber *source_number in playingSourcesCollection) {
+    if ([loopingEnabledSourcesCollection count] > 0) {
+        for (NSNumber *source_number in loopingEnabledSourcesCollection) {
             ALuint source_id = [source_number unsignedIntValue];
             alSourcePause(source_id);
+            [playingSourcesCollection removeObject:source_number];
         }
-        [playingSourcesCollection removeAllObjects];
     }
 }
 
 - (void)restartALLPlayingSounds {
-        for (NSNumber *source_number in inUseSourcesCollection) {
+    if ([loopingEnabledSourcesCollection count] > 0) {
+        for (NSNumber *source_number in loopingEnabledSourcesCollection) {
             ALuint source_id = [source_number unsignedIntValue];
             if (![playingSourcesCollection containsObject:source_number]) {
                 [playingSourcesCollection addObject:source_number];
                 alSourcePlay(source_id);
             }
         }
+    }
+        
 }
 
 
@@ -224,40 +234,6 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
 }
 
 
-
-
-//- (void)pauseAllSounds {
-//    [self.backgroundSound pause];
-//    
-//    if ([self.leavesButtonActiveSound loopPropertyCurrentlyEnabled]) {
-//        [self.leavesButtonActiveSound pause];
-//    }
-//    if ([self.transformerFlyingSound loopPropertyCurrentlyEnabled]) {
-//        [self.transformerFlyingSound pause];
-//    }
-//}
-//
-//- (void)stopAllSounds {
-//    [self.backgroundSound stop];
-//
-//    if ([self.leavesButtonActiveSound loopPropertyCurrentlyEnabled]) {
-//        [self.leavesButtonActiveSound stop];
-//    }
-//    if ([self.transformerFlyingSound loopPropertyCurrentlyEnabled]) {
-//        [self.transformerFlyingSound stop];
-//    }
-//}
-//
-//- (void)restartAllSounds {
-//    [self.backgroundSound restart];
-//    
-//    if ([self.leavesButtonActiveSound loopPropertyCurrentlyEnabled]) {
-//        [self.leavesButtonActiveSound restart];
-//    }
-//    if ([self.transformerFlyingSound loopPropertyCurrentlyEnabled]) {
-//        [self.transformerFlyingSound restart];
-//    }
-//}
 
 - (void)goodTouchOfSoundButtonIsDone {
     self.soundEnabled = !self.soundEnabled;
@@ -341,6 +317,7 @@ static void MyInterruptionCallback(void *user_data, UInt32 interruption_state) {
     [availableSourcesCollection release];
     [inUseSourcesCollection release];
     [playingSourcesCollection release];
+    [loopingEnabledSourcesCollection release];
 }
 
 - (void)dealloc {

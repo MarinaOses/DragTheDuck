@@ -40,42 +40,49 @@
 
 - (BOOL)playSound:(MGSoundBufferData *)sound_buffer_data {
     MGOpenALSoundController *openALSoundController = [MGOpenALSoundController sharedSoundController];
-    ALuint buffer_id = sound_buffer_data.openALDataBuffer;
-    ALuint source_id;
     BOOL played = NO;
-    BOOL is_source_available = [openALSoundController reserveSource:&source_id];
-    if (is_source_available) {
-        sourceID = source_id;
-        hasSourceID = YES;
-        
-        alSourcei(source_id, AL_BUFFER, buffer_id);
-        [self applyState];
-        [openALSoundController playSound:source_id];
-        played = YES;
+    if (openALSoundController.soundEnabled) {
+        ALuint buffer_id = sound_buffer_data.openALDataBuffer;
+        ALuint source_id;
+        BOOL is_source_available = [openALSoundController reserveSource:&source_id];
+        if (is_source_available) {
+            sourceID = source_id;
+            hasSourceID = YES;
+            
+            alSourcei(source_id, AL_BUFFER, buffer_id);
+            [self applyState];
+            [openALSoundController playSound:source_id WithLoopingEnabled:self.audioLooping];
+            played = YES;
+        }
     }
     return played;
-                            
 }
 
 - (void)stopSound {
     MGOpenALSoundController *openALSoundController = [MGOpenALSoundController sharedSoundController];
-    if (hasSourceID) {
-        [openALSoundController stopSound:sourceID];
-        hasSourceID = NO;
+    if (openALSoundController.soundEnabled) {
+        if (hasSourceID) {
+            [openALSoundController stopSound:sourceID];
+            hasSourceID = NO;
+        }
     }
 }
 
 - (void)pauseSound {
     MGOpenALSoundController *openALSoundController = [MGOpenALSoundController sharedSoundController];
-    if (hasSourceID) {
-        [openALSoundController pauseSound:sourceID];
+    if (openALSoundController.soundEnabled) {
+        if (hasSourceID) {
+            [openALSoundController pauseSound:sourceID];
+        }
     }
 }
 
 - (void)restartSound {
     MGOpenALSoundController *openALSoundController = [MGOpenALSoundController sharedSoundController];
-    if (hasSourceID) {
-        [openALSoundController restartSound:sourceID];
+    if (openALSoundController.soundEnabled) {
+        if (hasSourceID) {
+            [openALSoundController restartSound:sourceID];
+        }
     }
 }
 
