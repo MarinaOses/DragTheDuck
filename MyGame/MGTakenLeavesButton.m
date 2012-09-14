@@ -13,6 +13,7 @@
 @synthesize scoreBoard = _scoreBoard;
 @synthesize takenLeavesButtonShowerLayer = _takenLeavesButtonShowerLayer;
 @synthesize isActive;
+@synthesize soundSourceObjectForLeavesButtonActive = _soundSourceObjectForLeavesButtonActive;
 
 
 - (id)initWithSceneController:(MGSceneController *)scene_controller Translation:(MGPoint)button_translation Rotation:(MGPoint)button_rotation Scale:(MGPoint)button_scale scoreBoard:(MGScoreBoard *)score_board {
@@ -30,7 +31,8 @@
         [takenLeavesButtonShowerLayerToAssign release];
         
         isActive = NO;
-        self.soundSourceObject.audioLooping = AL_TRUE;
+        _soundSourceObjectForLeavesButtonActive = [[MGSoundSourceObject alloc] init];
+        self.soundSourceObjectForLeavesButtonActive.audioLooping = AL_TRUE;
         
     }
     return self;
@@ -67,7 +69,7 @@
     }
     else if (taken_leaves_now == MAX_TAKEN_LEAVES){
         [self.takenLeavesButtonShowerLayer decreaseHeight:(MAX_TAKEN_LEAVES - taken_leaves_now)];
-        [self playSound];
+        [self playSoundLeavesButtonActive];
         isActive = YES;
     }
 }
@@ -79,8 +81,12 @@
     [super update];
 }
 
-- (void)playSound {
-    [self.soundSourceObject playSound:[[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:LEAVES_BUTTON_ACTIVE]];
+- (void)playSoundLeavesButtonActive {
+    [self.soundSourceObjectForLeavesButtonActive playSound:[[MGOpenALSoundController sharedSoundController] soundBufferDataFromFileBaseName:LEAVES_BUTTON_ACTIVE]];
+}
+
+- (void)stopSound {
+    [self.soundSourceObjectForLeavesButtonActive stopSound];
 }
 
 
@@ -91,6 +97,7 @@
 - (void)dealloc {
     [_scoreBoard release];
     [_takenLeavesButtonShowerLayer release];
+    [_soundSourceObjectForLeavesButtonActive release];
     [super dealloc];
 }
 
