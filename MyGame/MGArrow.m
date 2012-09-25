@@ -32,6 +32,8 @@
 - (void)update {
     if (timeBeforeTheBirdAppearsInUpdates <= 0 && !throwedBird) {
         MGBird *bird = [[MGBird alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer AppearanceHeight:self.translation.y];
+        [bird update];
+        [bird render];
         [self.sceneObjects addObject:bird];
         [bird release];
         throwedBird = YES;
