@@ -89,6 +89,8 @@
             MGDuck *duck = [[MGDuck alloc] initWithSceneController:self.sceneController BoundaryController:self.boundaryController SceneObjectDestroyer:self.sceneObjectDestroyer ScoreTrasnmitter:self.scoreTransmitter TransformationController:self.transformationController TouchFinger:self.finger AppearanceHeight:self.translation.y];
             self.generatedDuck = duck;
             [duck release];
+            [self.generatedDuck update];
+            [self.generatedDuck render];
             [self.sceneObjects addObject:self.generatedDuck];
             throwedDuck = YES;
             self.taken = NO;
