@@ -106,6 +106,11 @@
      */
 }
 
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    return UIInterfaceOrientationPortraitUpsideDown;
+}
+
+
 - (void)dealloc
 {
     [_window release];

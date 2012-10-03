@@ -84,6 +84,10 @@
     return meshCenter;
 }
 
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationPortraitUpsideDown;
+}
 
 - (void)dealloc {
     [_touchEvents dealloc];

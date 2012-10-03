@@ -22,4 +22,6 @@
 - (void)clearEvents;
 - (CGRect)screenRectFromMeshRect:(CGRect)meshRect atPoint:(CGPoint)meshCenter;
 - (MGPoint)meshCenterFromMGTouchLocation:(CGPoint)mgTouchLocation;
+- (NSUInteger)supportedInterfaceOrientations;
+
 @end
